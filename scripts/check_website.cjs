@@ -10,6 +10,7 @@ const site = resolve(root, "website");
 const base = new URL("https://example.test/E47-Kartekeya/");
 const read = (path) => readFileSync(path, "utf8");
 const json = (path) => JSON.parse(read(path));
+const pagesWorkflow = read(resolve(root, ".github/workflows/pages.yml"));
 const html = read(resolve(site, "index.html"));
 const css = read(resolve(site, "css/styles.css"));
 const app = read(resolve(site, "js/app.js"));
@@ -73,6 +74,15 @@ test("local links and assets remain inside the GitHub Pages subpath", () => {
     const path = url.pathname.slice(base.pathname.length) || "index.html";
     assert.ok(existsSync(resolve(site, path)), `Missing local asset: ${target}`);
   }
+});
+
+test("pages workflow derives the live URL correctly for user-site repositories", () => {
+  assert.ok(pagesWorkflow.includes('repo_name="${GITHUB_REPOSITORY#*/}"'));
+  assert.ok(pagesWorkflow.includes('user_site_repo="${GITHUB_REPOSITORY_OWNER}.github.io"'));
+  assert.ok(pagesWorkflow.includes('if [ "$repo_name" = "$user_site_repo" ]; then'));
+  assert.ok(pagesWorkflow.includes('site_path=""'));
+  assert.ok(pagesWorkflow.includes('site_path="/$repo_name"'));
+  assert.ok(pagesWorkflow.includes('site_url="https://${GITHUB_REPOSITORY_OWNER}.github.io${site_path}/"'));
 });
 
 // Exercise the actual browser script against a minimal DOM shim.
