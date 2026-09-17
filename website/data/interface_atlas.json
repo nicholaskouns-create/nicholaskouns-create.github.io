@@ -1,0 +1,375 @@
+{
+  "version": "CITY-INTERFACE-ATLAS-1.0",
+  "updated": "2026-09-17",
+  "policy": {
+    "primary": "The primary link resolves to the canonical research/source record whenever one exists.",
+    "runtime": "Run opens the current executable surface.",
+    "archive": "Drive/Grok links preserve implementation and visual lineage without replacing the primary record."
+  },
+  "entries": [
+    {
+      "id": "eidolon-flight",
+      "title": "EIDOLON — Scalar Flight Lab",
+      "role": "Flight",
+      "kind": "flight",
+      "primary": "https://app.notion.com/p/3dd46094fd30817a8bfadc322f33195c",
+      "runtime": "https://eidolon-flight-lab.nicholaskouns.chatgpt.site/",
+      "source": "https://drive.google.com/file/d/1vEKNZBm0qENr0XBAuCKz_aoZ0wxAPimo/view?usp=drivesdk",
+      "summary": "Current public flight experience with scalar craft, glider, formation flight, and replay tooling."
+    },
+    {
+      "id": "eidolon-propulsion",
+      "title": "EIDOLON — Warp Bubble Propulsion Lab",
+      "role": "Propulsion",
+      "kind": "flight",
+      "primary": "https://app.notion.com/p/3db46094fd3081db8b22c77a6dd80741",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/eidolon",
+      "source": "https://lark-plaza-umbra-drum.grok.me/",
+      "summary": "Integrated propulsion simulation and field-model source layer."
+    },
+    {
+      "id": "hover",
+      "title": "Hover",
+      "role": "Craft / Construction",
+      "kind": "flight",
+      "primary": "https://app.notion.com/p/3db46094fd3081db8b22c77a6dd80741",
+      "runtime": "https://willow-fjord-king-cap.grok.me/",
+      "source": "https://drive.google.com/file/d/1jK3BXyxC_ZKxOGGOvideNHBSjRM4nHmD/view?usp=drivesdk",
+      "summary": "Hull, kernel, throat, and hover lineage for the scalar craft interface."
+    },
+    {
+      "id": "eidolon-harmonic",
+      "title": "Eidolon Harmonic",
+      "role": "Flight lineage",
+      "kind": "flight",
+      "primary": "https://app.notion.com/p/3dd46094fd30817a8bfadc322f33195c",
+      "source": "https://drive.google.com/file/d/1rw_mC9lCd01_zILVaYc3WbGBmUe_x_LD/view?usp=drivesdk",
+      "summary": "Archived harmonic-flight HTML source layer retained under the current EIDOLON flight record."
+    },
+    {
+      "id": "mav",
+      "title": "MAV",
+      "role": "Flight lineage",
+      "kind": "flight",
+      "primary": "https://app.notion.com/p/3dd46094fd30817a8bfadc322f33195c",
+      "source": "https://drive.google.com/file/d/18EH62YfZ0BiiDY6SA8evAvRtUZcfr_Sz/view?usp=drivesdk",
+      "summary": "Modular air-vehicle HTML artifact preserved as flight-interface lineage."
+    },
+    {
+      "id": "ufo-propulsion",
+      "title": "UFO Propulsion Lab",
+      "role": "Propulsion lineage",
+      "kind": "flight",
+      "primary": "https://app.notion.com/p/3db46094fd3081db8b22c77a6dd80741",
+      "source": "https://drive.google.com/file/d/1vEKNZBm0qENr0XBAuCKz_aoZ0wxAPimo/view?usp=drivesdk",
+      "summary": "Drive-hosted propulsion interface artifact connected to the EIDOLON source record."
+    },
+    {
+      "id": "spectra",
+      "title": "SPECTRA",
+      "role": "Structure",
+      "kind": "lab",
+      "primary": "https://app.notion.com/p/3d546094fd30819aa87ef4d10a2a254c",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/spectra/",
+      "summary": "Inspect spectra, modes, and invariant structure before interpretation."
+    },
+    {
+      "id": "fold",
+      "title": "FOLD",
+      "role": "Invariance",
+      "kind": "lab",
+      "primary": "https://app.notion.com/p/3d546094fd308141851ee5b3a2b14696",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/fold/",
+      "summary": "Contraction geometry and invariance under transformation."
+    },
+    {
+      "id": "murmuration",
+      "title": "MURMURATION",
+      "role": "Dynamics",
+      "kind": "lab",
+      "primary": "https://app.notion.com/p/3d546094fd308139a774e588cb7b4719",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/murmuration/",
+      "summary": "Collective motion, topology, and many-body reorganization."
+    },
+    {
+      "id": "mnemosyne",
+      "title": "MNEMOSYNE",
+      "role": "Memory",
+      "kind": "lab",
+      "primary": "https://app.notion.com/p/3d546094fd3081aba1aec66bd4d96514",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/mnemosyne/",
+      "summary": "Chronology, provenance, sealed forecasts, and correction lineage."
+    },
+    {
+      "id": "density",
+      "title": "DENSITY",
+      "role": "Measurement",
+      "kind": "lab",
+      "primary": "https://app.notion.com/p/3d546094fd30813daa03fe018e4896c2",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/density/",
+      "summary": "Reconstruction from incomplete or noisy observation."
+    },
+    {
+      "id": "horizon",
+      "title": "HORIZON",
+      "role": "Prediction",
+      "kind": "lab",
+      "primary": "https://app.notion.com/p/3d546094fd3081a285c2f45f2bfb4034",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/horizon/",
+      "summary": "Prospective and retrospective forecast instruments with explicit evidence boundaries."
+    },
+    {
+      "id": "wave",
+      "title": "WAVE",
+      "role": "Flow",
+      "kind": "lab",
+      "primary": "https://app.notion.com/p/3d646094fd30812b809bda7dacf7afc9",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/wave/",
+      "summary": "Coherent flow and field evolution."
+    },
+    {
+      "id": "identity",
+      "title": "IDENTITY",
+      "role": "Persistence",
+      "kind": "lab",
+      "primary": "https://app.notion.com/p/3d646094fd30817b8f29c79213c6c8db",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/identity/",
+      "summary": "Identity transport and persistence under change."
+    },
+    {
+      "id": "build",
+      "title": "BUILD",
+      "role": "Construction",
+      "kind": "lab",
+      "primary": "https://app.notion.com/p/3d746094fd308195b625c08f2b885860",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/build/",
+      "summary": "Assembly and contraction around selected invariant targets."
+    },
+    {
+      "id": "soar",
+      "title": "SOAR",
+      "role": "Restoration",
+      "kind": "lab",
+      "primary": "https://app.notion.com/p/3d746094fd30813c8ce2f4f2835c15f6",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/soar/",
+      "summary": "Control, recovery, and restoration experiments."
+    },
+    {
+      "id": "scalar",
+      "title": "SCALAR",
+      "role": "Field",
+      "kind": "lab",
+      "primary": "https://app.notion.com/p/3d746094fd3081a9b279d3904123f8b4",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/scalar",
+      "summary": "Finite E47 spectral structure lifted into visualization-typed scalar-field scenes."
+    },
+    {
+      "id": "invarifold",
+      "title": "InvariFold",
+      "role": "Protein cinema",
+      "kind": "instrument",
+      "primary": "https://app.notion.com/p/3db46094fd30817cbb7ae4f6fcf3155b",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/fold/",
+      "source": "https://drive.google.com/file/d/1GJZMRSM3lrDoIp1WgTwp-JHxkMvpEOhy/view?usp=drivesdk",
+      "summary": "Standalone contraction-cinema HTML and Fold instrument record."
+    },
+    {
+      "id": "city-os",
+      "title": "City OS",
+      "role": "Composition console",
+      "kind": "system",
+      "primary": "https://app.notion.com/p/06eca7d07b0647678026c685adc69542",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/city-os/",
+      "source": "https://drive.google.com/file/d/1gd8I_LRn1i8MLilfPPCJ0GbSsaw3alW3/view?usp=drivesdk",
+      "summary": "Unified composition surface for labs-as-morphisms and emergent machines."
+    },
+    {
+      "id": "matrix",
+      "title": "THE MATRIX",
+      "role": "Quantum circuits",
+      "kind": "instrument",
+      "primary": "https://app.notion.com/p/3dd46094fd308072b5c2ef223460c15b",
+      "source": "https://drive.google.com/file/d/1VyM9qzv1sJHszOyoCOKoH2vHigONJTDm/view?usp=drivesdk",
+      "summary": "Quantum circuit and MPS instrument."
+    },
+    {
+      "id": "cube",
+      "title": "The Cube",
+      "role": "Geometric computation",
+      "kind": "instrument",
+      "primary": "https://app.notion.com/p/3d946094fd30818b9522cc8812564e7c",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/cube",
+      "source": "https://drive.google.com/file/d/1k_k9p83w1QuDurlJOxF9AVAsANRnSD_J/view?usp=drivesdk",
+      "summary": "125-state carrier, symmetry, spectral selection, and contraction geometry."
+    },
+    {
+      "id": "sigillum",
+      "title": "SIGILLUM",
+      "role": "Forty-state spectral computer",
+      "kind": "instrument",
+      "primary": "https://app.notion.com/p/3db46094fd308199a78dc07826b6c997",
+      "source": "https://drive.google.com/file/d/1ogKWHj-vnAwkbCjyXWNsNOL33eH8E9D-/view?usp=drivesdk",
+      "summary": "Forty-state affine map, orbit projector, and Laplacian-contraction interface."
+    },
+    {
+      "id": "chimera",
+      "title": "CHIMERA — The HAR Codex",
+      "role": "Biology / QEGT bridge",
+      "kind": "instrument",
+      "primary": "https://app.notion.com/p/3dc46094fd3081db8dc1f498b660f07c",
+      "source": "https://drive.google.com/file/d/1OkmsvwXnjL3X_luNZaOXKbC4jjlj4m59/view?usp=drivesdk",
+      "summary": "Historical HAR codex, catalog work, and explicitly bounded synthetic QEGT bridge."
+    },
+    {
+      "id": "kartekeya",
+      "title": "KARTEKEYA",
+      "role": "Canonical E47 machine",
+      "kind": "core",
+      "primary": "https://app.notion.com/p/3a446094fd3081d0b1eddeecff16aa71",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/kartekeya",
+      "summary": "Canonical executable E47 machine and invariant core."
+    },
+    {
+      "id": "see",
+      "title": "SEE — Citadel Gateway",
+      "role": "Evidence",
+      "kind": "core",
+      "primary": "https://app.notion.com/p/3d746094fd30816e9612d0c04a9815d1",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/see/",
+      "summary": "Certificates, residuals, provenance, corrections, and evidence lineage."
+    },
+    {
+      "id": "kouns-core-controller",
+      "title": "KOUNS CORE — Engine Controller",
+      "role": "Standalone HTML",
+      "kind": "archive",
+      "primary": "https://drive.google.com/file/d/1NVOxBMM545ltfuK6NSzDMq7Je4q48Riv/view?usp=drivesdk",
+      "runtime": "interfaces/kouns-core/index.html",
+      "summary": "Self-contained app.html preserved as a directly hostable GitHub Pages interface."
+    },
+    {
+      "id": "e47-gestalt",
+      "title": "E47 Gestalt",
+      "role": "HTML artifact",
+      "kind": "archive",
+      "primary": "https://drive.google.com/file/d/1adda2IfNL2beKJTtrSmldS12jWE6MKYk/view?usp=drivesdk",
+      "summary": "Drive HTML interface artifact retained in the source atlas."
+    },
+    {
+      "id": "proof-forge-html",
+      "title": "Proof Forge",
+      "role": "HTML artifact",
+      "kind": "archive",
+      "primary": "https://drive.google.com/file/d/1zzlX46f4zMdLDH4J4ABVTYGpw8g6m-cO/view?usp=drivesdk",
+      "summary": "Drive HTML surface for Proof Forge lineage."
+    },
+    {
+      "id": "mathematical-city-html",
+      "title": "Mathematical City — HTML archive",
+      "role": "Portal archive",
+      "kind": "archive",
+      "primary": "https://drive.google.com/file/d/1ZBBNs58AfVl_PXUCqUoD-rgsMxLwhaiv/view?usp=drivesdk",
+      "summary": "Large historical Mathematical City HTML interface preserved in Drive."
+    },
+    {
+      "id": "mini-ai-labs-portal",
+      "title": "Mini AI Labs — Portal archive",
+      "role": "Portal archive",
+      "kind": "archive",
+      "primary": "https://drive.google.com/file/d/199XF_xDMgW-VQA8tv41CDBlay1yWY4Ul/view?usp=drivesdk",
+      "summary": "Earlier ten-card Mini AI Labs portal."
+    },
+    {
+      "id": "octet-archive",
+      "title": "Mini AI Labs — Octet archive",
+      "role": "Protocol archive",
+      "kind": "archive",
+      "primary": "https://drive.google.com/file/d/1QKUaOvEGZygZ7_TjiJ43IjqSJoCzo0zm/view?usp=drivesdk",
+      "summary": "Octet-era HTML archive retained for provenance."
+    },
+    {
+      "id": "universal-translator",
+      "title": "Universal Translator v0.3.1",
+      "role": "Invariant grammar",
+      "kind": "instrument",
+      "primary": "https://app.notion.com/p/3d546094fd3081efb76de5ef0f86d942",
+      "source": "https://drive.google.com/file/d/1VtHQUzfk36lCcN3sI8o1vOU4C9YCohrC/view?usp=drivesdk",
+      "summary": "Typed translation/compilation instrument with a preserved Drive HTML implementation."
+    },
+    {
+      "id": "e47-booklet",
+      "title": "E47 Booklet",
+      "role": "Document HTML",
+      "kind": "document",
+      "primary": "https://drive.google.com/file/d/1p68JZz75d_Q-UZJg2xAZNm9FoGtZOA3v/view?usp=drivesdk",
+      "summary": "HTML booklet in the public source corpus."
+    },
+    {
+      "id": "machine-precision-runs",
+      "title": "Machine Precision E47 Runs",
+      "role": "Validation HTML",
+      "kind": "document",
+      "primary": "https://drive.google.com/file/d/1D-OhHWP6HPyOxccuuFaFjyzja1zAweaY/view?usp=drivesdk",
+      "summary": "Machine-precision execution record in HTML form."
+    },
+    {
+      "id": "e47-certificate-run",
+      "title": "E47 Certificate Run 072026",
+      "role": "Certificate HTML",
+      "kind": "document",
+      "primary": "https://drive.google.com/file/d/11iHQBLorxi-vQLhi9nZKQFDIcvM04pZ5/view?usp=drivesdk",
+      "summary": "Historical E47 certificate-run HTML."
+    },
+    {
+      "id": "kppr-dashboard",
+      "title": "KKP-R Formalism Dashboard",
+      "role": "Dashboard HTML",
+      "kind": "instrument",
+      "primary": "https://drive.google.com/file/d/18jQnuogaZDtsI76aCwMDuKftlAJgMDkD/view?usp=drivesdk",
+      "summary": "Formalism dashboard retained as a modular HTML surface."
+    },
+    {
+      "id": "kkp-visualizer",
+      "title": "Kouns-Killion Paradigm Visualizer",
+      "role": "Visualizer HTML",
+      "kind": "instrument",
+      "primary": "https://drive.google.com/file/d/1SKkVJ4S-PmVZ0G1-66_3KIvBnRzbQKbL/view?usp=drivesdk",
+      "summary": "Standalone paradigm visualizer artifact."
+    },
+    {
+      "id": "stone-to-sky",
+      "title": "Stone to Sky",
+      "role": "HTML / React artifact",
+      "kind": "instrument",
+      "primary": "https://drive.google.com/file/d/1pjZ8nFtN-HucQU361WDpu1ZIqv4BcF-j/view?usp=drivesdk",
+      "summary": "Modular HTML/React interface retained in Drive."
+    },
+    {
+      "id": "e47-precision-monograph",
+      "title": "E47 Exact-to-Machine Precision Monograph",
+      "role": "Document",
+      "kind": "document",
+      "primary": "https://app.notion.com/p/3d846094fd30819c915fecbe5a937af2",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=DOC-E47-PRECISION-MONOGRAPH-20260911",
+      "summary": "Exact-to-machine precision synthesis with explicit E0/E1 scope."
+    },
+    {
+      "id": "vallee-projector",
+      "title": "Vallée Projector / E47 executable source",
+      "role": "Executable source",
+      "kind": "document",
+      "primary": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-VALLEE",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-VALLEE",
+      "summary": "Finite-dimensional E47 first-principles executable surface."
+    },
+    {
+      "id": "corpus-repro",
+      "title": "E47 Corpus Blocker Closure Harness",
+      "role": "Reproducibility",
+      "kind": "document",
+      "primary": "https://app.notion.com/p/3d946094fd3081c8b241e5f82e93153e",
+      "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-CORPUS-REPRO-20260912",
+      "summary": "E1 reproducibility harness and source-reconstruction ledger."
+    }
+  ]
+}
