@@ -67,6 +67,7 @@ Outputs:
 - [`docs/validation_scope.md`](docs/validation_scope.md) — What is and is not validated
 - [`docs/maintenance_policy.md`](docs/maintenance_policy.md) — Automated and manual maintenance procedures
 - [`docs/skills-and-agents.md`](docs/skills-and-agents.md) — Copilot skills, agents, and platform interconnect
+- [`docs/github_pages_root_url_fix.md`](docs/github_pages_root_url_fix.md) — Full write-up of the GitHub Pages root-URL fix and lessons learned
 
 ## Copilot skills (quick invoke)
 
@@ -109,9 +110,14 @@ after the website checks pass.
 **Before the first deployment**, enable **Settings → Pages → Source: GitHub Actions**
 if it is not already configured. After merging, check the **Deploy GitHub Pages**
 job; if Pages was enabled after a failed run, rerun the workflow on `main`.
-The published URL after a successful deployment will be:
+Because this repository is the user-site repository
+`nicholaskouns-create/nicholaskouns-create.github.io`, the published URL after a
+successful deployment is the site root:
 
-`https://nicholaskouns-create.github.io/E47-Kartekeya/`
+`https://nicholaskouns-create.github.io/`
+
+For the full incident write-up, see
+[`docs/github_pages_root_url_fix.md`](docs/github_pages_root_url_fix.md).
 
 ## Package publishing
 
