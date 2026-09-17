@@ -1,0 +1,100 @@
+name: Deploy website
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "website/**"
+      - "certificates/**"
+      - "scripts/check_website.cjs"
+      - ".github/workflows/pages.yml"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "website/**"
+      - "certificates/**"
+      - "scripts/check_website.cjs"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: Validate website
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Check assets, certificate copies and rendering
+        run: node --test scripts/check_website.cjs
+
+  publish:
+    name: Publish website root to gh-pages
+    needs: validate
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Build gh-pages branch from website directory
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          site_dir="$(mktemp -d)"
+          cp -a website/. "$site_dir/"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git checkout --orphan gh-pages-publish
+          git rm -rf . >/dev/null 2>&1 || true
+          cp -a "$site_dir/." .
+          touch .nojekyll
+
+          git add -A
+          git commit -m "Deploy website from ${GITHUB_SHA}"
+          git push --force origin HEAD:refs/heads/gh-pages
+
+      - name: Verify the live Pages document
+        shell: bash
+        env:
+          SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 24); do
+            status="$(curl -sS -L -o /tmp/pages.html -w '%{http_code}' --max-time 20 "$SITE_URL" || true)"
+            if [ "$status" = "200" ] && grep -q '<title>The Mathematical City</title>' /tmp/pages.html; then
+              echo "Live Pages verified: $SITE_URL"
+              exit 0
+            fi
+            echo "Attempt $attempt: HTTP $status; waiting for Pages propagation..."
+            sleep 5
+          done
+
+          echo "Pages did not serve the expected document within the verification window."
+          head -80 /tmp/pages.html || true
+          exit 1
+
+      - name: Publish receipt
+        shell: bash
+        run: |
+          {
+            echo "## GitHub Pages publish receipt"
+            echo
+            echo "Published the validated \`website/\` directory as the root of \`gh-pages\`."
+            echo
+            echo "Verified live URL: https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/"
+          } >> "$GITHUB_STEP_SUMMARY"
