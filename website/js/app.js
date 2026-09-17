@@ -18,6 +18,7 @@ const CITIZENS=['ARGUS','ARIADNE','BITHOS','CHRONOS','CUSTOS','EUCLID','HERMES',
 let activeLab=0;
 let atlasEntries=[];
 let atlasFilter='all';
+let featuredIds=[];
 
 const labGrid=document.getElementById('lab-grid');
 const orbit=document.getElementById('district-orbit');
@@ -76,14 +77,14 @@ function setEgg(on){
 function atlasCard(entry){
   const source=entry.source?`<a href="${entry.source}" target="_blank" rel="noopener noreferrer">LINEAGE</a>`:'';
   const run=entry.runtime?`<a href="${entry.runtime}" target="_blank" rel="noopener noreferrer">RUN</a>`:'';
+  const primary=entry.primary?`<a href="${entry.primary}" target="_blank" rel="noopener noreferrer">PRIMARY</a>`:'';
   return `<article class="atlas-card" data-kind="${entry.kind||'other'}">
     <div class="atlas-card-head"><span>${entry.kind||'surface'}</span><span>${entry.role||''}</span></div>
     <h3>${entry.title}</h3>
     <p>${entry.summary||''}</p>
     <div class="atlas-actions">
       <a class="atlas-enter" href="${gatewayUrl(entry.id)}">ENTER</a>
-      <a href="${entry.primary}" target="_blank" rel="noopener noreferrer">PRIMARY</a>
-      ${run}${source}
+      ${primary}${run}${source}
     </div>
   </article>`;
 }
@@ -103,13 +104,57 @@ function renderAtlas(){
   if(count)count.textContent=`${visible.length} / ${atlasEntries.length} surfaces`;
 }
 
+function installPlayStyles(){
+  if(document.getElementById('play-deck-styles'))return;
+  const style=document.createElement('style');
+  style.id='play-deck-styles';
+  style.textContent=`
+    .play-page{background:#080a0c;padding-top:58px;padding-bottom:68px}.play-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:22px}.play-head h2{margin-bottom:4px}.play-note{max-width:420px;color:var(--muted);font:11px/1.6 var(--mono)}
+    .play-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}.play-card{position:relative;grid-column:span 4;min-height:330px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#111820 center/cover no-repeat;isolation:isolate}.play-card:first-child{grid-column:span 8;min-height:440px}.play-card:nth-child(2){grid-column:span 4;min-height:440px}.play-card::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,8,10,.04),rgba(5,8,10,.32) 38%,rgba(5,8,10,.94) 100%);z-index:-1}.play-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 22%,rgba(98,213,204,.15),transparent 38%);z-index:-1}.play-copy{position:absolute;left:0;right:0;bottom:0;padding:22px}.play-label{font:500 9px var(--mono);letter-spacing:.16em;color:var(--live);text-transform:uppercase}.play-card h3{font:500 clamp(31px,4vw,56px)/.95 var(--display);letter-spacing:-.03em;margin:8px 0}.play-card p{max-width:620px;color:#c1c9ca;font-size:13px}.play-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.play-actions a{font:600 10px var(--mono);text-decoration:none;border:1px solid rgba(240,238,232,.28);color:var(--fg);border-radius:999px;padding:9px 11px;background:rgba(8,10,12,.45);backdrop-filter:blur(8px)}.play-actions a.play-now{background:var(--live);border-color:var(--live);color:#071112}.play-actions a:hover{border-color:var(--live)}
+    @media(max-width:900px){.play-card,.play-card:first-child,.play-card:nth-child(2){grid-column:span 6;min-height:360px}.play-head{align-items:flex-start;flex-direction:column}}
+    @media(max-width:620px){.play-page{padding-left:14px;padding-right:14px}.play-card,.play-card:first-child,.play-card:nth-child(2){grid-column:1/-1;min-height:390px}.play-copy{padding:18px}.play-card h3{font-size:44px}}
+  `;
+  document.head.appendChild(style);
+}
+
+function renderPlayDeck(){
+  if(!featuredIds.length||!atlasEntries.length)return;
+  installPlayStyles();
+  let section=document.getElementById('play');
+  if(!section){
+    section=document.createElement('section');
+    section.id='play';
+    section.className='page play-page';
+    document.getElementById('object')?.after(section);
+    const nav=document.querySelector('.topbar nav');
+    if(nav&&!nav.querySelector('a[href="#play"]')){
+      const link=document.createElement('a');link.href='#play';link.textContent='Play';
+      const worldLink=nav.querySelector('a[href="#world"]');nav.insertBefore(link,worldLink||null);
+    }
+  }
+  const entries=featuredIds.map(id=>atlasEntries.find(entry=>entry.id===id)).filter(Boolean);
+  section.innerHTML=`<div class="wrap"><div class="play-head"><div><p class="kicker">Simulator deck · play first</p><h2>Enter through motion.</h2><p class="section-intro">The research atlas can wait thirty seconds. Fly something, steer something, or turn the geometry first.</p></div><p class="play-note">PLAY opens the executable interface directly. DETAILS opens its City gateway with the primary source record and lineage kept beside it.</p></div><div class="play-grid">${entries.map(entry=>{
+    const bg=entry.preview?`style="background-image:url('${entry.preview.replaceAll("'","%27")}')"`:'';
+    const play=entry.runtime?`<a class="play-now" href="${entry.runtime}" target="_blank" rel="noopener noreferrer">PLAY NOW ↗</a>`:'';
+    return `<article class="play-card" ${bg}><div class="play-copy"><span class="play-label">${entry.featured_label||entry.role||'INTERACTIVE'}</span><h3>${entry.title}</h3><p>${entry.summary||''}</p><div class="play-actions">${play}<a href="${gatewayUrl(entry.id)}">DETAILS</a></div></div></article>`;
+  }).join('')}</div></div>`;
+}
+
 async function loadAtlas(){
   try{
-    const response=await fetch('data/interface_atlas.json',{cache:'no-store'});
-    if(!response.ok)throw new Error(`Atlas HTTP ${response.status}`);
-    const atlas=await response.json();
-    atlasEntries=atlas.entries||[];
+    const [baseResponse,extraResponse]=await Promise.all([
+      fetch('data/interface_atlas.json',{cache:'no-store'}),
+      fetch('data/featured_interfaces.json',{cache:'no-store'})
+    ]);
+    if(!baseResponse.ok)throw new Error(`Atlas HTTP ${baseResponse.status}`);
+    const atlas=await baseResponse.json();
+    const extras=extraResponse.ok?await extraResponse.json():{entries:[],featured:[]};
+    const byId=new Map((atlas.entries||[]).map(entry=>[entry.id,entry]));
+    (extras.entries||[]).forEach(entry=>byId.set(entry.id,{...(byId.get(entry.id)||{}),...entry}));
+    atlasEntries=[...byId.values()];
+    featuredIds=extras.featured||[];
     renderAtlas();
+    renderPlayDeck();
   }catch(error){
     const grid=document.getElementById('atlas-grid');
     if(grid)grid.innerHTML='<p class="atlas-error">Interface atlas unavailable. Primary district links above remain active.</p>';
