@@ -23,12 +23,32 @@ function normalizeRuntime(url) {
   catch { return url; }
 }
 
+function renderAlternates(entry) {
+  if (!entry.alternates?.length) return;
+  const links = document.querySelector('.gateway-links');
+  if (!links) return;
+  const style = document.createElement('style');
+  style.textContent = `.gateway-alts{margin:0 0 24px;padding:14px 16px;border:1px solid var(--line);background:var(--surface);border-radius:9px}.gateway-alts p{margin:0 0 9px;font:500 9px var(--mono);letter-spacing:.14em;color:var(--muted);text-transform:uppercase}.gateway-alt-links{display:flex;gap:8px;flex-wrap:wrap}.gateway-alt-links a{font:500 10px var(--mono);color:var(--live);text-decoration:none;border:1px solid #355153;border-radius:999px;padding:7px 9px}.gateway-alt-links a:hover{background:#122022}`;
+  document.head.appendChild(style);
+  const box = document.createElement('div');
+  box.className = 'gateway-alts';
+  box.innerHTML = `<p>Additional interface lineage</p><div class="gateway-alt-links">${entry.alternates.map(item => `<a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.label} ↗</a>`).join('')}</div>`;
+  links.after(box);
+}
+
 async function init() {
   try {
-    const response = await fetch('data/interface_atlas.json', {cache: 'no-store'});
-    if (!response.ok) throw new Error(`Atlas HTTP ${response.status}`);
-    const atlas = await response.json();
-    const entry = atlas.entries.find(item => item.id === requested) || atlas.entries[0];
+    const [baseResponse, extraResponse] = await Promise.all([
+      fetch('data/interface_atlas.json', {cache: 'no-store'}),
+      fetch('data/featured_interfaces.json', {cache: 'no-store'})
+    ]);
+    if (!baseResponse.ok) throw new Error(`Atlas HTTP ${baseResponse.status}`);
+    const atlas = await baseResponse.json();
+    const extras = extraResponse.ok ? await extraResponse.json() : {entries: []};
+    const byId = new Map((atlas.entries || []).map(item => [item.id, item]));
+    (extras.entries || []).forEach(item => byId.set(item.id, {...(byId.get(item.id) || {}), ...item}));
+    const entries = [...byId.values()];
+    const entry = entries.find(item => item.id === requested) || entries[0];
 
     titleEl.textContent = entry.title;
     document.title = `${entry.title} · The Mathematical City`;
@@ -50,6 +70,7 @@ async function init() {
     }
 
     if (entry.source) sourceLink.href = entry.source; else hideLink(sourceLink);
+    renderAlternates(entry);
   } catch (error) {
     titleEl.textContent = 'Interface unavailable';
     summaryEl.textContent = 'The interface atlas could not be resolved. Return to the Atlas and use the primary-source links there.';
