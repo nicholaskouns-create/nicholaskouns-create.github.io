@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" class="antialiased">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0c0e" />
+  <meta name="description" content="Mathematical City interface gateway: primary source, live runtime, and provenance in one stable GitHub Pages route." />
+  <title>Interface · The Mathematical City</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="gateway-body">
+<header class="topbar">
+  <a class="brand" href="./#world">Mathematical City</a>
+  <nav aria-label="Gateway navigation"><a href="./#world">World</a><a href="./#atlas">Atlas</a><a href="./#see">SEE</a></nav>
+  <a class="egg-toggle gateway-back" href="./#atlas">← Atlas</a>
+</header>
+<main class="gateway-main">
+  <section class="gateway-hero">
+    <div>
+      <p id="gateway-kind" class="kicker">Interface gateway</p>
+      <h1 id="gateway-title">Loading interface…</h1>
+      <p id="gateway-summary" class="lede">Resolving the canonical source record and executable surface.</p>
+    </div>
+    <div id="gateway-status" class="world-status"><span class="dot"></span> RESOLVING</div>
+  </section>
+
+  <section class="gateway-links" aria-label="Interface links">
+    <a id="primary-link" class="gateway-link primary-source" target="_blank" rel="noopener noreferrer"><span>PRIMARY SOURCE</span><strong>Research record</strong><p>Canonical context, evidence boundary, and provenance.</p></a>
+    <a id="runtime-link" class="gateway-link" target="_blank" rel="noopener noreferrer"><span>RUN</span><strong>Executable interface</strong><p>Current live or GitHub-hosted runtime.</p></a>
+    <a id="source-link" class="gateway-link" target="_blank" rel="noopener noreferrer"><span>SOURCE / LINEAGE</span><strong>Implementation artifact</strong><p>Drive, Grok, or repository source when available.</p></a>
+  </section>
+
+  <section id="runtime-shell" class="gateway-runtime" hidden>
+    <div class="gateway-runtime-head"><div><p class="kicker">Live surface</p><h2>Run without leaving the City.</h2></div><a id="runtime-popout" target="_blank" rel="noopener noreferrer">Open full screen ↗</a></div>
+    <iframe id="runtime-frame" title="Mathematical City live interface" loading="eager" allow="fullscreen; gamepad; clipboard-read; clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <p class="gateway-note">If an external provider blocks framing, use <strong>Open full screen</strong>. The primary-source link remains the canonical research record.</p>
+  </section>
+
+  <section class="gateway-contract">
+    <p class="kicker">City link contract</p>
+    <div class="object-grid">
+      <article><strong>01</strong><code>PRIMARY</code><span>source of record</span></article>
+      <article><strong>02</strong><code>RUN</code><span>executable surface</span></article>
+      <article><strong>03</strong><code>LINEAGE</code><span>implementation trail</span></article>
+    </div>
+  </section>
+</main>
+<script src="js/interface.js"></script>
+</body>
+</html>
