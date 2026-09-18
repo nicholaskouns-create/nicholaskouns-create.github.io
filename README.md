@@ -109,9 +109,10 @@ after the website checks pass.
 **Before the first deployment**, enable **Settings → Pages → Source: GitHub Actions**
 if it is not already configured. After merging, check the **Deploy GitHub Pages**
 job; if Pages was enabled after a failed run, rerun the workflow on `main`.
-The published URL after a successful deployment will be:
+Because this repository is the user-site repository (`nicholaskouns-create.github.io`),
+the published URL after a successful deployment will be:
 
-`https://nicholaskouns-create.github.io/E47-Kartekeya/`
+`https://nicholaskouns-create.github.io/`
 
 ## Package publishing
 
