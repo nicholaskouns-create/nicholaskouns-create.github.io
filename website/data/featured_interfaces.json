@@ -1,0 +1,144 @@
+{
+  "version": "CITY-FEATURED-INTERFACES-1.0",
+  "updated": "2026-09-17",
+  "featured": [
+    "eidolon-flight",
+    "ufo-propulsion",
+    "hover",
+    "mav",
+    "cube",
+    "sigillum"
+  ],
+  "entries": [
+    {
+      "id": "eidolon-flight",
+      "title": "EIDOLON — Flight Simulator",
+      "role": "Playable 3D flight",
+      "kind": "flight",
+      "runtime": "https://eidolon-flight-lab.nicholaskouns.chatgpt.site/",
+      "source": "https://lark-plaza-umbra-drum.grok.me/",
+      "preview": "https://lark-plaza-umbra-drum.grok.me/og.jpg",
+      "featured_label": "FLY FIRST",
+      "summary": "The City’s highest-attention entry surface: a playable flight simulator with the current unified Flight Lab as the live runtime and the Grok Eidolon simulator retained as source lineage.",
+      "alternates": [
+        {"label": "Eidolon Grok flight simulator", "url": "https://lark-plaza-umbra-drum.grok.me/"},
+        {"label": "Eidolon Harmonic", "url": "https://nova-wood-clear-zest.grok.me/"}
+      ]
+    },
+    {
+      "id": "ufo-propulsion",
+      "title": "UFO Propulsion Lab",
+      "role": "Fly + tune field parameters",
+      "kind": "flight",
+      "primary": "https://app.notion.com/p/3db46094fd3081db8b22c77a6dd80741",
+      "runtime": "https://star-sage-atlas-rapid.grok.me/",
+      "source": "https://drive.google.com/file/d/1vEKNZBm0qENr0XBAuCKz_aoZ0wxAPimo/view?usp=drivesdk",
+      "preview": "https://star-sage-atlas-rapid.grok.me/og.jpg",
+      "featured_label": "SIMULATOR",
+      "summary": "Interactive scalar-field and metamaterial propulsion lab with parameter tuning and a flyable craft interface."
+    },
+    {
+      "id": "hover",
+      "title": "Hover — P47 Cockpit",
+      "role": "Cockpit gameplay",
+      "kind": "flight",
+      "runtime": "https://bison-drum-daisy-plaza.grok.me/",
+      "source": "https://drive.google.com/file/d/1BZta9Kv31S9IUO7VBfJmEcpdOCsNyN_g/view?usp=drivesdk",
+      "preview": "https://bison-drum-daisy-plaza.grok.me/og.jpg",
+      "featured_label": "COCKPIT",
+      "summary": "The most game-forward Hover surface: enter the cockpit and pilot with surge, yaw, climb, and hover-lock controls.",
+      "alternates": [
+        {"label": "Hover assembly / construction", "url": "https://willow-fjord-king-cap.grok.me/"},
+        {"label": "Hover legacy motion surface", "url": "https://zinc-crane-gem-pepper.grok.me/"}
+      ]
+    },
+    {
+      "id": "mav",
+      "title": "MAV",
+      "role": "Micro aerial vehicle",
+      "kind": "flight",
+      "primary": "https://app.notion.com/p/3dd46094fd30817a8bfadc322f33195c",
+      "runtime": "https://glow-garden-brick-cedar.grok.me/",
+      "source": "https://drive.google.com/file/d/18EH62YfZ0BiiDY6SA8evAvRtUZcfr_Sz/view?usp=drivesdk",
+      "preview": "https://glow-garden-brick-cedar.grok.me/og.jpg",
+      "featured_label": "FLIGHT GAME",
+      "summary": "Compact flight-game surface with throttle, yaw, climb/drop controls and spectral-node objectives."
+    },
+    {
+      "id": "cube",
+      "title": "The Cube",
+      "role": "Geometric computation",
+      "kind": "instrument",
+      "runtime": "https://garden-king-granite-pixel.grok.me/",
+      "source": "https://drive.google.com/file/d/1k_k9p83w1QuDurlJOxF9AVAsANRnSD_J/view?usp=drivesdk",
+      "preview": "https://garden-king-granite-pixel.grok.me/og.jpg",
+      "featured_label": "PLAY THE GEOMETRY",
+      "summary": "A puzzle-like 125-state geometric-computation instrument connecting legal cube actions, symmetry, and E47 teaching layers."
+    },
+    {
+      "id": "sigillum",
+      "title": "SIGILLUM — Spectral Wheel",
+      "role": "Forty-state interactive wheel",
+      "kind": "instrument",
+      "runtime": "https://prism-shadow-sage-craft.grok.me/",
+      "source": "https://drive.google.com/file/d/1ogKWHj-vnAwkbCjyXWNsNOL33eH8E9D-/view?usp=drivesdk",
+      "preview": "https://prism-shadow-sage-craft.grok.me/og.jpg",
+      "featured_label": "INTERACTIVE",
+      "summary": "Operator, orbit, contraction, and machine-certificate controls wrapped around the forty-state spectral wheel."
+    },
+    {
+      "id": "invarifold",
+      "title": "InvariFold",
+      "role": "Protein cinema",
+      "kind": "instrument",
+      "runtime": "https://sapphire-cabin-crystal-king.grok.me/",
+      "source": "https://drive.google.com/file/d/18_ewLwzVq2-s2W3VHFTaCUXRHPEg34w5/view?usp=drivesdk",
+      "summary": "Standalone InvariFold interface preserved beside the City Fold runtime."
+    },
+    {
+      "id": "proof-forge-html",
+      "title": "Proof Forge",
+      "role": "Proof production interface",
+      "kind": "instrument",
+      "runtime": "https://pepper-raven-blade-heart.grok.me/",
+      "source": "https://drive.google.com/file/d/1zzlX46f4zMdLDH4J4ABVTYGpw8g6m-cO/view?usp=drivesdk",
+      "summary": "Interactive Proof Forge surface for first-principles proof production and proof-ledger navigation."
+    },
+    {
+      "id": "e47-gestalt",
+      "title": "E47 Gestalt",
+      "role": "Whole-system walkthrough",
+      "kind": "system",
+      "runtime": "https://tundra-drift-dune-finch.grok.me/",
+      "source": "https://drive.google.com/file/d/1adda2IfNL2beKJTtrSmldS12jWE6MKYk/view?usp=drivesdk",
+      "summary": "Eight-room walkthrough of the 125-state carrier, E47 kernel, spectral projector, chain, field, City, and applications."
+    },
+    {
+      "id": "nexus",
+      "title": "NEXUS",
+      "role": "Research atlas / notebook",
+      "kind": "system",
+      "primary": "https://bay-oasis-moss-marble.grok.me/",
+      "runtime": "https://bay-oasis-moss-marble.grok.me/",
+      "summary": "Research-atlas interface that connects E47 mathematics, proofs, simulations, certificates, sources, notes, history, and export surfaces."
+    },
+    {
+      "id": "mathematical-city-grok",
+      "title": "Mathematical City — Grok Portal",
+      "role": "Historical public portal",
+      "kind": "archive",
+      "primary": "https://coral-plaza-dream-able.grok.me/",
+      "runtime": "https://coral-plaza-dream-able.grok.me/",
+      "summary": "Earlier public research-operating-system surface with civic map, visitor routes, machine links, and explicit evidence-state labels."
+    },
+    {
+      "id": "e47-holographic-core",
+      "title": "E47 Holographic Quantum Core",
+      "role": "Shared visualization artifact",
+      "kind": "archive",
+      "primary": "https://www.meta.ai/share/a/b5fcbcf1-e01e-4cad-b7a7-e1196930bfd2/",
+      "runtime": "https://www.meta.ai/share/a/b5fcbcf1-e01e-4cad-b7a7-e1196930bfd2/",
+      "summary": "Meta-shared HTML visualization artifact retained as non-canonical interface lineage; the host labels shared content as user-generated and unverified."
+    }
+  ]
+}

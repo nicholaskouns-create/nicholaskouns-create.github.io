@@ -28,7 +28,7 @@
 <header class="topbar">
   <a class="brand" href="#gate">Mathematical City</a>
   <nav aria-label="City pages">
-    <a href="#gate">Gate</a><a href="#object">Object</a><a href="#world">World</a><a href="#labs">Labs</a><a href="#law">Law</a><a href="#see">SEE</a><a href="#route">Route</a>
+    <a href="#gate">Gate</a><a href="#object">Object</a><a href="#world">World</a><a href="#labs">Labs</a><a href="#atlas">Atlas</a><a href="#law">Law</a><a href="#see">SEE</a><a href="#route">Route</a>
   </nav>
   <button id="egg-toggle" class="egg-toggle" aria-pressed="false">🥚 Egghead</button>
 </header>
@@ -72,7 +72,7 @@
         <div class="horizon"></div>
         <div class="city-core"><span>E47</span><small>INVARIANT CORE</small></div>
         <div id="district-orbit" class="district-orbit" aria-label="Interactive City districts"></div>
-        <div class="world-copy"><p>Pick a district.</p><h3 id="world-title">Eidolon · Flight</h3><p id="world-description">Navigate the City as an explorable simulation surface. Instruments are places, not disconnected websites.</p><button id="world-enter" class="primary">Enter district</button></div>
+        <div class="world-copy"><p>Pick a district.</p><h3 id="world-title">Eidolon · Flight</h3><p id="world-description">Navigate the City as an explorable simulation surface. Instruments are places, not disconnected websites.</p><div class="world-actions"><button id="world-enter" class="primary">Enter district</button><a id="world-source" class="source-link" target="_blank" rel="noopener noreferrer">Primary source ↗</a></div></div>
       </article>
       <aside class="learn-panel">
         <p class="kicker">Lay guide</p>
@@ -92,14 +92,38 @@ provenance-preserving state transitions</pre></div>
 <section id="labs" class="page">
   <div class="wrap">
     <p class="kicker">Page 04 · Instruments</p><h2>Thirteen districts. One civic instrument.</h2>
-    <p class="section-intro">The public surface is deliberately quiet. Open a district for the experience. Open Egghead Mode for the mathematics.</p>
+    <p class="section-intro">The public surface is deliberately quiet. Enter a district through its stable City gateway, or open its primary research record directly.</p>
     <div id="lab-grid" class="lab-grid"></div>
+  </div>
+</section>
+
+<section id="atlas" class="page atlas-page">
+  <div class="wrap">
+    <div class="page-head">
+      <div><p class="kicker">Page 05 · Interface atlas</p><h2>One index. Every surface keeps its lineage.</h2><p class="section-intro">GitHub supplies stable public routes. Notion carries the primary research record. Supabase and other hosts execute current runtimes. Drive and Grok remain source and visual lineage where appropriate.</p></div>
+      <div id="atlas-count" class="world-status">loading surfaces</div>
+    </div>
+    <div class="atlas-tools">
+      <label class="atlas-search-wrap"><span>SEARCH</span><input id="atlas-search" type="search" placeholder="Eidolon, proof, field, HTML…" autocomplete="off" /></label>
+      <div class="atlas-filters" aria-label="Atlas filters">
+        <button class="active" data-atlas-filter="all">All</button>
+        <button data-atlas-filter="flight">Flight</button>
+        <button data-atlas-filter="lab">Labs</button>
+        <button data-atlas-filter="instrument">Instruments</button>
+        <button data-atlas-filter="system">Systems</button>
+        <button data-atlas-filter="core">Core</button>
+        <button data-atlas-filter="document">Docs</button>
+        <button data-atlas-filter="archive">Archive</button>
+      </div>
+    </div>
+    <aside class="callout live atlas-contract"><span>LINK CONTRACT</span><p><strong>ENTER</strong> opens a stable GitHub gateway. <strong>PRIMARY</strong> opens the canonical source record. <strong>RUN</strong> opens the current executable. <strong>LINEAGE</strong> preserves the implementation trail. No more mystery URLs.</p></aside>
+    <div id="atlas-grid" class="atlas-grid" aria-live="polite"></div>
   </div>
 </section>
 
 <section id="law" class="page">
   <div class="wrap narrow">
-    <p class="kicker">Page 05 · Composition law</p><h2>Labs are morphisms. The City is the operad.</h2>
+    <p class="kicker">Page 06 · Composition law</p><h2>Labs are morphisms. The City is the operad.</h2>
     <div class="law-plate"><div>P</div><span>→</span><div>Γ<sub>ε*</sub>(P)</div><span>→</span><div>P<sub>47</sub>(P)</div></div>
     <p class="section-intro">Evidence class is invariant under composition. Cross-system mappings are typed arrows. Local failure does not silently become global refutation, and successful simulation does not silently become physical evidence.</p>
     <div class="egghead-panel" data-egghead hidden><pre>object → operator → invariant → witness → evidence → provenance → next_action
@@ -113,7 +137,7 @@ World actor layer: Eidolon</pre></div>
 
 <section id="see" class="page">
   <div class="wrap">
-    <p class="kicker">Page 06 · SEE · Citadel</p><h2>Every claim has a route back to evidence.</h2>
+    <p class="kicker">Page 07 · SEE · Citadel</p><h2>Every claim has a route back to evidence.</h2>
     <div class="evidence-grid">
       <article><b>E0</b><span>exact</span><p>Proof-level finite mathematics.</p></article>
       <article><b>E1</b><span>machine</span><p>Executable numerical witness.</p></article>
@@ -126,10 +150,10 @@ World actor layer: Eidolon</pre></div>
 
 <section id="route" class="page final-page">
   <div class="wrap">
-    <p class="kicker">Page 07 · Route</p><h2>Start simple. Go as deep as you want.</h2>
+    <p class="kicker">Page 08 · Route</p><h2>Start simple. Go as deep as you want.</h2>
     <div class="route-grid">
       <a href="#world"><span>01</span><strong>Fly / explore</strong><p>Begin with Eidolon and the City world.</p></a>
-      <a href="#labs"><span>02</span><strong>Choose an instrument</strong><p>Move through structure, dynamics, memory, prediction, flow, construction and restoration.</p></a>
+      <a href="#atlas"><span>02</span><strong>Open the Atlas</strong><p>Find interfaces, documents, source records, runtimes, and preserved lineage from one searchable index.</p></a>
       <button id="route-egg"><span>03</span><strong>Open Egghead Mode</strong><p>Reveal equations, evidence boundaries, receipts and provenance.</p></button>
       <a href="https://github.com/nicholaskouns-create/E47-Kartekeya" target="_blank" rel="noopener noreferrer"><span>04</span><strong>Inspect the machine</strong><p>Read source, tests, certificates and commit history.</p></a>
     </div>

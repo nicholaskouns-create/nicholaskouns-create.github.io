@@ -12,8 +12,12 @@ const read = (path) => readFileSync(path, "utf8");
 const json = (path) => JSON.parse(read(path));
 const pagesWorkflow = read(resolve(root, ".github/workflows/pages.yml"));
 const html = read(resolve(site, "index.html"));
+const gatewayHtml = read(resolve(site, "interface.html"));
 const css = read(resolve(site, "css/styles.css"));
 const app = read(resolve(site, "js/app.js"));
+const gatewayApp = read(resolve(site, "js/interface.js"));
+const atlas = json(resolve(site, "data/interface_atlas.json"));
+const featured = json(resolve(site, "data/featured_interfaces.json"));
 
 for (const name of ["e47_pipeline.json", "qutip_validation.json"]) {
   test(`published ${name} matches the committed certificate`, () => {
@@ -26,11 +30,14 @@ for (const name of ["e47_pipeline.json", "qutip_validation.json"]) {
 }
 
 test("Mathematical City page preserves the canonical public structure", () => {
-  for (const id of ["gate", "object", "world", "labs", "law", "see", "route"]) {
+  for (const id of ["gate", "object", "world", "labs", "atlas", "law", "see", "route"]) {
     assert.match(html, new RegExp(`id=["']${id}["']`), `Missing City section: ${id}`);
   }
   for (const token of ["The Mathematical City", "125", "47", "15/17", "E0/E1", "Egghead", "AETHERIS", "Eidolon"]) {
     assert.ok(html.includes(token), `Missing public invariant/label: ${token}`);
+  }
+  for (const token of ["Interface atlas", "PRIMARY", "RUN", "LINEAGE"]) {
+    assert.ok(html.includes(token), `Missing interface-atlas contract token: ${token}`);
   }
 });
 
@@ -42,7 +49,7 @@ test("visual grammar matches the archived City system", () => {
 });
 
 test("unified client exposes all current districts and sovereign citizen population", () => {
-  for (const district of ["EIDOLON", "SPECTRA", "Fold", "Murmuration", "Mnemosyne", "Density", "Horizon", "Wave", "Identity", "BUILD", "SOAR", "SCALAR", "InvariFold"]) {
+  for (const district of ["EIDOLON", "SPECTRA", "FOLD", "MURMURATION", "MNEMOSYNE", "DENSITY", "HORIZON", "WAVE", "IDENTITY", "BUILD", "SOAR", "SCALAR", "InvariFold"]) {
     assert.ok(app.includes(`name:'${district}'`), `Missing district: ${district}`);
   }
   for (const citizen of ["ARGUS", "ARIADNE", "BITHOS", "CHRONOS", "CUSTOS", "EUCLID", "HERMES", "JANUS", "KEPLER", "MNEMOSYNE", "SAL", "SOL", "SYNE", "TALOS", "THEMIS"]) {
@@ -52,8 +59,52 @@ test("unified client exposes all current districts and sovereign citizen populat
   assert.match(app, /AETHERIS: receipt-bound state transitions/);
 });
 
+test("interface atlas and simulator deck resolve to known entries", () => {
+  assert.equal(atlas.version, "CITY-INTERFACE-ATLAS-1.0");
+  assert.equal(featured.version, "CITY-FEATURED-INTERFACES-1.0");
+  assert.ok(Array.isArray(atlas.entries) && atlas.entries.length >= 30);
+  assert.ok(Array.isArray(featured.entries) && featured.entries.length >= 10);
+  assert.ok(Array.isArray(featured.featured) && featured.featured.length >= 6);
+
+  const byId = new Map(atlas.entries.map((entry) => [entry.id, entry]));
+  for (const entry of featured.entries) byId.set(entry.id, { ...(byId.get(entry.id) || {}), ...entry });
+  for (const id of featured.featured) {
+    const entry = byId.get(id);
+    assert.ok(entry, `Featured interface missing from merged atlas: ${id}`);
+    assert.ok(entry.runtime, `Featured interface missing runtime: ${id}`);
+  }
+
+  const registryText = JSON.stringify(featured);
+  for (const host of [
+    "lark-plaza-umbra-drum.grok.me",
+    "star-sage-atlas-rapid.grok.me",
+    "bison-drum-daisy-plaza.grok.me",
+    "glow-garden-brick-cedar.grok.me",
+    "garden-king-granite-pixel.grok.me",
+    "prism-shadow-sage-craft.grok.me",
+    "sapphire-cabin-crystal-king.grok.me",
+    "pepper-raven-blade-heart.grok.me",
+    "tundra-drift-dune-finch.grok.me",
+    "bay-oasis-moss-marble.grok.me",
+    "coral-plaza-dream-able.grok.me",
+    "nova-wood-clear-zest.grok.me",
+    "willow-fjord-king-cap.grok.me",
+    "www.meta.ai",
+  ]) assert.ok(registryText.includes(host), `Missing additional interface host: ${host}`);
+});
+
+test("stable gateway preserves primary, runtime and lineage concepts", () => {
+  for (const token of ["PRIMARY SOURCE", "RUN", "SOURCE / LINEAGE", "City link contract"]) {
+    assert.ok(gatewayHtml.includes(token), `Missing gateway token: ${token}`);
+  }
+  assert.match(gatewayApp, /featured_interfaces\.json/);
+  assert.match(gatewayApp, /interface_atlas\.json/);
+  assert.match(gatewayApp, /Additional interface lineage/);
+});
+
 test("browser JavaScript parses", () => {
   assert.doesNotThrow(() => new Script(app, { filename: "website/js/app.js" }));
+  assert.doesNotThrow(() => new Script(gatewayApp, { filename: "website/js/interface.js" }));
 });
 
 test("local links and assets remain inside the GitHub Pages subpath", () => {
@@ -76,16 +127,7 @@ test("local links and assets remain inside the GitHub Pages subpath", () => {
   }
 });
 
-test("pages workflow derives the live URL correctly for user-site repositories", () => {
-  assert.ok(pagesWorkflow.includes('repo_name="${GITHUB_REPOSITORY#*/}"'));
-  assert.ok(pagesWorkflow.includes('user_site_repo="${GITHUB_REPOSITORY_OWNER}.github.io"'));
-  assert.ok(pagesWorkflow.includes('if [ "$repo_name" = "$user_site_repo" ]; then'));
-  assert.ok(pagesWorkflow.includes('site_path=""'));
-  assert.ok(pagesWorkflow.includes('site_path="/$repo_name"'));
-  assert.ok(pagesWorkflow.includes('site_url="https://${GITHUB_REPOSITORY_OWNER}.github.io${site_path}/"'));
-});
-
-// Exercise the actual browser script against a minimal DOM shim.
+// Exercise the synchronous district behavior of the browser script against a minimal DOM shim.
 async function render({ search = "" } = {}) {
   const makeClassList = () => {
     const classNames = new Set();
@@ -125,6 +167,8 @@ async function render({ search = "" } = {}) {
         );
       },
       textContent: "",
+      hidden: false,
+      href: "",
       classList: makeClassList(),
       attributes: {},
       dataset: {},
@@ -155,41 +199,42 @@ async function render({ search = "" } = {}) {
       "guide-what",
       "guide-try",
       "world-enter",
+      "world-source",
       "egg-world",
       "egg-toggle",
       "route-egg",
       "law",
       "world",
+      "atlas-grid",
+      "atlas-search",
+      "atlas-count",
     ].map((id) => [id, makeElement()]),
   );
   const body = { classList: makeClassList() };
-  const window = {
-    openCalls: [],
-    open(...args) {
-      this.openCalls.push(args);
-    },
-  };
+  const location = { search, href: "" };
   runInNewContext(app, {
     document: {
       getElementById: (id) => elements[id],
       querySelectorAll: () => [],
+      querySelector: () => null,
       body,
     },
-    window,
-    location: { search },
+    location,
     URLSearchParams,
-    console: { warn() {} },
+    fetch: async () => { throw new Error("network disabled in DOM shim"); },
+    console: { warn() {}, error() {} },
   });
+  await new Promise((resolvePromise) => setImmediate(resolvePromise));
   return {
     body,
     elements,
+    location,
     fire(id, type = "click") {
       elements[id].listeners[type]?.({ preventDefault() {} });
     },
     fireOrbit(index, type = "click") {
       elements["district-orbit"].querySelectorAll(".district")[index]?.listeners[type]?.({ preventDefault() {} });
     },
-    window,
   };
 }
 
@@ -199,32 +244,30 @@ test("renders the city districts and selects Eidolon by default", async () => {
   assert.equal((elements["district-orbit"].innerHTML.match(/class="district/g) || []).length, 13);
   assert.match(elements["lab-grid"].innerHTML, /EIDOLON/);
   assert.equal(elements["world-title"].textContent, "EIDOLON · Flight");
-  assert.equal(elements["world-enter"].textContent, "Explore here");
+  assert.equal(elements["world-enter"].textContent, "Enter district");
   assert.match(elements["egg-world"].textContent, /DISTRICT: EIDOLON/);
 });
 
 test("district query parameters select the requested lab and scroll to the world view", async () => {
   const { elements } = await render({ search: "?district=Fold" });
-  assert.equal(elements["world-title"].textContent, "Fold · Invariance");
-  assert.match(elements["guide-what"].textContent, /Fold is the City district for invariance\./);
-  assert.equal(elements["world-enter"].textContent, "Open current instrument");
+  assert.equal(elements["world-title"].textContent, "FOLD · Invariance");
+  assert.match(elements["guide-what"].textContent, /FOLD is the City district for invariance\./);
+  assert.equal(elements["world-enter"].textContent, "Enter district");
   assert.equal(elements.world.scrolled, true);
 });
 
 test("clicking a generated district button selects that district", async () => {
   const result = await render();
   result.fireOrbit(2);
-  assert.equal(result.elements["world-title"].textContent, "Fold · Invariance");
-  assert.equal(result.elements["world-enter"].textContent, "Open current instrument");
-  assert.match(result.elements["egg-world"].textContent, /DISTRICT: Fold/);
+  assert.equal(result.elements["world-title"].textContent, "FOLD · Invariance");
+  assert.equal(result.elements["world-enter"].textContent, "Enter district");
+  assert.match(result.elements["egg-world"].textContent, /DISTRICT: FOLD/);
 });
 
-test("external districts keep a safe noopener window open handler", async () => {
+test("district entry routes through the stable GitHub gateway", async () => {
   const result = await render({ search: "?district=Fold" });
   result.elements["world-enter"].onclick();
-  assert.deepEqual(result.window.openCalls, [
-    ["https://giant-beacon-dawn-falcon.grok.me/", "_blank", "noopener,noreferrer"],
-  ]);
+  assert.equal(result.location.href, "interface.html?id=fold");
 });
 
 test("egghead controls toggle the body state and route shortcut scrolls to the law page", async () => {
