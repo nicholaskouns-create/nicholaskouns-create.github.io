@@ -70,14 +70,20 @@ jobs:
 
       - name: Verify the live Pages document
         shell: bash
-        env:
-          SITE_URL: https://${{ github.repository_owner }}.github.io/
         run: |
           set -euo pipefail
+          repo_name="${GITHUB_REPOSITORY#*/}"
+          user_site_repo="${GITHUB_REPOSITORY_OWNER}.github.io"
+          if [ "$repo_name" = "$user_site_repo" ]; then
+            site_path=""
+          else
+            site_path="/$repo_name"
+          fi
+          site_url="https://${GITHUB_REPOSITORY_OWNER}.github.io${site_path}/"
           for attempt in $(seq 1 24); do
-            status="$(curl -sS -L -o /tmp/pages.html -w '%{http_code}' --max-time 20 "$SITE_URL" || true)"
+            status="$(curl -sS -L -o /tmp/pages.html -w '%{http_code}' --max-time 20 "$site_url" || true)"
             if [ "$status" = "200" ] && grep -q '<title>The Mathematical City</title>' /tmp/pages.html; then
-              echo "Live Pages verified: $SITE_URL"
+              echo "Live Pages verified: $site_url"
               exit 0
             fi
             echo "Attempt $attempt: HTTP $status; waiting for Pages propagation..."
@@ -96,5 +102,12 @@ jobs:
             echo
             echo "Published the validated \`website/\` directory as the root of \`gh-pages\`."
             echo
-            echo "Verified live URL: https://${GITHUB_REPOSITORY_OWNER}.github.io/"
+            repo_name="${GITHUB_REPOSITORY#*/}"
+            user_site_repo="${GITHUB_REPOSITORY_OWNER}.github.io"
+            if [ "$repo_name" = "$user_site_repo" ]; then
+              site_path=""
+            else
+              site_path="/$repo_name"
+            fi
+            echo "Verified live URL: https://${GITHUB_REPOSITORY_OWNER}.github.io${site_path}/"
           } >> "$GITHUB_STEP_SUMMARY"
