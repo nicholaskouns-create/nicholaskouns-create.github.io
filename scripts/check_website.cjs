@@ -10,6 +10,7 @@ const site = resolve(root, "website");
 const base = new URL("https://example.test/E47-Kartekeya/");
 const read = (path) => readFileSync(path, "utf8");
 const json = (path) => JSON.parse(read(path));
+const pagesWorkflow = read(resolve(root, ".github/workflows/pages.yml"));
 const html = read(resolve(site, "index.html"));
 const gatewayHtml = read(resolve(site, "interface.html"));
 const css = read(resolve(site, "css/styles.css"));
