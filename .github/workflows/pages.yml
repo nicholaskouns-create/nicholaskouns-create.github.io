@@ -5,6 +5,7 @@ on:
     branches: ["main"]
     paths:
       - "website/**"
+      - "README.md"
       - "certificates/**"
       - "scripts/check_website.cjs"
       - ".github/workflows/pages.yml"
@@ -12,6 +13,7 @@ on:
     branches: ["main"]
     paths:
       - "website/**"
+      - "README.md"
       - "certificates/**"
       - "scripts/check_website.cjs"
       - ".github/workflows/pages.yml"
@@ -37,52 +39,21 @@ jobs:
         run: node --test scripts/check_website.cjs
 
   publish:
-    name: Publish website root to gh-pages
+    name: Verify live user-site atlas
     needs: validate
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
-
-      - name: Build gh-pages branch from website directory
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          site_dir="$(mktemp -d)"
-          cp -a website/. "$site_dir/"
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git checkout --orphan gh-pages-publish
-          git rm -rf . >/dev/null 2>&1 || true
-          cp -a "$site_dir/." .
-          touch .nojekyll
-
-          git add -A
-          git commit -m "Deploy website from ${GITHUB_SHA}"
-          git push --force origin HEAD:refs/heads/gh-pages
 
       - name: Verify the live Pages document
         shell: bash
         run: |
           set -euo pipefail
-          repo_name="${GITHUB_REPOSITORY#*/}"
-          user_site_repo="${GITHUB_REPOSITORY_OWNER}.github.io"
-          if [ "$repo_name" = "$user_site_repo" ]; then
-            site_path=""
-          else
-            site_path="/$repo_name"
-          fi
-          site_url="https://${GITHUB_REPOSITORY_OWNER}.github.io${site_path}/"
+          site_url="https://${GITHUB_REPOSITORY_OWNER}.github.io/"
           for attempt in $(seq 1 24); do
             status="$(curl -sS -L -o /tmp/pages.html -w '%{http_code}' --max-time 20 "$site_url" || true)"
-            if [ "$status" = "200" ] && grep -q '<title>The Mathematical City</title>' /tmp/pages.html; then
+            if [ "$status" = "200" ] && grep -Eq 'Nicholas Kouns · Personal site|The Mathematical City' /tmp/pages.html; then
               echo "Live Pages verified: $site_url"
               exit 0
             fi
@@ -90,7 +61,7 @@ jobs:
             sleep 5
           done
 
-          echo "Pages did not serve the expected document within the verification window."
+          echo "Pages did not serve the expected personal-site atlas within the verification window."
           head -80 /tmp/pages.html || true
           exit 1
 
@@ -100,14 +71,9 @@ jobs:
           {
             echo "## GitHub Pages publish receipt"
             echo
-            echo "Published the validated \`website/\` directory as the root of \`gh-pages\`."
+            echo "This user-site repository publishes from \`main\` via pages-build-deployment."
+            echo "The live root is the personal-site atlas, not a force-pushed \`gh-pages\` City clone."
             echo
-            repo_name="${GITHUB_REPOSITORY#*/}"
-            user_site_repo="${GITHUB_REPOSITORY_OWNER}.github.io"
-            if [ "$repo_name" = "$user_site_repo" ]; then
-              site_path=""
-            else
-              site_path="/$repo_name"
-            fi
-            echo "Verified live URL: https://${GITHUB_REPOSITORY_OWNER}.github.io${site_path}/"
+            echo "Verified live URL: https://${GITHUB_REPOSITORY_OWNER}.github.io/"
+            echo "Current City runtime: https://${GITHUB_REPOSITORY_OWNER}.github.io/E47-Kartekeya/"
           } >> "$GITHUB_STEP_SUMMARY"
