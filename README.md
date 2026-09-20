@@ -1,122 +1,50 @@
-# E47-Kartekeya
+# Nicholas Kouns · Personal site
 
-E47 Recursive Intelligence Code
+The personal-site atlas for **The Mathematical City**, with an earlier E47 research-code snapshot retained alongside it.
 
-[![CI](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/ci.yml/badge.svg)](https://github.com/nicholaskouns-create/E47-Kartekeya/actions/workflows/ci.yml)
+**[Open this atlas](https://nicholaskouns-create.github.io/)** · **[Fly EIDOLON](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight)** · **[Current research repository](https://github.com/nicholaskouns-create/E47-Kartekeya)**
 
-## Overview
+## Choose a destination
 
-This repository validates the finite-dimensional algebraic construction of the
-E47 spectral kernel on V₂⊗V₂⊗V₂.
-
-## Installation
-
-Install the published package from PyPI:
-
-```bash
-pip install e47-kartekeya
-```
-
-The distribution name is `e47-kartekeya`, and the import package is `e47`.
-
-To work from a local checkout instead:
-
-```bash
-pip install -e .
-```
-
-### Canonical invariants
-
-| Invariant | Value |
+| You want to… | Open |
 |---|---|
-| `dim(V)` | `125` |
-| `dim(E₄₇)` | `47` |
-| Coherence fraction | `47 / 125` |
-| K² spectral gap | `11664` |
-| K² max eigenvalue | `186624` |
+| Explore the current City and labs | [Mathematical City](https://nicholaskouns-create.github.io/E47-Kartekeya/) |
+| Fly immediately | [EIDOLON / CITY CORE](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight) |
+| Find MANTA, Syntax Jacob, THE MATRIX, and other instruments | [Instrument directory](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/instruments.md) |
+| Read or develop current E47 code | [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya) |
+| Work on this personal-site atlas | [website/](website/) |
 
-## Quick start
+## The two repositories
 
-```bash
-pip install -r requirements.txt -r requirements-dev.txt
-python -m pytest tests/ -v
-```
+| Repository | Contents | Published site |
+|---|---|---|
+| [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya) | Current Python packages, expanded instrument collection, tests, and research documentation | [/E47-Kartekeya/](https://nicholaskouns-create.github.io/E47-Kartekeya/) |
+| [nicholaskouns-create.github.io](https://github.com/nicholaskouns-create/nicholaskouns-create.github.io) | This personal-site atlas and its retained research-code snapshot | [Root site](https://nicholaskouns-create.github.io/) |
 
-## Certificate regeneration
+## Work on this site
 
-```bash
-python scripts/generate_validation_certificate.py
-```
+The site source is [website/](website/). Serve it locally:
 
-Output: `artifacts/e47_validation_certificate.json`
-
-## Spectral kernel compilation
-
-```bash
-python scripts/compile_spectral_kernel.py --spin 2 --copies 3 --select 2 5
-```
-
-Outputs:
-
-- `artifacts/spectral_kernel_certificate.json`
-- `artifacts/spectral_kernel_passport.md`
-
-## Documentation
-
-- [`docs/provenance.md`](docs/provenance.md) — Canonical implementation chain and reproducibility record
-- [`docs/validation_scope.md`](docs/validation_scope.md) — What is and is not validated
-- [`docs/maintenance_policy.md`](docs/maintenance_policy.md) — Automated and manual maintenance procedures
-- [`docs/skills-and-agents.md`](docs/skills-and-agents.md) — Copilot skills, agents, and platform interconnect
-
-## Copilot skills (quick invoke)
-
-| Command | Use |
-|---|---|
-| `/chronicle tips` | Personalized session-history tips |
-| `/fix-ci` | Repair failing GitHub Actions |
-| `/validate-invariants` | Run tests + frozen invariant checks |
-| `/regenerate-certificate` | Refresh validation certificates |
-| `/platform-interconnect status` | Audit skills/agents/setup surface |
-
-## Project website
-
-A static project site lives in [`website/`](website/) and presents the E47 construction,
-canonical invariants, validation pipeline, package API, and documentation links.
-
-```bash
-# Serve locally
+~~~bash
 python -m http.server 8000 --directory website
-# then open http://127.0.0.1:8000/
-```
+~~~
 
-Run the website checks with Node.js 22 or newer:
+Open [localhost:8000](http://localhost:8000/). With Node.js 22+, run the existing site checks:
 
-```bash
+~~~bash
 node --test scripts/check_website.cjs
-```
+~~~
 
-These checks cover local assets and links, certificate rendering (including
-unavailable data), and equality between the JSON snapshots in `website/data/`
-and `certificates/`. When updating either source snapshot, refresh its website
-copy in the same change. The site displays committed snapshots; it does not
-run the Python validators in the browser.
+[Deploy website](.github/workflows/pages.yml) validates `website/` and publishes its contents to `gh-pages`. The repository's Pages setting selects the published branch. The source and published branch have different roles.
 
-GitHub Pages deployment is handled by [`.github/workflows/pages.yml`](.github/workflows/pages.yml)
-on relevant pushes to `main`, or by manually running **Deploy website** on `main`.
-Pull requests run **Validate website** without deploying. Deployment runs only
-after the website checks pass.
+## Retained research materials
 
-**Before the first deployment**, enable **Settings → Pages → Source: GitHub Actions**
-if it is not already configured. After merging, check the **Deploy GitHub Pages**
-job; if Pages was enabled after a failed run, rerun the workflow on `main`.
-Because this repository is the user-site repository (`nicholaskouns-create.github.io`),
-the published URL after a successful deployment will be:
+The local [src/](src/), [tests/](tests/), [certificates/](certificates/), [citizens/](citizens/), and [docs/](docs/) belong to this checkout's research snapshot. For the newer packages and browser instruments, follow [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya).
 
-`https://nicholaskouns-create.github.io/`
+- [Core spectral certificate](E47_Core_Spectral_Certificate.md)
+- [Projection-flow theorem](E47_Projection_Flow_Theorem.md)
+- [Linearized Einstein intertwiner theorem](E47_Linearized_Einstein_Intertwiner_Theorem.md)
+- [Open proof obligation](NEXT_PROOF_OBLIGATION_Nontrivial_Einstein_Sector.md)
+- [Local provenance](docs/provenance.md) and [validation scope](docs/validation_scope.md)
 
-## Package publishing
-
-Publishing is handled by `.github/workflows/publish.yml`.
-
-- Create a GitHub release to build and publish `e47-kartekeya` to PyPI
-- Configure PyPI trusted publishing for this repository before the first release
+[License](LICENSE) · [Current documentation](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/README.md)
