@@ -2,13 +2,14 @@
 
 The personal-site atlas for **The Mathematical City**, with an earlier E47 research-code snapshot retained alongside it.
 
-**[Open this atlas](https://nicholaskouns-create.github.io/)** · **[Fly EIDOLON](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight)** · **[Current research repository](https://github.com/nicholaskouns-create/E47-Kartekeya)**
+**[Open this atlas](https://nicholaskouns-create.github.io/)** · **[Fly EIDOLON](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight)** · **[Q5 cube](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/)** · **[Current research repository](https://github.com/nicholaskouns-create/E47-Kartekeya)**
 
 ## Choose a destination
 
 | You want to… | Open |
 |---|---|
 | Explore the current City and labs | [Mathematical City](https://nicholaskouns-create.github.io/E47-Kartekeya/) |
+| Open the 5×5×5 packing cube | [Q5](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/q5/) |
 | Fly immediately | [EIDOLON / CITY CORE](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/kouns-core/?module=eidolon#flight) |
 | Find MANTA, Syntax Jacob, THE MATRIX, and other instruments | [Instrument directory](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/instruments.md) |
 | Read or develop current E47 code | [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya) |
