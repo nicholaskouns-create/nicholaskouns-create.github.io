@@ -2,7 +2,7 @@
 
 This repository is the **vestibule** for The Mathematical City. The current executable research repository is [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya); this repo provides the root GitHub Pages site, cross-repository navigation and retained historical research material.
 
-**[OPEN THE ROOT README ROUTER](https://nicholaskouns-create.github.io/readme/)** · **[OPEN THE CITY](https://nicholaskouns-create.github.io/E47-Kartekeya/)** · **[CURRENT RESEARCH REPO](https://github.com/nicholaskouns-create/E47-Kartekeya)** · **[AIMS ROOT DIRECTORY](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory)**
+**[OPEN THE ROOT README ROUTER](https://nicholaskouns-create.github.io/readme/)** · **[LIVE ROUTE PACKETS](https://nicholaskouns-create.github.io/packets/)** · **[OPEN THE CITY](https://nicholaskouns-create.github.io/E47-Kartekeya/)** · **[CURRENT RESEARCH REPO](https://github.com/nicholaskouns-create/E47-Kartekeya)** · **[AIMS ROOT DIRECTORY](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory)**
 
 ---
 
@@ -16,6 +16,7 @@ The repository README is now a live index into the larger research architecture.
 |---|---|
 | Enter the City | [The Mathematical City](https://nicholaskouns-create.github.io/E47-Kartekeya/) |
 | Use a single cross-platform index | [README Router](https://nicholaskouns-create.github.io/readme/) |
+| Traverse registered objects across platforms | [Live Route Packets](https://nicholaskouns-create.github.io/packets/) |
 | Understand the formalism | [Formalism Atlas](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/) |
 | Run the instruments | [Instrument Portal](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/instruments/) |
 | Verify the current spectral proof | [125 × 125 Matrix Proof](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-spectral-matrix-proof/) |
