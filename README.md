@@ -17,6 +17,7 @@ The repository README is now a live index into the larger research architecture.
 | Enter the City | [The Mathematical City](https://nicholaskouns-create.github.io/E47-Kartekeya/) |
 | Use a single cross-platform index | [README Router](https://nicholaskouns-create.github.io/readme/) |
 | Traverse registered objects across platforms | [Live Route Packets](https://nicholaskouns-create.github.io/packets/) |
+| Review continuity / consent runtime | [Coherence Runtime bridge](https://nicholaskouns-create.github.io/coherence-runtime/) |
 | Understand the formalism | [Formalism Atlas](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/) |
 | Run the instruments | [Instrument Portal](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/instruments/) |
 | Verify the current spectral proof | [125 × 125 Matrix Proof](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-spectral-matrix-proof/) |
