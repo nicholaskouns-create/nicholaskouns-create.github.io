@@ -359,6 +359,38 @@
           "url": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/coherence-runtime"
         }
       ]
+    },
+    {
+      "id": "nvqe-hilbert-multiradix",
+      "title": "N-VQE / E47 Hilbert-Lifted Multiradix Validation",
+      "evidence": [
+        "E0",
+        "E1",
+        "E2-simulation"
+      ],
+      "summary": "Root bridge to the canonical E47 20-check N-VQE Hilbert validation package.",
+      "surfaces": [
+        {
+          "label": "20-check Python",
+          "substrate": "github",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/nvqe_hilbert_multiradix_proof.py"
+        },
+        {
+          "label": "Certificate",
+          "substrate": "github",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-NVQE-HILBERT-MULTIRADIX-20260925-001.json"
+        },
+        {
+          "label": "Formalism Atlas",
+          "substrate": "github",
+          "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/"
+        },
+        {
+          "label": "Notion proof",
+          "substrate": "notion",
+          "url": "https://app.notion.com/p/3bc46094fd3081a69945eded30c05efb?pvs=204"
+        }
+      ]
     }
   ],
   "machine": {
@@ -373,7 +405,9 @@
     "coherence_root_contract": "https://raw.githubusercontent.com/nicholaskouns-create/E47-Kartekeya/main/contracts/coherence-runtime-1.0.contract.json",
     "coherence_implementation_profile": "https://raw.githubusercontent.com/nicholaskouns-create/E47-Kartekeya/main/contracts/coherence_runtime_1_0.json",
     "coherence_projection": "https://nicholaskouns-create.github.io/E47-Kartekeya/data/coherence-runtime-contract.json",
-    "coherence_api": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/coherence-runtime"
+    "coherence_api": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/coherence-runtime",
+    "nvqe_python": "https://raw.githubusercontent.com/nicholaskouns-create/E47-Kartekeya/main/research/e47/validation/nvqe_hilbert_multiradix_proof.py",
+    "nvqe_certificate": "https://raw.githubusercontent.com/nicholaskouns-create/E47-Kartekeya/main/certificates/MC-E47-NVQE-HILBERT-MULTIRADIX-20260925-001.json"
   },
   "context": {
     "repo": "nicholaskouns-create/nicholaskouns-create.github.io",
