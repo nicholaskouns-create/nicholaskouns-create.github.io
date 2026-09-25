@@ -63,6 +63,7 @@ test("interface atlas and simulator deck resolve to known entries", () => {
   assert.equal(atlas.version, "CITY-INTERFACE-ATLAS-1.0");
   assert.equal(featured.version, "CITY-FEATURED-INTERFACES-1.0");
   assert.ok(Array.isArray(atlas.entries) && atlas.entries.length >= 30);
+  assert.ok(!atlas.entries.some((entry) => ["mini-ai-labs-portal", "octet-archive"].includes(entry.id)), "Legacy Mini AI Labs archives returned to public atlas");
   assert.ok(Array.isArray(featured.entries) && featured.entries.length >= 10);
   assert.ok(Array.isArray(featured.featured) && featured.featured.length >= 6);
 
