@@ -272,22 +272,6 @@
       "summary": "Large historical Mathematical City HTML interface preserved in Drive."
     },
     {
-      "id": "mini-ai-labs-portal",
-      "title": "Mini AI Labs — Portal archive",
-      "role": "Portal archive",
-      "kind": "archive",
-      "primary": "https://drive.google.com/file/d/199XF_xDMgW-VQA8tv41CDBlay1yWY4Ul/view?usp=drivesdk",
-      "summary": "Earlier ten-card Mini AI Labs portal."
-    },
-    {
-      "id": "octet-archive",
-      "title": "Mini AI Labs — Octet archive",
-      "role": "Protocol archive",
-      "kind": "archive",
-      "primary": "https://drive.google.com/file/d/1QKUaOvEGZygZ7_TjiJ43IjqSJoCzo0zm/view?usp=drivesdk",
-      "summary": "Octet-era HTML archive retained for provenance."
-    },
-    {
       "id": "universal-translator",
       "title": "Universal Translator v0.3.1",
       "role": "Invariant grammar",
