@@ -82,3 +82,12 @@ node --test scripts/check_website.cjs
 [Deploy workflow](.github/workflows/pages.yml) validates the site and verifies the live root after publication.
 
 [License](LICENSE) · [Current documentation](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/README.md)
+
+## N-VQE / E47 Hilbert validation
+
+Canonical implementation lives in **E47-Kartekeya**:
+[20-check Python](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/nvqe_hilbert_multiradix_proof.py) ·
+[certificate](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-NVQE-HILBERT-MULTIRADIX-20260925-001.json) ·
+[Formalism Atlas](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/)
+
+This repository remains a bridge only; it does not duplicate the executable source.
