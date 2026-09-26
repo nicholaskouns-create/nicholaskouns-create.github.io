@@ -10,5 +10,14 @@
     "COHERENT",
     "RESCUE",
     "RECONCILING"
-  ]
+  ],
+  "rails_gate": {
+    "contract": "RAILS-GATE-1.0",
+    "theorem": "Invoke iff Candidate ∧ G_syn ∧ X",
+    "freshness": "¬Fresh_Σ ⊢ ¬Invoke",
+    "state_transition": "Σ ; Γ ⊢ ALLOW ▷ Σ[x.nonce ↦ SPENT]",
+    "checker": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/contracts/nemo-guardrails/sequent_calculus_recovered.py",
+    "symbolic": "https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/contracts/nemo-guardrails/SEQUENT_CALCULUS_RECOVERED.md",
+    "verdict": "30/30"
+  }
 }
