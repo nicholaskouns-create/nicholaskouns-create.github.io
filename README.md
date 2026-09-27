@@ -91,3 +91,6 @@ Canonical implementation lives in **E47-Kartekeya**:
 [Formalism Atlas](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/)
 
 This repository remains a bridge only; it does not duplicate the executable source.
+
+
+**Quadratic Golden-Root Convergence and Optimal E47 Spectral Projection — 66/66 PASS.** E0 exact theorem; E1 deterministic machine reconstruction. [Proof](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/f11048384abe8e410af7f1a3adbf91feca766358/research/e47/native_variational_eigensolver_corrected.md#quadratic-golden-root-convergence-and-optimal-e47-spectral-projection) · [Python](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/f11048384abe8e410af7f1a3adbf91feca766358/research/e47/validation/golden_root_e47_convergence.py) · [Certificate](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/f11048384abe8e410af7f1a3adbf91feca766358/certificates/MC-GOLDEN-ROOT-E47-20260926-001.json) · [Drive bundle](https://drive.google.com/file/d/1l4CHA4yNFnYRIQWrmVOOjG9LHVhc_IU_/view?usp=drivesdk).
