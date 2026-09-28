@@ -45,7 +45,7 @@ The repository README is now a live index into the larger research architecture.
 | Repository | Role | Published surface |
 |---|---|---|
 | [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya) | canonical kernel, executable City, tests and certificates | [City](https://nicholaskouns-create.github.io/E47-Kartekeya/) |
-| [E47-Electroweak-Identities](https://github.com/nicholaskouns-create/E47-Electroweak-Identities) | $G_F\to(m_Z^{(0)},m_W/m_Z,m_t/m_H)$ instrument plus mass-ladder audits | [Instrument](https://nicholaskouns-create.github.io/E47-Electroweak-Identities/) |
+| [E47-Electroweak-Identities](https://github.com/nicholaskouns-create/E47-Electroweak-Identities) | $G_F\to(m_Z^{(0)},m_W/m_Z,m_t/m_H)$ instrument plus mass-ladder audits | [Instrument](https://nicholaskouns-create.github.io/electroweak/) |
 | [E47-Foundry-Lifetime-Intersection](https://github.com/nicholaskouns-create/E47-Foundry-Lifetime-Intersection) | Foundry lifetime algebra and 38-check E47 intersection validator | [Repository](https://github.com/nicholaskouns-create/E47-Foundry-Lifetime-Intersection) |
 | [nicholaskouns-create.github.io](https://github.com/nicholaskouns-create/nicholaskouns-create.github.io) | root personal atlas and router | [Root site](https://nicholaskouns-create.github.io/) |
 
