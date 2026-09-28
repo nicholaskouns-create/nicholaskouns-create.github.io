@@ -18,6 +18,8 @@ const app = read(resolve(site, "js/app.js"));
 const gatewayApp = read(resolve(site, "js/interface.js"));
 const atlas = json(resolve(site, "data/interface_atlas.json"));
 const featured = json(resolve(site, "data/featured_interfaces.json"));
+const electroweakAlias = read(resolve(root, "electroweak/index.html"));
+const electroweakPage = read(resolve(site, "electroweak/index.html"));
 
 for (const name of ["e47_pipeline.json", "qutip_validation.json"]) {
   test(`published ${name} matches the committed certificate`, () => {
@@ -28,6 +30,14 @@ for (const name of ["e47_pipeline.json", "qutip_validation.json"]) {
     );
   });
 }
+
+test("root electroweak route resolves to the published instrument", () => {
+  assert.ok(existsSync(resolve(root, "electroweak/index.html")));
+  assert.match(electroweakAlias, /\/website\/electroweak\//);
+  for (const token of ["E47 Electroweak Identities", "m_Z", "m_W", "m_t"]) {
+    assert.ok(electroweakPage.includes(token), `Missing electroweak token: ${token}`);
+  }
+});
 
 test("Mathematical City page preserves the canonical public structure", () => {
   for (const id of ["gate", "object", "world", "labs", "atlas", "law", "see", "route"]) {
