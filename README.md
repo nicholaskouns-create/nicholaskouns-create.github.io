@@ -28,6 +28,7 @@ The repository README is now a live index into the larger research architecture.
 | Inspect live registry/provenance | [SEE · Citadel](https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/see/) |
 | Read the public narrative | [AIMS E47 Root Directory](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory) |
 | Work on current code | [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya) |
+| Run the Foundry lifetime intersection | [E47-Foundry-Lifetime-Intersection](https://github.com/nicholaskouns-create/E47-Foundry-Lifetime-Intersection) |
 
 ## The substrate map
 
@@ -39,13 +40,14 @@ The repository README is now a live index into the larger research architecture.
 | **Supabase** | live registries, runtime state, provenance and receipts |
 | **AIMS** | public exposition and readable publication |
 
-## Two repositories, two roles — plus the frozen electroweak plate
+## Four repositories, four roles
 
 | Repository | Role | Published surface |
 |---|---|---|
-| [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya) | current executable research | [City](https://nicholaskouns-create.github.io/E47-Kartekeya/) |
-| [E47-Electroweak-Identities](https://github.com/nicholaskouns-create/E47-Electroweak-Identities) | frozen $G_F\to(m_Z^{(0)},m_W/m_Z,m_t/m_H)$ instrument | [Instrument](https://nicholaskouns-create.github.io/E47-Electroweak-Identities/) |
-| [nicholaskouns-create.github.io](https://github.com/nicholaskouns-create/nicholaskouns-create.github.io) | root personal atlas | [Root site](https://nicholaskouns-create.github.io/) |
+| [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya) | canonical kernel, executable City, tests and certificates | [City](https://nicholaskouns-create.github.io/E47-Kartekeya/) |
+| [E47-Electroweak-Identities](https://github.com/nicholaskouns-create/E47-Electroweak-Identities) | $G_F\to(m_Z^{(0)},m_W/m_Z,m_t/m_H)$ instrument plus mass-ladder audits | [Instrument](https://nicholaskouns-create.github.io/E47-Electroweak-Identities/) |
+| [E47-Foundry-Lifetime-Intersection](https://github.com/nicholaskouns-create/E47-Foundry-Lifetime-Intersection) | Foundry lifetime algebra and 38-check E47 intersection validator | [Repository](https://github.com/nicholaskouns-create/E47-Foundry-Lifetime-Intersection) |
+| [nicholaskouns-create.github.io](https://github.com/nicholaskouns-create/nicholaskouns-create.github.io) | root personal atlas and router | [Root site](https://nicholaskouns-create.github.io/) |
 
 ## Current finite core
 
