@@ -6,6 +6,7 @@ on:
     paths:
       - "website/**"
       - "electroweak/**"
+      - "meta-ai-artifact/**"
       - "README.md"
       - "certificates/**"
       - "scripts/check_website.cjs"
