@@ -2,7 +2,7 @@
 
 This repository is the **vestibule** for The Mathematical City. The current executable research repository is [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya); this repo provides the root GitHub Pages site, cross-repository navigation and retained historical research material.
 
-**[OPEN THE ROOT README ROUTER](https://nicholaskouns-create.github.io/readme/)** · **[LIVE ROUTE PACKETS](https://nicholaskouns-create.github.io/packets/)** · **[COHERENCE RUNTIME](https://nicholaskouns-create.github.io/coherence-runtime/)** · **[OPEN THE CITY](https://nicholaskouns-create.github.io/E47-Kartekeya/)** · **[CURRENT RESEARCH REPO](https://github.com/nicholaskouns-create/E47-Kartekeya)** · **[AIMS ROOT DIRECTORY](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory)**
+**[OPEN THE ROOT README ROUTER](https://nicholaskouns-create.github.io/readme/)** · **[LIVE ROUTE PACKETS](https://nicholaskouns-create.github.io/packets/)** · **[COHERENCE RUNTIME](https://nicholaskouns-create.github.io/coherence-runtime/)** · **[OPEN THE CITY](https://nicholaskouns-create.github.io/E47-Kartekeya/)** · **[E47 ELECTROWEAK IDENTITIES](https://github.com/nicholaskouns-create/E47-Electroweak-Identities)** · **[CURRENT RESEARCH REPO](https://github.com/nicholaskouns-create/E47-Kartekeya)** · **[AIMS ROOT DIRECTORY](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory)**
 
 ---
 
@@ -15,6 +15,7 @@ The repository README is now a live index into the larger research architecture.
 | I want to… | Open |
 |---|---|
 | Enter the City | [The Mathematical City](https://nicholaskouns-create.github.io/E47-Kartekeya/) |
+| Read the frozen electroweak identities | [E47 Electroweak Identities](https://github.com/nicholaskouns-create/E47-Electroweak-Identities) |
 | Use a single cross-platform index | [README Router](https://nicholaskouns-create.github.io/readme/) |
 | Traverse registered objects across platforms | [Live Route Packets](https://nicholaskouns-create.github.io/packets/) |
 | Review continuity / consent runtime | [Coherence Runtime bridge](https://nicholaskouns-create.github.io/coherence-runtime/) |
@@ -37,14 +38,13 @@ The repository README is now a live index into the larger research architecture.
 | **Supabase** | live registries, runtime state, provenance and receipts |
 | **AIMS** | public exposition and readable publication |
 
-The point is not to make one platform canonical over the rest. The router exposes the native strength of each one and keeps the handoffs visible.
-
-## Two repositories, two roles
+## Two repositories, two roles — plus the frozen electroweak plate
 
 | Repository | Role | Published surface |
 |---|---|---|
-| [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya) | current executable research, tests, certificates, instruments and formalism | [City](https://nicholaskouns-create.github.io/E47-Kartekeya/) |
-| [nicholaskouns-create.github.io](https://github.com/nicholaskouns-create/nicholaskouns-create.github.io) | root personal atlas, cross-repo entry layer, retained snapshot | [Root site](https://nicholaskouns-create.github.io/) |
+| [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya) | current executable research | [City](https://nicholaskouns-create.github.io/E47-Kartekeya/) |
+| [E47-Electroweak-Identities](https://github.com/nicholaskouns-create/E47-Electroweak-Identities) | frozen $G_F\to(m_Z^{(0)},m_W/m_Z,m_t/m_H)$ instrument | [Instrument](https://nicholaskouns-create.github.io/E47-Electroweak-Identities/) |
+| [nicholaskouns-create.github.io](https://github.com/nicholaskouns-create/nicholaskouns-create.github.io) | root personal atlas | [Root site](https://nicholaskouns-create.github.io/) |
 
 ## Current finite core
 
@@ -55,13 +55,12 @@ dim E₄₇ = 47
 Ωc = 47/125 = 0.376
 Γ* = I − K²/99144
 ρ* = 15/17
+m_Z^(0) = v Ωc
+m_W/m_Z = √(10/13)
+m_t/m_H = 1+Ωc = 172/125
 ```
 
-For the executable and certified version, use [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya), not this retained snapshot.
-
 ## Retained research materials
-
-These files remain useful as historical or local references:
 
 - [Core spectral certificate](E47_Core_Spectral_Certificate.md)
 - [Projection-flow theorem](E47_Projection_Flow_Theorem.md)
@@ -69,6 +68,7 @@ These files remain useful as historical or local references:
 - [Open proof obligation](NEXT_PROOF_OBLIGATION_Nontrivial_Einstein_Sector.md)
 - [Local provenance](docs/provenance.md)
 - [Local validation scope](docs/validation_scope.md)
+- [Electroweak vestibule page](website/electroweak/index.html)
 
 ## Work on this site
 
@@ -79,18 +79,4 @@ python -m http.server 8000 --directory website
 node --test scripts/check_website.cjs
 ```
 
-[Deploy workflow](.github/workflows/pages.yml) validates the site and verifies the live root after publication.
-
 [License](LICENSE) · [Current documentation](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/README.md)
-
-## N-VQE / E47 Hilbert validation
-
-Canonical implementation lives in **E47-Kartekeya**:
-[20-check Python](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/nvqe_hilbert_multiradix_proof.py) ·
-[certificate](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-NVQE-HILBERT-MULTIRADIX-20260925-001.json) ·
-[Formalism Atlas](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/)
-
-This repository remains a bridge only; it does not duplicate the executable source.
-
-
-**Quadratic Golden-Root Convergence and Optimal E47 Spectral Projection — 66/66 PASS.** E0 exact theorem; E1 deterministic machine reconstruction. [Proof](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/f11048384abe8e410af7f1a3adbf91feca766358/research/e47/native_variational_eigensolver_corrected.md#quadratic-golden-root-convergence-and-optimal-e47-spectral-projection) · [Python](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/f11048384abe8e410af7f1a3adbf91feca766358/research/e47/validation/golden_root_e47_convergence.py) · [Certificate](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/f11048384abe8e410af7f1a3adbf91feca766358/certificates/MC-GOLDEN-ROOT-E47-20260926-001.json) · [Drive bundle](https://drive.google.com/file/d/1l4CHA4yNFnYRIQWrmVOOjG9LHVhc_IU_/view?usp=drivesdk).
