@@ -20,6 +20,7 @@ const atlas = json(resolve(site, "data/interface_atlas.json"));
 const featured = json(resolve(site, "data/featured_interfaces.json"));
 const electroweakAlias = read(resolve(root, "electroweak/index.html"));
 const electroweakPage = read(resolve(site, "electroweak/index.html"));
+const metaArtifactPage = read(resolve(root, "meta-ai-artifact/index.html"));
 
 for (const name of ["e47_pipeline.json", "qutip_validation.json"]) {
   test(`published ${name} matches the committed certificate`, () => {
@@ -30,6 +31,12 @@ for (const name of ["e47_pipeline.json", "qutip_validation.json"]) {
     );
   });
 }
+
+test("Meta AI artifact mirror resolves through the Supabase live resolver", () => {
+  assert.ok(existsSync(resolve(root, "meta-ai-artifact/index.html")));
+  assert.match(metaArtifactPage, /city-app-host\/meta-ai-artifact\//);
+  assert.match(metaArtifactPage, /b5fcbcf1-e01e-4cad-b7a7-e1196930bfd2/);
+});
 
 test("root electroweak route resolves to the published instrument", () => {
   assert.ok(existsSync(resolve(root, "electroweak/index.html")));
