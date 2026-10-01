@@ -1,5 +1,8 @@
 # Nicholas Kouns · Personal Atlas
 
+**[MATHEMATICAL CITY ATLAS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/mathematical-city/)**
+
+
 This repository is the **vestibule** for The Mathematical City. The current executable research repository is [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya); this repo provides the root GitHub Pages site, cross-repository navigation and retained historical research material.
 
 **[OPEN THE ROOT README ROUTER](https://nicholaskouns-create.github.io/readme/)** · **[LIVE ROUTE PACKETS](https://nicholaskouns-create.github.io/packets/)** · **[COHERENCE RUNTIME](https://nicholaskouns-create.github.io/coherence-runtime/)** · **[OPEN THE CITY](https://nicholaskouns-create.github.io/E47-Kartekeya/)** · **[E47 ELECTROWEAK IDENTITIES](https://github.com/nicholaskouns-create/E47-Electroweak-Identities)** · **[CURRENT RESEARCH REPO](https://github.com/nicholaskouns-create/E47-Kartekeya)** · **[AIMS ROOT DIRECTORY](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory)**
