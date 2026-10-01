@@ -83,3 +83,15 @@ node --test scripts/check_website.cjs
 ```
 
 [License](LICENSE) · [Current documentation](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/README.md)
+
+
+## E47 / D5h / C90 celestial-terrestrial validation packet
+
+Canonical source: [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya)
+
+- [Classical geometry validator](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/e47_d5h_c90_validator.py)
+- [Classical numeric certificate](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-D5H-C90-COSMIC-MAP-20260930-001.json)
+- [Quantum numeric validator](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/e47_quantum_numeric_validation.py)
+- [Quantum numeric certificate](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-QUANTUM-NUMERIC-20260930-001.json)
+
+This atlas remains the vestibule; the current executable research source belongs to E47-Kartekeya.
