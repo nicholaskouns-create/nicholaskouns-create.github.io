@@ -1,7 +1,5 @@
 # Nicholas Kouns · Personal Atlas
 
-**[MATHEMATICAL CITY ATLAS](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/mathematical-city/)**
-
 
 This repository is the **vestibule** for The Mathematical City. The current executable research repository is [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya); this repo provides the root GitHub Pages site, cross-repository navigation and retained historical research material.
 
