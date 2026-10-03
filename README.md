@@ -1,6 +1,8 @@
 # Nicholas Kouns · Personal Atlas
 
 > **Main entry portal:** [The Mathematical City](https://nicholaskouns-create.github.io/website/) — explore the districts, interactive labs, and research index.
+>
+> **[Explore PiP Manta](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/pip-manta/embed.html)**
 
 
 This repository is the **vestibule** for The Mathematical City. The current executable research repository is [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya); this repo provides the root GitHub Pages site, cross-repository navigation and retained historical research material.
