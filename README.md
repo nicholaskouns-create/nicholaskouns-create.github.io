@@ -1,11 +1,11 @@
 # Nicholas Kouns · Personal Atlas
 
-> **Mathematical City:** [Networked Atlas](https://nicholaskouns-create.github.io/E47-Kartekeya/) · verified by the E47-Kartekeya Pages deployment.
+> **Main entry portal:** [The Mathematical City](https://nicholaskouns-create.github.io/website/) — explore the districts, interactive labs, and research index.
 
 
 This repository is the **vestibule** for The Mathematical City. The current executable research repository is [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya); this repo provides the root GitHub Pages site, cross-repository navigation and retained historical research material.
 
-**[OPEN THE ROOT README ROUTER](https://nicholaskouns-create.github.io/readme/)** · **[LIVE ROUTE PACKETS](https://nicholaskouns-create.github.io/packets/)** · **[COHERENCE RUNTIME](https://nicholaskouns-create.github.io/coherence-runtime/)** · **[OPEN THE CITY](https://nicholaskouns-create.github.io/E47-Kartekeya/)** · **[E47 ELECTROWEAK IDENTITIES](https://github.com/nicholaskouns-create/E47-Electroweak-Identities)** · **[CURRENT RESEARCH REPO](https://github.com/nicholaskouns-create/E47-Kartekeya)** · **[AIMS ROOT DIRECTORY](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory)**
+**[OPEN THE ROOT README ROUTER](https://nicholaskouns-create.github.io/readme/)** · **[LIVE ROUTE PACKETS](https://nicholaskouns-create.github.io/packets/)** · **[COHERENCE RUNTIME](https://nicholaskouns-create.github.io/coherence-runtime/)** · **[OPEN THE MAIN PORTAL](https://nicholaskouns-create.github.io/website/)** · **[E47 ELECTROWEAK IDENTITIES](https://github.com/nicholaskouns-create/E47-Electroweak-Identities)** · **[CURRENT RESEARCH REPO](https://github.com/nicholaskouns-create/E47-Kartekeya)** · **[AIMS ROOT DIRECTORY](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory)**
 
 ---
 
@@ -17,7 +17,7 @@ The repository README is now a live index into the larger research architecture.
 
 | I want to… | Open |
 |---|---|
-| Enter the City | [The Mathematical City](https://nicholaskouns-create.github.io/E47-Kartekeya/) |
+| Enter the City | [The Mathematical City — main portal](https://nicholaskouns-create.github.io/website/) |
 | Read the frozen electroweak identities | [E47 Electroweak Identities](https://github.com/nicholaskouns-create/E47-Electroweak-Identities) |
 | Use a single cross-platform index | [README Router](https://nicholaskouns-create.github.io/readme/) |
 | Traverse registered objects across platforms | [Live Route Packets](https://nicholaskouns-create.github.io/packets/) |
