@@ -1,23 +1,23 @@
 {
   "schema": "CITY-README-ROUTER/1.0",
-  "updated": "2026-09-28",
-  "title": "The Mathematical City · README Router",
+  "updated": "2026-10-03",
+  "title": "The Mathematical City \u00b7 README Router",
   "principle": "One object, many substrates. Route by intent; preserve evidence class and independent lineage.",
   "core": {
-    "carrier": "V₂⊗³",
+    "carrier": "V\u2082\u2297\u00b3",
     "dimension": 125,
-    "selector": "K=(C−6I)(C−30I)",
-    "kernel": "E₄₇=ker(K)",
+    "selector": "K=(C\u22126I)(C\u221230I)",
+    "kernel": "E\u2084\u2087=ker(K)",
     "kernel_dimension": 47,
     "omega_c": "47/125 = 0.376",
-    "contraction": "Γ*=I−K²/99144",
+    "contraction": "\u0393*=I\u2212K\u00b2/99144",
     "transient_bound": "15/17"
   },
   "substrates": [
     {
       "id": "github",
       "label": "GitHub",
-      "role": "EXECUTE · VERIFY · SOURCE",
+      "role": "EXECUTE \u00b7 VERIFY \u00b7 SOURCE",
       "url": "https://github.com/nicholaskouns-create/E47-Kartekeya",
       "note": "Code, tests, certificates, history, releases, Pages."
     },
@@ -31,21 +31,21 @@
     {
       "id": "drive",
       "label": "Google Drive",
-      "role": "CORPUS · DOSSIERS",
+      "role": "CORPUS \u00b7 DOSSIERS",
       "url": "https://docs.google.com/document/d/1FPyhzhx9rpHEh7fSz2djpv19NNJ5Kx3QMbHJmRulHXo/edit?usp=drivesdk",
       "note": "Long-form source artifacts, certificates, monographs and working documents."
     },
     {
       "id": "supabase",
       "label": "Supabase",
-      "role": "REGISTRY · RUNTIME · PROVENANCE",
+      "role": "REGISTRY \u00b7 RUNTIME \u00b7 PROVENANCE",
       "url": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/see/",
       "note": "Live City surfaces, receipts, registries, evidence metadata."
     },
     {
       "id": "aims",
       "label": "AIMS",
-      "role": "PUBLICATION · NARRATIVE",
+      "role": "PUBLICATION \u00b7 NARRATIVE",
       "url": "https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory",
       "note": "Readable public essays, launch pages, root directory and explanatory publishing."
     }
@@ -162,7 +162,7 @@
       "question": "Show me the proof, code and receipts.",
       "routes": [
         {
-          "label": "125×125 Spectral Matrix Proof",
+          "label": "125\u00d7125 Spectral Matrix Proof",
           "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-spectral-matrix-proof/",
           "substrate": "github",
           "kind": "proof"
@@ -180,7 +180,7 @@
           "kind": "boundary"
         },
         {
-          "label": "SEE · Citadel",
+          "label": "SEE \u00b7 Citadel",
           "url": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/see/",
           "substrate": "supabase",
           "kind": "registry"
@@ -233,6 +233,12 @@
           "url": "https://nicholaskouns-create.github.io/meta-ai-artifact/",
           "substrate": "github",
           "kind": "interactive E47 quantum-core mirror"
+        },
+        {
+          "label": "Drive Python curation",
+          "url": "https://nicholaskouns-create.github.io/drive-python/",
+          "substrate": "github",
+          "kind": "recovered source index"
         }
       ]
     },
@@ -288,6 +294,12 @@
           "url": "https://github.com/nicholaskouns-create/E47-Foundry-Lifetime-Intersection",
           "substrate": "github",
           "kind": "domain validator"
+        },
+        {
+          "label": "Recovered Drive Python",
+          "url": "https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/migration/python",
+          "substrate": "github",
+          "kind": "source staging"
         }
       ]
     }
@@ -295,7 +307,7 @@
   "packets": [
     {
       "id": "spectral-matrix",
-      "title": "E47 Flow as a Single 125 × 125 Spectral Matrix Machine",
+      "title": "E47 Flow as a Single 125 \u00d7 125 Spectral Matrix Machine",
       "evidence": [
         "E0",
         "E1"

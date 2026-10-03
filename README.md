@@ -28,6 +28,7 @@ The repository README is now a live index into the larger research architecture.
 | Verify convergence + noiseless multiplicities | [E47 convergence/noiseless certificate](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-CONVERGENCE-NOISELESS-20260928-001.json) |
 | Open the living research atlas | [Notion](https://mathematicalcity.notion.site/?pvs=74) |
 | Inspect source dossiers | [Google Drive certificate corpus](https://docs.google.com/document/d/1FPyhzhx9rpHEh7fSz2djpv19NNJ5Kx3QMbHJmRulHXo/edit?usp=drivesdk) |
+| Read Drive Python that was not yet in GitHub | [Drive Python curation](https://nicholaskouns-create.github.io/drive-python/) |
 | Inspect live registry/provenance | [SEE · Citadel](https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/see/) |
 | Read the public narrative | [AIMS E47 Root Directory](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory) |
 | Work on current code | [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya) |
