@@ -4,10 +4,15 @@
 >
 > **[Explore PiP Manta](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/pip-manta/embed.html)**
 
-
 This repository is the **vestibule** for The Mathematical City. The current executable research repository is [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya); this repo provides the root GitHub Pages site, cross-repository navigation and retained historical research material.
 
 **[OPEN THE ROOT README ROUTER](https://nicholaskouns-create.github.io/readme/)** · **[LIVE ROUTE PACKETS](https://nicholaskouns-create.github.io/packets/)** · **[COHERENCE RUNTIME](https://nicholaskouns-create.github.io/coherence-runtime/)** · **[OPEN THE MAIN PORTAL](https://nicholaskouns-create.github.io/website/)** · **[E47 ELECTROWEAK IDENTITIES](https://github.com/nicholaskouns-create/E47-Electroweak-Identities)** · **[CURRENT RESEARCH REPO](https://github.com/nicholaskouns-create/E47-Kartekeya)** · **[AIMS ROOT DIRECTORY](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory)**
+
+## E47 Grassmann–Casimir correction · 2026-10-08
+
+The current finite authority is [E47 Grassmann–Casimir Formalism (corrected)](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_Grassmann_Casimir_Formalism_Corrected_20261008.md). It fixes the native metric statement `P^T G = G P`, preserves `dim ker K = 47`, assigns the distinct nullity `82` to the rank-43 constraint map `A`, and treats `E ∩ ker A = ker K` as a constructed-witness equality rather than a consequence of equal dimensions.
+
+Cross-platform packet: [Notion authority](https://app.notion.com/p/3a046094fd30811eb015e14e1c5bce7c) · [Drive archive](https://docs.google.com/document/d/1F6UvhIOElXLoTPMW3VtOntxv86r81uKQeGcQikNv3bE) · [Supabase Citadel](https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/see/) · [Linear REC-12](https://linear.app/4521/issue/REC-12/publish-e47-grassmann-casimir-proof-and-34-check-python-package) · [Exact witness](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/e47_grassmann_casimir_witness_20261008.py) · [Quantum-state simulation](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/e47_grassmann_casimir_quantum_sim_20261008.py).
 
 ---
 
@@ -89,7 +94,6 @@ node --test scripts/check_website.cjs
 ```
 
 [License](LICENSE) · [Current documentation](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/docs/README.md)
-
 
 ## E47 / D5h / C90 celestial-terrestrial validation packet
 
