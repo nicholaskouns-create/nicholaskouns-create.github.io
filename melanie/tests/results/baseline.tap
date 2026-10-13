@@ -1,0 +1,238 @@
+TAP version 13
+# Subtest: export executes and serializes the complete transcript
+not ok 1 - export executes and serializes the complete transcript
+  ---
+  duration_ms: 5.360917
+  type: 'test'
+  location: 'melanie/tests/regression.cjs:84:1'
+  failureType: 'testCodeFailure'
+  error: 'URL.createObjectURL is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    $.onclick (evalmachine.<anonymous>:19:464)
+    async TestContext.<anonymous> (melanie/tests/regression.cjs:85:45)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: reload orders equal-timestamp messages as user then assistant
+not ok 2 - reload orders equal-timestamp messages as user then assistant
+  ---
+  duration_ms: 2.844216
+  type: 'test'
+  location: 'melanie/tests/regression.cjs:88:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+    +   'fixture answer',
+        'fixture question',
+    -   'fixture answer'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'fixture question'
+    1: 'fixture answer'
+  actual:
+    0: 'fixture answer'
+    1: 'fixture question'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (melanie/tests/regression.cjs:90:10)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: reload reads conversations longer than one API page
+not ok 3 - reload reads conversations longer than one API page
+  ---
+  duration_ms: 6.363567
+  type: 'test'
+  location: 'melanie/tests/regression.cjs:92:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1000 !== 1002
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1002
+  actual: 1000
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (melanie/tests/regression.cjs:94:45)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: a failed send restores the draft for retry
+not ok 4 - a failed send restores the draft for retry
+  ---
+  duration_ms: 1.239803
+  type: 'test'
+  location: 'melanie/tests/regression.cjs:96:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + ''
+    - 'retain this draft'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'retain this draft'
+  actual: ''
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (melanie/tests/regression.cjs:99:10)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# (node:12) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: an in-flight reply cannot appear in another thread or rename it
+not ok 5 - an in-flight reply cannot appear in another thread or rename it
+  ---
+  duration_ms: 12.907516
+  type: 'test'
+  location: 'melanie/tests/regression.cjs:101:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(!f.get('messages').text.includes('reply for A'))
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (melanie/tests/regression.cjs:106:10)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: failed thread creation cannot invoke chat with a missing thread
+not ok 6 - failed thread creation cannot invoke chat with a missing thread
+  ---
+  duration_ms: 1.634288
+  type: 'test'
+  location: 'melanie/tests/regression.cjs:109:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (melanie/tests/regression.cjs:113:10)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: frontend reload reconstructs both saved sides after a successful fixture reply
+not ok 7 - frontend reload reconstructs both saved sides after a successful fixture reply
+  ---
+  duration_ms: 2.381197
+  type: 'test'
+  location: 'melanie/tests/regression.cjs:115:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+    +   'fixture answer',
+        'fixture question',
+    -   'fixture answer'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'fixture question'
+    1: 'fixture answer'
+  actual:
+    0: 'fixture answer'
+    1: 'fixture question'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (melanie/tests/regression.cjs:122:10)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: provider history preserves same-timestamp conversation order
+not ok 8 - provider history preserves same-timestamp conversation order
+  ---
+  duration_ms: 39.469976
+  type: 'test'
+  location: 'melanie/tests/regression.cjs:124:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+    -   'user',
+        'assistant',
+        'user',
+    +   'user'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'user'
+    1: 'assistant'
+    2: 'user'
+  actual:
+    0: 'assistant'
+    1: 'user'
+    2: 'user'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (melanie/tests/regression.cjs:126:10)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: successful provider reply inserts both sides in one database operation
+ok 9 - successful provider reply inserts both sides in one database operation
+  ---
+  duration_ms: 3.088365
+  type: 'test'
+  ...
+# Subtest: missing key produces 503 without fabricating or storing an answer
+ok 10 - missing key produces 503 without fabricating or storing an answer
+  ---
+  duration_ms: 2.327525
+  type: 'test'
+  ...
+# Subtest: failed transcript persistence cannot return success
+ok 11 - failed transcript persistence cannot return success
+  ---
+  duration_ms: 5.638136
+  type: 'test'
+  ...
+# Subtest: an invalid session cannot reach the provider
+ok 12 - an invalid session cannot reach the provider
+  ---
+  duration_ms: 2.541239
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 4
+# fail 8
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 191.757027

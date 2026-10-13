@@ -1,0 +1,84 @@
+TAP version 13
+# Subtest: export executes and serializes the complete transcript
+ok 1 - export executes and serializes the complete transcript
+  ---
+  duration_ms: 3.837676
+  type: 'test'
+  ...
+# Subtest: reload orders equal-timestamp messages as user then assistant
+ok 2 - reload orders equal-timestamp messages as user then assistant
+  ---
+  duration_ms: 1.380394
+  type: 'test'
+  ...
+# Subtest: reload reads conversations longer than one API page
+ok 3 - reload reads conversations longer than one API page
+  ---
+  duration_ms: 9.994283
+  type: 'test'
+  ...
+# Subtest: a failed send restores the draft for retry
+ok 4 - a failed send restores the draft for retry
+  ---
+  duration_ms: 1.25169
+  type: 'test'
+  ...
+# (node:12) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: an in-flight reply cannot appear in another thread or rename it
+ok 5 - an in-flight reply cannot appear in another thread or rename it
+  ---
+  duration_ms: 5.433746
+  type: 'test'
+  ...
+# Subtest: failed thread creation cannot invoke chat with a missing thread
+ok 6 - failed thread creation cannot invoke chat with a missing thread
+  ---
+  duration_ms: 1.12535
+  type: 'test'
+  ...
+# Subtest: frontend reload reconstructs both saved sides after a successful fixture reply
+ok 7 - frontend reload reconstructs both saved sides after a successful fixture reply
+  ---
+  duration_ms: 1.746508
+  type: 'test'
+  ...
+# Subtest: provider history preserves same-timestamp conversation order
+ok 8 - provider history preserves same-timestamp conversation order
+  ---
+  duration_ms: 33.881747
+  type: 'test'
+  ...
+# Subtest: successful provider reply inserts both sides in one database operation
+ok 9 - successful provider reply inserts both sides in one database operation
+  ---
+  duration_ms: 3.040522
+  type: 'test'
+  ...
+# Subtest: missing key produces 503 without fabricating or storing an answer
+ok 10 - missing key produces 503 without fabricating or storing an answer
+  ---
+  duration_ms: 2.433666
+  type: 'test'
+  ...
+# Subtest: failed transcript persistence cannot return success
+ok 11 - failed transcript persistence cannot return success
+  ---
+  duration_ms: 2.46997
+  type: 'test'
+  ...
+# Subtest: an invalid session cannot reach the provider
+ok 12 - an invalid session cannot reach the provider
+  ---
+  duration_ms: 1.458933
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 150.224494
