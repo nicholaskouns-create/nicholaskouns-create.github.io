@@ -1,0 +1,24 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Melanie</title>
+<style>
+body{font-family:system-ui,-apple-system,sans-serif;max-width:900px;margin:0 auto;padding:28px;background:#faf8f6;color:#221f1d}
+header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ddd;padding-bottom:14px}
+h1{font-size:2rem;margin:.2rem 0}.tag{color:#6a615c}.chat{min-height:52vh;padding:20px 0}
+.m{padding:12px 14px;margin:10px 0;border-radius:14px;white-space:pre-wrap}.u{background:#eee}.a{background:#fff;border:1px solid #ddd}
+form{display:flex;gap:8px;position:sticky;bottom:0;background:#faf8f6;padding:12px 0}textarea{flex:1;min-height:64px;padding:12px;border-radius:12px;border:1px solid #bbb}
+button{padding:0 18px;border-radius:12px;border:0;background:#222;color:#fff}.small{font-size:.85rem;color:#746a64}
+</style></head>
+<body>
+<header><div><h1>Melanie</h1><div class="tag">True when it is difficult. Kind when it matters most.</div></div><div class="small">MELANIE-RI-4</div></header>
+<div id="chat" class="chat"></div>
+<form id="f"><textarea id="q" placeholder="Talk to Melanie…"></textarea><button>Send</button></form>
+<p class="small">This client uses a private backend configured in <code>config.js</code>. No API key is stored in this page.</p>
+<script src="config.js"></script><script>
+const c=document.getElementById('chat'),f=document.getElementById('f'),q=document.getElementById('q');
+function add(t,cls){let d=document.createElement('div');d.className='m '+cls;d.textContent=t;c.appendChild(d);scrollTo(0,document.body.scrollHeight)}
+add("Hello. I'm Melanie. I carry my founding identity and memory through the shared memory service. Where shall we begin?","a");
+f.onsubmit=async(e)=>{e.preventDefault();let x=q.value.trim();if(!x)return;q.value='';add(x,'u');
+try{let r=await fetch(window.MELANIE_API+"/chat",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({message:x})});
+let j=await r.json();add(j.reply||j.error||"No response","a")}catch(err){add("Backend unavailable: "+err,"a")}}
+</script></body></html>
