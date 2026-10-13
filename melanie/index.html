@@ -44,21 +44,26 @@ $("sendForm").onsubmit=async e=>{
   e.preventDefault();if(busy||!user)return;
   const message=$("prompt").value.trim();if(!message)return;
   busy=true;$("send").disabled=true;
-  let sendingThread=null,sendingOwner=user.id;
+  let sendingThread=null,sendingOwner=user.id,savedUser=false;
   try{
     if(!thread)await newThread();
     if(!thread)return;
     sendingThread=thread;$("prompt").value="";show("user",message);status("REASONING…",true);
     const{data,error}=await db.functions.invoke("melanie-chat",{body:{thread_id:sendingThread,message}});
-    if(error){let detail=data?.error||data?.detail;try{if(error.context?.json){const payload=await error.context.json();detail=payload?.error||payload?.detail||detail}}catch{}throw Error(detail||err(error))}
-    if(data?.error)throw Error(data.error);
+    if(error){savedUser=data?.saved_user===true;let detail=data?.error||data?.detail;try{if(error.context?.json){const payload=await error.context.json();detail=payload?.error||payload?.detail||detail;savedUser=payload?.saved_user===true}}catch{}throw Error(detail||err(error))}
+    if(data?.error){savedUser=data.saved_user===true;throw Error(data.error)}
     if(thread===sendingThread&&user?.id===sendingOwner)await openThread(sendingThread);
     await db.from("melanie_threads").update({title:message.slice(0,70)}).eq("id",sendingThread).eq("owner_id",sendingOwner).eq("title","New conversation");
     await refreshThreads();
   }catch(e){
     if(thread===sendingThread&&user?.id===sendingOwner){
-      if(!$("prompt").value)$("prompt").value=message;
-      show("assistant","The reasoning service is unavailable: "+err(e)+". This exchange may not have been saved. Your message is available above; check the archive before retrying.");
+      if(savedUser){
+        await openThread(sendingThread);
+        if(thread===sendingThread&&user?.id===sendingOwner)show("assistant","The reasoning service is unavailable: "+err(e)+" Your message is in the archive; no completed reply was saved.");
+      }else{
+        if(!$("prompt").value)$("prompt").value=message;
+        show("assistant","The reasoning service is unavailable: "+err(e)+". This exchange may not have been saved. Your message is available above; check the archive before retrying.");
+      }
     }
   }finally{busy=false;$("send").disabled=false;status(user?"PRIVATE SESSION · AUTHENTICATED":"PRIVATE SESSION",!!user)}
 };

@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: export executes and serializes the complete transcript
+ok 1 - export executes and serializes the complete transcript
+  ---
+  duration_ms: 4.760591
+  type: 'test'
+  ...
+# Subtest: reload orders equal-timestamp messages as user then assistant
+ok 2 - reload orders equal-timestamp messages as user then assistant
+  ---
+  duration_ms: 1.500346
+  type: 'test'
+  ...
+# Subtest: reload reads conversations longer than one API page
+ok 3 - reload reads conversations longer than one API page
+  ---
+  duration_ms: 5.14333
+  type: 'test'
+  ...
+# Subtest: a failed send restores the draft for retry
+ok 4 - a failed send restores the draft for retry
+  ---
+  duration_ms: 1.38977
+  type: 'test'
+  ...
+# Subtest: a saved-user error reloads the archive without offering a duplicate draft
+not ok 5 - a saved-user error reloads the archive without offering a duplicate draft
+  ---
+  duration_ms: 1.870665
+  type: 'test'
+  location: 'melanie/tests/regression.cjs:101:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'fixture question'
+    - ''
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ''
+  actual: 'fixture question'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (melanie/tests/regression.cjs:107:10)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# (node:20) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: an in-flight reply cannot appear in another thread or rename it
+ok 6 - an in-flight reply cannot appear in another thread or rename it
+  ---
+  duration_ms: 5.474911
+  type: 'test'
+  ...
+# Subtest: failed thread creation cannot invoke chat with a missing thread
+ok 7 - failed thread creation cannot invoke chat with a missing thread
+  ---
+  duration_ms: 1.024367
+  type: 'test'
+  ...
+# Subtest: frontend reload reconstructs both saved sides after a successful fixture reply
+ok 8 - frontend reload reconstructs both saved sides after a successful fixture reply
+  ---
+  duration_ms: 1.987863
+  type: 'test'
+  ...
+# Subtest: provider history preserves same-timestamp conversation order
+not ok 9 - provider history preserves same-timestamp conversation order
+  ---
+  duration_ms: 33.303449
+  type: 'test'
+  location: 'melanie/tests/regression.cjs:133:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+    -   'user',
+        'assistant',
+        'user',
+    +   'user'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'user'
+    1: 'assistant'
+    2: 'user'
+  actual:
+    0: 'assistant'
+    1: 'user'
+    2: 'user'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (melanie/tests/regression.cjs:135:10)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: successful provider reply persists both sides before returning success
+ok 10 - successful provider reply persists both sides before returning success
+  ---
+  duration_ms: 5.32913
+  type: 'test'
+  ...
+# Subtest: missing keys preserve the user message and never fabricate an assistant answer
+ok 11 - missing keys preserve the user message and never fabricate an assistant answer
+  ---
+  duration_ms: 2.277651
+  type: 'test'
+  ...
+# Subtest: failed transcript persistence cannot return success
+ok 12 - failed transcript persistence cannot return success
+  ---
+  duration_ms: 3.517744
+  type: 'test'
+  ...
+# Subtest: failed assistant persistence returns 500 and acknowledges only the saved user
+ok 13 - failed assistant persistence returns 500 and acknowledges only the saved user
+  ---
+  duration_ms: 2.07842
+  type: 'test'
+  ...
+# Subtest: an invalid session cannot reach the provider
+ok 14 - an invalid session cannot reach the provider
+  ---
+  duration_ms: 4.061926
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 12
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 163.998359

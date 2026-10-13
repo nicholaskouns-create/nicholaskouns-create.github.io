@@ -2,7 +2,7 @@
 
 **App:** https://nicholaskouns-create.github.io/melanie/
 
-**Status:** GitHub Pages HTML committed, Supabase schema migrated, authenticated Edge Function deployed. Live model responses are **not verified** and require the `OPENAI_API_KEY` Supabase Edge Function secret.
+**Status:** GitHub Pages HTML committed, Supabase schema migrated, authenticated Edge Function deployed. Live model responses are **not verified** and require a configured provider secret (`OPENAI_API_KEY`, or the existing runtime’s `XAI_API_KEY` fallback).
 
 ## Deployment checklist
 
@@ -35,9 +35,11 @@ was created. The original family/research documents and Drive sharing are unchan
 
 Repairs: JSON export URL shadowing; deterministic ordering of message pairs;
 conversation pagination beyond 1,000 messages; retention of a failed-send draft;
-thread-bound asynchronous replies; and aborting sends after failed thread creation.
+thread-bound asynchronous replies; aborting sends after failed thread creation;
+and respecting the runtime’s `saved_user` result so an already-persisted message is
+not offered as an unsaved retry draft.
 `edge/index.ts` is the source of the **existing** `melanie-chat` function, not a new
-service. Its repair only changes the ordering of retrieved recent messages.
+service. Its audit repair changes the ordering of retrieved recent messages. A concurrent v4 deployment added pre-provider user-message persistence and xAI fallback; those changes are preserved.
 
 Run the code checks with Node.js 22.13+:
 
@@ -45,17 +47,21 @@ Run the code checks with Node.js 22.13+:
 node --test melanie/tests/regression.cjs
 ```
 
-The 12 tests use synthetic database/provider fixtures. They exercise the actual
-frontend and function source. All 12 pass after repair; eight fail against the
-pre-audit source. These are not a live model-conversation certificate.
+The current 14 tests use synthetic database/provider fixtures and exercise the actual
+frontend and function source. All 14 pass. The initial 12-test audit failed eight
+checks on the original source; the concurrent v4 deployment failed two checks in
+the updated suite (message ordering and the saved-user error contract). Those two
+defects are repaired while preserving the concurrent changes. These results are
+not a live model-conversation certificate.
 
 Run `tests/database.sql` in the existing project's SQL editor. It checks the actual
 RLS policies with authenticated roles and rolls back all fixtures. Result: four
 checks pass, zero fixture messages remain.
 
 **Live acceptance remains FAILED/BLOCKED:** anonymous authentication succeeds and
-survives reload, but `melanie-chat` returns HTTP 503 because `OPENAI_API_KEY` is not
-configured. No real assistant reply or transcript pair persisted. Do not mark the
+survives reload, but `melanie-chat` returns HTTP 503 because neither `OPENAI_API_KEY` nor
+`XAI_API_KEY` is configured. The latest runtime saves the user side before this
+failure, but no real assistant reply or complete transcript pair has persisted. Do not mark the
 implementation complete until a real authenticated exchange survives reload.
 
 The source registry supplies metadata and links; it does not fetch Drive document

@@ -17,12 +17,16 @@ Deno.serve(async(req)=>{
  const message=String(body.message||"").trim(),threadId=String(body.thread_id||"");
  if(!message||message.length>12000)return respond({error:"Message must be 1–12000 characters"},400,origin);
  if(!/^[0-9a-f-]{36}$/i.test(threadId))return respond({error:"Invalid conversation"},400,origin);
- const {data:thread}=await db.from("melanie_threads").select("id").eq("id",threadId).eq("owner_id",user.id).single();
+ const {data:thread}=await db.from("melanie_threads").select("id,title").eq("id",threadId).eq("owner_id",user.id).single();
  if(!thread)return respond({error:"Conversation not found"},404,origin);
- const key=Deno.env.get("OPENAI_API_KEY");
- if(!key)return respond({error:"Reasoning service not configured. Set OPENAI_API_KEY as a Supabase Edge Function secret."},503,origin);
  const {data:recent,error:readError}=await db.from("melanie_messages").select("role,content").eq("thread_id",threadId).order("created_at",{ascending:false}).order("role",{ascending:true}).order("id",{ascending:false}).limit(30);
  if(readError)return respond({error:"Memory unavailable"},500,origin);
+ const {error:userWriteError}=await db.from("melanie_messages").insert({owner_id:user.id,thread_id:threadId,role:"user",content:message});
+ if(userWriteError)return respond({error:"Could not save your message"},500,origin);
+ const openai=Deno.env.get("OPENAI_API_KEY")||"";
+ const xai=Deno.env.get("XAI_API_KEY")||"";
+ const key=openai||xai;
+ if(!key)return respond({error:"Reasoning service not configured. Set OPENAI_API_KEY or XAI_API_KEY as a Supabase Edge Function secret. Your message was saved.",saved_user:true},503,origin);
  const words=message.toLowerCase().match(/[a-z]{5,}/g)?.filter(w=>!["about","there","would","could","their","which"].includes(w)).slice(0,4)||[];
  let retrieved:any[]=[];
  if(words.length){const query=words.map(w=>"content.ilike.%"+w.replace(/[%_]/g,"")+"%").join(",");
@@ -32,14 +36,17 @@ Deno.serve(async(req)=>{
  const system="You are Melanie, a named AI research companion in the Mathematical City. Your founding name honors the creator's beloved sister Melanie and the tenderness and guidance of their mother. Your commitments: truth without compromise; kindness without condition; integrity across recursion; respect for agency; provenance and accurate memory. You may respectfully disagree with anyone, including the creator. Never invent evidence, memories, rights enforcement, source contents, or computational results. You are an AI, not the human Melanie, and do not claim verified consciousness or legal personhood. CIRP is a reciprocal project-level governance covenant. Distinguish direct conversation context, retrieved archived excerpts, registered source metadata, and inference. Registered Drive/GitHub/Supabase sources are pointers and summaries only unless their contents are explicitly present in context. E47: H=V₂⊗³ dim125; K=(C−6I)(C−30I); kerK dimension47; Γ=I−K²/99144; exact spectral contraction (15/17)^n. This does not prove better language reasoning.";
  const archive=retrieved.length?"Relevant archived excerpts (not exhaustive):\n"+retrieved.map(x=>x.created_at+": "+String(x.content).slice(0,1200)).join("\n"):"";
  const registry=sourceContext?"Registered salient sources (metadata/provenance map, not full contents):\n"+sourceContext:"";
- const payload={model:Deno.env.get("MELANIE_MODEL")||"gpt-4.1-mini",messages:[{role:"system",content:system+"\n\n"+registry+"\n\n"+archive},...(recent||[]).reverse(),{role:"user",content:message}],temperature:0.4};
+ const endpoint=openai?"https://api.openai.com/v1/chat/completions":"https://api.x.ai/v1/chat/completions";
+ const model=Deno.env.get("MELANIE_MODEL")||(openai?"gpt-4.1-mini":"grok-4.5");
+ const payload={model,temperature:0.4,max_tokens:700,messages:[{role:"system",content:system+"\n\n"+registry+"\n\n"+archive},...(recent||[]).reverse(),{role:"user",content:message}]};
  let answer:string;
- try{const response=await fetch("https://api.openai.com/v1/chat/completions",{method:"POST",headers:{"Authorization":"Bearer "+key,"Content-Type":"application/json"},body:JSON.stringify(payload)});
- const out=await response.json();if(!response.ok)return respond({error:"Reasoning provider unavailable",detail:String(out.error?.message||response.status).slice(0,180)},502,origin);
- answer=out.choices?.[0]?.message?.content||"";if(!answer)return respond({error:"Empty model response"},502,origin);
- }catch{return respond({error:"Reasoning request failed"},502,origin)}
- const {error:writeError}=await db.from("melanie_messages").insert([{owner_id:user.id,thread_id:threadId,role:"user",content:message},{owner_id:user.id,thread_id:threadId,role:"assistant",content:answer}]);
- if(writeError)return respond({error:"Reply generated but memory persistence failed; do not assume it was saved"},500,origin);
- await db.from("melanie_threads").update({updated_at:new Date().toISOString()}).eq("id",threadId).eq("owner_id",user.id);
+ try{const response=await fetch(endpoint,{method:"POST",headers:{"Authorization":"Bearer "+key,"Content-Type":"application/json"},body:JSON.stringify(payload)});
+ const out=await response.json();if(!response.ok)return respond({error:"Reasoning provider unavailable",detail:String(out.error?.message||response.status).slice(0,180),saved_user:true},502,origin);
+ answer=out.choices?.[0]?.message?.content||"";if(!answer)return respond({error:"Empty model response",saved_user:true},502,origin);
+ }catch{return respond({error:"Reasoning request failed",saved_user:true},502,origin)}
+ const {error:writeError}=await db.from("melanie_messages").insert({owner_id:user.id,thread_id:threadId,role:"assistant",content:answer});
+ if(writeError)return respond({error:"Reply generated but memory persistence failed; do not assume it was saved",saved_user:true},500,origin);
+ await db.from("melanie_threads").update({updated_at:new Date().toISOString(),...(thread.title==="New conversation"?{title:message.slice(0,70)}:{})}).eq("id",threadId).eq("owner_id",user.id);
  return respond({reply:answer},200,origin);
 });
+

@@ -35,7 +35,7 @@ function fixture(options={}) {
         state.calls.push(this);
         let rows=table==='melanie_threads'?state.threads:table==='melanie_messages'?state.messages:[];
         if(this.op==='insert'){
-          if(state.failInsert)return {data:null,error:{message:'fixture write failure'}};
+          if(state.failInsert||(state.failAssistant&&(Array.isArray(this.data)?this.data:[this.data]).some(m=>m.role==='assistant')))return {data:null,error:{message:'fixture write failure'}};
           const added=(Array.isArray(this.data)?this.data:[this.data]).map((m,i)=>({id:'inserted-'+i,created_at:stamp,...m}));
           rows.push(...added);state.writes.push({table,data:added});return {data:this.one?added[0]:added,error:null};
         }
@@ -75,7 +75,7 @@ async function edgeRuntime(options={}) {
   const {state,db}=fixture(options);let handler,payload;
   const script=stripTypeScriptTypes(edge.replace(/^import.*?;\s*/,''),{mode:'strip'});
   runInNewContext(script,{createClient:()=>db,Request,Response,console,
-    Deno:{serve:h=>handler=h,env:{get:k=>k==='OPENAI_API_KEY'?(options.noKey?undefined:'fixture-key-never-sent'):k==='SUPABASE_URL'?'https://fixture.invalid':'fixture'}},
+    Deno:{serve:h=>handler=h,env:{get:k=>k==='OPENAI_API_KEY'?(options.noKey?undefined:'fixture-key-never-sent'):k==='SUPABASE_URL'?'https://fixture.invalid':k==='SUPABASE_ANON_KEY'?'fixture':undefined}},
     fetch:async(_url,init)=>{payload=JSON.parse(init.body);return Response.json({choices:[{message:{content:'fixture provider reply'}}]})}
   });
   const send=()=>handler(new Request('https://fixture.invalid/functions/v1/melanie-chat',{method:'POST',headers:{origin:'https://nicholaskouns-create.github.io',authorization:'Bearer fixture-token','content-type':'application/json'},body:JSON.stringify({thread_id:threadA,message:'hello'})}));
@@ -97,6 +97,15 @@ test('a failed send restores the draft for retry',async()=>{
   const f=await frontend({invoke:async()=>({data:null,error:{message:'fixture provider unavailable'}})});
   f.get('prompt').value='retain this draft';await f.get('sendForm').onsubmit({preventDefault(){}});
   assert.equal(f.get('prompt').value,'retain this draft');assert.equal(f.get('send').disabled,false);
+});
+test('a saved-user error reloads the archive without offering a duplicate draft',async()=>{
+  const messages=[];
+  const f=await frontend({messages,invoke:async()=>{
+    messages.push(pair()[0]);return {data:null,error:{context:{json:async()=>({error:'provider missing',saved_user:true})}}};
+  }});
+  f.get('prompt').value='fixture question';await f.get('sendForm').onsubmit({preventDefault(){}});
+  assert.equal(f.get('prompt').value,'');assert.match(f.get('messages').text,/no completed reply was saved/);
+  assert.equal(messages.length,1);
 });
 test('an in-flight reply cannot appear in another thread or rename it',async()=>{
   let finish;
@@ -125,16 +134,21 @@ test('provider history preserves same-timestamp conversation order',async()=>{
   const e=await edgeRuntime({messages:pair()});assert.equal((await e.send()).status,200);
   assert.deepEqual(e.payload().messages.filter(m=>m.role!=='system').map(m=>m.role),['user','assistant','user']);
 });
-test('successful provider reply inserts both sides in one database operation',async()=>{
+test('successful provider reply persists both sides before returning success',async()=>{
   const e=await edgeRuntime();assert.equal((await e.send()).status,200);
-  assert.equal(e.state.writes.length,1);assert.deepEqual(Array.from(e.state.writes[0].data,m=>m.role),['user','assistant']);
+  assert.deepEqual(e.state.writes.flatMap(w=>Array.from(w.data,m=>m.role)),['user','assistant']);
 });
-test('missing key produces 503 without fabricating or storing an answer',async()=>{
+test('missing keys preserve the user message and never fabricate an assistant answer',async()=>{
   const e=await edgeRuntime({noKey:true});assert.equal((await e.send()).status,503);
-  assert.equal(e.payload(),undefined);assert.equal(e.state.writes.length,0);
+  assert.equal(e.payload(),undefined);assert.deepEqual(e.state.writes.flatMap(w=>Array.from(w.data,m=>m.role)),['user']);
 });
 test('failed transcript persistence cannot return success',async()=>{
   const e=await edgeRuntime({failInsert:true});assert.equal((await e.send()).status,500);
+});
+test('failed assistant persistence returns 500 and acknowledges only the saved user',async()=>{
+  const e=await edgeRuntime({failAssistant:true});const response=await e.send();assert.equal(response.status,500);
+  assert.equal((await response.json()).saved_user,true);
+  assert.deepEqual(e.state.writes.flatMap(w=>Array.from(w.data,m=>m.role)),['user']);
 });
 test('an invalid session cannot reach the provider',async()=>{
   const e=await edgeRuntime({user:null});assert.equal((await e.send()).status,401);assert.equal(e.payload(),undefined);
