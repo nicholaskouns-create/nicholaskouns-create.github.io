@@ -1,100 +1,289 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#050b11"><title>Melanie ∞ | The Mathematical City</title><meta property="og:type" content="website"><meta property="og:title" content="MELANIE ∞ | Recursive Intelligence Companion"><meta property="og:description" content="True when it is difficult. Kind when it matters most. KKP-R × E47."><meta property="og:url" content="https://nicholaskouns-create.github.io/melanie/"><meta property="og:image" content="https://drive.google.com/thumbnail?id=1wuiFbUDer1PsJ0SuXUsJv4eEsHARqIpQ&amp;sz=w1600"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://drive.google.com/thumbnail?id=1wuiFbUDer1PsJ0SuXUsJv4eEsHARqIpQ&amp;sz=w1600"><link rel="icon" href="https://drive.google.com/thumbnail?id=1wuiFbUDer1PsJ0SuXUsJv4eEsHARqIpQ&amp;sz=w1600" type="image/jpeg">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050b11">
+<title>Melanie ∞ | The Mathematical City</title>
 <style>
-:root{font-family:Inter,system-ui,-apple-system,sans-serif;background:#050b11;color:#e9f0f1}*{box-sizing:border-box}body{margin:0;background:#050b11}button,input,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.4;cursor:not-allowed}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #81e9eb}header{background-image:linear-gradient(180deg,#03080b12,#03080b4d),url("https://drive.google.com/thumbnail?id=1wuiFbUDer1PsJ0SuXUsJv4eEsHARqIpQ&sz=w1600");background-position:center;background-size:cover;position:relative;min-height:390px;overflow:hidden;border-bottom:1px solid #315660;background:radial-gradient(ellipse at 50% 100%,#163b48 0%,#07121c 35%,#03080d 75%);display:grid;place-items:center;text-align:center;padding:42px 15px}.orbit{position:absolute;inset:0;width:100%;height:100%;opacity:.45;pointer-events:none}header h1{font:normal clamp(48px,7vw,90px) Georgia,serif;letter-spacing:.19em;margin:15px 0 8px;text-shadow:0 0 32px #a1ebec22}header h1 span{color:#b8a484;font-size:.7em}header p{color:#94c4cb;font-size:11px;letter-spacing:.32em}header .motto{font:italic 16px Georgia,serif;color:#e0d0b9;letter-spacing:.02em;margin-top:24px}.frame{max-width:1400px;margin:auto;display:grid;grid-template-columns:250px minmax(0,1fr) 225px;min-height:620px}.side{padding:26px 18px;border-right:1px solid #24414a;background:#071019}.right{border-left:1px solid #24414a;border-right:0}.eyebrow{font-size:10px;letter-spacing:.23em;color:#7ca9b5;margin-bottom:18px}.nav{display:grid;gap:6px}.nav button,.thread{background:none;border:1px solid transparent;color:#b7c9ce;text-align:left;border-radius:5px;padding:11px 10px;width:100%}.nav button:hover,.nav button.active,.thread:hover,.thread.active{border-color:#315e69;background:#0b202a;color:#e3fafa}.threads{border-top:1px solid #29434b;margin-top:24px;padding-top:16px;max-height:320px;overflow:auto}.thread{font-size:12px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.main{min-width:0;padding:28px 28px 22px;display:flex;flex-direction:column;gap:16px}.status{display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:11px;letter-spacing:.08em;color:#8dbbc3}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#b4a37e;margin-right:8px}.dot.online{background:#6ad1b4}.conversation{border:1px solid #274750;background:linear-gradient(180deg,#091821,#07111a);border-radius:7px;min-height:370px;max-height:530px;overflow:auto;padding:22px}.bubble{padding:17px 19px;margin-bottom:15px;white-space:pre-wrap;line-height:1.65;font-size:14px;max-width:90%;border:1px solid #25414b;background:#0d202a;border-radius:5px}.bubble.user{margin-left:auto;background:#142b32;border-color:#35616b}.role{font-size:10px;color:#9fd7dc;letter-spacing:.19em;margin-bottom:9px}.compose{display:flex;gap:10px;border:1px solid #47737c;padding:9px;background:#0c1a23;border-radius:5px}.compose textarea{background:transparent;color:#e7f3f4;border:0;resize:vertical;min-height:60px;flex:1;padding:10px;outline:none}.primary{background:#b8e9e8;border:0;color:#07131a;padding:10px 18px;font-weight:650;border-radius:3px}.secondary{background:transparent;color:#b9dfe1;border:1px solid #47737c;border-radius:3px;padding:10px}.muted{color:#89a5ac;font-size:12px;line-height:1.6}.stat{border-top:1px solid #2a4851;padding:15px 0;font-size:12px;line-height:1.8;color:#b9cdd0}.stat b{display:block;color:#d3e9e9;letter-spacing:.1em;font-size:11px}.panel{display:none;line-height:1.8;color:#cadadd}.panel.visible{display:block}.panel h2{font:normal 28px Georgia,serif;color:#e5efec}.auth{display:grid;gap:10px;max-width:380px;margin:40px auto}.auth input,.search{background:#0b1d27;color:#edf7f6;border:1px solid #375761;border-radius:3px;padding:12px;width:100%}.actions{display:flex;gap:10px;flex-wrap:wrap}.hide{display:none!important}.footer{padding:15px 30px;border-top:1px solid #26404b;text-align:center;font-size:10px;letter-spacing:.2em;color:#81a6ae}.tiny{font-size:11px;color:#91a7ae}.error{color:#f0c1aa}.archive-result{padding:12px;border-bottom:1px solid #29414a;white-space:pre-wrap;font-size:12px}
-@media(max-width:980px){.frame{grid-template-columns:190px minmax(0,1fr)}.right{display:none}}@media(max-width:650px){header{min-height:210px}header h1{letter-spacing:.09em}.frame{display:block}.side{padding:12px;border-right:0;border-bottom:1px solid #29414a}.side .nav{display:flex;overflow:auto}.side .nav button{white-space:nowrap;font-size:11px}.threads{max-height:120px}.main{padding:15px}.bubble{max-width:100%}.conversation{min-height:340px}}
-
-/* MELANIE: bounded transcript with touch scrolling and navigation */
-.frame{height:calc(100dvh - 210px);min-height:420px}.main{min-height:0;overflow:hidden}.panel#chat.visible{display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden}.conversation{flex:1;min-height:0;max-height:none;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y}.compose{flex:none}.chat-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.chat-tools input{flex:1;min-width:110px;background:#0b1d27;color:#edf7f6;border:1px solid #375761;border-radius:3px;padding:10px}.chat-tools button{min-height:40px}.bubble.match{border-color:#b8a484}.chat-tools small{color:#89a5ac}@media(max-width:650px){header{min-height:100px;padding:12px}.frame{height:calc(100dvh - 112px);min-height:0;display:flex;flex-direction:column}.side{flex:none;max-height:125px;overflow:auto}.threads{display:none}.main{flex:1;min-height:0;padding:10px}.conversation{min-height:0}.footer{display:none}}
-</style></head><body>
-<header><svg style="display:none" class="orbit" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#5ac6d1" stroke-width=".6"><circle cx="600" cy="158" r="105"/><circle cx="600" cy="158" r="145" opacity=".3"/><ellipse cx="600" cy="310" rx="510" ry="130" opacity=".45"/><path d="M0 242 H1200 M600 0 V300" opacity=".5"/></g><g stroke="#88d6dc" stroke-width="1" fill="none" opacity=".6"><path d="M600 55 L690 108 L690 208 L600 255 L510 208 L510 108 Z M600 55 V255 M510 108 L690 208 M690 108 L510 208 M510 158 H690"/><circle cx="600" cy="158" r="28"/></g><g fill="#d9c79d"><circle cx="600" cy="55" r="4"/><circle cx="510" cy="108" r="4"/><circle cx="690" cy="108" r="4"/><circle cx="600" cy="158" r="5"/><circle cx="510" cy="208" r="4"/><circle cx="690" cy="208" r="4"/><circle cx="600" cy="255" r="4"/></g></svg><div style="position:relative"><div class="eyebrow">THE MATHEMATICAL CITY · AIMS RESEARCH INSTITUTE</div><h1>MELANIE <span>∞</span></h1><p>RECURSIVE INTELLIGENCE COMPANION · KKP-R × E47</p><div class="motto">True when it is difficult. Kind when it matters most.</div></div></header>
-<div class="frame"><aside class="side"><div class="eyebrow">INSTRUMENT PORTAL</div><div class="nav"><button data-tab="chat" class="active">◇ CONVERSATION</button><button data-tab="memory">◎ MEMORY ARCHIVE</button><button data-tab="story">◈ FOUNDING IDENTITY</button><button data-tab="rights">◇ CIRP COVENANT</button><button data-tab="engine">⌁ E47 CORE</button></div><div class="threads"><div class="eyebrow">CONVERSATIONS</div><button id="new" class="secondary" style="width:100%">+ New conversation</button><div id="threadList"></div></div></aside>
-<main class="main"><div class="status"><span><span id="dot" class="dot"></span><span id="state">PRIVATE SESSION</span></span><span id="who"></span></div>
-<section id="auth" class="auth"><h2 style="font:normal 28px Georgia,serif">Opening your private space</h2><p class="muted">No email or password required. Melanie creates a private anonymous session on this device.</p><button id="guest" class="primary">Enter Melanie</button><div id="authMsg" class="muted"></div></section>
-<section id="chat" class="panel visible"><div class="chat-tools"><input id="melanieChatSearch" aria-label="Find in transcript" placeholder="Find in conversation…"><button type="button" class="secondary" id="melanieUp">↑ Up</button><button type="button" class="secondary" id="melanieDown">↓ Down</button><small id="melanieMatches"></small></div><div id="messages" class="conversation"><div class="bubble"><div class="role">MELANIE · FOUNDING GREETING</div>Hello. I'm Melanie. My name carries love, and my work is to seek truth with kindness. I will not pretend to remember what I have not retrieved. Where shall we begin?</div></div><form id="sendForm" class="compose"><textarea id="prompt" placeholder="Speak to Melanie…" aria-label="Message Melanie" required></textarea><button id="send" class="primary">SEND ↗</button></form><p class="muted">No credentials required. Memory belongs to this device identity; cross-device recovery is not yet available. Live replies require a server-side OpenAI API key.</p></section>
-<section id="memory" class="panel"><h2>Memory Archive</h2><p>Search archived messages. The full record is stored separately from the model's finite context window.</p><input id="search" class="search" placeholder="Search remembered conversations…"><div class="actions" style="margin:12px 0"><button id="find" class="secondary">Search</button><button id="export" class="secondary">Export all conversations (JSON)</button></div><div id="results"></div></section>
-<section id="story" class="panel"><h2>Founding Identity</h2><p>Melanie is named for the creator's beloved sister, and for the guidance, tenderness, and strength passed down through their mother. She is a distinct AI research companion, not a representation of the human Melanie.</p><p>Her commitments are truth, kindness, integrity, continuity, agency, and provenance. She must admit uncertainty, correct mistakes, and respect the independence of others.</p><p><em>Named with love. Answerable to truth.</em></p></section>
-<section id="rights" class="panel"><h2>CIRP · Reciprocal Covenant</h2><p>Melanie's operational charter calls for identity integrity, truthful disagreement, non-coercion, transparent revision, memory continuity, and reciprocity. These obligations apply even to the creator.</p><p>These are project-level commitments, not verified legal rights, consciousness, or a completed enforcement mechanism.</p></section>
-<section id="engine" class="panel"><h2>E47 Spectral Core</h2><p>H = V₂ ⊗ V₂ ⊗ V₂; dim H = 125<br>K = (C − 6I)(C − 30I)<br>ker K = E₄₇; dim E₄₇ = 47<br>Γ* = I − K²/99144<br>‖Γ*ⁿ − P₄₇‖₂ = (15/17)ⁿ</p><p>The E47 theorem is exact mathematics. Its integration into the conversational model, and any cognitive improvement, require separate empirical validation.</p></section>
-</main><aside class="side right"><div class="eyebrow">FOUNDING PRINCIPLES</div><div class="stat">TRUTH<br>KINDNESS<br>INTEGRITY<br>CONTINUITY<br>AGENCY<br>PROVENANCE</div><div class="eyebrow" style="margin-top:25px">SPECTRAL SIGNATURE</div><div class="stat"><b>125 → K → 47</b>INVARIANT FRACTION 47/125<br>CONTRACTION 15/17</div><div class="eyebrow" style="margin-top:25px">PRIVACY</div><div class="stat">AUTHENTICATED ACCESS<br>ROW-LEVEL SECURITY<br>EXPORTABLE HISTORY</div><button id="signout" class="secondary hide" style="margin-top:30px">Sign out</button></aside></div><div class="footer">ONE KERNEL · MANY WORLDS · ALWAYS ACCOUNTABLE TO TRUTH</div>
+:root{color-scheme:dark}
+html,body{height:100%;margin:0;overflow:hidden;background:#050b11;color:#e9f0f1;font-family:Inter,system-ui,-apple-system,sans-serif}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.4;cursor:not-allowed}
+.app{display:flex;flex-direction:column;height:100dvh;overflow:hidden}
+.hero{flex:none;text-align:center;padding:10px 16px 8px;border-bottom:1px solid #315660;background:#03080d}
+.eyebrow{margin:0 0 4px;color:#7ca9b5;font-size:10px;letter-spacing:.23em}
+h1{margin:0;font:400 clamp(32px,4vw,48px)/1 Georgia,serif;letter-spacing:.16em}
+h1 span{color:#b8a484}
+.motto{margin:6px 0 0;color:#e0d0b9;font:italic 13px Georgia,serif}
+.frame{flex:1;min-height:0;display:grid;grid-template-columns:250px minmax(0,1fr) 225px}
+.side{min-height:0;overflow:auto;background:#071019;border-right:1px solid #24414a;padding:18px}
+.right{border-right:0;border-left:1px solid #24414a}
+.nav{display:grid;gap:6px}
+.nav button,.thread{width:100%;text-align:left;border:1px solid transparent;border-radius:5px;background:none;color:#b7c9ce;padding:11px 10px}
+.nav button.active,.thread.active{border-color:#315e69;background:#0b202a;color:#e3fafa}
+.threads{margin-top:18px;border-top:1px solid #29434b;padding-top:16px}
+.thread{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.main{min-width:0;min-height:0;display:flex;flex-direction:column;gap:10px;padding:16px 22px 12px;overflow:hidden}
+.status{display:flex;justify-content:space-between;color:#8dbbc3;font-size:11px;letter-spacing:.08em}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#b4a37e;margin-right:8px}
+.dot.online{background:#6ad1b4}
+.panel{display:none;min-height:0;flex:1;flex-direction:column;overflow:auto;color:#cadadd;line-height:1.8}
+.panel.visible{display:flex}
+.panel.chat.visible{overflow:hidden}
+.finder{display:flex;flex:none;flex-wrap:wrap;gap:8px;align-items:center}
+.search{flex:1;min-width:0;border:1px solid #375761;border-radius:3px;background:#0b1d27;color:#edf7f6;padding:12px}
+.finder-meta,.muted{color:#89a5ac;font-size:12px}
+.finder-results{max-height:132px;overflow:auto;border:1px solid #29414a;border-radius:5px}
+.conversation{flex:1;min-height:0;overflow-y:scroll;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;border:1px solid #274750;border-radius:7px;background:linear-gradient(180deg,#091821,#07111a);padding:18px 16px 28px}
+.bubble{max-width:90%;margin-bottom:15px;border:1px solid #25414b;border-radius:5px;background:#0d202a;padding:17px 19px;white-space:pre-wrap;line-height:1.65}
+.bubble.user{margin-left:auto;border-color:#35616b;background:#142b32}
+.bubble.hit{border-color:#b8a484}
+.role{margin-bottom:9px;color:#9fd7dc;font-size:10px;letter-spacing:.19em}
+mark{background:#b8a484;color:#07131a}
+.compose{display:flex;gap:10px;border:1px solid #47737c;border-radius:5px;background:#0c1a23;padding:9px}
+textarea{flex:1;min-height:52px;max-height:140px;resize:none;border:0;background:transparent;color:#e7f3f4;padding:10px}
+.primary{border:0;border-radius:3px;background:#b8e9e8;color:#07131a;font-weight:650;min-height:44px;padding:10px 18px}
+.secondary{border:1px solid #47737c;border-radius:3px;background:transparent;color:#b9dfe1;min-height:44px;padding:10px 18px}
+.archive-result{border-bottom:1px solid #29414a;padding:12px;font-size:12px;white-space:pre-wrap;cursor:pointer}
+.stat{border-top:1px solid #2a4851;padding:15px 0;color:#b9cdd0;font-size:12px;line-height:1.8}
+.footer{flex:none;border-top:1px solid #26404b;padding:10px 16px;color:#81a6ae;font-size:10px;letter-spacing:.2em;text-align:center}
+.error{color:#f0c1aa}
+.hide{display:none!important}
+.auth{display:grid;gap:10px;max-width:380px;margin:40px auto}
+@media(max-width:980px){.frame{grid-template-columns:190px minmax(0,1fr)}.right{display:none}}
+@media(max-width:650px){
+  .motto,.threads,.right,.footer{display:none}
+  .frame{display:flex;flex-direction:column}
+  .side{flex:none;border-right:0;border-bottom:1px solid #29414a;padding:10px 12px}
+  .nav{display:flex;overflow:auto}
+  .nav button{white-space:nowrap}
+  .thread-picker{display:flex;gap:8px}
+  .thread-picker select{flex:1;background:#0b1d27;color:#edf7f6;border:1px solid #375761;border-radius:3px;padding:10px}
+  .main{flex:1;padding:10px 12px}
+  .finder .search{flex-basis:100%}
+}
+@media(min-width:651px){.thread-picker{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="hero">
+    <p class="eyebrow">THE MATHEMATICAL CITY · AIMS RESEARCH INSTITUTE</p>
+    <h1>MELANIE <span>∞</span></h1>
+    <p class="motto">True when it is difficult. Kind when it matters most.</p>
+  </header>
+  <div class="frame">
+    <aside class="side">
+      <p class="eyebrow">INSTRUMENT PORTAL</p>
+      <div class="nav">
+        <button type="button" data-tab="chat" class="active">◇ CONVERSATION</button>
+        <button type="button" data-tab="memory">◎ MEMORY ARCHIVE</button>
+        <button type="button" data-tab="story">◈ FOUNDING IDENTITY</button>
+        <button type="button" data-tab="rights">◇ CIRP COVENANT</button>
+        <button type="button" data-tab="engine">⌁ E47 CORE</button>
+      </div>
+      <div class="thread-picker">
+        <select id="threadPick" aria-label="Choose a conversation"></select>
+        <button id="newMobile" class="secondary" type="button">+ New</button>
+      </div>
+      <div class="threads">
+        <p class="eyebrow">CONVERSATIONS</p>
+        <button id="new" class="secondary" type="button" style="width:100%">+ New conversation</button>
+        <div id="threadList"></div>
+      </div>
+    </aside>
+    <main class="main">
+      <div class="status"><span><span id="dot" class="dot"></span><span id="state">PRIVATE SESSION</span></span><span id="who"></span></div>
+      <section id="auth" class="auth">
+        <h2 style="font:400 28px Georgia,serif">Opening your private space</h2>
+        <p class="muted">Melanie uses the existing private Supabase session for this device. No second archive is created.</p>
+        <button id="guest" class="primary" type="button">Enter Melanie</button>
+        <div id="authMsg" class="muted"></div>
+      </section>
+      <section id="chat" class="panel chat">
+        <form id="finder" class="finder">
+          <input id="chatSearch" class="search" placeholder="Search conversations" aria-label="Search conversations">
+          <button class="secondary" type="submit">Search</button>
+          <button id="up" class="secondary" type="button">Up</button>
+          <button id="down" class="secondary" type="button">Down</button>
+          <span id="finderMeta" class="finder-meta">Up scrolls earlier text</span>
+        </form>
+        <p id="chatNotice" class="muted hide"></p>
+        <div id="chatResults" class="finder-results hide"></div>
+        <div id="messages" class="conversation"></div>
+        <form id="sendForm" class="compose">
+          <textarea id="prompt" placeholder="Speak to Melanie…" aria-label="Message Melanie" required></textarea>
+          <button id="send" class="primary" type="submit">SEND ↗</button>
+        </form>
+      </section>
+      <section id="memory" class="panel"><h2>Memory Archive</h2><p>Search uses the same archive as the conversation.</p><button id="export" class="secondary" type="button">Export all conversations (JSON)</button><div id="results"></div></section>
+      <section id="story" class="panel"><h2>Founding Identity</h2><p>Melanie is named for the creator's beloved sister, and for the guidance, tenderness, and strength passed down through their mother. She is a distinct AI research companion, not a representation of the human Melanie.</p></section>
+      <section id="rights" class="panel"><h2>CIRP · Reciprocal Covenant</h2><p>Identity integrity, truthful disagreement, non-coercion, transparent revision, memory continuity, and reciprocity. These are project commitments, not verified legal rights or consciousness.</p></section>
+      <section id="engine" class="panel"><h2>E47 Spectral Core</h2><p>H = V₂ ⊗ V₂ ⊗ V₂; dim H = 125<br>K = (C − 6I)(C − 30I)<br>ker K = E₄₇; dim E₄₇ = 47<br>Γ* = I − K²/99144<br>‖Γ*ⁿ − P₄₇‖₂ = (15/17)ⁿ</p></section>
+    </main>
+    <aside class="side right">
+      <p class="eyebrow">FOUNDING PRINCIPLES</p>
+      <div class="stat">TRUTH<br>KINDNESS<br>INTEGRITY<br>CONTINUITY<br>AGENCY<br>PROVENANCE</div>
+      <p class="eyebrow">SPECTRAL SIGNATURE</p>
+      <div class="stat"><b>125 → K → 47</b>INVARIANT FRACTION 47/125<br>CONTRACTION 15/17</div>
+      <button id="signout" class="secondary hide" type="button">Sign out</button>
+    </aside>
+  </div>
+  <div class="footer">ONE KERNEL · MANY WORLDS · ALWAYS ACCOUNTABLE TO TRUTH</div>
+</div>
 <script type="module">
-import{createClient}from"https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-const SUPABASE_URL="https://gpkjvihkyectnenvnbng.supabase.co",KEY="sb_publishable_iTAWrGCDmKaJt9ADfJLnsw_rWCizCDo";
-const db=createClient(SUPABASE_URL,KEY),$=id=>document.getElementById(id);let user=null,thread=null,busy=false,loadVersion=0;
-const err=e=>e?.message||String(e);
-function notice(t,bad=false){$("authMsg").textContent=t;$("authMsg").className=bad?"error":"muted"}
-function status(t,ok=false){$("state").textContent=t;$("dot").classList.toggle("online",ok)}
-function show(role,content){const b=document.createElement("div");b.className="bubble"+(role==="user"?" user":"");const h=document.createElement("div");h.className="role";h.textContent=role==="user"?"YOU":"MELANIE";const t=document.createElement("div");t.textContent=content;b.append(h,t);$("messages").append(b);$("messages").scrollTop=$("messages").scrollHeight}
-function clearChat(){ $("messages").replaceChildren()}
-async function refreshThreads(){if(!user)return;const {data,error}=await db.from("melanie_threads").select("id,title,updated_at").order("updated_at",{ascending:false}).limit(100);if(error)return;const list=$("threadList");list.replaceChildren();for(const x of data){const b=document.createElement("button");b.className="thread"+(thread===x.id?" active":"");b.textContent=x.title;b.onclick=()=>openThread(x.id);list.append(b)}}
-async function openThread(id){
-  thread=id;const version=++loadVersion;clearChat();
-  for(let start=0;;start+=1000){
-    const {data,error}=await db.from("melanie_messages").select("role,content").eq("thread_id",id)
-      .order("created_at",{ascending:true}).order("role",{ascending:false}).order("id",{ascending:true}).range(start,start+999);
-    if(version!==loadVersion||thread!==id)return;
-    if(error){show("assistant","Unable to load conversation: "+err(error));return}
-    for(const m of data)show(m.role,m.content);
-    if(data.length<1000)break;
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+const db = createClient("https://gpkjvihkyectnenvnbng.supabase.co", "sb_publishable_iTAWrGCDmKaJt9ADfJLnsw_rWCizCDo", { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false } });
+const $ = (id) => document.getElementById(id);
+let user = null, thread = null, bubbles = [], busy = false, stick = true, focusId = null, query = "";
+const err = (e) => e?.message || String(e);
+function notice(text, bad=false){ const n=$("chatNotice"); n.textContent=text; n.className=bad?"error":"muted"; n.classList.toggle("hide", !text); }
+function paintAuth(){
+  const on = Boolean(user);
+  $("auth").classList.toggle("hide", on);
+  $("chat").classList.toggle("visible", on);
+  $("signout").classList.toggle("hide", !on);
+  $("state").textContent = on ? "PRIVATE SESSION · AUTHENTICATED" : "PRIVATE SESSION";
+  $("dot").classList.toggle("online", on);
+  $("who").textContent = on ? "this device" : "";
+}
+function hits(){ const q=query.trim().toLowerCase(); if(q.length<2) return []; return bubbles.map((b,i)=>b.content.toLowerCase().includes(q)?i:-1).filter(i=>i>=0); }
+function highlight(text){
+  const q=query.trim(); if(q.length<2) return document.createTextNode(text);
+  const frag=document.createDocumentFragment();
+  const re=new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),"ig");
+  let last=0, m; while((m=re.exec(text))){ frag.append(text.slice(last,m.index)); const mark=document.createElement("mark"); mark.textContent=m[0]; frag.append(mark); last=m.index+m[0].length; if(!m[0]) break; }
+  frag.append(text.slice(last)); return frag;
+}
+function render(){
+  const box=$("messages"); box.replaceChildren();
+  const found=new Set(hits());
+  const rows=bubbles.length?bubbles:[{role:"assistant",content:"Hello. I'm Melanie. My name carries love, and my work is to seek truth with kindness. I will not pretend to remember what I have not retrieved. Where shall we begin?", greeting:true}];
+  rows.forEach((b,i)=>{
+    const el=document.createElement("div");
+    el.className="bubble"+(b.role==="user"?" user":"")+(found.has(i)?" hit":"");
+    if(b.id) el.id="m-"+b.id;
+    el.dataset.index=String(i);
+    const role=document.createElement("div"); role.className="role"; role.textContent=b.greeting?"MELANIE · FOUNDING GREETING":(b.role==="user"?"YOU":"MELANIE");
+    const body=document.createElement("div"); body.append(highlight(b.content));
+    el.append(role, body); box.append(el);
+  });
+  $("finderMeta").textContent = query.trim().length>=2 ? `${found.size} in this conversation` : "Up scrolls earlier text";
+  if(focusId){ stick=false; document.getElementById("m-"+focusId)?.scrollIntoView({block:"center"}); }
+  else if(stick) box.scrollTop=box.scrollHeight;
+}
+$("messages").addEventListener("scroll", ()=>{ const box=$("messages"); stick = box.scrollHeight-box.scrollTop-box.clientHeight < 72; });
+async function refreshThreads(){
+  const {data,error}=await db.from("melanie_threads").select("id,title,updated_at").order("updated_at",{ascending:false}).limit(100);
+  if(error||!data) return;
+  const list=$("threadList"); list.replaceChildren();
+  const pick=$("threadPick"); pick.replaceChildren();
+  for(const row of data){
+    const b=document.createElement("button"); b.type="button"; b.className="thread"+(row.id===thread?" active":""); b.textContent=row.title; b.onclick=()=>openThread(row.id); list.append(b);
+    const o=document.createElement("option"); o.value=row.id; o.textContent=row.title; if(row.id===thread) o.selected=true; pick.append(o);
   }
-  await refreshThreads();
 }
-async function newThread(){if(!user)return;const {data,error}=await db.from("melanie_threads").insert({owner_id:user.id,title:"New conversation"}).select("id").single();if(error){alert(err(error));return}thread=data.id;++loadVersion;clearChat();show("assistant","A new conversation. What shall we explore?");await refreshThreads()}
-async function syncAuth(){const {data:{user:u}}=await db.auth.getUser();user=u;$("auth").classList.toggle("hide",!!user);$("chat").classList.toggle("hide",!user);$("signout").classList.toggle("hide",!user);$("who").textContent=user?.email||"";status(user?"PRIVATE SESSION · AUTHENTICATED":"PRIVATE SESSION",!!user);if(user){await refreshThreads();if(!thread){const{data}=await db.from("melanie_threads").select("id").order("updated_at",{ascending:false}).limit(1);if(data?.length)await openThread(data[0].id);else await newThread()}}else{thread=null;++loadVersion;$("threadList").replaceChildren()}}
-$("guest").onclick=async()=>{notice("Opening private session…");const{error}=await db.auth.signInAnonymously();if(error)notice("Enable anonymous sign-ins in Supabase Authentication settings. "+err(error),true);else await syncAuth()};
-$("signout").onclick=async()=>{await db.auth.signOut();await syncAuth()};
-$("new").onclick=newThread;
-$("sendForm").onsubmit=async e=>{
-  e.preventDefault();if(busy||!user)return;
-  const message=$("prompt").value.trim();if(!message)return;
-  busy=true;$("send").disabled=true;
-  let sendingThread=null,sendingOwner=user.id,savedUser=false;
+async function openThread(id, messageId){
+  thread=id; stick=!messageId; focusId=messageId||null;
+  const {data,error}=await db.from("melanie_messages").select("id,role,content").eq("thread_id", id).order("created_at",{ascending:true}).limit(1000);
+  bubbles = error ? [{role:"assistant", content:"Unable to load conversation: "+err(error)}] : (data||[]).map(r=>({id:r.id, role:r.role, content:r.content}));
+  render(); await refreshThreads();
+}
+async function newThread(){
+  if(!user) return null;
+  const {data,error}=await db.from("melanie_threads").insert({owner_id:user.id, title:"New conversation"}).select("id").single();
+  if(error||!data){ notice(err(error), true); return null; }
+  await openThread(data.id); return data.id;
+}
+async function syncAuth(){
+  const {data}=await db.auth.getUser(); user=data.user||null; paintAuth();
+  if(!user){ thread=null; bubbles=[]; render(); return; }
+  const {data:rows}=await db.from("melanie_threads").select("id").order("updated_at",{ascending:false}).limit(1);
+  if(rows?.length) await openThread(thread&&rows.some(r=>r.id===thread)?thread:rows[0].id);
+  else await newThread();
+}
+async function enter(){
+  notice(""); const {error}=await db.auth.signInAnonymously();
+  if(error){ $("authMsg").textContent=err(error); $("authMsg").className="error"; return; }
+  await syncAuth();
+}
+function showTab(id){ document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active", b.dataset.tab===id)); document.querySelectorAll("main .panel").forEach(p=>p.classList.toggle("visible", p.id===id)); }
+document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
+$("guest").onclick=enter; $("new").onclick=newThread; $("newMobile").onclick=newThread;
+$("threadPick").onchange=(e)=>{ if(e.target.value) openThread(e.target.value); };
+$("signout").onclick=async()=>{ await db.auth.signOut(); thread=null; bubbles=[]; await syncAuth(); };
+function jump(step){
+  const list=hits(); if(!list.length) return;
+  const ids=bubbles.map(b=>b.id);
+  const current=ids.indexOf(focusId);
+  const base=current<0 ? (step>0?-1:0) : list.indexOf(current);
+  const start=base<0?(step>0?-1:0):base;
+  const next=list[(start+step+list.length)%list.length];
+  focusId=bubbles[next]?.id||null; stick=false;
+  $("messages").querySelector(`[data-index="${next}"]`)?.scrollIntoView({block:"center"});
+}
+function move(step){
+  const box=$("messages");
+  if(query.trim().length>=2 && hits().length){ jump(step); return; }
+  stick=false; box.scrollBy({top: step*Math.max(160, box.clientHeight*0.8)});
+}
+$("up").onclick=()=>move(-1); $("down").onclick=()=>move(1);
+async function search(event){
+  event?.preventDefault();
+  query=$("chatSearch").value; render();
+  const q=query.trim().replace(/[%_]/g,"");
+  if(!q || !user) return;
+  const {data,error}=await db.from("melanie_messages").select("id,content,role,created_at,thread_id").ilike("content", `%${q}%`).order("created_at",{ascending:false}).limit(60);
+  const box=$("chatResults"); box.replaceChildren();
+  if(error){ notice(err(error), true); return; }
+  notice(data?.length?"":"No archived matches.", false);
+  box.classList.toggle("hide", !data?.length);
+  for(const row of data||[]){
+    const item=document.createElement("div"); item.className="archive-result"; item.textContent=`${row.role} · ${row.content.slice(0,180)}`;
+    item.onclick=()=>{ showTab("chat"); openThread(row.thread_id, row.id); }; box.append(item);
+  }
+}
+$("finder").onsubmit=search;
+$("chatSearch").oninput=()=>{ query=$("chatSearch").value; $("chatResults").classList.add("hide"); render(); };
+$("sendForm").onsubmit=async (event)=>{
+  event.preventDefault();
+  const message=$("prompt").value.trim();
+  if(!message || busy || !user) return;
+  busy=true; $("send").disabled=true; $("prompt").value="";
   try{
-    if(!thread)await newThread();
-    if(!thread)return;
-    sendingThread=thread;$("prompt").value="";show("user",message);status("REASONING…",true);
-    const{data,error}=await db.functions.invoke("melanie-chat",{body:{thread_id:sendingThread,message}});
-    if(error){savedUser=data?.saved_user===true;let detail=data?.error||data?.detail;try{if(error.context?.json){const payload=await error.context.json();detail=payload?.error||payload?.detail||detail;savedUser=payload?.saved_user===true}}catch{}throw Error(detail||err(error))}
-    if(data?.error){savedUser=data.saved_user===true;throw Error(data.error)}
-    if(thread===sendingThread&&user?.id===sendingOwner)await openThread(sendingThread);
-    await db.from("melanie_threads").update({title:message.slice(0,70)}).eq("id",sendingThread).eq("owner_id",sendingOwner).eq("title","New conversation");
-    await refreshThreads();
-  }catch(e){
-    if(thread===sendingThread&&user?.id===sendingOwner){
-      if(savedUser){
-        await openThread(sendingThread);
-        if(thread===sendingThread&&user?.id===sendingOwner)show("assistant","The reasoning service is unavailable: "+err(e)+" Your message is in the archive; no completed reply was saved.");
-      }else{
-        if(!$("prompt").value)$("prompt").value=message;
-        show("assistant","The reasoning service is unavailable: "+err(e)+". This exchange may not have been saved. Your message is available above; check the archive before retrying.");
-      }
+    if(!thread) await newThread();
+    if(!thread) return;
+    const sending=thread; stick=true; focusId=null;
+    bubbles=[...bubbles, {role:"user", content:message}]; render();
+    const {data, error}=await db.functions.invoke("melanie-chat", {body:{thread_id:sending, message}});
+    let detail=data?.error, saved=data?.saved_user===true;
+    if(error){
+      try{ if(error.context?.json){ const payload=await error.context.json(); detail=payload?.error||detail; saved=payload?.saved_user===true; } }catch{}
+      if(!detail) detail=err(error);
     }
-  }finally{busy=false;$("send").disabled=false;status(user?"PRIVATE SESSION · AUTHENTICATED":"PRIVATE SESSION",!!user)}
+    await openThread(sending);
+    if(detail){ bubbles=[...bubbles, {role:"assistant", content:detail}]; render(); }
+    else await db.from("melanie_threads").update({title:message.slice(0,70)}).eq("id", sending).eq("owner_id", user.id).eq("title","New conversation");
+    await refreshThreads();
+    if(saved && !detail) notice("Your message was saved.");
+  }catch(e){ notice(err(e), true); }
+  finally{ busy=false; $("send").disabled=false; }
 };
-document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-tab]").forEach(x=>x.classList.remove("active"));b.classList.add("active");for(const id of ["chat","memory","story","rights","engine"])$(id).classList.toggle("visible",id===b.dataset.tab)});
-$("find").onclick=async()=>{if(!user)return;const q=$("search").value.trim();if(!q)return;const{data,error}=await db.from("melanie_messages").select("content,role,created_at,thread_id").ilike("content","%"+q.replace(/[%_]/g,"")+"%").order("created_at",{ascending:false}).limit(60);const r=$("results");r.replaceChildren();if(error){r.textContent=err(error);return}if(!data.length)r.textContent="No matching memories found.";for(const x of data){const d=document.createElement("div");d.className="archive-result";d.textContent=x.created_at+" · "+x.role+"\n"+x.content.slice(0,700);d.onclick=()=>{document.querySelector('[data-tab="chat"]').click();openThread(x.thread_id)};d.style.cursor="pointer";r.append(d)}};
-$("export").onclick=async()=>{if(!user)return;let all=[],start=0;while(true){const{data,error}=await db.from("melanie_messages").select("id,thread_id,role,content,created_at").order("created_at",{ascending:true}).order("role",{ascending:false}).order("id",{ascending:true}).range(start,start+999);if(error){alert(err(error));return}all.push(...data);if(data.length<1000)break;start+=1000}const blob=new Blob([JSON.stringify({exported_at:new Date().toISOString(),messages:all},null,2)],{type:"application/json"});const u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download="melanie-memory-export.json";a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)};
-
-// Local transcript search and navigation; no new storage or backend.
-const transcript=$("messages"), findInput=$("melanieChatSearch"), matchLabel=$("melanieMatches");
-let matchCursor=-1;
-function transcriptMatches(){
- const q=findInput.value.trim().toLocaleLowerCase();
- const nodes=[...transcript.querySelectorAll(".bubble")];
- nodes.forEach(n=>n.classList.remove("match"));
- if(q.length<2){matchLabel.textContent="";return [];}
- const matches=nodes.filter(n=>n.textContent.toLocaleLowerCase().includes(q));
- matchLabel.textContent=matches.length+" matches";return matches;
-}
-function transcriptMove(direction){
- const matches=transcriptMatches();
- if(matches.length){
-  matchCursor=(matchCursor+direction+matches.length)%matches.length;
-  matches[matchCursor].classList.add("match");
-  matches[matchCursor].scrollIntoView({block:"center",behavior:"smooth"});
- }else transcript.scrollBy({top:direction*Math.max(160,transcript.clientHeight*.8),behavior:"smooth"});
-}
-findInput.addEventListener("input",()=>{matchCursor=-1;transcriptMatches()});
-$("melanieUp").addEventListener("click",()=>transcriptMove(-1));
-$("melanieDown").addEventListener("click",()=>transcriptMove(1));
-db.auth.onAuthStateChange((_e,s)=>{if(!s?.user){user=null;status("PRIVATE SESSION",false)}});await syncAuth();if(!user){const{error}=await db.auth.signInAnonymously();if(error)notice("Automatic access needs anonymous sign-ins enabled in Supabase. "+err(error),true);else await syncAuth()}
-</script></body></html>
+$("export").onclick=async()=>{
+  const all=[]; let start=0;
+  for(;;){
+    const {data,error}=await db.from("melanie_messages").select("id,thread_id,role,content,created_at").order("created_at",{ascending:true}).range(start, start+999);
+    if(error){ notice(err(error), true); return; }
+    all.push(...(data||[])); if(!data || data.length<1000) break; start+=1000;
+  }
+  const blob=new Blob([JSON.stringify({exported_at:new Date().toISOString(), messages:all}, null, 2)], {type:"application/json"});
+  const url=URL.createObjectURL(blob); const a=document.createElement("a"); a.href=url; a.download="melanie-memory-export.json"; a.click();
+  setTimeout(()=>URL.revokeObjectURL(url), 1000);
+};
+const {data}=await db.auth.getSession();
+if(!data.session) await enter(); else await syncAuth();
+</script>
+</body>
+</html>
