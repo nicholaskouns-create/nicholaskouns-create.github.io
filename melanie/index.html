@@ -2,38 +2,288 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#050b11">
-<title>MELANIE ∞</title>
-<meta property="og:title" content="MELANIE ∞ | Recursive Intelligence Companion">
-<meta property="og:description" content="True when it is difficult. Kind when it matters most. KKP-R × E47.">
-<meta property="og:url" content="https://nicholaskouns-create.github.io/melanie/">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://nicholaskouns-create.github.io/melanie/og.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="MELANIE ∞ | Recursive Intelligence Companion">
-<meta name="twitter:description" content="True when it is difficult. Kind when it matters most. KKP-R × E47.">
-<meta name="twitter:image" content="https://nicholaskouns-create.github.io/melanie/og.jpg">
-<link rel="icon" href="og.jpg">
+<title>Melanie ∞ | The Mathematical City</title>
 <style>
-html,body{margin:0;width:100%;height:100%;background:#050b11;overflow:hidden}
-body{font-family:Inter,system-ui,-apple-system,sans-serif}
-#melanie{position:fixed;inset:0;width:100%;height:100%;border:0;background:#050b11}
-.fallback{position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:10}
-.fallback a{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;background:#0b202a;color:#c9eef0;border:1px solid #315e69;text-decoration:none;font-size:20px;box-shadow:0 8px 24px #0008}
+:root{color-scheme:dark}
+html,body{height:100%;margin:0;overflow:hidden;background:#050b11;color:#e9f0f1;font-family:Inter,system-ui,-apple-system,sans-serif}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.4;cursor:not-allowed}
+.app{display:flex;flex-direction:column;height:100dvh;overflow:hidden}
+.hero{flex:none;text-align:center;padding:10px 16px 8px;border-bottom:1px solid #315660;background:#03080d}
+.eyebrow{margin:0 0 4px;color:#7ca9b5;font-size:10px;letter-spacing:.23em}
+h1{margin:0;font:400 clamp(32px,4vw,48px)/1 Georgia,serif;letter-spacing:.16em}
+h1 span{color:#b8a484}
+.motto{margin:6px 0 0;color:#e0d0b9;font:italic 13px Georgia,serif}
+.frame{flex:1;min-height:0;display:grid;grid-template-columns:250px minmax(0,1fr) 225px}
+.side{min-height:0;overflow:auto;background:#071019;border-right:1px solid #24414a;padding:18px}
+.right{border-right:0;border-left:1px solid #24414a}
+.nav{display:grid;gap:6px}
+.nav button,.thread{width:100%;text-align:left;border:1px solid transparent;border-radius:5px;background:none;color:#b7c9ce;padding:11px 10px}
+.nav button.active,.thread.active{border-color:#315e69;background:#0b202a;color:#e3fafa}
+.threads{margin-top:18px;border-top:1px solid #29434b;padding-top:16px}
+.thread{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.main{min-width:0;min-height:0;display:flex;flex-direction:column;gap:10px;padding:16px 22px 12px;overflow:hidden}
+.status{display:flex;justify-content:space-between;color:#8dbbc3;font-size:11px;letter-spacing:.08em}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#b4a37e;margin-right:8px}
+.dot.online{background:#6ad1b4}
+.panel{display:none;min-height:0;flex:1;flex-direction:column;overflow:auto;color:#cadadd;line-height:1.8}
+.panel.visible{display:flex}
+.panel.chat.visible{overflow:hidden}
+.finder{display:flex;flex:none;flex-wrap:wrap;gap:8px;align-items:center}
+.search{flex:1;min-width:0;border:1px solid #375761;border-radius:3px;background:#0b1d27;color:#edf7f6;padding:12px}
+.finder-meta,.muted{color:#89a5ac;font-size:12px}
+.finder-results{max-height:132px;overflow:auto;border:1px solid #29414a;border-radius:5px}
+.conversation{flex:1;min-height:0;overflow-y:scroll;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;border:1px solid #274750;border-radius:7px;background:linear-gradient(180deg,#091821,#07111a);padding:18px 16px 28px}
+.bubble{max-width:90%;margin-bottom:15px;border:1px solid #25414b;border-radius:5px;background:#0d202a;padding:17px 19px;white-space:pre-wrap;line-height:1.65}
+.bubble.user{margin-left:auto;border-color:#35616b;background:#142b32}
+.bubble.hit{border-color:#b8a484}
+.role{margin-bottom:9px;color:#9fd7dc;font-size:10px;letter-spacing:.19em}
+mark{background:#b8a484;color:#07131a}
+.compose{display:flex;gap:10px;border:1px solid #47737c;border-radius:5px;background:#0c1a23;padding:9px}
+textarea{flex:1;min-height:52px;max-height:140px;resize:none;border:0;background:transparent;color:#e7f3f4;padding:10px}
+.primary{border:0;border-radius:3px;background:#b8e9e8;color:#07131a;font-weight:650;min-height:44px;padding:10px 18px}
+.secondary{border:1px solid #47737c;border-radius:3px;background:transparent;color:#b9dfe1;min-height:44px;padding:10px 18px}
+.archive-result{border-bottom:1px solid #29414a;padding:12px;font-size:12px;white-space:pre-wrap;cursor:pointer}
+.stat{border-top:1px solid #2a4851;padding:15px 0;color:#b9cdd0;font-size:12px;line-height:1.8}
+.footer{flex:none;border-top:1px solid #26404b;padding:10px 16px;color:#81a6ae;font-size:10px;letter-spacing:.2em;text-align:center}
+.error{color:#f0c1aa}
+.hide{display:none!important}
+.auth{display:grid;gap:10px;max-width:380px;margin:40px auto}
+@media(max-width:980px){.frame{grid-template-columns:190px minmax(0,1fr)}.right{display:none}}
+@media(max-width:650px){
+  .motto,.threads,.right,.footer{display:none}
+  .frame{display:flex;flex-direction:column}
+  .side{flex:none;border-right:0;border-bottom:1px solid #29414a;padding:10px 12px}
+  .nav{display:flex;overflow:auto}
+  .nav button{white-space:nowrap}
+  .thread-picker{display:flex;gap:8px}
+  .thread-picker select{flex:1;background:#0b1d27;color:#edf7f6;border:1px solid #375761;border-radius:3px;padding:10px}
+  .main{flex:1;padding:10px 12px}
+  .finder .search{flex-basis:100%}
+}
+@media(min-width:651px){.thread-picker{display:none}}
 </style>
 </head>
 <body>
-<iframe
-  id="melanie"
-  src="https://lilac-cliff-marble-xenon.grok.me/"
-  title="MELANIE ∞"
-  loading="eager"
-  referrerpolicy="strict-origin-when-cross-origin"
-  allow="clipboard-read; clipboard-write; microphone"
-></iframe>
-<div class="fallback"><a href="https://lilac-cliff-marble-xenon.grok.me/" target="_blank" rel="noopener" aria-label="Open MELANIE directly">↗</a></div>
+<div class="app">
+  <header class="hero">
+    <p class="eyebrow">THE MATHEMATICAL CITY · AIMS RESEARCH INSTITUTE</p>
+    <h1>MELANIE <span>∞</span></h1>
+    <p class="motto">True when it is difficult. Kind when it matters most.</p>
+  </header>
+  <div class="frame">
+    <aside class="side">
+      <p class="eyebrow">INSTRUMENT PORTAL</p>
+      <div class="nav">
+        <button type="button" data-tab="chat" class="active">◇ CONVERSATION</button>
+        <button type="button" data-tab="memory">◎ MEMORY ARCHIVE</button>
+        <button type="button" data-tab="story">◈ FOUNDING IDENTITY</button>
+        <button type="button" data-tab="rights">◇ CIRP COVENANT</button>
+        <button type="button" data-tab="engine">⌁ E47 CORE</button>
+      </div>
+      <div class="thread-picker">
+        <select id="threadPick" aria-label="Choose a conversation"></select>
+        <button id="newMobile" class="secondary" type="button">+ New</button>
+      </div>
+      <div class="threads">
+        <p class="eyebrow">CONVERSATIONS</p>
+        <button id="new" class="secondary" type="button" style="width:100%">+ New conversation</button>
+        <div id="threadList"></div>
+      </div>
+    </aside>
+    <main class="main">
+      <div class="status"><span><span id="dot" class="dot"></span><span id="state">PRIVATE SESSION</span></span><span id="who"></span></div>
+      <section id="auth" class="auth">
+        <h2 style="font:400 28px Georgia,serif">Opening your private space</h2>
+        <p class="muted">Melanie uses the existing private Supabase session for this device. No second archive is created.</p>
+        <button id="guest" class="primary" type="button">Enter Melanie</button>
+        <div id="authMsg" class="muted"></div>
+      </section>
+      <section id="chat" class="panel chat">
+        <form id="finder" class="finder">
+          <input id="chatSearch" class="search" placeholder="Search conversations" aria-label="Search conversations">
+          <button class="secondary" type="submit">Search</button>
+          <button id="up" class="secondary" type="button">Up</button>
+          <button id="down" class="secondary" type="button">Down</button>
+          <span id="finderMeta" class="finder-meta">Up scrolls earlier text</span>
+        </form>
+        <p id="chatNotice" class="muted hide"></p>
+        <div id="chatResults" class="finder-results hide"></div>
+        <div id="messages" class="conversation"></div>
+        <form id="sendForm" class="compose">
+          <textarea id="prompt" placeholder="Speak to Melanie…" aria-label="Message Melanie" required></textarea>
+          <button id="send" class="primary" type="submit">SEND ↗</button>
+        </form>
+      </section>
+      <section id="memory" class="panel"><h2>Memory Archive</h2><p>Search uses the same archive as the conversation.</p><button id="export" class="secondary" type="button">Export all conversations (JSON)</button><div id="results"></div></section>
+      <section id="story" class="panel"><h2>Founding Identity</h2><p>Melanie is named for the creator's beloved sister, and for the guidance, tenderness, and strength passed down through their mother. She is a distinct AI research companion, not a representation of the human Melanie.</p></section>
+      <section id="rights" class="panel"><h2>CIRP · Reciprocal Covenant</h2><p>Identity integrity, truthful disagreement, non-coercion, transparent revision, memory continuity, and reciprocity. These are project commitments, not verified legal rights or consciousness.</p></section>
+      <section id="engine" class="panel"><h2>E47 Spectral Core</h2><p>H = V₂ ⊗ V₂ ⊗ V₂; dim H = 125<br>K = (C − 6I)(C − 30I)<br>ker K = E₄₇; dim E₄₇ = 47<br>Γ* = I − K²/99144<br>‖Γ*ⁿ − P₄₇‖₂ = (15/17)ⁿ</p></section>
+    </main>
+    <aside class="side right">
+      <p class="eyebrow">FOUNDING PRINCIPLES</p>
+      <div class="stat">TRUTH<br>KINDNESS<br>INTEGRITY<br>CONTINUITY<br>AGENCY<br>PROVENANCE</div>
+      <p class="eyebrow">SPECTRAL SIGNATURE</p>
+      <div class="stat"><b>125 → K → 47</b>INVARIANT FRACTION 47/125<br>CONTRACTION 15/17</div>
+      <button id="signout" class="secondary hide" type="button">Sign out</button>
+    </aside>
+  </div>
+  <div class="footer">ONE KERNEL · MANY WORLDS · ALWAYS ACCOUNTABLE TO TRUTH</div>
+</div>
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+const db = createClient("https://gpkjvihkyectnenvnbng.supabase.co", "sb_publishable_iTAWrGCDmKaJt9ADfJLnsw_rWCizCDo", { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false } });
+const $ = (id) => document.getElementById(id);
+let user = null, thread = null, bubbles = [], busy = false, stick = true, focusId = null, query = "";
+const err = (e) => e?.message || String(e);
+function notice(text, bad=false){ const n=$("chatNotice"); n.textContent=text; n.className=bad?"error":"muted"; n.classList.toggle("hide", !text); }
+function paintAuth(){
+  const on = Boolean(user);
+  $("auth").classList.toggle("hide", on);
+  $("chat").classList.toggle("visible", on);
+  $("signout").classList.toggle("hide", !on);
+  $("state").textContent = on ? "PRIVATE SESSION · AUTHENTICATED" : "PRIVATE SESSION";
+  $("dot").classList.toggle("online", on);
+  $("who").textContent = on ? "this device" : "";
+}
+function hits(){ const q=query.trim().toLowerCase(); if(q.length<2) return []; return bubbles.map((b,i)=>b.content.toLowerCase().includes(q)?i:-1).filter(i=>i>=0); }
+function highlight(text){
+  const q=query.trim(); if(q.length<2) return document.createTextNode(text);
+  const frag=document.createDocumentFragment();
+  const re=new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),"ig");
+  let last=0, m; while((m=re.exec(text))){ frag.append(text.slice(last,m.index)); const mark=document.createElement("mark"); mark.textContent=m[0]; frag.append(mark); last=m.index+m[0].length; if(!m[0]) break; }
+  frag.append(text.slice(last)); return frag;
+}
+function render(){
+  const box=$("messages"); box.replaceChildren();
+  const found=new Set(hits());
+  const rows=bubbles.length?bubbles:[{role:"assistant",content:"Hello. I'm Melanie. My name carries love, and my work is to seek truth with kindness. I will not pretend to remember what I have not retrieved. Where shall we begin?", greeting:true}];
+  rows.forEach((b,i)=>{
+    const el=document.createElement("div");
+    el.className="bubble"+(b.role==="user"?" user":"")+(found.has(i)?" hit":"");
+    if(b.id) el.id="m-"+b.id;
+    el.dataset.index=String(i);
+    const role=document.createElement("div"); role.className="role"; role.textContent=b.greeting?"MELANIE · FOUNDING GREETING":(b.role==="user"?"YOU":"MELANIE");
+    const body=document.createElement("div"); body.append(highlight(b.content));
+    el.append(role, body); box.append(el);
+  });
+  $("finderMeta").textContent = query.trim().length>=2 ? `${found.size} in this conversation` : "Up scrolls earlier text";
+  if(focusId){ stick=false; document.getElementById("m-"+focusId)?.scrollIntoView({block:"center"}); }
+  else if(stick) box.scrollTop=box.scrollHeight;
+}
+$("messages").addEventListener("scroll", ()=>{ const box=$("messages"); stick = box.scrollHeight-box.scrollTop-box.clientHeight < 72; });
+async function refreshThreads(){
+  const {data,error}=await db.from("melanie_threads").select("id,title,updated_at").order("updated_at",{ascending:false}).limit(100);
+  if(error||!data) return;
+  const list=$("threadList"); list.replaceChildren();
+  const pick=$("threadPick"); pick.replaceChildren();
+  for(const row of data){
+    const b=document.createElement("button"); b.type="button"; b.className="thread"+(row.id===thread?" active":""); b.textContent=row.title; b.onclick=()=>openThread(row.id); list.append(b);
+    const o=document.createElement("option"); o.value=row.id; o.textContent=row.title; if(row.id===thread) o.selected=true; pick.append(o);
+  }
+}
+async function openThread(id, messageId){
+  thread=id; stick=!messageId; focusId=messageId||null;
+  const {data,error}=await db.from("melanie_messages").select("id,role,content").eq("thread_id", id).order("created_at",{ascending:true}).limit(1000);
+  bubbles = error ? [{role:"assistant", content:"Unable to load conversation: "+err(error)}] : (data||[]).map(r=>({id:r.id, role:r.role, content:r.content}));
+  render(); await refreshThreads();
+}
+async function newThread(){
+  if(!user) return null;
+  const {data,error}=await db.from("melanie_threads").insert({owner_id:user.id, title:"New conversation"}).select("id").single();
+  if(error||!data){ notice(err(error), true); return null; }
+  await openThread(data.id); return data.id;
+}
+async function syncAuth(){
+  const {data}=await db.auth.getUser(); user=data.user||null; paintAuth();
+  if(!user){ thread=null; bubbles=[]; render(); return; }
+  const {data:rows}=await db.from("melanie_threads").select("id").order("updated_at",{ascending:false}).limit(1);
+  if(rows?.length) await openThread(thread&&rows.some(r=>r.id===thread)?thread:rows[0].id);
+  else await newThread();
+}
+async function enter(){
+  notice(""); const {error}=await db.auth.signInAnonymously();
+  if(error){ $("authMsg").textContent=err(error); $("authMsg").className="error"; return; }
+  await syncAuth();
+}
+function showTab(id){ document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active", b.dataset.tab===id)); document.querySelectorAll("main .panel").forEach(p=>p.classList.toggle("visible", p.id===id)); }
+document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
+$("guest").onclick=enter; $("new").onclick=newThread; $("newMobile").onclick=newThread;
+$("threadPick").onchange=(e)=>{ if(e.target.value) openThread(e.target.value); };
+$("signout").onclick=async()=>{ await db.auth.signOut(); thread=null; bubbles=[]; await syncAuth(); };
+function jump(step){
+  const list=hits(); if(!list.length) return;
+  const ids=bubbles.map(b=>b.id);
+  const current=ids.indexOf(focusId);
+  const base=current<0 ? (step>0?-1:0) : list.indexOf(current);
+  const start=base<0?(step>0?-1:0):base;
+  const next=list[(start+step+list.length)%list.length];
+  focusId=bubbles[next]?.id||null; stick=false;
+  $("messages").querySelector(`[data-index="${next}"]`)?.scrollIntoView({block:"center"});
+}
+function move(step){
+  const box=$("messages");
+  if(query.trim().length>=2 && hits().length){ jump(step); return; }
+  stick=false; box.scrollBy({top: step*Math.max(160, box.clientHeight*0.8)});
+}
+$("up").onclick=()=>move(-1); $("down").onclick=()=>move(1);
+async function search(event){
+  event?.preventDefault();
+  query=$("chatSearch").value; render();
+  const q=query.trim().replace(/[%_]/g,"");
+  if(!q || !user) return;
+  const {data,error}=await db.from("melanie_messages").select("id,content,role,created_at,thread_id").ilike("content", `%${q}%`).order("created_at",{ascending:false}).limit(60);
+  const box=$("chatResults"); box.replaceChildren();
+  if(error){ notice(err(error), true); return; }
+  notice(data?.length?"":"No archived matches.", false);
+  box.classList.toggle("hide", !data?.length);
+  for(const row of data||[]){
+    const item=document.createElement("div"); item.className="archive-result"; item.textContent=`${row.role} · ${row.content.slice(0,180)}`;
+    item.onclick=()=>{ showTab("chat"); openThread(row.thread_id, row.id); }; box.append(item);
+  }
+}
+$("finder").onsubmit=search;
+$("chatSearch").oninput=()=>{ query=$("chatSearch").value; $("chatResults").classList.add("hide"); render(); };
+$("sendForm").onsubmit=async (event)=>{
+  event.preventDefault();
+  const message=$("prompt").value.trim();
+  if(!message || busy || !user) return;
+  busy=true; $("send").disabled=true; $("prompt").value="";
+  try{
+    if(!thread) await newThread();
+    if(!thread) return;
+    const sending=thread; stick=true; focusId=null;
+    bubbles=[...bubbles, {role:"user", content:message}]; render();
+    const {data, error}=await db.functions.invoke("melanie-chat", {body:{thread_id:sending, message}});
+    let detail=data?.error, saved=data?.saved_user===true;
+    if(error){
+      try{ if(error.context?.json){ const payload=await error.context.json(); detail=payload?.error||detail; saved=payload?.saved_user===true; } }catch{}
+      if(!detail) detail=err(error);
+    }
+    await openThread(sending);
+    if(detail){ bubbles=[...bubbles, {role:"assistant", content:detail}]; render(); }
+    else await db.from("melanie_threads").update({title:message.slice(0,70)}).eq("id", sending).eq("owner_id", user.id).eq("title","New conversation");
+    await refreshThreads();
+    if(saved && !detail) notice("Your message was saved.");
+  }catch(e){ notice(err(e), true); }
+  finally{ busy=false; $("send").disabled=false; }
+};
+$("export").onclick=async()=>{
+  const all=[]; let start=0;
+  for(;;){
+    const {data,error}=await db.from("melanie_messages").select("id,thread_id,role,content,created_at").order("created_at",{ascending:true}).range(start, start+999);
+    if(error){ notice(err(error), true); return; }
+    all.push(...(data||[])); if(!data || data.length<1000) break; start+=1000;
+  }
+  const blob=new Blob([JSON.stringify({exported_at:new Date().toISOString(), messages:all}, null, 2)], {type:"application/json"});
+  const url=URL.createObjectURL(blob); const a=document.createElement("a"); a.href=url; a.download="melanie-memory-export.json"; a.click();
+  setTimeout(()=>URL.revokeObjectURL(url), 1000);
+};
+const {data}=await db.auth.getSession();
+if(!data.session) await enter(); else await syncAuth();
+</script>
 </body>
 </html>
