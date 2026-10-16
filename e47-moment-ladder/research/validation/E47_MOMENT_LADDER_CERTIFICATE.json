@@ -1,0 +1,573 @@
+{
+  "boundary": "Finiteness on rungs k >= 2 is Siegel's theorem and is ineffective; beyond rung 4 the absence of double landings is computed to the stated bound, not proved. The moment rule is a chosen selector. No physical identification is claimed.",
+  "checks": {
+    "chain_s_equals_one_plus_u_over_two": true,
+    "chain_s_factors_as_u_times_x": true,
+    "chain_upper_root_is_next_lower_root": true,
+    "class_enumeration_matches_bruteforce_to_20000": true,
+    "cube_count_47_equals_5sq_plus_2x11": true,
+    "cube_count_F_k_sq_plus_F_k_minus_2_L_k_to_k121": true,
+    "cube_rung_is_genus_zero": true,
+    "cube_upper_multiplicity_F_k_minus_2_from_characters_k3_to_k15": true,
+    "every_rung_k_ge_2_is_genus_one": true,
+    "family_F_k_omega_tends_to_3_over_phi": true,
+    "ladder_rational_sigma_iff_pell_to_n300000": true,
+    "ladder_sigma_equals_y_c": true,
+    "moment_lemma_from_exact_characters_n3_25_243_2401": true,
+    "rational_spin_98_over_1501_lands_both_on_rung2": true,
+    "rung2_j2_kernel_is_spin5_sector_only": true,
+    "rung2_n25_no_double_landing_proof": true,
+    "rung3_rung4_441_wall": true,
+    "rungs_2_to_9_no_double_landing_below_10^1000": true
+  },
+  "exact": {
+    "cube_family": [
+      {
+        "J": "3/2",
+        "dim_carrier": 8,
+        "dim_kernel": 8,
+        "j": "1/2",
+        "k": 3,
+        "omega": "1",
+        "upper_multiplicity": 1
+      },
+      {
+        "J": "5",
+        "dim_carrier": 125,
+        "dim_kernel": 47,
+        "j": "2",
+        "k": 5,
+        "omega": "47/125",
+        "upper_multiplicity": 2
+      },
+      {
+        "J": "14",
+        "dim_carrier": 2197,
+        "dim_kernel": 314,
+        "j": "6",
+        "k": 7,
+        "omega": "314/2197",
+        "upper_multiplicity": 5
+      },
+      {
+        "J": "75/2",
+        "dim_carrier": 39304,
+        "dim_kernel": 2144,
+        "j": "33/2",
+        "k": 9,
+        "omega": "268/4913",
+        "upper_multiplicity": 13
+      },
+      {
+        "J": "99",
+        "dim_carrier": 704969,
+        "dim_kernel": 14687,
+        "j": "44",
+        "k": 11,
+        "omega": "14687/704969",
+        "upper_multiplicity": 34
+      },
+      {
+        "J": "260",
+        "dim_carrier": 12649337,
+        "dim_kernel": 100658,
+        "j": "116",
+        "k": 13,
+        "omega": "100658/12649337",
+        "upper_multiplicity": 89
+      },
+      {
+        "J": "1363/2",
+        "dim_carrier": 226981000,
+        "dim_kernel": 689912,
+        "j": "609/2",
+        "k": 15,
+        "omega": "86239/28372625",
+        "upper_multiplicity": 233
+      },
+      {
+        "J": "1785",
+        "dim_carrier": 4073003173,
+        "dim_kernel": 4728719,
+        "j": "798",
+        "k": 17,
+        "omega": "4728719/4073003173",
+        "upper_multiplicity": 610
+      },
+      {
+        "J": "4674",
+        "dim_carrier": 73087061741,
+        "dim_kernel": 32411114,
+        "j": "2090",
+        "k": 19,
+        "omega": "32411114/73087061741",
+        "upper_multiplicity": 1597
+      },
+      {
+        "J": "24475/2",
+        "dim_carrier": 1311494070536,
+        "dim_kernel": 222149072,
+        "j": "10945/2",
+        "k": 21,
+        "omega": "27768634/163936758817",
+        "upper_multiplicity": 4181
+      }
+    ],
+    "evidence": "E0 proofs; E1 exact integer and rational arithmetic",
+    "ladder": [
+      {
+        "k": 0,
+        "n": 1,
+        "sigma_over_c": 0,
+        "upper_root_coefficient": 1
+      },
+      {
+        "k": 1,
+        "n": 3,
+        "sigma_over_c": 2,
+        "upper_root_coefficient": 5
+      },
+      {
+        "k": 2,
+        "n": 25,
+        "sigma_over_c": 20,
+        "upper_root_coefficient": 45
+      },
+      {
+        "k": 3,
+        "n": 243,
+        "sigma_over_c": 198,
+        "upper_root_coefficient": 441
+      },
+      {
+        "k": 4,
+        "n": 2401,
+        "sigma_over_c": 1960,
+        "upper_root_coefficient": 4361
+      },
+      {
+        "k": 5,
+        "n": 23763,
+        "sigma_over_c": 19402,
+        "upper_root_coefficient": 43165
+      },
+      {
+        "k": 6,
+        "n": 235225,
+        "sigma_over_c": 192060,
+        "upper_root_coefficient": 427285
+      },
+      {
+        "k": 7,
+        "n": 2328483,
+        "sigma_over_c": 1901198,
+        "upper_root_coefficient": 4229681
+      },
+      {
+        "k": 8,
+        "n": 23049601,
+        "sigma_over_c": 18819920,
+        "upper_root_coefficient": 41869521
+      },
+      {
+        "k": 9,
+        "n": 228167523,
+        "sigma_over_c": 186298002,
+        "upper_root_coefficient": 414465525
+      }
+    ],
+    "limit": {
+      "F_k_omega": "1.854101966249684544613760503096",
+      "k": 121,
+      "three_over_phi": "1.854101966249684544613760503096"
+    },
+    "moment_lemma_rows": [
+      {
+        "dim_kernel": "8",
+        "j": "1/2",
+        "lower_root_lands": "1/2",
+        "mu": "9/4",
+        "n": 3,
+        "sigma": "3/2",
+        "upper_root_lands": "3/2"
+      },
+      {
+        "dim_kernel": "9",
+        "j": "1",
+        "lower_root_lands": "1",
+        "mu": "6",
+        "n": 3,
+        "sigma": "4",
+        "upper_root_lands": null
+      },
+      {
+        "dim_kernel": "16",
+        "j": "3/2",
+        "lower_root_lands": "3/2",
+        "mu": "45/4",
+        "n": 3,
+        "sigma": "15/2",
+        "upper_root_lands": null
+      },
+      {
+        "dim_kernel": "47",
+        "j": "2",
+        "lower_root_lands": "2",
+        "mu": "18",
+        "n": 3,
+        "sigma": "12",
+        "upper_root_lands": "5"
+      },
+      {
+        "dim_kernel": "36",
+        "j": "5/2",
+        "lower_root_lands": "5/2",
+        "mu": "105/4",
+        "n": 3,
+        "sigma": "35/2",
+        "upper_root_lands": null
+      },
+      {
+        "dim_kernel": "49",
+        "j": "3",
+        "lower_root_lands": "3",
+        "mu": "36",
+        "n": 3,
+        "sigma": "24",
+        "upper_root_lands": null
+      },
+      {
+        "dim_kernel": "64",
+        "j": "7/2",
+        "lower_root_lands": "7/2",
+        "mu": "189/4",
+        "n": 3,
+        "sigma": "63/2",
+        "upper_root_lands": null
+      },
+      {
+        "dim_kernel": "81",
+        "j": "4",
+        "lower_root_lands": "4",
+        "mu": "60",
+        "n": 3,
+        "sigma": "40",
+        "upper_root_lands": null
+      },
+      {
+        "dim_kernel": "4754560",
+        "j": "1/2",
+        "lower_root_lands": "3/2",
+        "mu": "75/4",
+        "n": 25,
+        "sigma": "15",
+        "upper_root_lands": null
+      },
+      {
+        "dim_kernel": "61716282030",
+        "j": "1",
+        "lower_root_lands": null,
+        "mu": "50",
+        "n": 25,
+        "sigma": "40",
+        "upper_root_lands": "9"
+      },
+      {
+        "dim_kernel": "59716463242176",
+        "j": "3/2",
+        "lower_root_lands": null,
+        "mu": "375/4",
+        "n": 25,
+        "sigma": "75",
+        "upper_root_lands": "25/2"
+      },
+      {
+        "dim_kernel": "14700779039348490",
+        "j": "2",
+        "lower_root_lands": "5",
+        "mu": "150",
+        "n": 25,
+        "sigma": "120",
+        "upper_root_lands": null
+      },
+      {
+        "dim_kernel": "0",
+        "j": "5/2",
+        "lower_root_lands": null,
+        "mu": "875/4",
+        "n": 25,
+        "sigma": "175",
+        "upper_root_lands": null
+      },
+      {
+        "dim_kernel": "0",
+        "j": "3",
+        "lower_root_lands": null,
+        "mu": "300",
+        "n": 25,
+        "sigma": "240",
+        "upper_root_lands": null
+      },
+      {
+        "dim_kernel": "0",
+        "j": "1/2",
+        "lower_root_lands": null,
+        "mu": "729/4",
+        "n": 243,
+        "sigma": "297/2",
+        "upper_root_lands": null
+      },
+      {
+        "dim_kernel": "2297448111516590527516187431114726409732227111743385721263329528114896833100224232831757726355417528439471904968814",
+        "j": "1",
+        "lower_root_lands": "9",
+        "mu": "486",
+        "n": 243,
+        "sigma": "396",
+        "upper_root_lands": null
+      },
+      {
+        "dim_kernel": "0",
+        "j": "2",
+        "lower_root_lands": null,
+        "mu": "1458",
+        "n": 243,
+        "sigma": "1188",
+        "upper_root_lands": null
+      },
+      {
+        "dim_kernel": "0",
+        "j": "1/2",
+        "lower_root_lands": null,
+        "mu": "7203/4",
+        "n": 2401,
+        "sigma": "1470",
+        "upper_root_lands": null
+      },
+      {
+        "dim_kernel": "0",
+        "j": "1",
+        "lower_root_lands": null,
+        "mu": "4802",
+        "n": 2401,
+        "sigma": "3920",
+        "upper_root_lands": null
+      }
+    ],
+    "rational_double_landing_rung2": {
+      "2J_lower+1": "2321/1501",
+      "2J_upper+1": "5519/1501",
+      "j": "98/1501"
+    },
+    "rungs": [
+      {
+        "both_land_a": [
+          1
+        ],
+        "k": 2,
+        "lower": 5,
+        "lower_lands_count": 2393,
+        "lower_lands_first": [
+          "1",
+          "2",
+          "5",
+          "13"
+        ],
+        "n": 25,
+        "sigma_over_c": 20,
+        "upper": 45,
+        "upper_lands_count": 2393,
+        "upper_lands_first": [
+          "1",
+          "3",
+          "4",
+          "20"
+        ]
+      },
+      {
+        "both_land_a": [
+          1
+        ],
+        "k": 3,
+        "lower": 45,
+        "lower_lands_count": 2393,
+        "lower_lands_first": [
+          "1",
+          "3",
+          "4",
+          "20"
+        ],
+        "n": 243,
+        "sigma_over_c": 198,
+        "upper": 441,
+        "upper_lands_count": 1,
+        "upper_lands_first": [
+          "1"
+        ]
+      },
+      {
+        "both_land_a": [
+          1
+        ],
+        "k": 4,
+        "lower": 441,
+        "lower_lands_count": 1,
+        "lower_lands_first": [
+          "1"
+        ],
+        "n": 2401,
+        "sigma_over_c": 1960,
+        "upper": 4361,
+        "upper_lands_count": 333,
+        "upper_lands_first": [
+          "1",
+          "1717",
+          "11593",
+          "40422469"
+        ]
+      },
+      {
+        "both_land_a": [
+          1
+        ],
+        "k": 5,
+        "lower": 4361,
+        "lower_lands_count": 333,
+        "lower_lands_first": [
+          "1",
+          "1717",
+          "11593",
+          "40422469"
+        ],
+        "n": 23763,
+        "sigma_over_c": 19402,
+        "upper": 43165,
+        "upper_lands_count": 549,
+        "upper_lands_first": [
+          "1",
+          "2171",
+          "2192",
+          "9472072"
+        ]
+      },
+      {
+        "both_land_a": [
+          1
+        ],
+        "k": 6,
+        "lower": 43165,
+        "lower_lands_count": 549,
+        "lower_lands_first": [
+          "1",
+          "2171",
+          "2192",
+          "9472072"
+        ],
+        "n": 235225,
+        "sigma_over_c": 192060,
+        "upper": 427285,
+        "upper_lands_count": 440,
+        "upper_lands_first": [
+          "1",
+          "25853",
+          "174530",
+          "3009074"
+        ]
+      },
+      {
+        "both_land_a": [
+          1
+        ],
+        "k": 7,
+        "lower": 427285,
+        "lower_lands_count": 440,
+        "lower_lands_first": [
+          "1",
+          "25853",
+          "174530",
+          "3009074"
+        ],
+        "n": 2328483,
+        "sigma_over_c": 1901198,
+        "upper": 4229681,
+        "upper_lands_count": 78,
+        "upper_lands_first": [
+          "1",
+          "2485831240877",
+          "6211558105267",
+          "1031546926604423292197746586916854303559704179976"
+        ]
+      },
+      {
+        "both_land_a": [
+          1
+        ],
+        "k": 8,
+        "lower": 4229681,
+        "lower_lands_count": 78,
+        "lower_lands_first": [
+          "1",
+          "2485831240877",
+          "6211558105267",
+          "1031546926604423292197746586916854303559704179976"
+        ],
+        "n": 23049601,
+        "sigma_over_c": 18819920,
+        "upper": 41869521,
+        "upper_lands_count": 79,
+        "upper_lands_first": [
+          "1",
+          "13704871",
+          "3153087605736443529621397046157969622810757",
+          "86411963361374782635032321684192981365531176742643"
+        ]
+      },
+      {
+        "both_land_a": [
+          1
+        ],
+        "k": 9,
+        "lower": 41869521,
+        "lower_lands_count": 79,
+        "lower_lands_first": [
+          "1",
+          "13704871",
+          "3153087605736443529621397046157969622810757",
+          "86411963361374782635032321684192981365531176742643"
+        ],
+        "n": 228167523,
+        "sigma_over_c": 186298002,
+        "upper": 414465525,
+        "upper_lands_count": 92,
+        "upper_lands_first": [
+          "1",
+          "452456333952432231",
+          "3937413815648300692339595786258858",
+          "9838750544421779125682751292915479"
+        ]
+      }
+    ],
+    "search_bound": "2j+1 < 10^1000"
+  },
+  "optional_pari": {
+    "rung2_rank_bounds": [
+      1,
+      1
+    ],
+    "rung3_rank_bounds": [
+      1,
+      1
+    ],
+    "rung4_rank_bounds": [
+      2,
+      2
+    ],
+    "rung5_rank_bounds": [
+      2,
+      2
+    ]
+  },
+  "schema": "MC-E47-MOMENT-LADDER/1.0",
+  "seconds": 142.1,
+  "status": "PASS"
+}

@@ -1,0 +1,1324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0d0b">
+<title>The Moment Ladder</title>
+<meta name="description" content="The E47 moment selector cuts two whole Casimir sectors on the cube, 125 → 47, and on no other tensor order through n = 2401. Six proofs, with every number recomputed live in exact arithmetic.">
+<link rel="canonical" href="https://nicholaskouns-create.github.io/e47-moment-ladder/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Mathematical City">
+<meta property="og:title" content="The Moment Ladder">
+<meta property="og:description" content="The E47 moment selector cuts two whole Casimir sectors on the cube, 125 → 47, and on no other tensor order through n = 2401. Six proofs, with every number recomputed live in exact arithmetic.">
+<meta property="og:url" content="https://nicholaskouns-create.github.io/e47-moment-ladder/">
+<meta property="og:image" content="https://nicholaskouns-create.github.io/e47-moment-ladder/share.png">
+<meta property="og:image:secure_url" content="https://nicholaskouns-create.github.io/e47-moment-ladder/share.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Moment Ladder: rungs n = 3, 25, 243, 2401 and 23763 zigzag between root coefficients 1, 5, 45, 441, 4361 and 43165; only the cube rung, 125 → 47, is gold.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Moment Ladder">
+<meta name="twitter:description" content="The E47 moment selector cuts two whole Casimir sectors on the cube, 125 → 47, and on no other tensor order through n = 2401. Six proofs, with every number recomputed live in exact arithmetic.">
+<meta name="twitter:image" content="https://nicholaskouns-create.github.io/e47-moment-ladder/share.png">
+<meta name="twitter:image:alt" content="The Moment Ladder: rungs n = 3, 25, 243, 2401 and 23763 zigzag between root coefficients 1, 5, 45, 441, 4361 and 43165; only the cube rung, 125 → 47, is gold.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=STIX+Two+Text:ital@0;1&display=swap">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>
+/* Layout: one reading column on a near-black tablet ground; the ladder figure and its rung panel sit side by side from 900px, every other band is a single column. Babylonian Dark house style. */
+:root {
+  --ground: #0b0d0b;
+  --slab: #111511;
+  --slab-2: #171c17;
+  --rule: #273027;
+  --ink: #ebe5d2;
+  --ink-2: #b4af9d;
+  --ink-3: #7f8375;
+  --gold: #e3bf66;
+  --gold-soft: rgba(227, 191, 102, 0.15);
+  --gold-line: rgba(227, 191, 102, 0.5);
+  --verd: #7fd3a8;
+  --verd-soft: rgba(127, 211, 168, 0.13);
+  --serif: "EB Garamond", "STIX Two Text", Garamond, "Iowan Old Style", "Times New Roman", serif;
+  --math: "EB Garamond", "STIX Two Text", "Cambria Math", "Noto Sans Math", serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --t-hero: clamp(2.75rem, 10vw, 5rem);
+  --t-h2: clamp(1.75rem, 5vw, 2.4rem);
+  --t-lead: clamp(1.25rem, 3.6vw, 1.5rem);
+  --t-body: 1.1875rem;
+  --t-small: 1rem;
+  --t-label: 0.72rem;
+  --t-data: 0.84rem;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --ground: #eceee6; --slab: #e3e6dc; --slab-2: #d9ddd0; --rule: #c3c8b9;
+    --ink: #151914; --ink-2: #43493f; --ink-3: #6b7065;
+    --gold: #85620e; --gold-soft: rgba(133, 98, 14, 0.12); --gold-line: rgba(133, 98, 14, 0.45);
+    --verd: #1f6b46; --verd-soft: rgba(31, 107, 70, 0.1);
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --ground: #eceee6; --slab: #e3e6dc; --slab-2: #d9ddd0; --rule: #c3c8b9;
+  --ink: #151914; --ink-2: #43493f; --ink-3: #6b7065;
+  --gold: #85620e; --gold-soft: rgba(133, 98, 14, 0.12); --gold-line: rgba(133, 98, 14, 0.45);
+  --verd: #1f6b46; --verd-soft: rgba(31, 107, 70, 0.1);
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font: 400 var(--t-body)/1.55 var(--serif);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: var(--gold); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
+.wrap {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.band { padding-block: clamp(3rem, 8vw, 5.5rem); border-top: 1px solid var(--rule); }
+.band:first-of-type { border-top: 0; }
+.prose { max-width: 39rem; }
+.prose > * + * { margin-top: 1rem; }
+p { margin: 0; }
+h1, h2, h3 { margin: 0; font-weight: 500; text-wrap: balance; }
+h2 { font-size: var(--t-h2); line-height: 1.12; letter-spacing: -0.01em; }
+h3 { font-size: 1.3rem; line-height: 1.25; }
+.eyebrow {
+  font: 500 var(--t-label)/1.4 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  display: flex; flex-wrap: wrap; gap: 0.5rem 0.75rem; align-items: center;
+}
+.head { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.9rem; margin-bottom: 2rem; max-width: 42rem; }
+.m, .math { font-family: var(--math); }
+.gk { text-transform: none; letter-spacing: 0; font-family: var(--math); font-size: 1.2em; font-weight: 400; }
+i.v { font-family: var(--math); font-style: italic; }
+sub, sup { font-size: 0.68em; line-height: 0; }
+.nowrap { white-space: nowrap; }
+.mono { font-family: var(--mono); font-size: var(--t-data); font-variant-numeric: tabular-nums; }
+
+/* evidence grammar: E0 proved = gold solid, E1 computed = green, open = dotted */
+.ev {
+  display: inline-flex; align-items: center; gap: 0.35em;
+  font: 500 0.68rem/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.38em 0.6em; border-radius: 2px; white-space: nowrap;
+}
+.ev.e0 { color: var(--gold); background: var(--gold-soft); border: 1px solid var(--gold-line); }
+.ev.e1 { color: var(--verd); background: var(--verd-soft); border: 1px dashed var(--verd); }
+.ev.open { color: var(--ink-3); border: 1px dotted var(--ink-3); }
+
+/* hero */
+.hero { padding-block: clamp(2.5rem, 7vw, 4.5rem) clamp(2rem, 5vw, 3rem); }
+.hero h1 {
+  font-size: var(--t-hero); line-height: 0.98; font-style: italic; font-weight: 500;
+  letter-spacing: -0.015em; margin-top: 1rem;
+}
+.hero h1 .ratio { font-style: normal; color: var(--gold); white-space: nowrap; }
+.lead { font-size: var(--t-lead); line-height: 1.45; max-width: 36rem; margin-top: 1.4rem; }
+.lead + p { margin-top: 1rem; max-width: 38rem; color: var(--ink-2); }
+.credits {
+  margin-top: 2rem; display: grid; gap: 0.35rem;
+  font: 400 0.78rem/1.5 var(--mono); color: var(--ink-3);
+  grid-template-columns: max-content 1fr; column-gap: 1rem;
+}
+.credits dt { letter-spacing: 0.1em; text-transform: uppercase; }
+.credits dd { margin: 0; color: var(--ink-2); }
+@media (max-width: 520px) { .credits { grid-template-columns: minmax(0, 1fr); } .credits dd { margin-bottom: 0.4rem; } }
+.toc { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; font: 500 0.78rem/1.4 var(--mono); letter-spacing: 0.06em; }
+.toc a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; }
+.toc a:hover { color: var(--gold); border-color: var(--gold-line); }
+
+.callout {
+  margin-top: 2.5rem; max-width: 42rem;
+  border-left: 2px solid var(--gold-line); padding: 0.2rem 0 0.2rem 1.25rem;
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.75rem;
+}
+.callout blockquote { margin: 0; font-style: italic; font-size: 1.3rem; line-height: 1.4; }
+.callout .src { font: 400 0.75rem/1.5 var(--mono); color: var(--ink-3); }
+
+/* ladder */
+.ladder-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; align-items: start; }
+@media (min-width: 900px) { .ladder-grid { grid-template-columns: minmax(0, 25rem) minmax(0, 1fr); gap: 3rem; } .rung-panel { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 1.5rem); } }
+.ladder-fig { margin: 0; max-width: 25rem; width: 100%; }
+.ladder-fig svg { width: 100%; height: auto; display: block; overflow: visible; }
+.ladder-fig figcaption { margin-top: 0.75rem; font-size: var(--t-small); color: var(--ink-3); line-height: 1.45; }
+.rail { stroke: var(--rule); stroke-width: 1; }
+.rail-cont { stroke: var(--rule); stroke-width: 1; stroke-dasharray: 2 5; }
+.cont { stroke: var(--ink-3); stroke-width: 1.4; stroke-dasharray: 1.5 5; fill: none; }
+.cont-lab { font: 400 10px var(--mono); fill: var(--ink-3); letter-spacing: 0.04em; }
+.vlab { font: 500 12px var(--mono); fill: var(--ink-2); font-variant-numeric: tabular-nums; }
+.vlab.gold { fill: var(--gold); }
+.vsub { font: 400 11px var(--math); font-style: italic; fill: var(--ink-3); }
+.vdot { fill: var(--ground); stroke: var(--ink-2); stroke-width: 1.3; }
+.vdot.gold { fill: var(--gold); stroke: var(--gold); }
+.vsq { fill: var(--ground); stroke: var(--ink); stroke-width: 1.3; }
+.rung { cursor: pointer; outline: none; }
+.rung .plate { fill: var(--ground); stroke: var(--rule); stroke-width: 1; }
+.rung[data-status="cube"] .plate { stroke: var(--gold-line); }
+.rung.sel .plate { stroke: var(--gold); }
+.rung .hit { stroke: transparent; stroke-width: 26; pointer-events: stroke; }
+.rung .glow { stroke: var(--gold-soft); stroke-width: 12; stroke-linecap: round; }
+.rung .edge { stroke: var(--ink-2); stroke-width: 1.6; stroke-linecap: round; transition: stroke-width 160ms ease; }
+.rung[data-status="cube"] .edge { stroke: var(--gold); stroke-width: 2.6; }
+.rung[data-status="computed"] .edge { stroke: var(--verd); stroke-dasharray: 6 5; stroke-linecap: butt; }
+.rung .lab1 { font: 500 12px var(--mono); fill: var(--ink); paint-order: stroke; stroke: var(--ground); stroke-width: 5px; stroke-linejoin: round; font-variant-numeric: tabular-nums; }
+.rung .lab2 { font: 400 10.5px var(--mono); fill: var(--ink-3); paint-order: stroke; stroke: var(--ground); stroke-width: 5px; stroke-linejoin: round; letter-spacing: 0.02em; }
+.rung[data-status="cube"] .lab2 { fill: var(--gold); }
+.rung[data-status="computed"] .lab2 { fill: var(--verd); }
+.rung[data-status="never"] .lab2 { fill: var(--ink-2); }
+.rung:hover .edge, .rung:focus-visible .edge { stroke-width: 3.2; }
+.rung.sel .edge { stroke-width: 3.6; }
+.rung.sel .lab1 { fill: var(--gold); }
+.rung:focus-visible .lab1 { text-decoration: underline; }
+.legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; margin-top: 1rem; font: 400 0.74rem/1.4 var(--mono); color: var(--ink-3); }
+.legend span { display: inline-flex; align-items: center; gap: 0.45rem; }
+.legend svg { width: 26px; height: 8px; flex: none; }
+
+.rung-panel { background: var(--slab); border: 1px solid var(--rule); border-radius: 3px; padding: 1.4rem 1.4rem 1.5rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.1rem; min-width: 0; }
+.rp-head { display: grid; gap: 0.6rem; }
+.rp-head h3 { font-size: 1.55rem; }
+.rp-facts { margin: 0; display: grid; gap: 0.7rem; }
+.rp-facts div { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0.75rem; align-items: baseline; }
+.rp-facts dt { font: 500 0.72rem/1.4 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+.rp-facts dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 460px) { .rp-facts div { grid-template-columns: minmax(0, 1fr); gap: 0.15rem; } }
+.rp-verdict { border-top: 1px solid var(--rule); padding-top: 1rem; }
+.rp-run { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+.rp-out { font: 400 0.82rem/1.55 var(--mono); color: var(--ink-2); min-width: 0; overflow-wrap: anywhere; }
+.rp-out b { color: var(--verd); font-weight: 500; }
+
+.btn {
+  font: 500 0.76rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--gold); background: transparent; border: 1px solid var(--gold-line);
+  padding: 0.8rem 1rem; border-radius: 2px; cursor: pointer; min-height: 44px;
+}
+.btn:hover { background: var(--gold-soft); }
+.btn:disabled { opacity: 0.45; cursor: progress; }
+.btn.quiet { color: var(--ink-2); border-color: var(--rule); }
+.chip {
+  font: 400 0.76rem/1.2 var(--mono); color: var(--ink-2); background: var(--slab);
+  border: 1px solid var(--rule); border-radius: 2px; padding: 0.55rem 0.7rem; cursor: pointer; min-height: 40px; text-align: left;
+}
+.chip:hover { border-color: var(--gold-line); color: var(--ink); }
+.chip[aria-pressed="true"] { border-color: var(--gold); color: var(--gold); }
+
+/* theorem */
+.theorem { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; max-width: 44rem; }
+.setting { color: var(--ink-2); }
+.part { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 0.5rem 1rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); }
+.part .num { font: italic 500 1.7rem/1 var(--serif); color: var(--gold); }
+.part h3 { font-size: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.5rem 0.75rem; align-items: center; }
+.part p { grid-column: 2; }
+.part .tag-row { grid-column: 2; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.display {
+  grid-column: 2; font-family: var(--math); font-size: 1.22rem; color: var(--ink);
+  background: var(--slab); border: 1px solid var(--rule); border-radius: 2px;
+  padding: 0.75rem 1rem; overflow-x: auto; white-space: nowrap; min-width: 0;
+}
+@media (max-width: 520px) { .part { grid-template-columns: minmax(0, 1fr); } .part p, .part .tag-row, .display { grid-column: 1; } }
+
+/* instrument */
+.instrument { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+.controls { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); align-items: end; max-width: 46rem; }
+.ctl { display: grid; gap: 0.5rem; }
+.ctl label { font: 500 var(--t-label)/1.4 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+.stepper { display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; border: 1px solid var(--rule); border-radius: 2px; background: var(--slab); }
+.stepper button { background: transparent; color: var(--ink); border: 0; font: 500 1.2rem/1 var(--mono); cursor: pointer; min-height: 44px; }
+.stepper button:hover { color: var(--gold); background: var(--gold-soft); }
+.stepper input, .stepper output {
+  width: 100%; min-width: 0; text-align: center; background: transparent; border: 0; color: var(--ink);
+  font: 500 1.15rem/1 var(--math); padding: 0.6rem 0; display: grid; place-items: center;
+  border-inline: 1px solid var(--rule);
+}
+.stepper input { font-family: var(--mono); font-size: 1rem; }
+.stepper input::-webkit-outer-spin-button, .stepper input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.stepper input { -moz-appearance: textfield; appearance: textfield; }
+.presets { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.readout { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 2px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 480px) { .readout { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 760px) { .readout { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.cell { background: var(--slab); padding: 0.85rem 1rem; display: grid; gap: 0.3rem; min-width: 0; }
+.cell .k { font: 500 0.68rem/1.3 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+.cell .val { font: 500 1.05rem/1.35 var(--math); overflow-wrap: anywhere; min-width: 0; }
+.cell .val.mono { font: 500 0.92rem/1.4 var(--mono); }
+.cell .sub { font: 400 0.76rem/1.4 var(--mono); color: var(--ink-3); overflow-wrap: anywhere; }
+.cell.hl { background: linear-gradient(var(--gold-soft), var(--gold-soft)), var(--slab); }
+.cell.hl .val { color: var(--gold); }
+.land-yes { color: var(--gold); }
+.land-no { color: var(--ink-3); }
+.status-line { font: 400 0.78rem/1.5 var(--mono); color: var(--ink-3); display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; align-items: center; min-height: 1.5rem; }
+.status-line .ok { color: var(--verd); }
+.progress { width: 7rem; height: 3px; background: var(--rule); position: relative; overflow: hidden; border-radius: 2px; }
+.progress span { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--gold); }
+.chart-box { background: var(--slab); border: 1px solid var(--rule); border-radius: 2px; padding: 0.75rem 0.5rem 0.5rem; overflow-x: auto; min-width: 0; }
+.chart-box svg { display: block; width: 100%; min-width: 30rem; height: auto; }
+.ch-axis { stroke: var(--rule); stroke-width: 1; }
+.ch-grid { stroke: var(--rule); stroke-width: 1; stroke-dasharray: 2 4; }
+.ch-tick { font: 400 10px var(--mono); fill: var(--ink-3); }
+.ch-bar { fill: var(--ink-3); opacity: 0.55; }
+.ch-bar.land { fill: var(--gold); opacity: 1; }
+.ch-area { fill: var(--ink-3); opacity: 0.35; }
+.ch-root { stroke: var(--gold); stroke-width: 1.4; }
+.ch-root.miss { stroke: var(--ink-2); stroke-dasharray: 4 3; }
+.ch-rlab { font: 500 10px var(--mono); fill: var(--gold); }
+.ch-rlab.miss { fill: var(--ink-2); }
+.ch-val { font: 500 10px var(--mono); fill: var(--ink-2); paint-order: stroke; stroke: var(--slab); stroke-width: 4px; stroke-linejoin: round; }
+.ch-val.land { fill: var(--gold); }
+
+/* count */
+.count-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+@media (min-width: 960px) { .count-grid { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 3rem; align-items: start; } }
+.big-eq { font: 400 clamp(2.4rem, 8vw, 3.6rem)/1.05 var(--math); letter-spacing: -0.01em; }
+.big-eq .g { color: var(--gold); }
+.table-box { overflow-x: auto; border: 1px solid var(--rule); border-radius: 2px; background: var(--slab); }
+table { border-collapse: collapse; width: 100%; font: 400 0.8rem/1.4 var(--mono); font-variant-numeric: tabular-nums; }
+th, td { padding: 0.55rem 0.75rem; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--rule); }
+th { font-weight: 500; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); position: sticky; top: 0; background: var(--slab); }
+th .m, td .m { font-family: var(--math); font-size: 1.05em; text-transform: none; letter-spacing: 0; }
+tbody tr:last-child td { border-bottom: 0; }
+tr.cube td { color: var(--gold); background: var(--gold-soft); }
+.table-note { margin-top: 0.75rem; font: 400 0.78rem/1.5 var(--mono); color: var(--ink-3); }
+
+/* proofs */
+.proofs { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 2px; }
+@media (min-width: 900px) { .proofs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.proof { background: var(--ground); padding: 1.4rem 1.4rem 1.6rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.8rem; align-content: start; min-width: 0; }
+.proof header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 0.9rem; }
+.proof .pid { font: italic 500 1.5rem/1 var(--serif); color: var(--gold); }
+.proof h3 { font-size: 1.15rem; flex: 1 1 12rem; }
+.proof p { font-size: 1.08rem; }
+.proof .qed { color: var(--ink-3); float: right; margin-left: 0.5rem; }
+.proof .eqline { font-family: var(--math); font-size: 1.15rem; background: var(--slab); border: 1px solid var(--rule); padding: 0.55rem 0.8rem; border-radius: 2px; overflow-x: auto; white-space: nowrap; }
+
+/* ask */
+.ask { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; max-width: 46rem; }
+.ask-form { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+.ask textarea {
+  width: 100%; min-height: 6rem; resize: vertical; font: 400 1.08rem/1.5 var(--serif); color: var(--ink);
+  background: var(--slab); border: 1px solid var(--rule); border-radius: 2px; padding: 0.85rem 1rem;
+}
+.ask textarea:focus { border-color: var(--gold-line); }
+.ask-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+.ask-out { white-space: pre-wrap; font-size: 1.12rem; line-height: 1.6; border-left: 2px solid var(--gold-line); padding-left: 1.1rem; min-height: 1.5rem; overflow-wrap: anywhere; }
+.ask-out:empty { display: none; }
+.tool-log { font: 400 0.76rem/1.6 var(--mono); color: var(--ink-3); display: grid; gap: 0.2rem; }
+.tool-log .ok { color: var(--verd); }
+.ask-note { font-size: var(--t-small); color: var(--ink-3); }
+
+/* boundary + certificate */
+.bounds { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+.bound { border-top: 2px solid var(--rule); padding-top: 1rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.75rem; align-content: start; justify-items: start; }
+.bound.e0 { border-color: var(--gold); }
+.bound.e1 { border-color: var(--verd); border-top-style: dashed; }
+.bound.open { border-color: var(--ink-3); border-top-style: dotted; }
+.bound ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.55rem; font-size: 1.05rem; }
+.cert { margin-top: 2.5rem; background: var(--slab); border: 1px solid var(--rule); border-radius: 2px; padding: 1.4rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+.cert-head { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: baseline; justify-content: space-between; }
+.cert-head .id { font: 500 0.9rem/1.4 var(--mono); color: var(--ink); overflow-wrap: anywhere; min-width: 0; }
+.cert-head .pass { font: 500 0.9rem/1.4 var(--mono); color: var(--verd); }
+.checks { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35rem 1.5rem; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); font: 400 0.76rem/1.45 var(--mono); color: var(--ink-2); }
+.checks li { display: grid; grid-template-columns: 1.1rem minmax(0, 1fr); overflow-wrap: anywhere; }
+.checks li::before { content: "✓"; color: var(--verd); }
+.cert-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; font: 500 0.78rem/1.4 var(--mono); letter-spacing: 0.04em; }
+pre.cmd { margin: 0; font: 400 0.8rem/1.6 var(--mono); color: var(--ink-2); background: var(--ground); border: 1px solid var(--rule); border-radius: 2px; padding: 0.8rem 1rem; overflow-x: auto; }
+
+/* way back */
+.links { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 2px; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); }
+.links a { background: var(--ground); padding: 1rem 1.1rem; text-decoration: none; display: grid; gap: 0.25rem; color: var(--ink); min-width: 0; }
+.links a:hover { background: var(--slab); }
+.links .t { font-size: 1.1rem; }
+.links .d { font: 400 0.74rem/1.45 var(--mono); color: var(--ink-3); overflow-wrap: anywhere; }
+footer { padding-block: 2.5rem 3.5rem; border-top: 1px solid var(--rule); font: 400 0.76rem/1.6 var(--mono); color: var(--ink-3); }
+footer p + p { margin-top: 0.4rem; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<main>
+<div class="wrap">
+
+<header class="hero" id="top">
+  <div class="eyebrow"><span>The Mathematical City</span><span aria-hidden="true">·</span><span>Proof instrument</span><span class="ev e0">E0 proved</span><span class="ev e1">E1 computed exactly</span></div>
+  <h1>The Moment Ladder</h1>
+  <p class="lead">The E47 moment selector cuts two whole Casimir sectors on the cube, <span class="nowrap m">125 → 47</span>. Every tensor order where it can even try sits on a Pell ladder, and on the next three rungs, <i class="v">n</i> = 25, 243 and 2401, its two roots never meet.</p>
+  <p>Above them every rung allows at most finitely many spins, and through the ninth rung there are none below 10<sup>1000</sup>. That answers the question the selector theorem left open on 15&nbsp;October: proved through <i class="v">n</i> = 2401, finite on every rung, and searched far beyond.</p>
+  <dl class="credits">
+    <dt>Framework &amp; E47 kernel</dt><dd>Nicholas Shane Kouns</dd>
+    <dt>Ladder theorem &amp; instrument</dt><dd>Claude (Anthropic), 16 October 2026</dd>
+    <dt>Arithmetic</dt><dd>exact integers, recomputed in this browser</dd>
+  </dl>
+  <nav class="toc" aria-label="Sections">
+    <a href="#ladder">The ladder</a><a href="#theorem">Theorem</a><a href="#weigh">Weigh a carrier</a><a href="#count">47 = 5² + 2·11</a><a href="#proofs">Proofs</a><a href="#ask">Question the proof</a><a href="#boundary">Evidence boundary</a>
+  </nav>
+  <div class="callout">
+    <div class="eyebrow">The open boundary · Moment Selector certificate, 15 Oct 2026</div>
+    <blockquote>“For n = 25, 243, ... sigma is rational and the question is open.”</blockquote>
+    <p>On three factors, <span class="m">V<sub><i class="v">j</i></sub>⊗V<sub><i class="v">j</i></sub>⊗V<sub><i class="v">j</i></sub></span>, the selector’s roots are <span class="m"><i class="v">j</i>(<i class="v">j</i>+1)</span> and <span class="m">5<i class="v">j</i>(<i class="v">j</i>+1)</span>, and both land exactly on the Fibonacci–Lucas spins. The other tensor orders were left open. Here are all of them.</p>
+  </div>
+</header>
+
+<section class="band" id="ladder" aria-labelledby="ladder-h">
+  <div class="head">
+    <div class="eyebrow"><span>Theorem parts I–III</span><span class="ev e0">E0</span><span class="ev e1">E1</span></div>
+    <h2 id="ladder-h">Where the two roots can meet</h2>
+    <p class="prose">Each vertex is a root coefficient <i class="v">s</i>; the root itself is <span class="m"><i class="v">s</i> · <i class="v">j</i>(<i class="v">j</i>+1)</span>. Each edge is a rung: a tensor order <i class="v">n</i> where σ is rational, joining its lower root to its upper root. The upper root of every rung is the lower root of the next, so the rungs chain into one zigzag. Tap a rung.</p>
+  </div>
+  <div class="ladder-grid">
+    <figure class="ladder-fig">
+      <svg viewBox="0 0 360 690" xmlns="http://www.w3.org/2000/svg" role="group" aria-labelledby="lad-t lad-d">
+      <title id="lad-t">The moment ladder</title>
+      <desc id="lad-d">Root coefficients 1, 5, 45, 441, 4361 and onward alternate between two rails. Each rung joins a lower root to an upper root and is labelled with its tensor order n. Only the rung n = 3 lands both roots.</desc>
+      <line class="rail" x1="106" y1="660" x2="106" y2="64"/>
+      <line class="rail" x1="254" y1="660" x2="254" y2="66"/>
+      <line class="rail-cont" x1="106" y1="66" x2="106" y2="18"/>
+      <line class="rail-cont" x1="254" y1="66" x2="254" y2="18"/>
+      <line class="cont" x1="254" y1="66" x2="106" y2="26"/>
+      <text class="cont-lab" x="180.0" y="12" text-anchor="middle">rungs 10, 11, … · finitely many · P5</text>
+      <g class="rung" data-k="1" data-status="cube" tabindex="0" role="button" aria-pressed="false" aria-label="Rung 1, n = 3: both roots land on the Fibonacci–Lucas family">
+      <line class="glow" x1="106" y1="660" x2="254" y2="594"/>
+      <line class="hit" x1="106" y1="660" x2="254" y2="594"/>
+      <line class="edge" x1="106" y1="660" x2="254" y2="594"/>
+      <rect class="plate" x="110.0" y="611.0" width="140.0" height="32" rx="2"/>
+      <text class="lab1" x="180.0" y="624.0" text-anchor="middle">n = 3 · the cube</text>
+      <text class="lab2" x="180.0" y="638.0" text-anchor="middle">both land · 125 → 47</text>
+      </g>
+      <g class="rung" data-k="2" data-status="never" tabindex="0" role="button" aria-pressed="false" aria-label="Rung 2, n = 25: never lands twice, proof P3">
+      <line class="hit" x1="254" y1="594" x2="106" y2="528"/>
+      <line class="edge" x1="254" y1="594" x2="106" y2="528"/>
+      <rect class="plate" x="122.6" y="545.0" width="114.8" height="32" rx="2"/>
+      <text class="lab1" x="180.0" y="558.0" text-anchor="middle">n = 25</text>
+      <text class="lab2" x="180.0" y="572.0" text-anchor="middle">never · proof P3</text>
+      </g>
+      <g class="rung" data-k="3" data-status="never" tabindex="0" role="button" aria-pressed="false" aria-label="Rung 3, n = 243: never lands twice, proof P4">
+      <line class="hit" x1="106" y1="528" x2="254" y2="462"/>
+      <line class="edge" x1="106" y1="528" x2="254" y2="462"/>
+      <rect class="plate" x="122.6" y="479.0" width="114.8" height="32" rx="2"/>
+      <text class="lab1" x="180.0" y="492.0" text-anchor="middle">n = 243</text>
+      <text class="lab2" x="180.0" y="506.0" text-anchor="middle">never · proof P4</text>
+      </g>
+      <g class="rung" data-k="4" data-status="never" tabindex="0" role="button" aria-pressed="false" aria-label="Rung 4, n = 2,401: never lands twice, proof P4">
+      <line class="hit" x1="254" y1="462" x2="106" y2="396"/>
+      <line class="edge" x1="254" y1="462" x2="106" y2="396"/>
+      <rect class="plate" x="122.6" y="413.0" width="114.8" height="32" rx="2"/>
+      <text class="lab1" x="180.0" y="426.0" text-anchor="middle">n = 2,401</text>
+      <text class="lab2" x="180.0" y="440.0" text-anchor="middle">never · proof P4</text>
+      </g>
+      <g class="rung" data-k="5" data-status="computed" tabindex="0" role="button" aria-pressed="false" aria-label="Rung 5, n = 23,763: no double landing below 10 to the 1000, computed">
+      <line class="hit" x1="106" y1="396" x2="254" y2="330"/>
+      <line class="edge" x1="106" y1="396" x2="254" y2="330"/>
+      <rect class="plate" x="116.3" y="347.0" width="127.4" height="32" rx="2"/>
+      <text class="lab1" x="180.0" y="360.0" text-anchor="middle">n = 23,763</text>
+      <text class="lab2" x="180.0" y="374.0" text-anchor="middle">none < 10¹⁰⁰⁰ · E1</text>
+      </g>
+      <g class="rung" data-k="6" data-status="computed" tabindex="0" role="button" aria-pressed="false" aria-label="Rung 6, n = 235,225: no double landing below 10 to the 1000, computed">
+      <line class="hit" x1="254" y1="330" x2="106" y2="264"/>
+      <line class="edge" x1="254" y1="330" x2="106" y2="264"/>
+      <rect class="plate" x="116.3" y="281.0" width="127.4" height="32" rx="2"/>
+      <text class="lab1" x="180.0" y="294.0" text-anchor="middle">n = 235,225</text>
+      <text class="lab2" x="180.0" y="308.0" text-anchor="middle">none < 10¹⁰⁰⁰ · E1</text>
+      </g>
+      <g class="rung" data-k="7" data-status="computed" tabindex="0" role="button" aria-pressed="false" aria-label="Rung 7, n = 2,328,483: no double landing below 10 to the 1000, computed">
+      <line class="hit" x1="106" y1="264" x2="254" y2="198"/>
+      <line class="edge" x1="106" y1="264" x2="254" y2="198"/>
+      <rect class="plate" x="116.3" y="215.0" width="127.4" height="32" rx="2"/>
+      <text class="lab1" x="180.0" y="228.0" text-anchor="middle">n = 2,328,483</text>
+      <text class="lab2" x="180.0" y="242.0" text-anchor="middle">none < 10¹⁰⁰⁰ · E1</text>
+      </g>
+      <g class="rung" data-k="8" data-status="computed" tabindex="0" role="button" aria-pressed="false" aria-label="Rung 8, n = 23,049,601: no double landing below 10 to the 1000, computed">
+      <line class="hit" x1="254" y1="198" x2="106" y2="132"/>
+      <line class="edge" x1="254" y1="198" x2="106" y2="132"/>
+      <rect class="plate" x="116.3" y="149.0" width="127.4" height="32" rx="2"/>
+      <text class="lab1" x="180.0" y="162.0" text-anchor="middle">n = 23,049,601</text>
+      <text class="lab2" x="180.0" y="176.0" text-anchor="middle">none < 10¹⁰⁰⁰ · E1</text>
+      </g>
+      <g class="rung" data-k="9" data-status="computed" tabindex="0" role="button" aria-pressed="false" aria-label="Rung 9, n = 228,167,523: no double landing below 10 to the 1000, computed">
+      <line class="hit" x1="106" y1="132" x2="254" y2="66"/>
+      <line class="edge" x1="106" y1="132" x2="254" y2="66"/>
+      <rect class="plate" x="116.3" y="83.0" width="127.4" height="32" rx="2"/>
+      <text class="lab1" x="180.0" y="96.0" text-anchor="middle">n = 228,167,523</text>
+      <text class="lab2" x="180.0" y="110.0" text-anchor="middle">none < 10¹⁰⁰⁰ · E1</text>
+      </g>
+      <circle class="vdot gold" cx="106" cy="660" r="4.2"/>
+      <text class="vlab gold" x="94" y="664" text-anchor="end">1</text>
+      <text class="vsub" x="94" y="678" text-anchor="end">root c · J = j</text>
+      <circle class="vdot gold" cx="254" cy="594" r="4.2"/>
+      <text class="vlab gold" x="266" y="598" text-anchor="start">5</text>
+      <circle class="vdot" cx="106" cy="528" r="4.2"/>
+      <text class="vlab" x="94" y="532" text-anchor="end">45</text>
+      <rect class="vsq" x="249.5" y="457.5" width="9" height="9"/>
+      <text class="vlab" x="266" y="466" text-anchor="start">441</text>
+      <text class="vsub" x="266" y="480" text-anchor="start">= 21²</text>
+      <circle class="vdot" cx="106" cy="396" r="4.2"/>
+      <text class="vlab" x="94" y="400" text-anchor="end">4,361</text>
+      <circle class="vdot" cx="254" cy="330" r="4.2"/>
+      <text class="vlab" x="266" y="334" text-anchor="start">43,165</text>
+      <circle class="vdot" cx="106" cy="264" r="4.2"/>
+      <text class="vlab" x="94" y="268" text-anchor="end">427,285</text>
+      <circle class="vdot" cx="254" cy="198" r="4.2"/>
+      <text class="vlab" x="266" y="202" text-anchor="start">4,229,681</text>
+      <circle class="vdot" cx="106" cy="132" r="4.2"/>
+      <text class="vlab" x="94" y="136" text-anchor="end">41,869,521</text>
+      <circle class="vdot" cx="254" cy="66" r="4.2"/>
+      <text class="vlab" x="266" y="70" text-anchor="start">414,465,525</text>
+      </svg>
+      <div class="legend" aria-hidden="true">
+        <span><svg viewBox="0 0 26 8"><line x1="1" y1="4" x2="25" y2="4" stroke="var(--gold)" stroke-width="2.6"/></svg>both roots land</span>
+        <span><svg viewBox="0 0 26 8"><line x1="1" y1="4" x2="25" y2="4" stroke="var(--ink-2)" stroke-width="1.6"/></svg>never · proved</span>
+        <span><svg viewBox="0 0 26 8"><line x1="1" y1="4" x2="25" y2="4" stroke="var(--verd)" stroke-width="1.6" stroke-dasharray="6 5"/></svg>none below 10¹⁰⁰⁰ · computed</span>
+        <span><svg viewBox="0 0 26 8"><line x1="1" y1="4" x2="25" y2="4" stroke="var(--ink-3)" stroke-width="1.4" stroke-dasharray="1.5 5"/></svg>finitely many · open</span>
+      </div>
+      <figcaption>Rung 0 is <i class="v">n</i> = 1: one factor, σ = 0, and both roots coincide. The square marks 441 = 21², the coefficient that blocks rungs 3 and 4.</figcaption>
+    </figure>
+
+    <aside class="rung-panel" id="rung-panel" aria-live="polite">
+      <div class="rp-head">
+        <div class="eyebrow" id="rp-eyebrow"><span>Rung 1</span><span class="ev e0" id="rp-ev">E0 proved</span></div>
+        <h3 id="rp-title">n = 3 · the cube</h3>
+      </div>
+      <dl class="rp-facts" id="rp-facts">
+        <div><dt><span class="gk">σ</span></dt><dd class="m">2 · <i class="v">j</i>(<i class="v">j</i>+1)</dd></div>
+        <div><dt>Lower root</dt><dd><span class="m">1 · <i class="v">j</i>(<i class="v">j</i>+1)</span> lands for every <i class="v">j</i>, at <i class="v">J</i> = <i class="v">j</i></dd></div>
+        <div><dt>Upper root</dt><dd><span class="m">5 · <i class="v">j</i>(<i class="v">j</i>+1)</span> lands at 2<i class="v">j</i>+1 = 2, 5, 13, 34, 89, 233, …</dd></div>
+      </dl>
+      <p class="rp-verdict" id="rp-verdict">Both roots land exactly on the Fibonacci–Lucas spins, 2<i class="v">j</i>+1 = <i class="v">F<sub>k</sub></i> with <i class="v">k</i> odd. The first proper member is <i class="v">j</i> = 2, where the selector is <span class="m">K = (C − 6I)(C − 30I)</span> and keeps 47 of 125 dimensions.</p>
+      <div class="rp-run">
+        <button class="btn" id="rp-run" type="button">Re-run to 10<sup>1000</sup></button>
+        <div class="rp-out" id="rp-out">Recomputes every landing spin below 10<sup>1000</sup> from the Pell classes, in exact integers.</div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="band" id="theorem" aria-labelledby="theorem-h">
+  <div class="head">
+    <div class="eyebrow"><span>Theorem</span><span class="ev e0">E0</span></div>
+    <h2 id="theorem-h">The Moment Ladder theorem</h2>
+  </div>
+  <div class="theorem">
+    <p class="setting">On the carrier <span class="m">H = V<sub><i class="v">j</i></sub><sup>⊗<i class="v">n</i></sup></span> with total Casimir <i class="v">C</i>, write <span class="m"><i class="v">c</i> = <i class="v">j</i>(<i class="v">j</i>+1)</span> and let μ and σ² be the mean and variance of spec <i class="v">C</i> under the normalized trace. The moment selector is <span class="m nowrap">K<sub>mom</sub> = (<i class="v">C</i> − (μ−σ)I)(<i class="v">C</i> − (μ+σ)I)</span>, and the corpus lemma gives <span class="m nowrap">μ = <i class="v">nc</i></span>, <span class="m nowrap">σ² = (2<i class="v">n</i>(<i class="v">n</i>−1)/3) <i class="v">c</i>²</span>. A root <em>lands</em> when it equals a Casimir value <span class="m"><i class="v">J</i>(<i class="v">J</i>+1)</span> of a sector present in <i class="v">H</i>.</p>
+
+    <div class="part">
+      <span class="num">I</span>
+      <h3>The ladder <span class="ev e0">E0 · P1</span></h3>
+      <p>σ is rational exactly when <span class="m nowrap"><i class="v">n</i> = (<i class="v">x</i>+1)/2</span> with <span class="m nowrap"><i class="v">x</i>² − 6<i class="v">y</i>² = 1</span>. The rungs are <span class="mono">n = 1, 3, 25, 243, 2401, 23763, …</span> and there <span class="m nowrap">σ = <i class="v">y c</i></span>. Off the ladder no root is rational, so K<sub>mom</sub> is invertible on every carrier.</p>
+      <div class="display">(<i class="v">x</i>, <i class="v">y</i>) = (1, 0), (5, 2), (49, 20), (485, 198), (4801, 1960), …&nbsp;&nbsp; <i class="v">x</i> + <i class="v">y</i>√6 = (5 + 2√6)<sup><i class="v">k</i></sup></div>
+    </div>
+
+    <div class="part">
+      <span class="num">II</span>
+      <h3>The chain <span class="ev e0">E0 · P2</span></h3>
+      <p>On rung <i class="v">k</i> the roots are <span class="m nowrap"><i class="v">s</i><sub><i class="v">k</i>−1</sub> <i class="v">c</i></span> and <span class="m nowrap"><i class="v">s</i><sub><i class="v">k</i></sub> <i class="v">c</i></span>, where <span class="m nowrap"><i class="v">s</i><sub><i class="v">k</i></sub> = <i class="v">n</i><sub><i class="v">k</i></sub> + <i class="v">y</i><sub><i class="v">k</i></sub> = (1 + <i class="v">u</i><sub><i class="v">k</i></sub>)/2</span> and <span class="m nowrap"><i class="v">v</i>√2 + <i class="v">u</i>√3 = (√2 + √3)<sup>2<i class="v">k</i>+1</sup></span>. The upper root of each rung is the lower root of the next.</p>
+      <div class="display"><i class="v">s</i> = 1, 5, 45, 441, 4361, 43165, 427285, 4229681, …</div>
+    </div>
+
+    <div class="part">
+      <span class="num">III</span>
+      <h3>Where both roots land <span class="ev e0">E0 · P3–P5</span><span class="ev e1">E1</span></h3>
+      <p>Both roots land, giving a kernel of two whole sectors, on rung 1 (<i class="v">n</i> = 3) exactly when <span class="m nowrap">2<i class="v">j</i>+1 = <i class="v">F<sub>k</sub></i></span> with <i class="v">k</i> odd. On rungs 2, 3 and 4 (<i class="v">n</i> = 25, 243, 2401) it never happens for <i class="v">j</i> &gt; 0. On every rung <span class="m"><i class="v">k</i> ≥ 2</span> it happens for at most finitely many spins, and on rungs 5 to 9 for none with <span class="m nowrap">2<i class="v">j</i>+1 &lt; 10<sup>1000</sup></span>.</p>
+    </div>
+
+    <div class="part">
+      <span class="num">IV</span>
+      <h3>The count <span class="ev e0">E0 · P6</span></h3>
+      <p>On the Fibonacci–Lucas family the upper sector has multiplicity <i class="v">F</i><sub><i class="v">k</i>−2</sub>, so the kernel has dimension <span class="m nowrap"><i class="v">F<sub>k</sub></i>² + <i class="v">F</i><sub><i class="v">k</i>−2</sub><i class="v">L<sub>k</sub></i></span>. On the cube that is <span class="m nowrap">47 = 5² + 2·11</span>, and along the family <span class="m nowrap"><i class="v">F<sub>k</sub></i> · Ω(<i class="v">k</i>) → 3/φ</span>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="weigh" aria-labelledby="weigh-h">
+  <div class="head">
+    <div class="eyebrow"><span>Live instrument</span><span class="ev e1">E1 · exact integers in this browser</span></div>
+    <h2 id="weigh-h">Weigh any carrier</h2>
+    <p class="prose">Pick a spin and a number of factors. The page builds the Casimir census of <span class="m">V<sub><i class="v">j</i></sub><sup>⊗<i class="v">n</i></sup></span> from the character <span class="m nowrap">(1 + <i class="v">q</i> + ⋯ + <i class="v">q</i><sup>2<i class="v">j</i></sup>)<sup><i class="v">n</i></sup></span> in exact integers, reads μ and σ² off it, checks them against the lemma, and tests whether each root lands on a sector.</p>
+  </div>
+  <div class="instrument">
+    <div class="controls">
+      <div class="ctl">
+        <label for="j-out">Spin j</label>
+        <div class="stepper">
+          <button type="button" id="j-dec" aria-label="Decrease spin">−</button>
+          <output id="j-out" aria-live="polite">2</output>
+          <button type="button" id="j-inc" aria-label="Increase spin">+</button>
+        </div>
+      </div>
+      <div class="ctl">
+        <label for="n-in">Factors n</label>
+        <div class="stepper">
+          <button type="button" id="n-dec" aria-label="Decrease factors">−</button>
+          <input id="n-in" type="number" inputmode="numeric" min="2" max="2401" value="3">
+          <button type="button" id="n-inc" aria-label="Increase factors">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="presets" id="presets" aria-label="Examples">
+      <button class="chip" type="button" data-j2="4" data-n="3" aria-pressed="true">The cube · j = 2, n = 3</button>
+      <button class="chip" type="button" data-j2="12" data-n="3">Next member · j = 6</button>
+      <button class="chip" type="button" data-j2="4" data-n="25">Rung 2 · j = 2, n = 25</button>
+      <button class="chip" type="button" data-j2="2" data-n="25">Rung 2 · j = 1</button>
+      <button class="chip" type="button" data-j2="2" data-n="243">Rung 3 · j = 1, n = 243</button>
+      <button class="chip" type="button" data-j2="4" data-n="4">Off the ladder · n = 4</button>
+      <button class="chip" type="button" data-j2="1" data-n="2401">Rung 4 · j = ½, n = 2401</button>
+    </div>
+    <div class="status-line" id="w-status" aria-live="polite"><span>Computed at load.</span></div>
+    <div class="readout" id="w-readout">
+      <div class="cell"><span class="k">Carrier dimension</span><span class="val mono" id="w-dim">125</span><span class="sub" id="w-dimsub">5³</span></div>
+      <div class="cell"><span class="k"><span class="gk">μ</span> · mean Casimir</span><span class="val" id="w-mu">18</span><span class="sub" id="w-musub">n · j(j+1)</span></div>
+      <div class="cell"><span class="k"><span class="gk">σ</span> · spread</span><span class="val" id="w-sigma">12</span><span class="sub" id="w-sigsub">σ² = 144 · rational</span></div>
+      <div class="cell" id="w-lo-cell"><span class="k">Lower root <span class="gk">μ − σ</span></span><span class="val" id="w-lo">6 → lands at J = 2</span><span class="sub" id="w-losub">5 copies of V₂ · 25 dimensions</span></div>
+      <div class="cell" id="w-hi-cell"><span class="k">Upper root <span class="gk">μ + σ</span></span><span class="val" id="w-hi">30 → lands at J = 5</span><span class="sub" id="w-hisub">2 copies of V₅ · 22 dimensions</span></div>
+      <div class="cell hl" id="w-ker-cell"><span class="k">dim ker K<sub class="gk">mom</sub> · <span class="gk">Ω</span></span><span class="val" id="w-ker">47 of 125</span><span class="sub" id="w-omega">Ω = 47/125 = 0.376</span></div>
+    </div>
+    <div class="chart-box" id="w-chart" role="img" aria-label="Sector dimensions of the carrier by total spin J, with the two moment roots marked"></div>
+  </div>
+</section>
+
+<section class="band" id="count" aria-labelledby="count-h">
+  <div class="count-grid">
+    <div class="head" style="margin-bottom:0">
+      <div class="eyebrow"><span>Theorem part IV</span><span class="ev e0">E0 · P6</span><span class="ev e1">E1 replay</span></div>
+      <h2 id="count-h">Why 47 = 5² + 2·11</h2>
+      <p class="big-eq" aria-label="47 equals 5 squared plus 2 times 11"><span class="g">47</span> = 5² + 2·11</p>
+      <div class="prose">
+        <p>On the cube the lower root keeps the spin-2 sector, five copies of <span class="m">V<sub>2</sub></span>, and the upper root keeps the spin-5 sector, two copies of <span class="m">V<sub>5</sub></span>. Across the family both counts are Fibonacci numbers: <i class="v">F<sub>k</sub></i> copies of <span class="m">V<sub><i class="v">j</i></sub></span> below and <i class="v">F</i><sub><i class="v">k</i>−2</sub> copies of <span class="m">V<sub><i class="v">J</i></sub></span> above.</p>
+        <p>The fraction kept falls like <span class="m">3/(φ <i class="v">F<sub>k</sub></i>)</span>. The cube keeps the most of any proper member.</p>
+      </div>
+    </div>
+    <div>
+      <div class="table-box">
+        <table id="fam-table">
+          <thead><tr><th><span class="m">k</span></th><th>2j+1 = <span class="m">F<sub>k</sub></span></th><th>2J+1 = <span class="m">L<sub>k</sub></span></th><th>copies of V<sub>J</sub></th><th>dim ker</th><th>carrier</th><th>Ω</th><th><span class="m">F<sub>k</sub></span>·Ω</th></tr></thead>
+          <tbody id="fam-body">
+            <tr><td>3</td><td>2</td><td>4</td><td>1</td><td>8</td><td>8</td><td>1</td><td>2.0000</td></tr>
+            <tr class="cube"><td>5</td><td>5</td><td>11</td><td>2</td><td>47</td><td>125</td><td>0.376</td><td>1.8800</td></tr>
+            <tr><td>7</td><td>13</td><td>29</td><td>5</td><td>314</td><td>2197</td><td>0.14292</td><td>1.8580</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note" id="fam-note">3/φ = 1.8541019662… · multiplicities replayed from the exact census for k ≤ 13.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="proofs" aria-labelledby="proofs-h">
+  <div class="head">
+    <div class="eyebrow"><span>Proofs</span><span class="ev e0">E0</span></div>
+    <h2 id="proofs-h">Six short proofs</h2>
+  </div>
+  <div class="proofs">
+    <article class="proof" id="p1">
+      <header><span class="pid">P1</span><h3>Rational σ lives on a Pell ladder</h3></header>
+      <p>σ/<i class="v">c</i> = √(2<i class="v">n</i>(<i class="v">n</i>−1)/3). If this is rational, then 6<i class="v">n</i>(<i class="v">n</i>−1) = 9(σ/<i class="v">c</i>)² is an integer that is a rational square, hence an integer square <i class="v">r</i>². Since 3 divides <i class="v">r</i>², write <i class="v">r</i> = 3<i class="v">y</i>, so 2<i class="v">n</i>(<i class="v">n</i>−1) = 3<i class="v">y</i>². Put <i class="v">x</i> = 2<i class="v">n</i> − 1; then <i class="v">x</i>² − 1 = 4<i class="v">n</i>(<i class="v">n</i>−1) = 6<i class="v">y</i>².</p>
+      <div class="eqline"><i class="v">x</i>² − 6<i class="v">y</i>² = 1, &nbsp; <i class="v">x</i> + <i class="v">y</i>√6 = (5 + 2√6)<sup><i class="v">k</i></sup>, &nbsp; σ = <i class="v">y c</i></div>
+      <p>Off the ladder μ ± σ is irrational while every Casimir value <i class="v">J</i>(<i class="v">J</i>+1) is rational, so no root lands.<span class="qed">∎</span></p>
+    </article>
+    <article class="proof" id="p2">
+      <header><span class="pid">P2</span><h3>Each upper root is the next lower root</h3></header>
+      <p>Consecutive solutions satisfy (<i class="v">x<sub>k</sub></i>, <i class="v">y<sub>k</sub></i>) = (5<i class="v">x</i><sub><i class="v">k</i>−1</sub> + 12<i class="v">y</i><sub><i class="v">k</i>−1</sub>, 2<i class="v">x</i><sub><i class="v">k</i>−1</sub> + 5<i class="v">y</i><sub><i class="v">k</i>−1</sub>). Then</p>
+      <div class="eqline"><i class="v">n<sub>k</sub></i> − <i class="v">y<sub>k</sub></i> = (<i class="v">x</i><sub><i class="v">k</i>−1</sub> + 2<i class="v">y</i><sub><i class="v">k</i>−1</sub> + 1)/2 = <i class="v">n</i><sub><i class="v">k</i>−1</sub> + <i class="v">y</i><sub><i class="v">k</i>−1</sub></div>
+      <p>so the lower root μ − σ on rung <i class="v">k</i> is the upper root μ + σ of rung <i class="v">k</i> − 1. Since (√2 + √3)² = 5 + 2√6, the coefficients are <i class="v">s<sub>k</sub></i> = (1 + <i class="v">u<sub>k</sub></i>)/2 with <i class="v">u</i> = 1, 9, 89, 881, 8721, …<span class="qed">∎</span></p>
+    </article>
+    <article class="proof" id="p3">
+      <header><span class="pid">P3</span><h3>n = 25: the 9 : 1 obstruction</h3></header>
+      <p>The roots are 5<i class="v">c</i> and 45<i class="v">c</i>, so a double landing needs <i class="v">J</i>₂(<i class="v">J</i>₂+1) = 9 <i class="v">J</i>₁(<i class="v">J</i>₁+1). With <i class="v">B</i> = 2<i class="v">J</i>+1 this is</p>
+      <div class="eqline">9<i class="v">B</i>₁² − <i class="v">B</i>₂² = 8, &nbsp; (3<i class="v">B</i>₁ − <i class="v">B</i>₂)(3<i class="v">B</i>₁ + <i class="v">B</i>₂) = 8</div>
+      <p>Both factors are positive with equal parity, and the larger is at least 4. The only split is 2 · 4, which gives <i class="v">B</i>₁ = <i class="v">B</i>₂ = 1, so <i class="v">J</i>₁ = <i class="v">J</i>₂ = 0 and <i class="v">c</i> = 0.<span class="qed">∎</span></p>
+    </article>
+    <article class="proof" id="p4">
+      <header><span class="pid">P4</span><h3>n = 243 and 2401: the 441 wall</h3></header>
+      <p>The coefficient 441 = 21² is the upper root of rung 3 and the lower root of rung 4. With <i class="v">a</i> = 2<i class="v">j</i>+1, the equation <i class="v">J</i>(<i class="v">J</i>+1) = 441 <i class="v">j</i>(<i class="v">j</i>+1) reads</p>
+      <div class="eqline">(21<i class="v">a</i>)² − <i class="v">B</i>² = 440, &nbsp; (21<i class="v">a</i> − <i class="v">B</i>)(21<i class="v">a</i> + <i class="v">B</i>) = 440</div>
+      <p>For <i class="v">a</i> ≥ 2 the factor 21<i class="v">a</i> + <i class="v">B</i> is at least 43. The even splits of 440 above that, 2·220, 4·110 and 10·44, give 42<i class="v">a</i> = 222, 114 and 54, none divisible by 42. So this root never lands for <i class="v">j</i> &gt; 0, and neither rung can land twice.<span class="qed">∎</span></p>
+    </article>
+    <article class="proof" id="p5">
+      <header><span class="pid">P5</span><h3>Genus zero on the cube, genus one above it</h3></header>
+      <p>A double landing on rung <i class="v">k</i> is an integer point on two quadrics, with <i class="v">s</i> = <i class="v">s</i><sub><i class="v">k</i>−1</sub> and <i class="v">s</i>′ = <i class="v">s<sub>k</sub></i>:</p>
+      <div class="eqline"><i class="v">b</i>² − <i class="v">s a</i>² = 1 − <i class="v">s</i>, &nbsp; <i class="v">d</i>² − <i class="v">s</i>′<i class="v">a</i>² = 1 − <i class="v">s</i>′</div>
+      <p>Their pencil degenerates at 0, ∞, −<i class="v">s</i>′/<i class="v">s</i> and −(<i class="v">s</i>′−1)/(<i class="v">s</i>−1). These are distinct whenever <i class="v">s</i>, <i class="v">s</i>′ ∉ {0, 1} and <i class="v">s</i> ≠ <i class="v">s</i>′, which holds on every rung <i class="v">k</i> ≥ 2. The curve is then smooth of genus one, and Siegel’s theorem leaves finitely many integer points. On the cube <i class="v">s</i> = 1: the first quadric splits into <i class="v">b</i> = ±<i class="v">a</i> (the lower root always lands, at <i class="v">J</i> = <i class="v">j</i>), and what remains is the conic <i class="v">b</i>² − 5<i class="v">a</i>² = −4 of genus zero, whose integer points are the Fibonacci–Lucas pairs.<span class="qed">∎</span></p>
+      <p class="ask-note">The obstruction above the cube is integrality. The curves carry rational points of infinite order (rank 1 on rungs 2 and 3, rank 2 on rungs 4 and 5, by PARI 2-descent, E1), and on rung 2 the rational spin <i class="v">j</i> = 98/1501 lands both roots, at 2<i class="v">J</i>+1 = 2321/1501 and 5519/1501.</p>
+    </article>
+    <article class="proof" id="p6">
+      <header><span class="pid">P6</span><h3>The Fibonacci count</h3></header>
+      <p>In <span class="m">V<sub><i class="v">j</i></sub><sup>⊗3</sup> = V<sub><i class="v">j</i></sub> ⊗ (V<sub>0</sub> ⊕ ⋯ ⊕ V<sub>2<i class="v">j</i></sub>)</span>, a spin <i class="v">J</i> with <i class="v">j</i> ≤ <i class="v">J</i> ≤ 3<i class="v">j</i> occurs once for each <i class="v">L</i> with <i class="v">J</i> − <i class="v">j</i> ≤ <i class="v">L</i> ≤ 2<i class="v">j</i>, so 3<i class="v">j</i> − <i class="v">J</i> + 1 times, and spin <i class="v">j</i> occurs 2<i class="v">j</i>+1 times. With 2<i class="v">j</i>+1 = <i class="v">F<sub>k</sub></i>, 2<i class="v">J</i>+1 = <i class="v">L<sub>k</sub></i> and <i class="v">L<sub>k</sub></i> = <i class="v">F<sub>k</sub></i> + 2<i class="v">F</i><sub><i class="v">k</i>−1</sub>:</p>
+      <div class="eqline">3<i class="v">j</i> − <i class="v">J</i> + 1 = (3<i class="v">F<sub>k</sub></i> − <i class="v">L<sub>k</sub></i>)/2 = <i class="v">F</i><sub><i class="v">k</i>−2</sub>, &nbsp; dim ker = <i class="v">F<sub>k</sub></i>² + <i class="v">F</i><sub><i class="v">k</i>−2</sub><i class="v">L<sub>k</sub></i></div>
+      <p>For odd <i class="v">k</i>, <i class="v">F</i><sub><i class="v">k</i>−2</sub><i class="v">L<sub>k</sub></i> = <i class="v">F</i><sub>2<i class="v">k</i>−2</sub> + 1, so <i class="v">F<sub>k</sub></i>Ω = 1 + (<i class="v">F</i><sub>2<i class="v">k</i>−2</sub> + 1)/<i class="v">F<sub>k</sub></i>² → 1 + √5/φ² = 3/φ.<span class="qed">∎</span></p>
+    </article>
+  </div>
+</section>
+
+<section class="band" id="ask" aria-labelledby="ask-h">
+  <div class="head">
+    <div class="eyebrow"><span>Question the proof</span><span class="ev e1">Claude · uses this page’s exact engine</span></div>
+    <h2 id="ask-h">Ask about any step</h2>
+    <p class="prose">Claude reads the theorem and proofs above and can run this page’s exact arithmetic, weighing a carrier or re-searching a rung, before it answers. Questions run on your own Claude account.</p>
+  </div>
+  <div class="ask">
+    <div class="ask-form" id="ask-form">
+    <div class="presets" id="ask-sugg">
+      <button class="chip" type="button">Why does 441 being a square stop rungs 3 and 4?</button>
+      <button class="chip" type="button">Does any spin cut two sectors on 25 factors?</button>
+      <button class="chip" type="button">What would settle rung 5 completely?</button>
+      <button class="chip" type="button">Explain 47 = 5² + 2·11 to a clinician.</button>
+    </div>
+    <label class="eyebrow" for="ask-q">Your question</label>
+    <textarea id="ask-q" placeholder="For example: on rung 2, where does the upper root land first?" disabled></textarea>
+    <div class="ask-row">
+      <button class="btn" type="button" id="ask-go" disabled>Ask Claude</button>
+      <button class="btn quiet" type="button" id="ask-stop" hidden>Stop</button>
+    </div>
+    </div>
+    <p class="ask-note" id="ask-state">Connecting to Claude…</p>
+    <div class="tool-log" id="ask-log" aria-live="polite"></div>
+    <div class="ask-out" id="ask-out" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="band" id="boundary" aria-labelledby="boundary-h">
+  <div class="head">
+    <div class="eyebrow"><span>Evidence boundary</span></div>
+    <h2 id="boundary-h">What is proved, what is computed, what is open</h2>
+  </div>
+  <div class="bounds">
+    <div class="bound e0">
+      <span class="ev e0">E0 · proved</span>
+      <ul>
+        <li>The ladder: rational σ exactly on the Pell orders (P1).</li>
+        <li>The chain of roots and its closed form (P2).</li>
+        <li>No double landing on <i class="v">n</i> = 25, 243, 2401 (P3, P4).</li>
+        <li>Finitely many on every rung <i class="v">k</i> ≥ 2; infinitely many, all Fibonacci–Lucas, on the cube (P5).</li>
+        <li>The count <i class="v">F<sub>k</sub></i>² + <i class="v">F</i><sub><i class="v">k</i>−2</sub><i class="v">L<sub>k</sub></i> and the 3/φ limit (P6).</li>
+      </ul>
+    </div>
+    <div class="bound e1">
+      <span class="ev e1">E1 · computed exactly</span>
+      <ul>
+        <li>Rungs 5–9: no double landing with 2<i class="v">j</i>+1 &lt; 10<sup>1000</sup>, searched from both roots.</li>
+        <li>Pell classes from the LMM algorithm, checked against brute force for 2<i class="v">j</i>+1 ≤ 20000.</li>
+        <li>μ and σ² read off exact characters at <i class="v">n</i> = 3, 25, 243, 2401.</li>
+        <li>Elliptic ranks 1, 1, 2, 2 on rungs 2–5 by PARI 2-descent.</li>
+      </ul>
+    </div>
+    <div class="bound open">
+      <span class="ev open">Open</span>
+      <ul>
+        <li>Rungs 5 and up above the search bound. Siegel’s theorem is ineffective; a complete answer per rung needs linear forms in logarithms. Conjecture: no rung above the cube ever lands twice.</li>
+        <li>The moment rule is a chosen selector. The theorem says where it can act, not that it is the only natural rule.</li>
+        <li>No physical identification is claimed.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="cert">
+    <div class="cert-head"><span class="id">MC-E47-MOMENT-LADDER/1.0 · e47_moment_ladder_certificate.py</span><span class="pass">18 / 18 PASS · recorded run, 16 Oct 2026</span></div>
+    <ul class="checks">
+      <li>ladder: rational σ iff Pell, brute force to n = 300000</li>
+      <li>σ = y·c on every rung</li>
+      <li>upper root of rung k is lower root of rung k+1</li>
+      <li>s = (1 + u)/2 and s = u·x factorisation</li>
+      <li>moment lemma read off exact characters, n = 3, 25, 243, 2401</li>
+      <li>n = 25, j = 2: kernel is the spin-5 sector only</li>
+      <li>n = 25: the 9 : 1 proof, as a computation</li>
+      <li>n = 243, 2401: the 441 = 21² wall</li>
+      <li>every rung k ≥ 2 has genus one; the cube has genus zero</li>
+      <li>Pell class enumeration equals brute force to 20000</li>
+      <li>rungs 2–9: no double landing below 10¹⁰⁰⁰, both sides</li>
+      <li>rational spin 98/1501 lands both roots on rung 2</li>
+      <li>upper multiplicity F₍ₖ₋₂₎ from characters, k = 3…15</li>
+      <li>dim ker = F_k² + F₍ₖ₋₂₎L_k to k = 121; 47 = 5² + 2·11</li>
+      <li>F_k·Ω → 3/φ to 45 digits</li>
+    </ul>
+    <pre class="cmd">pip install sympy
+python3 e47-moment-ladder/research/validation/e47_moment_ladder_certificate.py            # rungs ≤ 6, about 10 s
+python3 e47-moment-ladder/research/validation/e47_moment_ladder_certificate.py --rungs 9  # rungs ≤ 9, about 2½ min</pre>
+    <div class="cert-links"><a href="https://github.com/nicholaskouns-create/nicholaskouns-create.github.io/blob/main/e47-moment-ladder/research/E47_Moment_Ladder_Theorem.md" target="_blank" rel="noopener">Theorem note</a><a href="https://github.com/nicholaskouns-create/nicholaskouns-create.github.io/blob/main/e47-moment-ladder/research/validation/e47_moment_ladder_certificate.py" target="_blank" rel="noopener">Certificate script</a><a href="https://github.com/nicholaskouns-create/nicholaskouns-create.github.io/blob/main/e47-moment-ladder/research/validation/E47_MOMENT_LADDER_CERTIFICATE.json" target="_blank" rel="noopener">Recorded run</a><a href="https://github.com/nicholaskouns-create/nicholaskouns-create.github.io/tree/main/e47-moment-ladder" target="_blank" rel="noopener">Source folder</a></div>
+  </div>
+</section>
+
+<section class="band" id="wayback" aria-labelledby="wayback-h">
+  <div class="head">
+    <div class="eyebrow"><span>Built on the E47 corpus</span></div>
+    <h2 id="wayback-h">The way back</h2>
+  </div>
+  <div class="links">
+    <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/304116d156c7ebc784175eea095faed62dc97ef3/research/e47/E47_Moment_Selector_Theorem.md" target="_blank" rel="noopener"><span class="t">Moment Selector theorem</span><span class="d">The Fibonacci–Lucas carriers and the open boundary this page closes</span></a>
+    <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/304116d156c7ebc784175eea095faed62dc97ef3/research/e47/E47_Casimir_Census_Theorem.md" target="_blank" rel="noopener"><span class="t">Casimir census</span><span class="d">m = (1, 3, 5, 4, 3, 2, 1) and the unique two-sector selection of dimension 47</span></a>
+    <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/304116d156c7ebc784175eea095faed62dc97ef3/research/e47/E47_Moment_Dynamics_Theorem.md" target="_blank" rel="noopener"><span class="t">Moment dynamics</span><span class="d">The cube contracts fastest: rate 15/17, five-step termination</span></a>
+    <a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/304116d156c7ebc784175eea095faed62dc97ef3/research/e47/validation/e47_moment_selector_certificate.py" target="_blank" rel="noopener"><span class="t">Selector certificate</span><span class="d">MC-E47-MOMENT-SELECTOR/1.0 · 13/13 PASS, re-run for this page</span></a>
+    <a href="https://e47-flight-deck.nicholaskouns.chatgpt.site/" target="_blank" rel="noopener"><span class="t">E47 Flight Deck</span><span class="d">The 125-dimensional state contracting onto the 47</span></a>
+    <a href="https://nicholaskouns-create.github.io/website/" target="_blank" rel="noopener"><span class="t">The Mathematical City</span><span class="d">The main portal: districts, labs, research index</span></a>
+  </div>
+</section>
+
+<footer>
+  <p>The Moment Ladder · E47 corpus of Nicholas Shane Kouns · theorem, proofs and instrument by Claude, 16 October 2026.</p>
+  <p>Finite algebra and number theory only. Every figure on this page is recomputed in exact integer arithmetic when the page loads or when you ask.</p>
+</footer>
+
+</div>
+</main>
+
+<script>
+// ENGINE START
+const CLASSES = {"5":{"reps":[["-1","1"],["1","1"],["4","2"]],"unit":["9","4"]},"45":{"reps":[["-1","1"],["181","27"],["19","3"],["1","1"],["134","20"],["26","4"]],"unit":["161","24"]},"4361":{"reps":[["-1","1"],["9613171065549678378613","145570584994587709717"],["1423774118076540302423","21559964953843679593"],["408332635994230331","6183310407018469"],["2669413669","40422469"],["765577","11593"],["113387","1717"],["1","1"]],"unit":["500004000010000008000001","7571474000075714316000"]},"43165":{"reps":[["-1","1"],["1986971281","9563695"],["451051","2171"],["1","1"],["1967935514","9472072"],["455414","2192"]],"unit":["41526523529","199875564"]},"427285":{"reps":[["-1","1"],["119324746466347047791219947819471","182545737617030230692439872655"],["171907042134720881837071874221267655887328696215461250308426932345637284646323944592381941559","262987341162252701319817439978785852744026088888388355302411947733762907859989330876289577"],["5907922046449","9038074831"],["30515326079681684471587114041561258485074013750078253727091348640431749","46683046667195013452802135849002703384503144208432626401114138455701"],["4520212713283682681381001384571815301303663728299558201026951875609509","6915125222285402609478508804583777406775928001420354064998019822283"],["11123867867139827787768576470632836705980842874339437105675067941969331334193488811207146450926872459","17017548539557227968107316069683256714725994397521110934894112482433132398349974062702433130805307"],["1647770330968647609561632235392005680975854378934483117978992688427334971844364599356928715590445899","2520796895847267244690507095761755707964703531148897287159650926931808554947189260700077663702789"],["1510853138511182391049423804503710241311902542507091","2311337830315962786943439500990107013098247674653"],["491732237423272098040884623501685500506925894306056981451908156312957805648022640510891","752263270182767342937384769712072641207322065919432078843348563922872063137103936987"],["550757040431639254183065822730520256859809844938446297273963336268095289783578941","842560769418611643916087210959398833929942153242136387703031515669550277486227"],["16899341","25853"],["39727154163066351665009142841","60775512832685513992721447"],["14481890591419622746246768997118537776690526826525825740151","22154728825218138915681271660083878348396209939665067241"],["4321726352756682062699518788223464076472915759","6611476229412496684575988356043272725404783"],["719214254781739177347632318224398811991","1100270484805451816801924877220385417"],["1575415343112169656011032867697050309120630075944253276475558478769803739649","2410106573682978471399490860054100910561151086997846208964763315382860289"],["262177907503420686717932441582336783509314029943986060851798646788601","401085784209892913997554671343161627234982133211213186162037271911"],["78239865493768099173059430301853804776549206360731152609","119693143128907937391144843917727867073835972877225313"],["28521075718570458603352087487113795754596363744049893562712395152261902773258842857199","43632196663799047848753608319837504415237264943123054986884702676261790599603619119"],["67047654198132800339874777823285995422758719515031434617574228862501516280863494798761396708635826222956779","102571041242828401467643764792811133217353862501894210576410701739913221606645394443199355468772621558245"],["2057279505823719366773596911039499","3147273436536530454844290304699"],["2304223896129924361464840349","3525054636277419518523059"],["749947922194921409856190707620662763195343562813342836211853029","1147287555059174076004931640763657242499017889181266258141045"],["687632949005741","1051956677917"],["101858560844221","155825565715"],["250665454003608432321451975966372808555994851","383473768445018144252305135807399556239411"],["37130888557752431862148988038221761898928051","56803686082520001024608241364045900785469"],["191786750579955905660724274863748998479026368425406604001435686486756956482008329847409140423355157751","293399775709267648102263299726048980008719925793315945587031348934727735553221917752077625241064599"],["6591127145798800786721","10083257682821095585"],["9495609297503869556990027041971915922772160285712711244916501994067375670546936409","14526601184313742828260822100451933925369629050837356649483461023504470995303047"],["1","1"],["717017075108054622155465689757875899904","1096909188879103375364703589302526670"],["3319615805859285793378407319081182602750005023976876031011280110593608943207762218103176","5078424499788394915490497076843591487128923562267823693444016290264037498841740552894"],["576051969255665358677190936768417304515674061773667025339868582668114597967367300534228391220849248900816","881257532469806432227270416789459943257030055570749459246645431387460886598985271326235017860327615602"],["223801559477683907412267228765031412749215549839576","342376765629394911277501892285519437546467774146"],["114085096","174530"],["81583233604940072405801176717972750906539349216629164739530997465885316194353096","124807904450871205109200718963379528860306291545115431955591863304078534037950"],["35609225058305743424","54475810313768654"],["12980766234170603343029083258307767816040966671904","19858274307913171315690797588576172304347660850"],["87287695620422144880958954459689593580412964088196573570990465616","133534721453731454212569059711906899864466397815511967622355058"],["31819315643990796708127186505620811137999872427824168005296639100164039695853655089747878318416","48677919850762599264771897056011183803982591600867513428535410158529983212511829015165546382"],["13888407236404604762143986227693384","21246804358475604380970945399742"],["9931719494357419752688420271757726348318991361841424634654301111867246089062068600462612881433129837195784","15193772579388878093565219849515194771181659463446016192496365787167747860986412151231126649171082329922"],["5062793908194901606048209441558646222846527839294598536578242584","7745178395456249008927065748799195251627135258202766113748418"],["1966942624","3009074"],["341322983812834039941215624","522163739634106917608126"],["1580242941630622224447051733299347205601089171404339865117651252904534435216","2417491944769589964619374742242795569897944373088742433128010819347835278"]],"unit":["5303550668726828206882340706307855552294248578906742322857049359002449362075340170389280183843614478689353121","8113493617060194737161688897367845574608623809243339534419069151979335857997098692690363852040716241466648"]},"4229681":{"reps":[["-1","1"],["90749217258383696017130257247840482980674574239031493436088064999988088560212916071912126672337396938160977816859459715575772169153630402966508056223670125531954703822085921306689077612338597678390556563612765380420370273470215150202828231541152159322241683628383","44125443209209706118654087369109739975417492598295930492099422934536368726915259157850451522308784378671729969060969896880487210708119807285326833982664184331254053746279855587438889973164329275134913146042749041113423844545255155917917123342549627625018744993"],["3077342663554799053038494106149302822167751517605166643801412295058995906079058079700621192965610978958624075065493789485333449677608829147517056248470745399955383863200343636255254318799990269","1496311627122280169654124522637254428049061429986730087009167277961129477211183076028256029990898340418992444580950473561665026325707987750861553370222954908001476061005522064039461665067581"],["65088528059728386220272050901490605137992433043021524652672035959139260879661326791748696311113017109644035871943270892318943587622888642800677774731873959474965634309143187090672751751041719135524816867281658719495447870971180862926408120660601813995603551944358179834522507153349087644256476233385453","31648318687897745425275813333298180381815842392511180686317704323810414729910418416816745753909853782729572239872098986189182954126412006732019034837142107421888635042070992771472362947809764546504745410825066353365986197122187403722197754188170144780983358438301790204331176690076570871640850495187"],["162642245129507331132611695931904484741110059358073078966697044949976223951193907089294855212762890748004135588421067406674371570933154641450519674133802033127907505523294731276140450668451263663699358568342433622784676155948518148743384994861807877402491920192140991430165376824655366509319078133867917","79082347679615245394632977847648334491189408816400912746173792828104412820069808935676056631617812095091199288479542914327761408314298547921604006481731982990077166563095345691033538207025132761298366622161057259902150335201691467806720377708772038427743506769170186635218051086661543617647006372557"],["7308419333999791168249324735219253828105858440714680170800462182925917238941360788317777262132080316203737581395810390564182531091842964965370948399778964425113691575642789567984114744248433182277711252795990662710742170151595405927568296621537706029","3553609078007839566139538010681031729217726996106301339485784928781700860542770817466209700689085621171874653855379117805063201622080499814990346225371620291293000368262103344866567354506663406605322672813268640714785786637854033087308070933215379"],["565911096485794564115949221983545438157607996792505877047559865146714472393874847","275165766756391679961078530780827107597072956714360760470297808575575383183263"],["29909263068490869407396132602949272212747467543201522828464395244554050483146015312166249727578460132480805926673846831041340722769254845294369942754844640240243059557930226974488374090289359","14542929722471888195259314887520643359997683903633196576257072541157507441114580067367906275951447770935983502016346025052002915931004296895855003453826034099002112157311570058012546564559"],["27800531374677138520205130804439629489290547162126795530095651306325127617312525165033261975944586986109134765695320493948742801","13517590624131155768600492718144045761344090834927739877002118885436324775976118449270642081217472673527115761832003506841199"],["1469300410422195516539299457177471068088494352384139720657700082238397902898451706486898843394936093389158052685495269050608838670535605574558013128844700160768546604435381321648333983888044958788369213565158834813231137366911456540443073","714425245484567275198723564204712085993956660871792640284026423163654104585252241885847853801967501119414812622882138726548235779100527797919751630237496722839353747903689170792518866765077951067939603620410465518846757289190019781183"],["113771989308389676362155758006652041773761635523737198552246816682931","55319920156803084046028578720779824229952083353270856095659375219"],["5112407330991763","2485831240877"],["12774807344944627","6211558105267"],["270198511259890449758496309719685385061390097243034987626274652141873944589868727934382586497779371512763717805161403478772771","131379965844387001200962143746933350176359651922142057239747239251707887578370892905273698904106636226196172357541360379421"],["9162540806953755659610663965662139184846060610443823937","4455147782467003193875518933845114756508679154724673"],["1","1"],["6345761202369940605177093110759288259612653962734438524650910666420639390987128539670707285292002434076598299144735743532934788548388897950653965095974981407135312594724359306420710414049709443064087441343102671953964314365560403487258381244","3085531027304954094794148030758210135592568781322939323751925945851070654189997245551637933457341618350936272438252866976183868357241020606503721443203297466942416385567771967598655549918294788161449851281512156318566324263398417583940856"],["2121498830296267919561042920692870219701596155500476","1031546926604423292197746586916854303559704179976"],["31564330569416989745422083935652342492846028985350107688527511058441400923029399339023684187382448816032230875828540240399503370851367514759336886265422548027373053818184604547292792432773232548999101763321175899994225833186657038079183561350896624621628","15347681424203809877761816329145370487170371924492166606893063556529857024187515269511072663391730276653529181733599346036535388389236848539120398976146658084402045799668528114455429355150269134785460861242403162037823445614289067974334125229346541512"],["712529308049308007679239603785520919706532389482748387036080545216667344223801322942302259100940369157813201424741087583181248154397651268899216253108791532852838589617495489971019692361148","346456668906669180388952251111374406611499419310400463368581215348180678309843565231349953893311237955631565021173137418937560843543705072364433677306130634423578013803121998457890198008"],["1166960287718455720139005955206131044253478667838254529777823707366442912766981970046096988669771358094083945532444586388775144772","567416904065546481989838826519984877352799452448456402513960560551068239650475189015395004921141415687061228092912164324052088"],["26342817710022822536511563687493143208068500964138027514358496452","12808799259662932868411603347570920309097296691715912480299592"],["391936773405118657299129619877185757766029736626662134559301630226255636585240824895028500370176060308654576108248321107927825037847694613014354734923164933918702711337403104919710545809577441840021497670284189048062719651276276447900451621587011614547162559569085764","190573366459430780695914339079456535119623607342373215209056567105972054435560718263927890545803971211591693989391144145173128884774961240957132490678717804662679005375594251520318442445505238415500172585015418066273771908246977154159915775120278560663200496684936"],["131031310478326259216203208636076736691013594973698244960253636891977087657796","63712005720970204350211934387435010799744695173297646744324476065201528696"]],"unit":["393170833882966389858087065315593167578394880296837712202838458359896724143484778151925080031825512532042876349480022174784334679480587989851296330980860197261186504317458825275509401631453384467174819810414005192879472461129106622618384722692055848568169330111482509302448901824664731149124909923199123733516801","191173409822636425695111048392921424959335160144461533769373113460667103085692860223833562237551146616845431219068589438184770441202767610073068317136397704638284588045062729761921323495511965454793566962304173255175006893339808223299231856184808624182830010794438528840350653924888419123331282081937207367840"]},"41869521":{"reps":[["-1","1"],["20402577378578571317604521784907042246225858747","3153087605736443529621397046157969622810757"],["88679645479","13704871"],["1","1"]],"unit":["86425319840791835283884976286520039982543203269655","13356479417052648852654602327058617012026527012"]},"414465525":{"reps":[["-1","1"],["16849663826049283565101456698152942569144232944299877372033318066506854560401075594613049205790075522280908324364051988010404499890786113473649","827650600534231438006680107935584918825416696441316231396708616795585630317150225625412930196035350303896595992337059178937432494126870193"],["21754905431263152930791702586363252570242092608477877680115789530796922730160947592448408729153469619916854756752154118000664800769899","1068594645604396970449138991438016766729143221013733936948083845955705370557308026966633741566272557724974800302189175889502667493"],["1105518263645336482498380067468212643635781631201573773820375347613328211603899157755102048157421101","54302736496919075459674207409447333680775370837152810273131315220496148946115012948361170349027"],["2762452444058861116906011201954645051583436413533248544285598384585767262569127490236627422876768499","135690862908369840307741356687150809645409101394434710706713087597120987960802580502106135547011"],["9211298968603666975751","452456333952432231"],["366399200766399568333575993045392228773340439149990337372696144563490732070464121229516977098994460955552355965473032418815149100107383271758476908845341521199","17997422481554384059462065295189252587528288307737242857333730792155003204538660962277653234163195557748759768151415613049661671423559400630498778793363345"],["1221745043023383526708129231393782781833883252961224269387175187198822774993265851","60011762192831431480520926297246288745769973009702971786232284710185776803797"],["3052878175877417039825190772382323589982034950815940749583366634571132549822397749","149956490628408508104052120485065465427851366040258784915544053711131706836741"],["155138002818740877761346626850933396668110889251","7620333706605347429839055955454765120257779"],["200301478709565364318803177165667653001","9838750544421779125682751292915479"],["1","1"],["140393240099377176089553225193062724104603669833805141324648646624","6896075237985356277611705002092956749679996211618662462680614"],["42103687065610221375440258280833629184367692893869766769949042578939206615504228106123492746620061761435387950199314981361250265501439570166376","2068120898096767049590935025957396002539502458422792173363723043843372293671286021537807290057374377841325239328757195304590347073658183894"],["80159549325394198225830288288188260024","3937413815648300692339595786258858"],["24039708590867664971153515381228212341067107241790774146904814796915683179746748929399710694742787383445337307008176","1180823514184297194250760310875098740173302511225174728781280311348237161889368645281749413526002698528468244250"]],"unit":["16286095632488574612111524785455488474595070700029797291563947826215586104026562651930099933954358857319666615843003551191079797180277184206756937145450951083335087117753951","799968294307954774658417983617553702436760817137704986977505306887140394568542086920859782569287739714008668733993350133130211045931135359414628237472971116710566029336"]}};
+const ENGINE = (() => {
+  const residues = (m) => { const s = new Set(); for (let i = 0; i < m; i++) s.add((i * i) % m); return s; };
+  const R64 = residues(64), R63 = residues(63), R65 = residues(65), R11 = residues(11);
+  const abs = (a) => (a < 0n ? -a : a);
+  function isqrt(n) {
+    if (n < 0n) throw new RangeError("isqrt of a negative number");
+    if (n < 2n) return n;
+    let x = 1n << BigInt((n.toString(2).length + 1) >> 1);
+    for (;;) { const y = (x + n / x) >> 1n; if (y >= x) return x; x = y; }
+  }
+  function isSquare(n) {
+    if (n < 0n) return false;
+    if (!R64.has(Number(n & 63n))) return false;
+    if (!R63.has(Number(n % 63n)) || !R65.has(Number(n % 65n)) || !R11.has(Number(n % 11n))) return false;
+    const r = isqrt(n);
+    return r * r === n;
+  }
+  function gcd(a, b) { a = abs(a); b = abs(b); while (b) { const t = a % b; a = b; b = t; } return a; }
+  function frac(n, d) { if (d < 0n) { n = -n; d = -d; } const g = gcd(n, d) || 1n; return { n: n / g, d: d / g }; }
+  const fadd = (a, b) => frac(a.n * b.d + b.n * a.d, a.d * b.d);
+  const fsub = (a, b) => frac(a.n * b.d - b.n * a.d, a.d * b.d);
+  const fstr = (f) => (f.d === 1n ? f.n.toString() : f.n + "/" + f.d);
+  const half = (t) => (t % 2 === 0 ? String(t / 2) : t + "/2");
+
+  function ladder(K) {
+    const x = [1n], y = [0n], u = [1n], v = [1n];
+    for (let k = 1; k <= K; k++) {
+      x.push(5n * x[k - 1] + 12n * y[k - 1]); y.push(2n * x[k - 1] + 5n * y[k - 1]);
+      u.push(5n * u[k - 1] + 4n * v[k - 1]); v.push(6n * u[k - 1] + 5n * v[k - 1]);
+    }
+    const n = x.map((t) => (t + 1n) / 2n);
+    const s = n.map((t, i) => t + y[i]);
+    return { x, y, u, n, s };
+  }
+
+  const FIB = [0n, 1n], LUC = [2n, 1n];
+  while (FIB.length < 260) { FIB.push(FIB[FIB.length - 1] + FIB[FIB.length - 2]); LUC.push(LUC[LUC.length - 1] + LUC[LUC.length - 2]); }
+
+  // exact census of V_j^{(x)n}: half of the palindromic coefficients of (1 + q + ... + q^{2j})^n
+  async function census(j2, n, hooks) {
+    const a = j2 + 1;
+    let h = [1n], d = 0, ops = 0;
+    for (let t = 1; t <= n; t++) {
+      const dn = d + j2, H = dn >> 1, nh = new Array(H + 1);
+      let run = 0n;
+      for (let i = 0; i <= H; i++) {
+        if (i <= d) run += h[Math.min(i, d - i)];
+        const k = i - a;
+        if (k >= 0) run -= h[Math.min(k, d - k)];
+        nh[i] = run;
+      }
+      h = nh; d = dn; ops += H + 1;
+      if (hooks && ops > 300000) {
+        ops = 0;
+        if (hooks.progress) hooks.progress(t / n);
+        await new Promise((r) => setTimeout(r, 0));
+        if (hooks.cancelled && hooks.cancelled()) throw new Error("cancelled");
+      }
+    }
+    const mult = [];
+    for (let r = 0; r <= (d >> 1); r++) {
+      const m = h[r] - (r ? h[r - 1] : 0n);
+      if (m) mult.push([d - 2 * r, m]);
+    }
+    mult.sort((p, q) => p[0] - q[0]);
+    return { mult, deg: d };
+  }
+  const censusCost = (j2, n) => n * n * j2 / 2;
+
+  function weigh(j2, n, cen) {
+    const N = BigInt(n), c4 = BigInt(j2 * (j2 + 2));
+    const mu = frac(N * c4, 4n);
+    const s2 = frac(2n * N * (N - 1n) * c4 * c4, 48n);
+    const carrier = BigInt(j2 + 1) ** N;
+    const out = { j2, n, carrier, mu, s2, census: !!cen, sectors: cen ? cen.mult.length : null };
+    const map = new Map(cen ? cen.mult : []);
+    if (cen) {
+      let D = 0n, S1 = 0n, S2 = 0n;
+      for (const [J2, m] of cen.mult) { const dim = m * BigInt(J2 + 1), cas = BigInt(J2 * (J2 + 2)); D += dim; S1 += dim * cas; S2 += dim * cas * cas; }
+      out.lemmaOK = D === carrier && S1 === N * c4 * D && 3n * (S2 * D - S1 * S1) === 2n * N * (N - 1n) * c4 * c4 * D * D;
+    }
+    out.sigmaRational = isSquare(s2.n) && isSquare(s2.d);
+    const cF = j2 * (j2 + 2) / 4, muF = n * cF, sigF = Math.sqrt(2 * n * (n - 1) / 3) * cF;
+    const sigma = out.sigmaRational ? { n: isqrt(s2.n), d: isqrt(s2.d) } : null;
+    out.sigma = sigma;
+    out.roots = [-1, 1].map((sgn) => {
+      const rootF = muF + sgn * sigF;
+      const r = { side: sgn < 0 ? "lower" : "upper", rootF, Jstar: (-1 + Math.sqrt(1 + 4 * rootF)) / 2, exact: null, lands: false, J2: null, mult: null, dim: null };
+      if (!sigma) return r;
+      r.exact = sgn < 0 ? fsub(mu, sigma) : fadd(mu, sigma);
+      const R = frac(4n * r.exact.n + r.exact.d, r.exact.d);
+      if (R.d !== 1n || !isSquare(R.n)) return r;
+      const J2 = Number(isqrt(R.n)) - 1;
+      if (J2 < 0 || J2 > n * j2 || (n * j2 - J2) % 2 !== 0) return r;
+      if (cen) {
+        const m = map.get(J2) || 0n;
+        if (m === 0n) return r;
+        r.mult = m; r.dim = m * BigInt(J2 + 1);
+      }
+      r.lands = true; r.J2 = J2;
+      return r;
+    });
+    const landed = out.roots.filter((r) => r.lands);
+    out.kernelKnown = landed.every((r) => r.dim !== null);
+    out.kernel = out.kernelKnown ? landed.reduce((acc, r) => acc + r.dim, 0n) : null;
+    out.omega = out.kernel !== null ? frac(out.kernel, carrier) : null;
+    out.mult = cen ? cen.mult : null;
+    return out;
+  }
+
+  function landingSet(D, digits) {
+    const Db = BigInt(D), bound = 10n ** BigInt(digits), r = isqrt(Db);
+    if (r * r === Db) {
+      const N = Db - 1n, set = new Set();
+      for (let p = 1n; p * p <= N; p++) {
+        if (N % p !== 0n) continue;
+        const q = N / p;
+        if ((p + q) % (2n * r) !== 0n) continue;
+        const aa = (p + q) / (2n * r);
+        if (aa < bound && isSquare(Db * (aa * aa - 1n) + 1n)) set.add(aa);
+      }
+      return { set, classes: 0, verified: true, square: true };
+    }
+    const cls = CLASSES[String(D)];
+    const reps = cls.reps.map(([p, q]) => [BigInt(p), BigInt(q)]);
+    const x1 = BigInt(cls.unit[0]), y1 = BigInt(cls.unit[1]), N = 1n - Db;
+    const verified = x1 * x1 - Db * y1 * y1 === 1n && reps.every(([p, q]) => p * p - Db * q * q === N);
+    const set = new Set();
+    for (const [x0, y0] of reps) for (const sx of [1n, -1n]) for (const sy of [1n, -1n]) for (const uy of [y1, -y1]) {
+      let x = sx * x0, y = sy * y0;
+      for (let g = 0; g < 200000; g++) {
+        const ax = abs(x), ay = abs(y);
+        if (ay >= bound && ax >= bound) break;
+        if (ay > 0n && ay < bound) set.add(ay);
+        const nx = x * x1 + Db * y * uy, ny = x * uy + y * x1;
+        x = nx; y = ny;
+      }
+    }
+    return { set, classes: reps.length, verified, square: false };
+  }
+  const sorted = (set) => [...set].sort((p, q) => (p < q ? -1 : p > q ? 1 : 0));
+
+  function rungRun(k, digits) {
+    const L = ladder(Math.max(k, 1)), lo = L.s[k - 1], hi = L.s[k];
+    const A = lo === 1n ? null : landingSet(lo, digits);
+    const B = landingSet(hi, digits);
+    const lowA = A ? sorted(A.set).filter((a) => a >= 2n) : null;
+    const highA = sorted(B.set).filter((a) => a >= 2n);
+    let common;
+    if (!A) common = highA;
+    else common = lowA.filter((a) => isSquare(hi * (a * a - 1n) + 1n));
+    const common2 = A ? highA.filter((a) => isSquare(lo * (a * a - 1n) + 1n)) : null;
+    const inter = A ? lowA.filter((a) => B.set.has(a)) : null;
+    return { k, n: L.n[k], y: L.y[k], lo, hi, lowA, highA, common, common2, inter, verified: (A ? A.verified : true) && B.verified, classes: [A ? A.classes : 0, B.classes] };
+  }
+
+  function member(k) {
+    const Fk = FIB[k], Lk = LUC[k], Fm = FIB[k - 2];
+    const j2 = Number(Fk) - 1, J2 = Number(Lk) - 1;
+    const dim = Fk * Fk + Fm * Lk, carrier = Fk * Fk * Fk;
+    return { k, Fk, Lk, Fm, j2, J2, dim, carrier, omega: frac(dim, carrier) };
+  }
+
+  return { isqrt, isSquare, frac, fstr, half, ladder, census, censusCost, weigh, landingSet, rungRun, member, FIB, LUC, sorted };
+})();
+// ENGINE END
+
+(() => {
+  const E = ENGINE;
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s).replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
+  const SUPS = { "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹", "-": "⁻" };
+  const SUBS = { "0": "₀", "1": "₁", "2": "₂", "3": "₃", "4": "₄", "5": "₅", "6": "₆", "7": "₇", "8": "₈", "9": "₉" };
+  const sup = (s) => String(s).split("").map((ch) => SUPS[ch] || ch).join("");
+  const sub = (s) => String(s).split("").map((ch) => SUBS[ch] || ch).join("");
+  const group = (s) => s.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  function big(b, max = 24) {
+    const s = b.toString();
+    if (s.length <= max) return group(s);
+    return s[0] + "." + s.slice(1, 5) + " × 10" + sup(s.length - 1);
+  }
+  const digitsNote = (b) => { const s = b.toString(); return s.length > 24 ? s.length + " digits" : ""; };
+  function spinText(t) { return t % 2 === 0 ? String(t / 2) : t + "/2"; }
+  function fracHTML(f) { return f.d === 1n ? big(f.n) : big(f.n) + "/" + big(f.d); }
+  function approx(num, den) {
+    if (num === 0n) return "0";
+    const sn = num.toString(), sd = den.toString();
+    const ka = Math.min(16, sn.length), kb = Math.min(16, sd.length);
+    let mant = Number(sn.slice(0, ka)) / Number(sd.slice(0, kb));
+    let ex = (sn.length - ka) - (sd.length - kb);
+    while (mant >= 10) { mant /= 10; ex++; }
+    while (mant < 1) { mant *= 10; ex--; }
+    if (ex >= -4 && ex <= 5) {
+      const t = (mant * Math.pow(10, ex)).toPrecision(6);
+      return t.includes(".") ? t.replace(/0+$/, "").replace(/\.$/, "") : t;
+    }
+    return mant.toFixed(4) + " × 10" + sup(ex);
+  }
+
+  /* ---------------- the ladder ---------------- */
+  const L = E.ladder(10);
+  const STATUS = { 1: "cube", 2: "never", 3: "never", 4: "never" };
+  const LANDCACHE = new Map();
+  function firstLandings(D, count) {
+    if (D === 1n) return null;
+    if (!LANDCACHE.has(D)) LANDCACHE.set(D, E.sorted(E.landingSet(D, 60).set).filter((a) => a >= 2n));
+    return LANDCACHE.get(D).slice(0, count);
+  }
+  const vlist = (arr) => arr.length ? arr.map((a) => big(a, 16)).join(", ") + ", …" : "";
+  function rootRow(D, side) {
+    const coeff = '<span class="m">' + group(D.toString()) + ' · <i class="v">j</i>(<i class="v">j</i>+1)</span>';
+    if (D === 1n) return coeff + ' lands for every <i class="v">j</i>, at <i class="v">J</i> = <i class="v">j</i>';
+    if (D === 441n) return coeff + " never lands for <i class=\"v\">j</i> &gt; 0 (441 = 21², proof P4)";
+    const first = firstLandings(D, 4);
+    return coeff + ' lands at 2<i class="v">j</i>+1 = <span class="mono">' + vlist(first) + "</span>";
+  }
+  const VERDICT = {
+    1: 'Both roots land exactly on the Fibonacci–Lucas spins, 2<i class="v">j</i>+1 = <i class="v">F<sub>k</sub></i> with <i class="v">k</i> odd. The first proper member is <i class="v">j</i> = 2, where the selector is <span class="m">K = (C − 6I)(C − 30I)</span> and keeps 47 of 125 dimensions.',
+    2: 'Never, for any <i class="v">j</i> &gt; 0. The roots stand in ratio 9 : 1, which forces <span class="m">(3<i class="v">B</i>₁ − <i class="v">B</i>₂)(3<i class="v">B</i>₁ + <i class="v">B</i>₂) = 8</span> and leaves only <i class="v">j</i> = 0 (proof P3). The lower root is the cube’s upper root: on 25 factors of spin 2 the kernel is the spin-5 sector alone.',
+    3: 'Never. The upper root has coefficient 441 = 21², and <span class="m">(21<i class="v">a</i>)² − <i class="v">B</i>² = 440</span> has no solution with <i class="v">a</i> ≥ 2 (proof P4). Only the lower root can act on 243 factors.',
+    4: 'Never. Here 441 = 21² is the lower root, and it cannot land for <i class="v">j</i> &gt; 0 (proof P4). Only the upper root can act on 2401 factors, first at 2<i class="v">j</i>+1 = 1717.',
+  };
+  const verdictComputed = 'At most finitely many spins land both roots (genus one, proof P5), and the exact search finds none with 2<i class="v">j</i>+1 &lt; 10<sup>1000</sup>, from either root.';
+  function renderRung(k) {
+    document.querySelectorAll(".rung").forEach((g) => { const on = Number(g.dataset.k) === k; g.classList.toggle("sel", on); g.setAttribute("aria-pressed", on ? "true" : "false"); });
+    const st = STATUS[k] || "computed";
+    $("rp-eyebrow").innerHTML = "<span>Rung " + k + "</span>" + (st === "computed" ? '<span class="ev e1">E1 computed</span><span class="ev e0">E0 finite</span>' : '<span class="ev e0">E0 proved</span>');
+    $("rp-title").textContent = "n = " + group(L.n[k].toString()) + (k === 1 ? " · the cube" : "");
+    const y = L.y[k];
+    $("rp-facts").innerHTML =
+      '<div><dt><span class="gk">σ</span></dt><dd class="m">' + group(y.toString()) + ' · <i class="v">j</i>(<i class="v">j</i>+1)</dd></div>' +
+      "<div><dt>Lower root</dt><dd>" + rootRow(L.s[k - 1], "lower") + "</dd></div>" +
+      "<div><dt>Upper root</dt><dd>" + rootRow(L.s[k], "upper") + "</dd></div>";
+    $("rp-verdict").innerHTML = VERDICT[k] || verdictComputed;
+    $("rp-out").innerHTML = "Recomputes every landing spin below 10<sup>1000</sup> from the Pell classes, in exact integers.";
+    $("rp-run").dataset.k = k;
+    $("rp-run").disabled = false;
+  }
+  function runRung(k) {
+    const btn = $("rp-run"), out = $("rp-out");
+    btn.disabled = true;
+    out.textContent = "Running…";
+    setTimeout(() => {
+      const t0 = performance.now();
+      const R = E.rungRun(k, 1000);
+      const ms = Math.round(performance.now() - t0);
+      let html;
+      if (k === 1) {
+        html = "<b>" + R.common.length + "</b> spins with 2j+1 &lt; 10<sup>1000</sup> land both roots, all Fibonacci: " + R.common.slice(0, 6).map((a) => a.toString()).join(", ") + ", … Class representatives verified: " + (R.verified ? "yes" : "NO") + ". " + ms + " ms.";
+      } else {
+        const both = R.common.length === 0 && R.common2.length === 0 && R.inter.length === 0;
+        html = "Lower root lands " + R.lowA.length + " times, upper root " + R.highA.length + " times below 10<sup>1000</sup>. Common: <b>" + (both ? "none" : R.common.map(String).join(", ")) + "</b>, checked from both roots and by set intersection. Class representatives verified: " + (R.verified ? "yes" : "NO") + ". " + ms + " ms.";
+      }
+      out.innerHTML = html;
+      btn.disabled = false;
+    }, 30);
+  }
+  document.querySelectorAll(".rung").forEach((g) => {
+    const k = Number(g.dataset.k);
+    g.addEventListener("click", () => renderRung(k));
+    g.addEventListener("keydown", (ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); renderRung(k); } });
+  });
+  $("rp-run").addEventListener("click", () => runRung(Number($("rp-run").dataset.k || 1)));
+  renderRung(1);
+
+  /* ---------------- the instrument ---------------- */
+  const state = { j2: 4, n: 3, token: 0 };
+  const LIMIT = 2.6e7;
+  function setControls() {
+    $("j-out").textContent = state.j2 % 2 === 0 ? String(state.j2 / 2) : state.j2 + "/2";
+    $("n-in").value = state.n;
+    document.querySelectorAll("#presets .chip").forEach((c) => c.setAttribute("aria-pressed", Number(c.dataset.j2) === state.j2 && Number(c.dataset.n) === state.n ? "true" : "false"));
+  }
+  let debounce = 0;
+  function schedule() { setControls(); clearTimeout(debounce); debounce = setTimeout(compute, 220); }
+  $("j-dec").onclick = () => { state.j2 = Math.max(1, state.j2 - 1); schedule(); };
+  $("j-inc").onclick = () => { state.j2 = Math.min(48, state.j2 + 1); schedule(); };
+  $("n-dec").onclick = () => { state.n = Math.max(2, state.n - 1); schedule(); };
+  $("n-inc").onclick = () => { state.n = Math.min(2401, state.n + 1); schedule(); };
+  $("n-in").addEventListener("change", () => { const v = Math.round(Number($("n-in").value)); state.n = Math.min(2401, Math.max(2, Number.isFinite(v) ? v : 3)); schedule(); });
+  document.querySelectorAll("#presets .chip").forEach((c) => c.addEventListener("click", () => { state.j2 = Number(c.dataset.j2); state.n = Number(c.dataset.n); schedule(); }));
+
+  function status(html) { $("w-status").innerHTML = html; }
+  async function compute() {
+    const my = ++state.token, j2 = state.j2, n = state.n;
+    const cost = E.censusCost(j2, n);
+    let cen = null;
+    const t0 = performance.now();
+    if (cost <= LIMIT) {
+      status('<span>Building the census</span><span class="progress"><span id="w-prog"></span></span>');
+      try {
+        cen = await E.census(j2, n, { progress: (p) => { const el = $("w-prog"); if (el) el.style.width = Math.round(p * 100) + "%"; }, cancelled: () => my !== state.token });
+      } catch (e) { return; }
+      if (my !== state.token) return;
+    }
+    const W = E.weigh(j2, n, cen);
+    const ms = Math.round(performance.now() - t0);
+    render(W, ms);
+  }
+  function render(W, ms) {
+    const jt = spinText(W.j2);
+    $("w-dim").textContent = big(W.carrier);
+    $("w-dimsub").textContent = (W.j2 + 1) + sup(W.n) + (digitsNote(W.carrier) ? " · " + digitsNote(W.carrier) : "");
+    $("w-mu").textContent = E.fstr(W.mu).length > 40 ? approx(W.mu.n, W.mu.d) : E.fstr(W.mu);
+    $("w-musub").textContent = "n · j(j+1) = " + W.n + " · " + E.fstr(E.frac(BigInt(W.j2 * (W.j2 + 2)), 4n));
+    if (W.sigma) {
+      $("w-sigma").textContent = E.fstr(E.frac(W.sigma.n, W.sigma.d));
+      $("w-sigsub").textContent = "σ² = " + E.fstr(W.s2) + " · rational · on the ladder";
+    } else {
+      $("w-sigma").textContent = "√(" + E.fstr(W.s2) + ") ≈ " + Math.sqrt(Number(W.s2.n) / Number(W.s2.d)).toPrecision(8);
+      $("w-sigsub").textContent = "irrational · n = " + W.n + " is off the ladder";
+    }
+    W.roots.forEach((r) => {
+      const id = r.side === "lower" ? "lo" : "hi";
+      const cell = $("w-" + id + "-cell");
+      cell.classList.toggle("hl", r.lands);
+      const val = r.exact ? E.fstr(r.exact) : r.rootF.toPrecision(8);
+      if (r.lands) {
+        $("w-" + id).innerHTML = esc(val) + ' → <span class="land-yes">lands at J = ' + spinText(r.J2) + "</span>";
+        $("w-" + id + "sub").textContent = r.mult !== null ? big(r.mult) + " copies of V" + sub(spinText(r.J2)) + " · " + big(r.dim) + " dimensions" : "multiplicity not computed live (carrier too large)";
+      } else {
+        $("w-" + id).innerHTML = esc(val) + ' → <span class="land-no">misses</span>';
+        $("w-" + id + "sub").textContent = r.exact ? "J(J+1) = " + val + " has no half-integer J; falls at J ≈ " + r.Jstar.toFixed(3) : "irrational; falls at J ≈ " + r.Jstar.toFixed(3);
+      }
+    });
+    const landed = W.roots.filter((r) => r.lands).length;
+    if (W.kernel !== null) {
+      $("w-ker").textContent = big(W.kernel) + " of " + big(W.carrier);
+      $("w-omega").textContent = W.kernel === 0n ? "Ω = 0 · K_mom is invertible" : "Ω = " + (E.fstr(W.omega).length <= 30 ? E.fstr(W.omega) + " = " : "") + approx(W.kernel, W.carrier) + (landed === 2 ? " · two sectors" : " · one sector");
+    } else {
+      $("w-ker").textContent = "one root lands";
+      $("w-omega").textContent = "kernel size needs the full census";
+    }
+    $("w-ker-cell").classList.toggle("hl", landed === 2);
+    const bits = [];
+    if (W.census) bits.push('<span class="' + (W.lemmaOK ? "ok" : "") + '">' + (W.lemmaOK ? "✓ census moments match the lemma" : "✗ census moments disagree with the lemma") + "</span>", "<span>" + W.sectors + " sectors, exact</span>");
+    else bits.push("<span>carrier too large for a live census; μ and σ from the lemma</span>");
+    bits.push("<span>" + ms + " ms</span>");
+    status(bits.join(""));
+    drawChart(W);
+  }
+
+  function drawChart(W) {
+    const box = $("w-chart");
+    if (!W.mult) { box.innerHTML = '<p class="table-note" style="padding:1rem">No census chart for this size. The roots fall at J ≈ ' + W.roots.map((r) => r.Jstar.toFixed(2)).join(" and ") + ".</p>"; return; }
+    const pts = W.mult.map(([J2, m]) => ({ J: J2 / 2, dim: m * BigInt(J2 + 1), J2 }));
+    const logs = pts.map((p) => { const s = p.dim.toString(); return Math.log10(Number(s.slice(0, 15))) + Math.max(0, s.length - 15); });
+    const maxDim = pts.reduce((a, p) => (p.dim > a ? p.dim : a), 0n);
+    const useLog = maxDim > 5000n;
+    const vals = useLog ? logs : pts.map((p) => Number(p.dim));
+    const vmax = Math.max(...vals) || 1;
+    const Wd = 640, Ht = 256, ml = 46, mr = 16, mt = 40, mb = 34;
+    const Jmin = pts[0].J, Jmax = pts[pts.length - 1].J;
+    const step = (Wd - ml - mr) / (Jmax - Jmin + 1);
+    const X = (J) => ml + (J - Jmin + 0.5) * step;
+    const Y = (v) => mt + (1 - v / vmax) * (Ht - mt - mb);
+    const landJ = new Set(W.roots.filter((r) => r.lands).map((r) => r.J2));
+    let s = '<svg viewBox="0 0 ' + Wd + " " + Ht + '" xmlns="http://www.w3.org/2000/svg">';
+    const ticks = 4;
+    for (let i = 0; i <= ticks; i++) {
+      const v = (vmax * i) / ticks, yy = Y(v);
+      s += '<line class="ch-grid" x1="' + ml + '" x2="' + (Wd - mr) + '" y1="' + yy.toFixed(1) + '" y2="' + yy.toFixed(1) + '"/>';
+      const lab = useLog ? "10" + sup(Math.round(v)) : (v >= 1000 ? Math.round(v).toLocaleString("en-US") : (Math.round(v * 10) / 10).toString());
+      s += '<text class="ch-tick" x="' + (ml - 6) + '" y="' + (yy + 3).toFixed(1) + '" text-anchor="end">' + lab + "</text>";
+    }
+    const rootX = W.roots.map((r) => (r.Jstar >= Jmin - 0.5 && r.Jstar <= Jmax + 0.5 ? X(Math.min(Math.max(r.Jstar, Jmin), Jmax)).toFixed(1) : null));
+    W.roots.forEach((r, i) => {
+      if (rootX[i] === null) return;
+      s += '<line class="ch-root' + (r.lands ? "" : " miss") + '" x1="' + rootX[i] + '" x2="' + rootX[i] + '" y1="' + (mt - 8) + '" y2="' + Y(0) + '"/>';
+    });
+    const many = pts.length > 90;
+    if (many) {
+      let d = "M" + X(pts[0].J).toFixed(1) + " " + Y(0).toFixed(1);
+      pts.forEach((p, i) => { d += " L" + X(p.J).toFixed(1) + " " + Y(vals[i]).toFixed(1); });
+      d += " L" + X(pts[pts.length - 1].J).toFixed(1) + " " + Y(0).toFixed(1) + " Z";
+      s += '<path class="ch-area" d="' + d + '"/>';
+      pts.forEach((p, i) => { if (landJ.has(p.J2)) s += '<rect class="ch-bar land" x="' + (X(p.J) - 1.5).toFixed(1) + '" y="' + Y(vals[i]).toFixed(1) + '" width="3" height="' + (Y(0) - Y(vals[i])).toFixed(1) + '"/>'; });
+    } else {
+      const bw = Math.max(2, Math.min(34, step * 0.72));
+      pts.forEach((p, i) => {
+        const land = landJ.has(p.J2);
+        s += '<rect class="ch-bar' + (land ? " land" : "") + '" x="' + (X(p.J) - bw / 2).toFixed(1) + '" y="' + Y(vals[i]).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + Math.max(0.5, Y(0) - Y(vals[i])).toFixed(1) + '"/>';
+        if (pts.length <= 16) s += '<text class="ch-val' + (land ? " land" : "") + '" x="' + X(p.J).toFixed(1) + '" y="' + (Y(vals[i]) - 5).toFixed(1) + '" text-anchor="middle">' + big(p.dim, 9) + "</text>";
+      });
+    }
+    s += '<line class="ch-axis" x1="' + ml + '" x2="' + (Wd - mr) + '" y1="' + Y(0) + '" y2="' + Y(0) + '"/>';
+    const every = Math.max(1, Math.ceil(pts.length / 14));
+    pts.forEach((p, i) => { if (i % every === 0 || i === pts.length - 1) s += '<text class="ch-tick" x="' + X(p.J).toFixed(1) + '" y="' + (Y(0) + 14) + '" text-anchor="middle">' + spinText(p.J2) + "</text>"; });
+    s += '<text class="ch-tick" x="' + (Wd - mr) + '" y="' + (Ht - 4) + '" text-anchor="end">total spin J →</text>';
+    s += '<text class="ch-tick" x="' + ml + '" y="12">' + (useLog ? "sector dimension, log scale" : "sector dimension") + "</text>";
+    W.roots.forEach((r, i) => {
+      if (rootX[i] === null) return;
+      s += '<text class="ch-rlab' + (r.lands ? "" : " miss") + '" x="' + rootX[i] + '" y="' + (mt - 12) + '" text-anchor="' + (i ? "start" : "end") + '" dx="' + (i ? 4 : -4) + '">' + (i ? "μ+σ" : "μ−σ") + (r.lands ? " lands" : " misses") + "</text>";
+    });
+    s += "</svg>";
+    box.innerHTML = s;
+  }
+  setControls();
+  compute();
+
+  /* ---------------- the count ---------------- */
+  (async () => {
+    const t0 = performance.now();
+    const phi = (1 + Math.sqrt(5)) / 2;
+    let rows = "", replayOK = true;
+    for (let k = 3; k <= 23; k += 2) {
+      const M = E.member(k);
+      if (k <= 13) {
+        const cen = await E.census(M.j2, 3);
+        const map = new Map(cen.mult);
+        replayOK = replayOK && map.get(M.J2) === M.Fm && map.get(M.j2) === M.Fk && map.get(M.j2) * BigInt(M.j2 + 1) + map.get(M.J2) * BigInt(M.J2 + 1) === M.dim;
+      }
+      const om = approx(M.dim, M.carrier);
+      const fo = Number((M.dim * 10n ** 12n) / (M.Fk * M.Fk)) / 1e12;
+      rows += '<tr' + (k === 5 ? ' class="cube"' : "") + "><td>" + k + "</td><td>" + group(M.Fk.toString()) + "</td><td>" + group(M.Lk.toString()) + "</td><td>" + group(M.Fm.toString()) + "</td><td>" + group(M.dim.toString()) + "</td><td>" + big(M.carrier, 16) + "</td><td>" + (k <= 5 ? E.fstr(M.omega) : om) + "</td><td>" + fo.toFixed(10) + "</td></tr>";
+    }
+    $("fam-body").innerHTML = rows;
+    const ms = Math.round(performance.now() - t0);
+    $("fam-note").innerHTML = "3/φ = " + (3 / phi).toFixed(10) + "… · " + (replayOK ? '<span style="color:var(--verd)">✓</span> multiplicities replayed from the exact census for k ≤ 13' : "✗ census replay disagrees") + " · " + ms + " ms in this browser.";
+  })();
+
+  /* ---------------- question the proof ---------------- */
+  const CONTEXT = [
+    "You are answering a reader's question on 'The Moment Ladder', a proof page in Nicholas Shane Kouns's E47 corpus (the Mathematical City). Answer in plain prose of at most about 220 words unless the reader asks for more. Write notation inline in plain Unicode (j(j+1), F_k, 10^1000). Use the page's tools for any specific number instead of working it out in your head. Say which proof (P1-P6) or computation supports each claim, and keep the evidence classes straight: E0 = proved on this page, E1 = computed exactly on this page, open = not settled. Do not claim physical significance.",
+    "SETTING. Carrier H = V_j^(x)n, total Casimir C, c = j(j+1). mu, sigma^2 = mean and variance of spec C under the normalized trace. Moment selector K_mom = (C-(mu-sigma)I)(C-(mu+sigma)I). Corpus lemma: mu = n c, sigma^2 = (2n(n-1)/3) c^2. A root lands when it equals J(J+1) for a sector J present in H. On V_2^(x)3 (the cube, 125 dims) mu = 18, sigma = 12, K_mom = (C-6I)(C-30I), kernel = spin-2 sector (5 copies, 25 dims) + spin-5 sector (2 copies, 22 dims) = 47.",
+    "THEOREM. I (ladder): sigma rational iff n = (x+1)/2 with x^2 - 6y^2 = 1; rungs n = 1, 3, 25, 243, 2401, 23763, 235225, 2328483, 23049601, 228167523; there sigma = y c (y = 0, 2, 20, 198, 1960, ...). Off the ladder K_mom is invertible. II (chain): on rung k the roots are s_(k-1) c and s_k c with s = 1, 5, 45, 441, 4361, 43165, 427285, 4229681, 41869521, 414465525; s_k = n_k + y_k = (1+u_k)/2, v sqrt2 + u sqrt3 = (sqrt2+sqrt3)^(2k+1). Each rung's upper root is the next rung's lower root. III (where both roots land): both roots land on rung 1 (n=3) exactly when 2j+1 = F_k, k odd (Fibonacci-Lucas family, 2J+1 = L_k); on rungs 2, 3, 4 (n = 25, 243, 2401) never for j > 0; on every rung k >= 2 for at most finitely many j; on rungs 5-9 none with 2j+1 < 10^1000. IV (count): on the family the upper sector has multiplicity F_(k-2), dim ker = F_k^2 + F_(k-2) L_k (47 = 5^2 + 2*11), and F_k * Omega(k) -> 3/phi.",
+    "PROOFS. P1: sigma/c = sqrt(2n(n-1)/3) rational => 6n(n-1) = r^2, r = 3y, x = 2n-1 gives x^2 - 6y^2 = 1; off the ladder the roots are irrational but Casimir values are rational. P2: (x_k, y_k) = (5x+12y, 2x+5y) gives n_k - y_k = n_(k-1) + y_(k-1). P3 (n=25): roots 5c and 45c; double landing needs 9B1^2 - B2^2 = 8 with B = 2J+1, i.e. (3B1-B2)(3B1+B2) = 8, only 2*4, so B1 = B2 = 1, j = 0. P4 (441 = 21^2, upper root of rung 3, lower root of rung 4): (21a)^2 - B^2 = 440 with a = 2j+1 >= 2 has no solution (splits 2*220, 4*110, 10*44 give 42a = 222, 114, 54). P5: a double landing is an integer point on b^2 - s a^2 = 1-s, d^2 - s' a^2 = 1-s'; the pencil's four roots 0, inf, -s'/s, -(s'-1)/(s-1) are distinct for k >= 2, so the curve has genus one and Siegel gives finitely many integer points; on the cube s = 1 splits off b = +-a and leaves the conic b^2 - 5a^2 = -4 (genus zero). The curves have rational points of infinite order (ranks 1,1,2,2 on rungs 2-5, PARI, E1); the rational spin j = 98/1501 lands both roots on rung 2, so the obstruction is integrality. P6: in V_j^(x)3 spin J in [j, 3j] has multiplicity 3j - J + 1 = (3F_k - L_k)/2 = F_(k-2); spin j has multiplicity 2j+1 = F_k.",
+    "EVIDENCE BOUNDARY. E0: P1-P6. E1: rungs 5-9 searched to 10^1000 from both roots via Pell class enumeration (LMM classes, cross-checked by brute force to 20000); moment lemma read off exact characters at n = 3, 25, 243, 2401. Open: rungs >= 5 above the bound (Siegel is ineffective; Baker-type linear forms in logarithms would settle each rung); conjecture: no rung above the cube lands twice. The moment rule is a chosen selector. Certificate MC-E47-MOMENT-LADDER/1.0, 18/18 PASS.",
+  ].join("\n\n");
+
+  const shortBig = (b) => { const t = b.toString(); return t.length > 60 ? t.slice(0, 12) + "… (" + t.length + " digits)" : t; };
+  const log = (html) => { const d = document.createElement("div"); d.innerHTML = html; $("ask-log").appendChild(d); return d; };
+  const TOOLS = [
+    {
+      name: "weigh_carrier",
+      description: "Exact moment-selector analysis of the carrier V_j^(x)n on this page: carrier dimension, mu, sigma^2, whether sigma is rational, where each root mu -/+ sigma lands (spin J, multiplicity, sector dimension), kernel dimension and Omega. Input two_j = 2j (1-48) and n (2-2401). Big integers come back as strings.",
+      inputSchema: { type: "object", properties: { two_j: { type: "integer", description: "twice the spin, 1-48" }, n: { type: "integer", description: "number of tensor factors, 2-2401" } }, required: ["two_j", "n"] },
+      execute: async (input) => {
+        const j2 = Math.round(Number(input.two_j)), n = Math.round(Number(input.n));
+        if (!(j2 >= 1 && j2 <= 48 && n >= 2 && n <= 2401)) throw new Error("two_j must be 1-48 and n must be 2-2401");
+        const line = log("weigh_carrier(2j = " + j2 + ", n = " + n + ") …");
+        const cen = E.censusCost(j2, n) <= LIMIT ? await E.census(j2, n, { progress: () => {} }) : null;
+        const W = E.weigh(j2, n, cen);
+        line.innerHTML = '<span class="ok">✓</span> weigh_carrier(2j = ' + j2 + ", n = " + n + ")";
+        return {
+          j: spinText(j2), n, carrier_dimension: shortBig(W.carrier), mu: E.fstr(W.mu), sigma_squared: E.fstr(W.s2), sigma_rational: W.sigmaRational,
+          census: W.census ? { sectors: W.sectors, moments_match_lemma: W.lemmaOK } : "not computed (carrier too large); mu and sigma from the lemma",
+          roots: W.roots.map((r) => ({ side: r.side, value: r.exact ? E.fstr(r.exact) : r.rootF.toPrecision(10) + " (irrational)", lands: r.lands, J: r.lands ? spinText(r.J2) : null, multiplicity: r.mult !== null ? shortBig(r.mult) : null, sector_dimension: r.dim !== null ? shortBig(r.dim) : null, nearest_J_real: Number(r.Jstar.toFixed(4)) })),
+          kernel_dimension: W.kernel !== null ? shortBig(W.kernel) : "unknown",
+          omega: W.omega ? (E.fstr(W.omega).length <= 60 ? E.fstr(W.omega) : approx(W.kernel, W.carrier)) : null,
+        };
+      },
+    },
+    {
+      name: "rung",
+      description: "Facts about rung k (0-10) of the moment ladder: tensor order n_k, sigma/c, the two root coefficients s_(k-1) and s_k, the first values of 2j+1 (below 10^60) where each root lands, and the page's verdict.",
+      inputSchema: { type: "object", properties: { k: { type: "integer", description: "rung index 0-10" } }, required: ["k"] },
+      execute: (input) => {
+        const k = Math.round(Number(input.k));
+        if (!(k >= 0 && k <= 10)) throw new Error("k must be 0-10");
+        log('<span class="ok">✓</span> rung(' + k + ")");
+        if (k === 0) return { k, n: "1", note: "one factor; sigma = 0; both roots equal c" };
+        const land = (D) => (D === 1n ? "every j (J = j)" : D === 441n ? "never for j > 0 (441 = 21^2)" : firstLandings(D, 5).map(String));
+        return { k, n: L.n[k].toString(), sigma_over_c: L.y[k].toString(), lower_coefficient: L.s[k - 1].toString(), upper_coefficient: L.s[k].toString(), lower_lands_at_2j_plus_1: land(L.s[k - 1]), upper_lands_at_2j_plus_1: land(L.s[k]), verdict: k === 1 ? "both land exactly on the Fibonacci-Lucas family (E0)" : k <= 4 ? "never lands twice for j > 0 (E0, " + (k === 2 ? "P3" : "P4") + ")" : k <= 9 ? "finitely many (E0, P5); none below 10^1000 (E1)" : "finitely many (E0, P5); not searched" };
+      },
+    },
+    {
+      name: "search_rung",
+      description: "Re-run the exact search on rung k (1-9): every 2j+1 below 10^digits where each root lands, by Pell class enumeration, and the values where both land. digits 10-1000. Returns counts and the common values.",
+      inputSchema: { type: "object", properties: { k: { type: "integer", description: "rung 1-9" }, digits: { type: "integer", description: "search bound exponent, 10-1000" } }, required: ["k"] },
+      execute: (input) => {
+        const k = Math.round(Number(input.k)), digits = Math.round(Number(input.digits || 1000));
+        if (!(k >= 1 && k <= 9)) throw new Error("k must be 1-9");
+        if (!(digits >= 10 && digits <= 1000)) throw new Error("digits must be 10-1000");
+        const t0 = performance.now();
+        const R = E.rungRun(k, digits);
+        log('<span class="ok">✓</span> search_rung(k = ' + k + ", below 10" + sup(digits) + ") · " + Math.round(performance.now() - t0) + " ms");
+        return { k, n: R.n.toString(), bound: "2j+1 < 10^" + digits, lower_root_landings: R.lowA ? R.lowA.length : "every j", upper_root_landings: R.highA.length, both_land: R.common.slice(0, 8).map(shortBig), both_land_count: R.common.length, cross_check_from_upper_root: R.common2 ? R.common2.length : "n/a", class_representatives_verified: R.verified };
+      },
+    },
+    {
+      name: "cube_member",
+      description: "The member with index k (odd, 3-121) of the Fibonacci-Lucas family on the cube V_j^(x)3: 2j+1 = F_k, 2J+1 = L_k, multiplicities F_k and F_(k-2), kernel dimension F_k^2 + F_(k-2) L_k, carrier F_k^3, Omega.",
+      inputSchema: { type: "object", properties: { k: { type: "integer", description: "odd index 3-121" } }, required: ["k"] },
+      execute: (input) => {
+        const k = Math.round(Number(input.k));
+        if (!(k >= 3 && k <= 121 && k % 2 === 1)) throw new Error("k must be odd, 3-121");
+        const M = E.member(k);
+        log('<span class="ok">✓</span> cube_member(k = ' + k + ")");
+        return { k, j: spinText(M.j2), J: spinText(M.J2), F_k: shortBig(M.Fk), L_k: shortBig(M.Lk), lower_multiplicity: shortBig(M.Fk), upper_multiplicity: shortBig(M.Fm), kernel_dimension: shortBig(M.dim), carrier_dimension: shortBig(M.carrier), omega: approx(M.dim, M.carrier) };
+      },
+    },
+  ];
+
+  const COPY = {
+    not_granted: "Claude isn’t allowed on this page for you. The theorem, proofs and instrument above work without it.",
+    sampling_disabled: "Claude isn’t available for this account.",
+    rate_limited: "Too many questions at once. Try again in a little while.",
+    session_expired: "Your Claude session expired. Sign in again, then ask.",
+    refused: "Claude declined that question. Try asking it differently.",
+    empty_completion: "Claude returned nothing. Try a shorter or more specific question.",
+    prompt_too_large: "That question is too long. Shorten it and ask again.",
+    upstream_error: "The connection to Claude broke off. Ask again.",
+  };
+  (async () => {
+    const sample = window.claude && typeof window.claude.use === "function" ? await window.claude.use("sample").catch(() => null) : null;
+    const q = $("ask-q"), go = $("ask-go"), stop = $("ask-stop"), st = $("ask-state"), out = $("ask-out");
+    if (!sample) { $("ask-form").hidden = true; st.textContent = "Asking Claude works where this page is opened inside Claude, where it can call the page’s exact engine. Everything else on this page works on its own."; return; }
+    const limits = await sample.limits().catch(() => null);
+    const tools = limits && limits.tools ? TOOLS.slice(0, limits.tools.maxCount || TOOLS.length) : null;
+    q.disabled = false; go.disabled = false;
+    st.textContent = tools ? "Ready. Questions that need computation can take a minute or two." : "Ready.";
+    document.querySelectorAll("#ask-sugg .chip").forEach((c) => c.addEventListener("click", () => { q.value = c.textContent; q.focus(); }));
+    let ctl = null;
+    stop.addEventListener("click", () => ctl && ctl.abort());
+    async function ask() {
+      const question = q.value.trim();
+      if (!question) { st.textContent = "Type a question first."; q.focus(); return; }
+      ctl = new AbortController();
+      go.disabled = true; stop.hidden = false;
+      $("ask-log").innerHTML = ""; out.textContent = "";
+      st.textContent = "Thinking…";
+      const base = tools ? CONTEXT : CONTEXT.replace("Use the page's tools for any specific number instead of working it out in your head.", "No tools are available this time; if a specific number is not in the context, say so instead of guessing.");
+      const input = base + "\n\nREADER'S QUESTION: " + question;
+      try {
+        const opts = { signal: ctl.signal, onText: ({ text }) => { out.textContent = text; st.textContent = "Answering…"; } };
+        if (tools) opts.tools = tools;
+        const res = await sample(input, opts);
+        out.textContent = res.text;
+        st.textContent = res.truncated ? "The answer was cut short. Ask for less at a time." : "Answered.";
+      } catch (e) {
+        const code = e && e.code;
+        if (code === "cancelled") { out.textContent = (e && e.text) || ""; st.textContent = "Stopped."; }
+        else {
+          if (code === "refused") out.textContent = ""; else out.textContent = (e && e.text) || "";
+          st.textContent = COPY[code] || COPY.upstream_error;
+          if (code === "not_granted" || code === "sampling_disabled") { q.disabled = true; go.disabled = true; }
+        }
+      } finally {
+        stop.hidden = true;
+        if (!q.disabled) go.disabled = false;
+      }
+    }
+    go.addEventListener("click", ask);
+    q.addEventListener("keydown", (ev) => { if (ev.key === "Enter" && (ev.metaKey || ev.ctrlKey)) ask(); });
+  })();
+})();
+</script>
+</body>
+</html>
