@@ -42,6 +42,8 @@ The repository README is now a live index into the larger research architecture.
 | Read the public narrative | [AIMS E47 Root Directory](https://www.aims.healthcare/journal/e47-by-nicholas-kouns-root-directory) |
 | Work on current code | [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya) |
 | Run the Foundry lifetime intersection | [E47-Foundry-Lifetime-Intersection](https://github.com/nicholaskouns-create/E47-Foundry-Lifetime-Intersection) |
+| Inspect the authorization model | [Authorization Kernel](https://github.com/nicholaskouns-create/auth-kernel) |
+| Explore bismuth proofs and simulations | [Bismuth A7](https://github.com/nicholaskouns-create/bi-a7-semimetal-proofs) |
 
 ## The substrate map
 
@@ -53,7 +55,7 @@ The repository README is now a live index into the larger research architecture.
 | **Supabase** | live registries, runtime state, provenance and receipts |
 | **AIMS** | public exposition and readable publication |
 
-## Four repositories, four roles
+## Six repositories, six roles
 
 | Repository | Role | Published surface |
 |---|---|---|
@@ -61,6 +63,8 @@ The repository README is now a live index into the larger research architecture.
 | [E47-Electroweak-Identities](https://github.com/nicholaskouns-create/E47-Electroweak-Identities) | $G_F\to(m_Z^{(0)},m_W/m_Z,m_t/m_H)$ instrument plus mass-ladder audits | [Instrument](https://nicholaskouns-create.github.io/electroweak/) |
 | [E47-Foundry-Lifetime-Intersection](https://github.com/nicholaskouns-create/E47-Foundry-Lifetime-Intersection) | Foundry lifetime algebra and 38-check E47 intersection validator | [Repository](https://github.com/nicholaskouns-create/E47-Foundry-Lifetime-Intersection) |
 | [nicholaskouns-create.github.io](https://github.com/nicholaskouns-create/nicholaskouns-create.github.io) | root personal atlas and router | [Root site](https://nicholaskouns-create.github.io/) |
+| [auth-kernel](https://github.com/nicholaskouns-create/auth-kernel) | authorization reference model, principal binding, and single-use nonce validation | [Proof and implementation](https://github.com/nicholaskouns-create/auth-kernel) |
+| [bi-a7-semimetal-proofs](https://github.com/nicholaskouns-create/bi-a7-semimetal-proofs) | A7 bismuth certificates, spin-orbit and interface simulations, and browser playground source | [Proofs and playground source](https://github.com/nicholaskouns-create/bi-a7-semimetal-proofs) |
 
 ## Current finite core
 
