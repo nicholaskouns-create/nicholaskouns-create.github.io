@@ -1,0 +1,7 @@
+# Link-share cards for Markdown pages that GitHub Pages renders (Mathematical City, generated).
+defaults:
+  - scope:
+      path: "README.md"
+    values:
+      image: /assets/og/home.jpg
+      description: "The vestibule of The Mathematical City: navigation across the City's sites, repositories and research."

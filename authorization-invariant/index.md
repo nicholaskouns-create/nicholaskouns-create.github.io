@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Authorization Invariant Discovery
+description: "A privileged action is authorized only when the grant is bound to the requesting principal, task, tool, exact arguments, validity window and a fresh one-shot nonce."
+image: /assets/og/authorization-invariant.jpg
 ---
 
 # Authorization Invariant Discovery
