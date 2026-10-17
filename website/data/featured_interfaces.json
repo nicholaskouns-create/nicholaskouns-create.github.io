@@ -1,7 +1,8 @@
 {
   "version": "CITY-FEATURED-INTERFACES-1.0",
-  "updated": "2026-10-13",
+  "updated": "2026-10-17",
   "featured": [
+    "matrix-quantum-simulator",
     "city-observatory",
     "eidolon-flight",
     "ufo-propulsion",
@@ -11,6 +12,16 @@
     "sigillum"
   ],
   "entries": [
+    {
+      "id": "matrix-quantum-simulator",
+      "title": "The Matrix — Quantum Simulator",
+      "role": "Three-qubit simulator + browser portal",
+      "kind": "instrument",
+      "runtime": "https://nicholaskouns-create.github.io/matrix-quantum-simulator/",
+      "source": "https://github.com/nicholaskouns-create/nicholaskouns-create.github.io/tree/main/matrix-quantum-simulator",
+      "featured_label": "QUANTUM LAB",
+      "summary": "Three-qubit statevector simulator with Bell, GHZ, superposition and QFT-style presets, measurement, reduced-qubit views, an integrated web portal, and direct bridges into the Mathematical City ecosystem."
+    },
     {
       "id": "city-observatory",
       "title": "Observatory — The Mathematical City",
@@ -33,14 +44,8 @@
       "featured_label": "FLY FIRST",
       "summary": "The City’s highest-attention entry surface: a playable flight simulator with the current unified Flight Lab as the live runtime and the Grok Eidolon simulator retained as source lineage.",
       "alternates": [
-        {
-          "label": "Eidolon Grok flight simulator",
-          "url": "https://lark-plaza-umbra-drum.grok.me/"
-        },
-        {
-          "label": "Eidolon Harmonic",
-          "url": "https://nova-wood-clear-zest.grok.me/"
-        }
+        {"label": "Eidolon Grok flight simulator", "url": "https://lark-plaza-umbra-drum.grok.me/"},
+        {"label": "Eidolon Harmonic", "url": "https://nova-wood-clear-zest.grok.me/"}
       ]
     },
     {
@@ -66,14 +71,8 @@
       "featured_label": "COCKPIT",
       "summary": "The most game-forward Hover surface: enter the cockpit and pilot with surge, yaw, climb, and hover-lock controls.",
       "alternates": [
-        {
-          "label": "Hover assembly / construction",
-          "url": "https://willow-fjord-king-cap.grok.me/"
-        },
-        {
-          "label": "Hover legacy motion surface",
-          "url": "https://zinc-crane-gem-pepper.grok.me/"
-        }
+        {"label": "Hover assembly / construction", "url": "https://willow-fjord-king-cap.grok.me/"},
+        {"label": "Hover legacy motion surface", "url": "https://zinc-crane-gem-pepper.grok.me/"}
       ]
     },
     {
