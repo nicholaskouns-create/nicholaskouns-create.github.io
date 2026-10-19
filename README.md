@@ -33,6 +33,7 @@ The repository README is now a live index into the larger research architecture.
 | Review continuity / consent runtime | [Coherence Runtime bridge](https://nicholaskouns-create.github.io/coherence-runtime/) |
 | Understand the formalism | [Formalism Atlas](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/) |
 | Run the instruments | [Instrument Portal](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/instruments/) |
+| Keep time inside E47 | [The Quantum Clock](https://nicholaskouns-create.github.io/quantum-clock/) |
 | Verify the current spectral proof | [125 × 125 Matrix Proof](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-spectral-matrix-proof/) |
 | Verify convergence + noiseless multiplicities | [E47 convergence/noiseless certificate](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-CONVERGENCE-NOISELESS-20260928-001.json) |
 | Open the living research atlas | [Notion](https://mathematicalcity.notion.site/?pvs=74) |
