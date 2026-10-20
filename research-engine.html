@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mathematical City | Research Engine</title>
+<style>body{font:16px/1.55 system-ui,sans-serif;max-width:860px;margin:4rem auto;padding:0 1.5rem;background:#f9fafb;color:#1b2733}h1{font-weight:550;letter-spacing:-.04em}table{border-collapse:collapse;width:100%;background:white}td,th{text-align:left;padding:.8rem;border-bottom:1px solid #dde2e7}th{font-size:.8rem;text-transform:uppercase;color:#526274}small{color:#526274}.tag{background:#eef2f5;border-radius:5px;padding:.15rem .4rem}a{color:#164e79}</style></head>
+<body><small>THE MATHEMATICAL CITY · RESEARCH INFRASTRUCTURE</small><h1>Research Engine</h1>
+<p>Versioned research evidence from the shared Supabase registry. Public metadata only; raw measurements, artifacts and private experimental results are not exposed.</p>
+<p id="status" role="status">Loading verified registry metadata…</p>
+<table><thead><tr><th>Run</th><th>Producer</th><th>Evidence</th><th>Algorithm</th></tr></thead><tbody id="runs"></tbody></table>
+<p><small>Evidence classification describes what was verified. A successful acquisition is not a successful detection benchmark.</small></p>
+<p><a href="https://github.com/nicholaskouns-create/Radar">Research engine source</a></p>
+<script>
+(async()=>{const status=document.getElementById('status'),body=document.getElementById('runs');
+try{const response=await fetch('https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/research-engine-read',{headers:{accept:'application/json'}});
+if(!response.ok)throw Error('HTTP '+response.status);
+const data=await response.json();if(!Array.isArray(data.runs))throw Error('Unexpected response');
+for(const item of data.runs){const tr=document.createElement('tr');
+for(const key of ['run_id','producer','evidence_level','algorithm']){const td=document.createElement('td');td.textContent=String(item[key]??'');tr.appendChild(td)}body.appendChild(tr)}
+status.textContent=data.runs.length+' research run(s) available';}
+catch(e){status.textContent='Registry temporarily unavailable: '+e.message;}
+})();
+</script></body></html>
