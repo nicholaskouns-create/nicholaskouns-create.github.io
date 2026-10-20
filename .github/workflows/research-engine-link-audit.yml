@@ -1,0 +1,50 @@
+name: Research Engine live destination audit
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - research-engine.html
+      - scripts/audit_research_links.py
+      - .github/workflows/research-engine-link-audit.yml
+  schedule:
+    - cron: '17 12 * * 1'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check outbound destinations
+        id: links
+        continue-on-error: true
+        run: python scripts/audit_research_links.py
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-engine-live-link-audit
+          path: link-audit-report.json
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Publish summary
+        if: always()
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path("link-audit-report.json")
+          if p.exists():
+              d=json.loads(p.read_text())
+              with open(os.environ["GITHUB_STEP_SUMMARY"],"a") as f:
+                  f.write(f'## Research Engine live destinations\n\n{d["passed"]}/{d["total"]} passed.\n\n')
+                  for r in d["results"]:
+                      if not r["ok"]: f.write(f'- FAIL: {r["url"]} ({r.get("status")}; {r.get("error","")})\n')
+          PY
+      - name: Enforce result
+        if: steps.links.outcome == 'failure'
+        run: exit 1
