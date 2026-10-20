@@ -5,3 +5,123 @@ defaults:
     values:
       image: /assets/og/home.jpg
       description: "The vestibule of The Mathematical City: navigation across the City's sites, repositories and research."
+  - scope:
+      path: "E47_Core_Spectral_Certificate.md"
+    values:
+      image: /assets/og/e47-core-spectral-certificate.jpg
+      description: "Carrier V₂⊗V₂⊗V₂ of dimension 125, Casimir spectrum {0, 2, 6, 12, 20, 30, 42}, K = (C − 6I)(C − 30I) with dim ker K = 47, and invariant occupancy 47/125."
+  - scope:
+      path: "E47_Linearized_Einstein_Intertwiner_Theorem.md"
+    values:
+      image: /assets/og/e47-linearized-einstein-intertwiner-theorem.jpg
+      description: "An injective linear map Φ from E₄₇ into a 47-dimensional pure-gauge vacuum sector of linearized Einstein gravity on Minkowski spacetime, intertwining the projector and the dynamics."
+  - scope:
+      path: "E47_Projection_Flow_Theorem.md"
+    values:
+      image: /assets/og/e47-projection-flow-theorem.jpg
+      description: "Projection is not merely an endpoint operation. It is the asymptotic state of an exact contraction flow."
+  - scope:
+      path: "NEXT_PROOF_OBLIGATION_Nontrivial_Einstein_Sector.md"
+    values:
+      image: /assets/og/next-proof-obligation-nontrivial-einstein-sector.jpg
+      description: "The pure-gauge intertwiner has been closed exactly. Open: can E₄₇ embed injectively into a gauge-inequivalent Einstein sector?"
+  - scope:
+      path: "docs/aetheris_runtime.md"
+    values:
+      image: /assets/og/docs-aetheris-runtime.jpg
+      description: "AETHERIS is the compositional execution layer above independent Mathematical City instruments. It does not replace or govern those instruments."
+  - scope:
+      path: "docs/city_graphics_acceptance.md"
+    values:
+      image: /assets/og/docs-city-graphics-acceptance.jpg
+      description: "A City app graphics migration is accepted only when accelerated and reference scientific states agree, the step is frame-rate independent, and provenance and evidence class are unchanged."
+  - scope:
+      path: "docs/city_graphics_app_matrix.md"
+    values:
+      image: /assets/og/docs-city-graphics-app-matrix.jpg
+      description: "Sixteen City surfaces, each with its graphics profile and acceleration work. A row moves to integrated only after its source is changed and all proof gates pass."
+  - scope:
+      path: "docs/city_graphics_non_goals.md"
+    values:
+      image: /assets/og/docs-city-graphics-non-goals.jpg
+      description: "The graphics program does not change model equations, reinterpret evidence, create new experimental support, or merge distinct computational objects merely because they share a renderer."
+  - scope:
+      path: "docs/city_graphics_proof_gates.md"
+    values:
+      image: /assets/og/docs-city-graphics-proof-gates.jpg
+      description: "An acceleration patch may be promoted to integrated only when all required gates pass against a reference build."
+  - scope:
+      path: "docs/city_graphics_rollout.md"
+    values:
+      image: /assets/og/docs-city-graphics-rollout.jpg
+      description: "The graphics layer is a performance/runtime contract. It does not change the mathematics, solver semantics, evidence class, provenance, or scientific claims of any app."
+  - scope:
+      path: "docs/city_graphics_status_20260917.md"
+    values:
+      image: /assets/og/docs-city-graphics-status-20260917.jpg
+      description: "The next promotion event for each app is source integration followed by all three proof gates."
+  - scope:
+      path: "docs/city_graphics_targets.md"
+    values:
+      image: /assets/og/docs-city-graphics-targets.jpg
+      description: "Eight graphics targets across the City, from EIDOLON's render path and flight loop to direct shell integration for The Cube, THE MATRIX and City OS."
+  - scope:
+      path: "docs/maintenance/branch-cleanup-2026-09-20.md"
+    values:
+      image: /assets/og/docs-maintenance-branch-cleanup-2026-09-20.jpg
+      description: "A reviewable cleanup proposal. No remote branch names were removed during this curation; every candidate tip was verified reachable through main."
+  - scope:
+      path: "docs/maintenance_policy.md"
+    values:
+      image: /assets/og/docs-maintenance-policy.jpg
+      description: "The automated and manual maintenance procedures for the E47-Kartekeya repository, with its canonical invariants frozen."
+  - scope:
+      path: "docs/provenance.md"
+    values:
+      image: /assets/og/docs-provenance.jpg
+      description: "The validated carrier V₂⊗³ of dimension 125, the canonical kernel K = (C − 6I)(C − 30I), and the selected subspace E₄₇ = ker K of dimension 47, with its implementation chain and reproducibility record."
+  - scope:
+      path: "docs/skills-and-agents.md"
+    values:
+      image: /assets/og/docs-skills-and-agents.jpg
+      description: "This repository ships Copilot skills and agents for the interactive interconnected E47 platform."
+  - scope:
+      path: "docs/validation_scope.md"
+    values:
+      image: /assets/og/docs-validation-scope.jpg
+      description: "The software validates the finite-dimensional algebraic construction of the E47 spectral kernel on V₂⊗³ — and says what it does not validate."
+  - scope:
+      path: "e47-harmonic-validation-20261017/validation.md"
+    values:
+      image: /assets/og/e47-harmonic-validation-20261017-validation.jpg
+      description: "Spin 2 and spin 5 realized as harmonic polynomials: E1 exact computation passes 15 checks and E2 numerical simulation passes 2; E3 is not run and E4 is not tested."
+  - scope:
+      path: "e47-moment-ladder/research/E47_Moment_Ladder_Theorem.md"
+    values:
+      image: /assets/og/e47-moment-ladder-research-e47-moment-ladder-theorem.jpg
+      description: "The E47 moment selector cuts two whole Casimir sectors on the cube, 125 → 47, and on no other tensor order through n = 2401."
+  - scope:
+      path: "melanie/DEPLOYMENT.md"
+    values:
+      image: /assets/og/melanie-deployment.jpg
+      description: "Deployment record: a GitHub Pages interface, Supabase Auth and Postgres with row-level security, and a JWT-verified Edge Function. Live model responses are not verified."
+  - scope:
+      path: "quantum-clock/README.md"
+    values:
+      image: /assets/og/quantum-clock-readme.jpg
+      description: "A qubit held inside the protected 47-dimensional sector of V₂⊗V₂⊗V₂ that reads its own proper time and keeps it while recovery pulls every leak back."
+  - scope:
+      path: "quantum-clock/audit/README.md"
+    values:
+      image: /assets/og/quantum-clock-audit-readme.jpg
+      description: "Both Matrix implementations checked by running their own code, unmodified; every finding is reproduced by the scripts in the audit folder."
+  - scope:
+      path: "web/README.md"
+    values:
+      image: /assets/og/web-readme.jpg
+      description: "Import the shared City graphics runtime from city_graphics_accelerator.js and select the app profile from city_graphics_profiles.json."
+  - scope:
+      path: "web/city_graphics_worker_protocol.md"
+    values:
+      image: /assets/og/web-city-graphics-worker-protocol.jpg
+      description: "The rendering worker must never become the authority for evidence class, provenance or scientific certification."
