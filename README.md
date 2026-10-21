@@ -5,6 +5,8 @@
 > **Main entry portal:** [The Mathematical City](https://nicholaskouns-create.github.io/website/) — explore the districts, interactive labs, and research index.
 >
 > **[Explore PiP Manta](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/pip-manta/embed.html)**
+> **[Swarm — collective contraction](https://nicholaskouns-create.github.io/website/interface.html?id=swarm)**
+>
 
 This repository is the **vestibule** for The Mathematical City. The current executable research repository is [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Kartekeya); this repo provides the root GitHub Pages site, cross-repository navigation and retained historical research material.
 
@@ -33,6 +35,7 @@ The repository README is now a live index into the larger research architecture.
 | Review continuity / consent runtime | [Coherence Runtime bridge](https://nicholaskouns-create.github.io/coherence-runtime/) |
 | Understand the formalism | [Formalism Atlas](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/formalism-atlas/) |
 | Run the instruments | [Instrument Portal](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/instruments/) |
+| Contract a swarm to its centroid | [Swarm](https://nicholaskouns-create.github.io/website/interface.html?id=swarm) |
 | Keep time inside E47 | [The Quantum Clock](https://nicholaskouns-create.github.io/quantum-clock/) |
 | Verify the current spectral proof | [125 × 125 Matrix Proof](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-spectral-matrix-proof/) |
 | Verify convergence + noiseless multiplicities | [E47 convergence/noiseless certificate](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-CONVERGENCE-NOISELESS-20260928-001.json) |

@@ -1,6 +1,6 @@
 {
   "version": "CITY-INTERFACE-ATLAS-1.0",
-  "updated": "2026-09-17",
+  "updated": "2026-10-21",
   "policy": {
     "primary": "The primary link resolves to the canonical research/source record whenever one exists.",
     "runtime": "Run opens the current executable surface.",
@@ -9,7 +9,7 @@
   "entries": [
     {
       "id": "eidolon-flight",
-      "title": "EIDOLON — Scalar Flight Lab",
+      "title": "EIDOLON \u2014 Scalar Flight Lab",
       "role": "Flight",
       "kind": "flight",
       "primary": "https://app.notion.com/p/3dd46094fd30817a8bfadc322f33195c",
@@ -19,7 +19,7 @@
     },
     {
       "id": "eidolon-propulsion",
-      "title": "EIDOLON — Warp Bubble Propulsion Lab",
+      "title": "EIDOLON \u2014 Warp Bubble Propulsion Lab",
       "role": "Propulsion",
       "kind": "flight",
       "primary": "https://app.notion.com/p/3db46094fd3081db8b22c77a6dd80741",
@@ -90,6 +90,15 @@
       "primary": "https://app.notion.com/p/3d546094fd308139a774e588cb7b4719",
       "runtime": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-app-host/murmuration/",
       "summary": "Collective motion, topology, and many-body reorganization."
+    },
+    {
+      "id": "swarm",
+      "title": "SWARM",
+      "role": "Collective contraction",
+      "kind": "instrument",
+      "runtime": "https://nicholaskouns-create.github.io/swarm/",
+      "source": "https://github.com/nicholaskouns-create/nicholaskouns-create.github.io/tree/main/swarm",
+      "summary": "A finite swarm that contracts to its invariant centroid. Closed form, dispersion law, and a machine check of the contraction identity."
     },
     {
       "id": "mnemosyne",
@@ -213,7 +222,7 @@
     },
     {
       "id": "chimera",
-      "title": "CHIMERA — The HAR Codex",
+      "title": "CHIMERA \u2014 The HAR Codex",
       "role": "Biology / QEGT bridge",
       "kind": "instrument",
       "primary": "https://app.notion.com/p/3dc46094fd3081db8dc1f498b660f07c",
@@ -231,7 +240,7 @@
     },
     {
       "id": "see",
-      "title": "SEE — Citadel Gateway",
+      "title": "SEE \u2014 Citadel Gateway",
       "role": "Evidence",
       "kind": "core",
       "primary": "https://app.notion.com/p/3d746094fd30816e9612d0c04a9815d1",
@@ -240,7 +249,7 @@
     },
     {
       "id": "kouns-core-controller",
-      "title": "KOUNS CORE — Engine Controller",
+      "title": "KOUNS CORE \u2014 Engine Controller",
       "role": "Standalone HTML",
       "kind": "archive",
       "primary": "https://drive.google.com/file/d/1NVOxBMM545ltfuK6NSzDMq7Je4q48Riv/view?usp=drivesdk",
@@ -265,7 +274,7 @@
     },
     {
       "id": "mathematical-city-html",
-      "title": "Mathematical City — HTML archive",
+      "title": "Mathematical City \u2014 HTML archive",
       "role": "Portal archive",
       "kind": "archive",
       "primary": "https://drive.google.com/file/d/1ZBBNs58AfVl_PXUCqUoD-rgsMxLwhaiv/view?usp=drivesdk",
@@ -339,7 +348,7 @@
     },
     {
       "id": "vallee-projector",
-      "title": "Vallée Projector / E47 executable source",
+      "title": "Vall\u00e9e Projector / E47 executable source",
       "role": "Executable source",
       "kind": "document",
       "primary": "https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/city-unified-game?surface=PY-E47-VALLEE",

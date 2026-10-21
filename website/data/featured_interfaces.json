@@ -1,8 +1,9 @@
 {
   "version": "CITY-FEATURED-INTERFACES-1.0",
-  "updated": "2026-10-17",
+  "updated": "2026-10-21",
   "featured": [
     "matrix-quantum-simulator",
+    "swarm",
     "city-observatory",
     "eidolon-flight",
     "ufo-propulsion",
@@ -13,8 +14,18 @@
   ],
   "entries": [
     {
+      "id": "swarm",
+      "title": "Swarm",
+      "role": "Collective contraction",
+      "kind": "instrument",
+      "runtime": "https://nicholaskouns-create.github.io/swarm/",
+      "source": "https://github.com/nicholaskouns-create/nicholaskouns-create.github.io/tree/main/swarm",
+      "featured_label": "SWARM",
+      "summary": "Watch a finite swarm pull toward the centroid that never moves. Play the contraction, or open it inside the City gateway."
+    },
+    {
       "id": "matrix-quantum-simulator",
-      "title": "The Matrix — Quantum Simulator",
+      "title": "The Matrix \u2014 Quantum Simulator",
       "role": "Three-qubit simulator + browser portal",
       "kind": "instrument",
       "runtime": "https://nicholaskouns-create.github.io/matrix-quantum-simulator/",
@@ -24,7 +35,7 @@
     },
     {
       "id": "city-observatory",
-      "title": "Observatory — The Mathematical City",
+      "title": "Observatory \u2014 The Mathematical City",
       "role": "Explore, learn, experiment, and verify",
       "kind": "instrument",
       "runtime": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/",
@@ -35,17 +46,23 @@
     },
     {
       "id": "eidolon-flight",
-      "title": "EIDOLON — Flight Simulator",
+      "title": "EIDOLON \u2014 Flight Simulator",
       "role": "Playable 3D flight",
       "kind": "flight",
       "runtime": "https://eidolon-flight-lab.nicholaskouns.chatgpt.site/",
       "source": "https://lark-plaza-umbra-drum.grok.me/",
       "preview": "https://lark-plaza-umbra-drum.grok.me/og.jpg",
       "featured_label": "FLY FIRST",
-      "summary": "The City’s highest-attention entry surface: a playable flight simulator with the current unified Flight Lab as the live runtime and the Grok Eidolon simulator retained as source lineage.",
+      "summary": "The City\u2019s highest-attention entry surface: a playable flight simulator with the current unified Flight Lab as the live runtime and the Grok Eidolon simulator retained as source lineage.",
       "alternates": [
-        {"label": "Eidolon Grok flight simulator", "url": "https://lark-plaza-umbra-drum.grok.me/"},
-        {"label": "Eidolon Harmonic", "url": "https://nova-wood-clear-zest.grok.me/"}
+        {
+          "label": "Eidolon Grok flight simulator",
+          "url": "https://lark-plaza-umbra-drum.grok.me/"
+        },
+        {
+          "label": "Eidolon Harmonic",
+          "url": "https://nova-wood-clear-zest.grok.me/"
+        }
       ]
     },
     {
@@ -62,7 +79,7 @@
     },
     {
       "id": "hover",
-      "title": "Hover — P47 Cockpit",
+      "title": "Hover \u2014 P47 Cockpit",
       "role": "Cockpit gameplay",
       "kind": "flight",
       "runtime": "https://bison-drum-daisy-plaza.grok.me/",
@@ -71,8 +88,14 @@
       "featured_label": "COCKPIT",
       "summary": "The most game-forward Hover surface: enter the cockpit and pilot with surge, yaw, climb, and hover-lock controls.",
       "alternates": [
-        {"label": "Hover assembly / construction", "url": "https://willow-fjord-king-cap.grok.me/"},
-        {"label": "Hover legacy motion surface", "url": "https://zinc-crane-gem-pepper.grok.me/"}
+        {
+          "label": "Hover assembly / construction",
+          "url": "https://willow-fjord-king-cap.grok.me/"
+        },
+        {
+          "label": "Hover legacy motion surface",
+          "url": "https://zinc-crane-gem-pepper.grok.me/"
+        }
       ]
     },
     {
@@ -100,7 +123,7 @@
     },
     {
       "id": "sigillum",
-      "title": "SIGILLUM — Spectral Wheel",
+      "title": "SIGILLUM \u2014 Spectral Wheel",
       "role": "Forty-state interactive wheel",
       "kind": "instrument",
       "runtime": "https://prism-shadow-sage-craft.grok.me/",
@@ -147,7 +170,7 @@
     },
     {
       "id": "mathematical-city-grok",
-      "title": "Mathematical City — Grok Portal",
+      "title": "Mathematical City \u2014 Grok Portal",
       "role": "Historical public portal",
       "kind": "archive",
       "primary": "https://coral-plaza-dream-able.grok.me/",
