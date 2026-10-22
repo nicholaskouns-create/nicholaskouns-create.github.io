@@ -1,0 +1,75 @@
+{
+  "schema": "noesis.registry.v1",
+  "institution": "NOESIS",
+  "parent": "The Mathematical City",
+  "principle": "Claims must retain evidence class, provenance, and independently inspectable validation.",
+  "evidence_classes": [
+    {
+      "id": "E0",
+      "label": "Exact mathematical derivation"
+    },
+    {
+      "id": "E1",
+      "label": "Executable computational validation"
+    },
+    {
+      "id": "E2",
+      "label": "Numerical simulation"
+    },
+    {
+      "id": "E3",
+      "label": "External empirical observation"
+    },
+    {
+      "id": "H",
+      "label": "Hypothesis or unverified proposal"
+    }
+  ],
+  "instruments": [
+    {
+      "id": "flowshield",
+      "name": "FlowShield · White Hats",
+      "kind": "security",
+      "url": "https://nicholaskouns-create.github.io/flowshield.html",
+      "source": "https://github.com/nicholaskouns-create/auth-kernel",
+      "status": "published",
+      "evidence": "H"
+    },
+    {
+      "id": "tower",
+      "name": "Fibonacci–Lucas Tower",
+      "kind": "mathematics",
+      "url": "https://nicholaskouns-create.github.io/tower/",
+      "source": "https://github.com/nicholaskouns-create/tower",
+      "status": "published",
+      "evidence": "E1"
+    },
+    {
+      "id": "time",
+      "name": "Quantum Time",
+      "kind": "quantum",
+      "url": "https://nicholaskouns-create.github.io/Time/",
+      "source": "https://github.com/nicholaskouns-create/Time",
+      "status": "published",
+      "evidence": "E1"
+    },
+    {
+      "id": "research-engine",
+      "name": "Research Engine",
+      "kind": "infrastructure",
+      "url": "https://nicholaskouns-create.github.io/research-engine.html",
+      "source": "https://github.com/nicholaskouns-create/nicholaskouns-create.github.io",
+      "status": "published",
+      "evidence": "H"
+    },
+    {
+      "id": "e47",
+      "name": "E47 Planetarium",
+      "kind": "mathematics",
+      "url": "https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/e47-planetarium/",
+      "source": "https://github.com/nicholaskouns-create/E47-Kartekeya",
+      "status": "published",
+      "evidence": "E1"
+    }
+  ]
+}
