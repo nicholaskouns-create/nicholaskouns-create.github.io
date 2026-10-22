@@ -29,6 +29,7 @@ The repository README is now a live index into the larger research architecture.
 | I want to… | Open |
 |---|---|
 | Enter the City | [The Mathematical City — main portal](https://nicholaskouns-create.github.io/website/) |
+| See all live work on one page | [Live Work — 125 states, 47 kept](https://nicholaskouns-create.github.io/work/) |
 | Read the frozen electroweak identities | [E47 Electroweak Identities](https://github.com/nicholaskouns-create/E47-Electroweak-Identities) |
 | Use a single cross-platform index | [README Router](https://nicholaskouns-create.github.io/readme/) |
 | Traverse registered objects across platforms | [Live Route Packets](https://nicholaskouns-create.github.io/packets/) |
