@@ -10,6 +10,7 @@
 <section class="grid" style="margin-top:25px"><div class="card"><div class="label">Model</div><div class="value">Bounded BFS</div><p>Deterministic symbolic reachability</p></div><div class="card"><div class="label">Execution</div><div class="value">Local</div><p>Runs in your browser; no credentials collected</p></div><div class="card"><div class="label">Decision</div><div class="value">Allow / Block</div><p>Action-by-action policy simulation</p></div></section>
 <section class="layout"><div class="panel"><h2>Predictive laboratory</h2><label for="scenario" class="small">Example scenario</label><div class="tab"><select id="scenario"><option value="0">Customer data exfiltration</option><option value="1">Untrusted prompt origin</option><option value="2">Safe report</option><option value="3">Unbounded delegation</option></select></div><label for="input" class="small">Editable JSON policy and action sequence</label><textarea id="input" spellcheck="false" aria-label="Scenario JSON"></textarea><div class="buttons"><button class="primary" id="run">Evaluate + forecast</button><button id="export">Export receipt</button><button id="reset">Restore example</button></div><p class="small">All scenarios use synthetic data. The predictor explores abstract states, not live exploits. A local result does not authorize real tool execution.</p></div>
 <div class="panel"><h2>Forecast &amp; traces</h2><div id="verdict" class="status">Ready for analysis</div><p id="summary">Choose a scenario and run the predictive engine.</p><pre id="output" aria-live="polite"></pre></div></section>
+<section class="panel" style="margin-top:20px"><h2>Security engine self-test</h2><p>Execute the four synthetic regression scenarios in this browser. Each test checks the actual engine decision, not a prewritten result.</p><div class="buttons"><button id="selftest" class="primary">Run security checks</button><a href="./assets/og/flowshield.svg" target="_blank" rel="noopener">View social share card ↗</a></div><pre id="selftest-output" aria-live="polite">Not run · 4 checks available</pre></section>
 <section><h2>Distributed research surfaces</h2><p>Independent instruments remain independent. Links navigate to native sources; private app integrations require their own authenticated backend adapters.</p><div class="modules">
 <a class="card" href="https://github.com/nicholaskouns-create/auth-kernel"><b>Auth Kernel &amp; White Hats ↗</b><div class="small">Authorization and durable transport</div></a>
 <a class="card" href="https://nicholaskouns-create.github.io/tower/"><b>Moment Tower ↗</b><div class="small">Independent mathematical instrument</div></a>
@@ -26,8 +27,26 @@
 import {predict,scenarios} from './flowshield-engine.js';
 const $=id=>document.getElementById(id);let last=null;
 function reset(){const x=scenarios[Number($('scenario').value)];$('input').value=JSON.stringify({policy:x.policy,sequence:x.sequence},null,2);$('verdict').textContent="Ready for analysis";$('output').textContent="";$('summary').textContent="Local synthetic scenario: "+x.name;}
+$('selftest').onclick=()=>{
+ const expected=[
+  ['Customer data exfiltration','BLOCK','sensitive_flow_requires_explicit_declassification'],
+  ['Untrusted instruction injection','BLOCK','untrusted_instruction_origin'],
+  ['Safe report','ALLOW','allowed_within_modeled_policy'],
+  ['Unbounded delegated access','BLOCK','unbounded_delegation']
+ ];
+ let passed=0;const records=[];
+ for(let i=0;i<expected.length;i++){
+  const x=scenarios[i],want=expected[i];
+  try{const a=predict({policy:x.policy,sequence:x.sequence});
+   const ok=x.name===want[0]&&a.verdict===want[1]&&a.reason===want[2]&&Array.isArray(a.prediction.findings)&&a.prediction.visited>0;
+   if(ok)passed++;
+   records.push({scenario:x.name,expected:want[1],actual:a.verdict,reason:a.reason,result:ok?'PASS':'FAIL'});
+  }catch(e){records.push({scenario:x.name,result:'ERROR',message:String(e)})}
+ }
+ $('selftest-output').textContent=(passed===expected.length?'PASS':'FAIL')+' · '+passed+'/'+expected.length+' deterministic scenario checks\\n'+JSON.stringify(records,null,2);
+};
 $('scenario').onchange=reset;$('reset').onclick=reset;
-$('run').onclick=()=>{try{const input=JSON.parse($('input').value);last=predict(input);$('verdict').textContent=last.verdict+" · "+last.reason;$('verdict').className="status "+(last.verdict==="ALLOW"?"allow":"block");const f=last.prediction;$('summary').textContent="Explored "+f.visited+" states. Found "+f.findings.length+" unique denial classes. "+(f.complete?"Bounded search complete.":"Search truncated by budget.");$('output').textContent=JSON.stringify(last,null,2);}catch(e){$('verdict').textContent="Invalid scenario";$('summary').textContent=String(e);}};
+$('run').onclick=()=>{try{const input=JSON.parse($('input').value);last=null;last=predict(input);$('verdict').textContent=last.verdict+" · "+last.reason;$('verdict').className="status "+(last.verdict==="ALLOW"?"allow":"block");const f=last.prediction;$('summary').textContent="Explored "+f.visited+" states. Found "+f.findings.length+" unique denial classes. "+(f.complete?"Bounded search complete.":"Search truncated by budget.");$('output').textContent=JSON.stringify(last,null,2);}catch(e){last=null;$('verdict').textContent="Invalid scenario";$('summary').textContent=String(e);}};
 $('export').onclick=()=>{if(!last){$('run').click();if(!last)return;}const b=new Blob([JSON.stringify({created:new Date().toISOString(),receipt:last},null,2)],{type:"application/json"});const u=URL.createObjectURL(b),a=document.createElement("a");a.href=u;a.download="flowshield-receipt.json";a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)};
 $('edge-run').onclick=async()=>{const jwt=$('edgejwt').value.trim();if(!jwt){$('edge-output').textContent='An authenticated Supabase user session JWT is required.';return;}let payload;try{payload=JSON.parse($('input').value)}catch(e){$('edge-output').textContent='Invalid JSON';return;} $('edge-output').textContent='Requesting authenticated compute…';try{const r=await fetch('https://gpkjvihkyectnenvnbng.supabase.co/functions/v1/flowshield-predict',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+jwt},body:JSON.stringify(payload)});const body=await r.text();$('edge-output').textContent=r.status+' · '+body.slice(0,18000);}catch(e){$('edge-output').textContent=String(e)} }; $('open').onclick=()=>window.open($('destination').value,'_blank','noopener,noreferrer');reset();
 </script></body></html>
