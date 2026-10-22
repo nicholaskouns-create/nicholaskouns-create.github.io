@@ -14,6 +14,7 @@ on:
     paths:
       - "work/og.svg"
       - "assets/og/lucas-companion.svg"
+      - "assets/og/noesis-sentinel.svg"
       - ".github/workflows/og-render.yml"
   workflow_dispatch:
 
@@ -37,7 +38,7 @@ jobs:
 
       - name: Render new or updated cards
         env:
-          CARDS: work/og.svg assets/og/lucas-companion.svg
+          CARDS: work/og.svg assets/og/lucas-companion.svg assets/og/noesis-sentinel.svg
         run: |
           set -euo pipefail
           for svg in $CARDS; do
@@ -54,7 +55,7 @@ jobs:
 
       - name: Commit PNGs if they changed
         env:
-          CARDS_PNG: work/og.png assets/og/lucas-companion.png
+          CARDS_PNG: work/og.png assets/og/lucas-companion.png assets/og/noesis-sentinel.png
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
