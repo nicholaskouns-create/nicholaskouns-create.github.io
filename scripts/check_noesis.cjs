@@ -27,4 +27,13 @@ check('Discovery launcher encodes search terms',()=>assert.match(discovery,/enco
 check('Evidence intake uses browser SHA-256',()=>assert.match(intake,/crypto\.subtle\.digest\('SHA-256'/));
 check('Evidence intake records unverified status',()=>assert.match(intake,/verification_status:'unverified'/));
 check('No source scripts imported at runtime',()=>{assert.doesNotMatch(discovery,/<script[^>]+src=/);assert.doesNotMatch(intake,/<script[^>]+src=/)});
+const sentinel=fs.readFileSync(root+'/noesis/sentinel.html','utf8');
+const security=fs.readFileSync(root+'/noesis/SECURITY.md','utf8');
+const manifestTool=fs.readFileSync(root+'/scripts/noesis_integrity.cjs','utf8');
+check('Integrity Sentinel linked from homepage',()=>assert.match(html,/sentinel\.html/));
+check('Integrity Sentinel hashes with Web Crypto',()=>assert.match(sentinel,/crypto\.subtle\.digest\('SHA-256'/));
+check('Sentinel refuses automatic baseline trust',()=>assert.match(sentinel,/unattested_browser_observation/));
+check('Quantum phase never used as entropy',()=>{assert.match(sentinel,/public_metadata_only/);assert.match(security,/not cryptographic entropy/)});
+check('Post-quantum standard signatures documented',()=>{assert.match(security,/ML-DSA/);assert.match(security,/SLH-DSA/);assert.match(security,/ML-KEM/)});
+check('Deterministic manifest generator exists',()=>assert.match(manifestTool,/createHash\('sha256'\)/));
 console.log(JSON.stringify({schema:'noesis.validation.v1',passed:checks.filter(x=>x.result==='PASS').length,total:checks.length,checks},null,2));
