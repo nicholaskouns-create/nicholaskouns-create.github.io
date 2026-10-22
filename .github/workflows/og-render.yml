@@ -1,0 +1,46 @@
+name: Render link-share cards
+
+# Renders the committed SVG cover (text already outlined to paths, so no fonts
+# are needed) into the 1200x630 PNG that og:image points at, and commits it to
+# the same branch. GitHub Pages deploys from the branch, so the PNG has to be in
+# the tree; this keeps the binary out of hand-made commits.
+
+on:
+  push:
+    paths:
+      - "work/og.svg"
+      - ".github/workflows/og-render.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: og-render-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install rsvg-convert
+        run: sudo apt-get update -q && sudo apt-get install -y -q librsvg2-bin
+
+      - name: Render work/og.svg to work/og.png
+        run: |
+          rsvg-convert -w 1200 -h 630 -b '#f6f3ec' work/og.svg -o work/og.png
+          file work/og.png
+
+      - name: Commit PNG if it changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add work/og.png
+          if git diff --staged --quiet; then
+            echo "og.png unchanged."
+          else
+            git commit -m "chore(work): render link-share card og.png from og.svg"
+            git push
+          fi
