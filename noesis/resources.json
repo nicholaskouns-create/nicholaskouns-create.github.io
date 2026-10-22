@@ -1,0 +1,159 @@
+{
+  "schema": "noesis.resources.v1",
+  "reviewed_on": "2026-10-22",
+  "policy": "Links and metadata only. No third-party source code is vendored or executed; API availability, CORS, license and quotas require separate verification.",
+  "sources": [
+    {
+      "id": "openalex",
+      "name": "OpenAlex",
+      "type": "research database",
+      "url": "https://openalex.org/",
+      "api": "https://api.openalex.org/works?search=",
+      "use": "Literature discovery and citation graph",
+      "mode": "external search",
+      "state": "catalogued"
+    },
+    {
+      "id": "crossref",
+      "name": "Crossref",
+      "type": "research database",
+      "url": "https://www.crossref.org/documentation/retrieve-metadata/rest-api/",
+      "api": "https://api.crossref.org/works?query=",
+      "use": "DOI metadata and provenance",
+      "mode": "external search",
+      "state": "catalogued"
+    },
+    {
+      "id": "semanticscholar",
+      "name": "Semantic Scholar Academic Graph",
+      "type": "research database",
+      "url": "https://api.semanticscholar.org/api-docs/",
+      "api": "https://api.semanticscholar.org/graph/v1/paper/search?query=",
+      "use": "Papers and citation relations",
+      "mode": "external search",
+      "state": "catalogued"
+    },
+    {
+      "id": "europepmc",
+      "name": "Europe PMC",
+      "type": "research database",
+      "url": "https://europepmc.org/RestfulWebService",
+      "api": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&query=",
+      "use": "Open biomedical literature metadata",
+      "mode": "external search",
+      "state": "catalogued"
+    },
+    {
+      "id": "arxiv",
+      "name": "arXiv",
+      "type": "research database",
+      "url": "https://info.arxiv.org/help/api/index.html",
+      "api": "https://export.arxiv.org/api/query?search_query=all:",
+      "use": "Preprints and mathematical physics",
+      "mode": "external search",
+      "state": "catalogued"
+    },
+    {
+      "id": "zenodo",
+      "name": "Zenodo",
+      "type": "research repository",
+      "url": "https://developers.zenodo.org/",
+      "api": "https://zenodo.org/api/records?q=",
+      "use": "Versioned datasets and archived software releases",
+      "mode": "external search",
+      "state": "catalogued"
+    },
+    {
+      "id": "opencitations",
+      "name": "OpenCitations",
+      "type": "citation database",
+      "url": "https://opencitations.net/",
+      "api": "https://opencitations.net/index/api/v2",
+      "use": "Open citation relationships",
+      "mode": "documentation",
+      "state": "catalogued"
+    },
+    {
+      "id": "github",
+      "name": "GitHub public code search",
+      "type": "code repository",
+      "url": "https://github.com/search?type=repositories",
+      "api": "https://github.com/search?q=",
+      "use": "Research software and reproducible implementations",
+      "mode": "external search",
+      "state": "catalogued"
+    },
+    {
+      "id": "cytoscape",
+      "name": "Cytoscape.js",
+      "type": "open-source library",
+      "url": "https://github.com/cytoscape/cytoscape.js",
+      "use": "Interactive claim and provenance graphs",
+      "mode": "integration candidate",
+      "state": "catalogued"
+    },
+    {
+      "id": "citationjs",
+      "name": "Citation.js",
+      "type": "open-source library",
+      "url": "https://github.com/citation-js/citation-js",
+      "use": "CSL-JSON, BibTeX and DOI bibliography transformations",
+      "mode": "integration candidate",
+      "state": "catalogued"
+    },
+    {
+      "id": "jupyterbook",
+      "name": "Jupyter Book",
+      "type": "educational software",
+      "url": "https://github.com/jupyter-book/jupyter-book",
+      "use": "Executable scientific publications",
+      "mode": "learning resource",
+      "state": "catalogued"
+    },
+    {
+      "id": "executables",
+      "name": "Executable Books",
+      "type": "educational software",
+      "url": "https://github.com/executablebooks",
+      "use": "Scientific notebooks and MyST publication pipelines",
+      "mode": "learning resource",
+      "state": "catalogued"
+    },
+    {
+      "id": "softwarecarpentry",
+      "name": "Software Carpentry",
+      "type": "educational resources",
+      "url": "https://github.com/swcarpentry/swcarpentry",
+      "use": "Reproducible scientific code and collaboration",
+      "mode": "learning resource",
+      "state": "catalogued"
+    },
+    {
+      "id": "pyalex",
+      "name": "PyAlex",
+      "type": "open-source library",
+      "url": "https://github.com/J535D165/pyalex",
+      "use": "Python access to OpenAlex metadata",
+      "mode": "integration candidate",
+      "state": "catalogued"
+    },
+    {
+      "id": "openalexr",
+      "name": "openalexR",
+      "type": "open-source library",
+      "url": "https://github.com/ropensci/openalexR",
+      "use": "R access to OpenAlex metadata",
+      "mode": "integration candidate",
+      "state": "catalogued"
+    },
+    {
+      "id": "jsonschema",
+      "name": "JSON Schema",
+      "type": "open standard",
+      "url": "https://github.com/json-schema-org/json-schema-spec",
+      "use": "Validate evidence and ingestion receipt formats",
+      "mode": "integration candidate",
+      "state": "catalogued"
+    }
+  ]
+}
