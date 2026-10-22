@@ -16,4 +16,15 @@ check('Public registry referenced by page',()=>assert.match(html,/fetch\('\.\/re
 check('No inline credential',()=>assert.doesNotMatch(html,/sb_secret_|sk-proj-|SUPABASE_SECRET_KEY/));
 check('Preservation: Jekyll config exists',()=>assert.ok(fs.existsSync(root+'/_config.yml')));
 check('Preservation: existing deployment workflow exists',()=>assert.ok(fs.existsSync(root+'/.github/workflows/pages.yml')));
+const resources=JSON.parse(fs.readFileSync(root+'/noesis/resources.json','utf8'));
+const discovery=fs.readFileSync(root+'/noesis/discover.html','utf8');
+const intake=fs.readFileSync(root+'/noesis/ingest.html','utf8');
+check('Research resource schema',()=>assert.equal(resources.schema,'noesis.resources.v1'));
+check('Curated source identities are unique',()=>assert.equal(new Set(resources.sources.map(s=>s.id)).size,resources.sources.length));
+check('All resources use HTTPS',()=>{for(const s of resources.sources){assert.match(s.url,/^https:\/\//);if(s.api)assert.match(s.api,/^https:\/\//)}});
+check('Homepage links the discovery instruments',()=>{assert.match(html,/discover\.html/);assert.match(html,/ingest\.html/)});
+check('Discovery launcher encodes search terms',()=>assert.match(discovery,/encodeURIComponent\(term\)/));
+check('Evidence intake uses browser SHA-256',()=>assert.match(intake,/crypto\.subtle\.digest\('SHA-256'/));
+check('Evidence intake records unverified status',()=>assert.match(intake,/verification_status:'unverified'/));
+check('No source scripts imported at runtime',()=>{assert.doesNotMatch(discovery,/<script[^>]+src=/);assert.doesNotMatch(intake,/<script[^>]+src=/)});
 console.log(JSON.stringify({schema:'noesis.validation.v1',passed:checks.filter(x=>x.result==='PASS').length,total:checks.length,checks},null,2));
