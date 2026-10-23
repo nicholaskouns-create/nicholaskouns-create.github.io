@@ -46,7 +46,7 @@
     },
     {
       "id": "time",
-      "name": "Quantum Time",
+      "name": "Quantum Clock",
       "kind": "quantum",
       "url": "https://nicholaskouns-create.github.io/Time/",
       "source": "https://github.com/nicholaskouns-create/Time",

@@ -4,7 +4,7 @@
 - `sentinel.html`: browser-based read-only SHA-256 integrity scan, exportable observation receipts, optional authenticated-baseline comparison.
 - `scripts/noesis_integrity.cjs`: deterministic content manifest generator and drift-check mode for local/CI use. It does not automatically publish a signed baseline.
 - FlowShield: existing independent policy-analysis and authorization laboratory.
-- Quantum Clock: existing temporal experiment. The Sentinel's `phase_mod_47` is an illustrative public clock annotation calculated from Unix time, **not** a measurement of the Quantum Clock's internal phase and not cryptographic entropy.
+- Quantum Clock: quantum clock with phase-based elapsed-time readout. The Sentinel's `phase_mod_47` is an illustrative public clock annotation calculated from Unix time, **not** a measurement of the Quantum Clock's internal phase and not cryptographic entropy.
 
 ## Threat model
 Protect against unnoticed public artifact mutation, authority confusion, untrusted instruction promotion, and accidental loss of provenance. This browser tool does **not** prevent a compromised GitHub account, compromised deployment, or malicious origin from serving altered source and a matching altered baseline.

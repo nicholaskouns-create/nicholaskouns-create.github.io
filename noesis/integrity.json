@@ -1,0 +1,42 @@
+{
+  "schema": "noesis.integrity.v1",
+  "algorithm": "SHA-256",
+  "scope": "public-static-assets",
+  "records": [
+    {
+      "path": "noesis/index.html",
+      "sha256": "2b9fbdfc7ffa26e740a043b3076d3c2cfce8222221118d86ca6cb6a33fa748b0",
+      "bytes": 10437
+    },
+    {
+      "path": "noesis/registry.json",
+      "sha256": "62e47318dc2e85c9264156a86e030cf6ac74bf4509de7158e63a24e13e5ec49e",
+      "bytes": 2141
+    },
+    {
+      "path": "noesis/resources.json",
+      "sha256": "3258db7a64fc40e292671ca923f1a27b5fc0546911f48cc17c0aefa563298704",
+      "bytes": 5240
+    },
+    {
+      "path": "noesis/discover.html",
+      "sha256": "5d8daf502f514af9bebf7ab339c7ac988b5afe53a2cf61aafc9ad25c49e1b3ef",
+      "bytes": 6682
+    },
+    {
+      "path": "noesis/ingest.html",
+      "sha256": "da9cd7f930325f98c7e0f73203530563897cca43faed764f932f4b25a3e06a80",
+      "bytes": 5829
+    },
+    {
+      "path": "flowshield.html",
+      "sha256": "233188bedff087c6839bb47c2486b8ef823ce4426425394714bc4af10138dc80",
+      "bytes": 13602
+    },
+    {
+      "path": "flowshield-engine.js",
+      "sha256": "7fe39dfb9c81f9383c4a10bc98599ae3d2fc3ae1aa552bf558284a50511e34f4",
+      "bytes": 4781
+    }
+  ]
+}

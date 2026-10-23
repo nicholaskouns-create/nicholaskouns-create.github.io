@@ -78,5 +78,4 @@ audit/                        precision audit of both Matrix implementations
 
 E47 framework and kernel: Nicholas Shane Kouns. Clock construction, engine and
 instrument: Claude (Anthropic), 19 October 2026. CC BY 4.0, as the rest of this
-repository. Mathematics and simulation of a declared model only; no hardware,
-timing or experimental claim.
+repository. Quantum clock construction with phase-based elapsed-time readout, validated in mathematics and numerical quantum simulation. Laboratory hardware realization and calibration to physical seconds remain open.
