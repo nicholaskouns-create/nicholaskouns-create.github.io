@@ -1,0 +1,14 @@
+{
+  "schema": "mnemosyne-instrument-certificate-v1",
+  "instrument": "quantum-clock",
+  "implementation": "mnemosyne/tools/instruments.py",
+  "test": "mnemosyne/tools/instruments.py",
+  "checks": {
+    "cyclic_period": 47,
+    "auxiliary_period": 5,
+    "joint_period": 235,
+    "lcm_check": true
+  },
+  "status": "pass",
+  "sha256": "05320997a2b7b16c2e2eaf772378db61ca7d58ceb0db413b922b1769aa8ef387"
+}
