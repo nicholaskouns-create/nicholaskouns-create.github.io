@@ -1,5 +1,5 @@
 import {cases,execute,findCounterexample,matrixView,sha256} from './forge-engine.js';
-const root=document.getElementById('mnemosyne-forge');
+const root=document.querySelector('#mnemosyne-forge .forge-grid');
 if(root){
 const el=(tag,text,cls)=>{const x=document.createElement(tag);if(text!==undefined)x.textContent=text;if(cls)x.className=cls;return x};
 const section=(name,description)=>{const s=el('div',undefined,'forge-panel');s.append(el('h3',name),el('p',description));root.append(s);return s};
