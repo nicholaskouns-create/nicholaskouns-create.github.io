@@ -1,0 +1,20 @@
+{
+  "schema": "mnemosyne-instrument-certificate-v1",
+  "instrument": "quantum-matrix",
+  "implementation": "mnemosyne/tools/instruments.py",
+  "test": "mnemosyne/tools/instruments.py",
+  "checks": {
+    "spin2_jz": [
+      2,
+      1,
+      0,
+      -1,
+      -2
+    ],
+    "tensor_dimension": 125,
+    "trace_jtot_z": 0,
+    "trace_jtot_z_squared": 750
+  },
+  "status": "pass",
+  "sha256": "8530080fb29e9281d1e14f12d86a19af140667e8f9c60400e7bf29397ce1a4be"
+}
