@@ -28,6 +28,9 @@ jobs:
           node --check mnemosyne/mnemosyne.js
           node --check mnemosyne/proof-observatory.js
           node --check mnemosyne/city-instruments.js
+          node --check mnemosyne/forge-engine.js
+          node --check mnemosyne/forge-ui.js
+          node --experimental-default-type=module mnemosyne/test-forge.mjs
       - name: Verify certificate and graph
         run: |
           python mnemosyne/tools/instruments.py
