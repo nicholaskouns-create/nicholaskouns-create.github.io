@@ -22,3 +22,16 @@ assert sorted({((x-6)*(x-30))**2 for x in e if x not in (6,30)})==cert["checks"]
 assert abs(max(abs(1-v/99144) for v in cert["checks"]["nonzero_K2_spectrum"])-15/17)<1e-14
 assert (root/"index.html").read_text().find("proof-observatory.js")>=0
 print("MNEMOSYNE_PROOF_GRAPH_PASS",len(nodes),"nodes",receipt)
+
+# Each instrument has its own theorem -> implementation -> test -> certificate -> version chain.
+for instrument in ("quantum-clock","fibonacci-lucas-tower","quantum-matrix"):
+    chain=[instrument+"-"+kind for kind in ("theorem","implementation","test","certificate","version")]
+    assert [nodes[k]["type"] for k in chain]==["theorem","implementation","test","certificate","version"]
+    for a,b in zip(chain,chain[1:]):assert b in nodes[a]["links"]
+    path=root/"certificates"/(instrument+".json")
+    data=json.loads(path.read_text())
+    assert data["instrument"]==instrument and data["status"]=="pass"
+    receipt=data.pop("sha256")
+    assert receipt==hashlib.sha256(json.dumps(data,sort_keys=True,separators=(",",":"),ensure_ascii=False).encode()).hexdigest()
+assert "city-instruments.js" in (root/"index.html").read_text()
+print("MNEMOSYNE_INSTRUMENT_CHAINS_PASS",3)
