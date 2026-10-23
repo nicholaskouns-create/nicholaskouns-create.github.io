@@ -1,0 +1,39 @@
+{
+  "schema": "mnemosyne-certificate-v1",
+  "theorem": "e47-kernel",
+  "implementation": "mnemosyne/tools/e47_certificate.py",
+  "test": "mnemosyne/tools/e47_certificate.py",
+  "commit": "357e538a0d449e0a9c33a50f189616a90124a98e",
+  "checks": {
+    "carrier_dimension": 125,
+    "kernel_dimension": 47,
+    "casimir_eigenvalues": [
+      0,
+      2,
+      6,
+      12,
+      20,
+      30,
+      42
+    ],
+    "multiplicities": [
+      1,
+      9,
+      25,
+      28,
+      27,
+      22,
+      13
+    ],
+    "nonzero_K2_spectrum": [
+      11664,
+      12544,
+      19600,
+      32400,
+      186624
+    ],
+    "contraction": "15/17"
+  },
+  "status": "pass",
+  "sha256": "2122bc25eee83c29c8efa3a49d0e197ca8725fb63c615bfbed17be80e7e43958"
+}
