@@ -60,20 +60,142 @@
       ]
     },
     {
-      "id": "tower",
-      "type": "research",
-      "title": "Fibonacci–Lucas tower",
-      "statement": "Moment selector and higher-spin tower with linked source repository.",
-      "links": [],
-      "source": "https://github.com/nicholaskouns-create/tower"
+      "id": "quantum-clock-theorem",
+      "type": "theorem",
+      "title": "Quantum clock · theorem",
+      "statement": "47-state cyclic clock with independent 5-state cycle, joint period 235.",
+      "links": [
+        "quantum-clock-implementation"
+      ]
     },
     {
-      "id": "clock",
-      "type": "research",
-      "title": "Quantum clock",
-      "statement": "Research instrument and validation source for the E47 quantum clock.",
-      "links": [],
-      "source": "https://github.com/nicholaskouns-create/Time"
+      "id": "quantum-clock-implementation",
+      "type": "implementation",
+      "title": "Quantum clock · implementation",
+      "statement": "Independent Python exact-arithmetic reference implementation.",
+      "links": [
+        "quantum-clock-test"
+      ],
+      "source": "https://github.com/nicholaskouns-create/Time",
+      "app": "https://nicholaskouns-create.github.io/Time/"
+    },
+    {
+      "id": "quantum-clock-test",
+      "type": "test",
+      "title": "Quantum clock · test",
+      "statement": "Automated deterministic invariants.",
+      "links": [
+        "quantum-clock-certificate"
+      ]
+    },
+    {
+      "id": "quantum-clock-certificate",
+      "type": "certificate",
+      "title": "Quantum clock · certificate",
+      "statement": "SHA-256 verified reference test result.",
+      "links": [
+        "quantum-clock-version"
+      ],
+      "receipt": "mnemosyne/certificates/quantum-clock.json"
+    },
+    {
+      "id": "quantum-clock-version",
+      "type": "version",
+      "title": "Quantum clock · version",
+      "statement": "Git version and repository source history.",
+      "links": []
+    },
+    {
+      "id": "fibonacci-lucas-tower-theorem",
+      "type": "theorem",
+      "title": "Fibonacci–Lucas tower · theorem",
+      "statement": "Exact Fibonacci–Lucas spin-index identities for n=5,7,11,13.",
+      "links": [
+        "fibonacci-lucas-tower-implementation"
+      ]
+    },
+    {
+      "id": "fibonacci-lucas-tower-implementation",
+      "type": "implementation",
+      "title": "Fibonacci–Lucas tower · implementation",
+      "statement": "Independent Python exact-arithmetic reference implementation.",
+      "links": [
+        "fibonacci-lucas-tower-test"
+      ],
+      "source": "https://github.com/nicholaskouns-create/tower",
+      "app": "https://nicholaskouns-create.github.io/tower/#/explore"
+    },
+    {
+      "id": "fibonacci-lucas-tower-test",
+      "type": "test",
+      "title": "Fibonacci–Lucas tower · test",
+      "statement": "Automated deterministic invariants.",
+      "links": [
+        "fibonacci-lucas-tower-certificate"
+      ]
+    },
+    {
+      "id": "fibonacci-lucas-tower-certificate",
+      "type": "certificate",
+      "title": "Fibonacci–Lucas tower · certificate",
+      "statement": "SHA-256 verified reference test result.",
+      "links": [
+        "fibonacci-lucas-tower-version"
+      ],
+      "receipt": "mnemosyne/certificates/fibonacci-lucas-tower.json"
+    },
+    {
+      "id": "fibonacci-lucas-tower-version",
+      "type": "version",
+      "title": "Fibonacci–Lucas tower · version",
+      "statement": "Git version and repository source history.",
+      "links": []
+    },
+    {
+      "id": "quantum-matrix-theorem",
+      "type": "theorem",
+      "title": "Quantum matrix · theorem",
+      "statement": "Spin-2 tensor carrier, 125-state Jtot_z diagonal, exact trace checks.",
+      "links": [
+        "quantum-matrix-implementation"
+      ]
+    },
+    {
+      "id": "quantum-matrix-implementation",
+      "type": "implementation",
+      "title": "Quantum matrix · implementation",
+      "statement": "Independent Python exact-arithmetic reference implementation.",
+      "links": [
+        "quantum-matrix-test"
+      ],
+      "source": "https://github.com/nicholaskouns-create/E47-Kartekeya",
+      "app": "https://nicholaskouns-create.github.io/E47-Kartekeya/"
+    },
+    {
+      "id": "quantum-matrix-test",
+      "type": "test",
+      "title": "Quantum matrix · test",
+      "statement": "Automated deterministic invariants.",
+      "links": [
+        "quantum-matrix-certificate"
+      ]
+    },
+    {
+      "id": "quantum-matrix-certificate",
+      "type": "certificate",
+      "title": "Quantum matrix · certificate",
+      "statement": "SHA-256 verified reference test result.",
+      "links": [
+        "quantum-matrix-version"
+      ],
+      "receipt": "mnemosyne/certificates/quantum-matrix.json"
+    },
+    {
+      "id": "quantum-matrix-version",
+      "type": "version",
+      "title": "Quantum matrix · version",
+      "statement": "Git version and repository source history.",
+      "links": []
     }
   ]
 }
