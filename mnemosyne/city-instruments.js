@@ -24,8 +24,9 @@ for(const app of apps){
  const p=document.createElement('p');p.className='receipt';p.textContent='Checking independent certificate…';detail.append(p);
  try{const res=await fetch('./certificates/'+app.cert+'.json');if(!res.ok)throw Error('HTTP '+res.status);const c=await res.json();
  const clone={...c};delete clone.sha256;
- const canonical=JSON.stringify(Object.keys(clone).sort().reduce((o,k)=>(o[k]=clone[k],o),{})); // Browser uses digest of source certificate after CI validation; not equivalent to Python canonical nested ordering.
- p.textContent=c.status==='pass'?'Certificate published · SHA-256 '+c.sha256:'Certificate not passing';
+ const stable=x=>Array.isArray(x)?'['+x.map(stable).join(',')+']':x&&typeof x==='object'?'{'+Object.keys(x).sort().map(k=>JSON.stringify(k)+':'+stable(x[k])).join(',')+'}':JSON.stringify(x);
+ const bytes=new TextEncoder().encode(stable(clone));const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))).map(b=>b.toString(16).padStart(2,'0')).join('');
+ p.textContent=c.status==='pass'&&hash===c.sha256?'Certificate SHA-256 verified · '+hash:'Certificate integrity verification FAILED';
  const a=document.createElement('a');a.href='./certificates/'+app.cert+'.json';a.textContent='Inspect certificate';a.target='_blank';p.append(' · ',a);
  }catch(e){p.textContent='Certificate unavailable: '+e.message}
  }
