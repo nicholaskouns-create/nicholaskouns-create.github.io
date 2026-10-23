@@ -20,11 +20,11 @@ def clock():
 def tower():
  rows=[]
  for n in (5,7,11,13):
-  j=Fraction(fib(n-1),2);J=Fraction(luc(n-1),2)
+  j=Fraction(fib(n)-1,2);J=Fraction(luc(n)-1,2)
   assert j.denominator==J.denominator==1
   assert J*(J+1)==5*j*(j+1)
   assert fib(n)==2*j+1
-  assert fib(n-2)==2*J+1
+  assert luc(n)==2*J+1
   D=(2*j+1)*(2*j+1)+(2*J+1)*(2*J+1)
   # D is not assumed to be the kernel dimension; exact decomposition needs multiplicities.
   rows.append({"n":n,"j":int(j),"J":int(J),"identity":True})
