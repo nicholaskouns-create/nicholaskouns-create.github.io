@@ -1,0 +1,37 @@
+{
+  "schema": "mnemosyne-instrument-certificate-v1",
+  "instrument": "fibonacci-lucas-tower",
+  "implementation": "mnemosyne/tools/instruments.py",
+  "test": "mnemosyne/tools/instruments.py",
+  "checks": {
+    "tower_indices": [
+      {
+        "n": 5,
+        "j": 2,
+        "J": 5,
+        "identity": true
+      },
+      {
+        "n": 7,
+        "j": 6,
+        "J": 14,
+        "identity": true
+      },
+      {
+        "n": 11,
+        "j": 44,
+        "J": 99,
+        "identity": true
+      },
+      {
+        "n": 13,
+        "j": 116,
+        "J": 260,
+        "identity": true
+      }
+    ],
+    "moment_identity": true
+  },
+  "status": "pass",
+  "sha256": "96930f5c2cecadacdfc0ec172983c591dbff244355b422c5948ef49e77167af3"
+}

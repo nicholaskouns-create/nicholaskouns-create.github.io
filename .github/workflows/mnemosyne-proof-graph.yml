@@ -27,5 +27,8 @@ jobs:
         run: |
           node --check mnemosyne/mnemosyne.js
           node --check mnemosyne/proof-observatory.js
+          node --check mnemosyne/city-instruments.js
       - name: Verify certificate and graph
-        run: python mnemosyne/tools/verify_graph.py
+        run: |
+          python mnemosyne/tools/instruments.py
+          python mnemosyne/tools/verify_graph.py
