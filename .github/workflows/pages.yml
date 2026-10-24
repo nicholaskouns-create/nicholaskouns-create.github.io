@@ -4,6 +4,8 @@ on:
   push:
     branches: ["main"]
     paths:
+      - "index.html"
+      - "e47-identity/**"
       - "website/**"
       - "electroweak/**"
       - "meta-ai-artifact/**"
@@ -14,6 +16,8 @@ on:
   pull_request:
     branches: ["main"]
     paths:
+      - "index.html"
+      - "e47-identity/**"
       - "website/**"
       - "README.md"
       - "certificates/**"
@@ -66,6 +70,34 @@ jobs:
           echo "Pages did not serve the expected personal-site atlas within the verification window."
           head -80 /tmp/pages.html || true
           exit 1
+
+      - name: Smoke-test root, City gateway, and E47 Identity public routes
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://${GITHUB_REPOSITORY_OWNER}.github.io"
+          for route in "/" "/website/" "/e47-identity/"; do
+            case "$route" in
+              "/") marker="The Mathematical City · Nicholas Kouns";;
+              "/website/") marker="<title>The Mathematical City</title>";;
+              "/e47-identity/") marker="<title>E47 Identity | Mathematical City</title>";;
+            esac
+            verified=0
+            for attempt in $(seq 1 24); do
+              status="$(curl -sSL --max-time 20 -o /tmp/city-route.html -w '%{http_code}' "$base$route" || true)"
+              if [ "$status" = "200" ] && grep -Fq "$marker" /tmp/city-route.html; then
+                echo "PASS HTTP 200: $base$route"
+                verified=1
+                break
+              fi
+              echo "Attempt $attempt: route $route returned HTTP $status or missing expected marker"
+              sleep 5
+            done
+            if [ "$verified" -ne 1 ]; then
+              echo "::error::Unhealthy GitHub Pages route $base$route"
+              exit 1
+            fi
+          done
 
       - name: Publish receipt
         shell: bash
