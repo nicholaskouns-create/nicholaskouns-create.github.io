@@ -112,3 +112,7 @@ Canonical source: [E47-Kartekeya](https://github.com/nicholaskouns-create/E47-Ka
 - [Quantum numeric certificate](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/certificates/MC-E47-QUANTUM-NUMERIC-20260930-001.json)
 
 This atlas remains the vestibule; the current executable research source belongs to E47-Kartekeya.
+
+## E47 spectral and noiseless-subsystem certificate (2026-10-24)
+
+[Read the cross-repository evidence note](E47_SPECTRAL_ADVANTAGES_2026-10-24.md). Documents the exact 125→47 Casimir construction, the (15/17)^n spectral convergence certificate, and collective-SU(2) noiseless multiplicity encoding, separately from channel-dependent QEC and unmeasured hardware advantages.
