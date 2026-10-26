@@ -98,7 +98,7 @@
 
 <section class="panel">
 <h2>Evidence boundary</h2>
-<p>Verified here: compilation, completeness and axiom provenance of the finite algebraic layer. Not verified: that any 125×125 matrix satisfies these statements — <code>E47ConcreteMatrix</code> is the deferred bridge. Not addressed at all: any physical interpretation of the layer. These are statements about a finite-dimensional complex vector space and nothing else.</p>
+<p>Verified here: the Mathlib-free Lean/Coq formal layer was compiled onsite and its reported axiom dependencies were audited. Separately, the genuine 125×125 matrix certificate <code>E47ConcreteMatrix.lean</code> <strong>compiled successfully</strong> under Lean 4.35.0 with Mathlib in <a href="https://github.com/nicholaskouns-create/Identity/actions/runs/40100538743">GitHub Actions run #10 (24 October 2026)</a>. That compilation establishes compiler acceptance of its concrete-matrix theorems, but does <strong>not</strong> establish axiom-free kernel verification: the run’s <code>#print axioms</code> output lists <code>native_decide</code>-generated axioms for all five headline theorems. The 47-theorem axiom ledger above applies to the separate Mathlib-free layer. No physical-device performance or experimental interpretation is established by these formal checks.</p>
 </section>
 
 <p><small>
