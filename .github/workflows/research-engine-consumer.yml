@@ -19,7 +19,7 @@ jobs:
           ref: 46f696fd9479e4dcade7ffb0c79ac7978f6a9bf6
           path: upstream
           persist-credentials: false
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.11'
       - name: Validate shared contract and public backend
