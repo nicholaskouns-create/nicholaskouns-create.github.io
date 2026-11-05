@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The 47/125 Spin Sector</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<meta name="description" content="How three spin-2 factors give the 47/125 sector fraction, the conditional electromagnetic matching for chi, and six claims written as discrete deductions.">
+<link rel="canonical" href="https://nicholaskouns-create.github.io/e47-six-claims/">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>
+/* Layout: one narrow reading column; each section is a step in the proof, with its own figure. */
+:root{
+  --bg:#f3f5f8; --panel:#ffffff; --ink:#152033; --muted:#55627a; --line:#d5dbe5;
+  --base:#9aa8bf; --hit:#c2410c; --hit-soft:#fde3d4; --cool:#1d4ed8;
+  --ok:#15803d; --warn:#a16207; --open:#6b7280;
+  --display:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0d1320; --panel:#151d2e; --ink:#e6ebf3; --muted:#9eabc2; --line:#2a3550;
+  --base:#4d5d7a; --hit:#fb923c; --hit-soft:#3a2416; --cool:#93b4ff;
+  --ok:#4ade80; --warn:#facc15; --open:#a3acbb; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d1320; --panel:#151d2e; --ink:#e6ebf3; --muted:#9eabc2; --line:#2a3550;
+  --base:#4d5d7a; --hit:#fb923c; --hit-soft:#3a2416; --cool:#93b4ff;
+  --ok:#4ade80; --warn:#facc15; --open:#a3acbb; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{max-width:720px;margin:0 auto;padding-block:32px 56px;display:grid;gap:28px}
+h1,h2{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0;line-height:1.1}
+h1{font-size:clamp(2.2rem,7vw,3.4rem)}
+h2{font-size:1.75rem}
+p{margin:0;max-width:65ch}
+.eyebrow{font:500 .75rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.hero{display:grid;gap:14px}
+.big{font-family:var(--display);font-size:clamp(4rem,18vw,7rem);line-height:.9;color:var(--hit)}
+.big small{font-size:.35em;color:var(--muted);font-family:var(--mono)}
+section{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px;display:grid;gap:14px;min-width:0}
+.step{display:flex;gap:10px;align-items:baseline}
+.step .n{font:500 .8rem var(--mono);color:var(--hit)}
+.math{font-family:var(--mono);font-size:.92rem;background:var(--bg);border-radius:6px;padding:10px 12px;overflow-x:auto;white-space:nowrap}
+.math b{color:var(--hit);font-weight:500}
+.fig{overflow-x:auto}
+svg text{fill:var(--ink);font-family:var(--mono)}
+svg .mut{fill:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.85rem;color:var(--muted)}
+.sw{display:inline-block;width:12px;height:12px;border-radius:2px;vertical-align:-1px;margin-right:6px}
+.waffle{display:grid;grid-template-columns:repeat(25,1fr);gap:3px;max-width:100%}
+.waffle span{aspect-ratio:1;border-radius:2px;background:var(--base)}
+.waffle span.h2{background:var(--hit)}
+.waffle span.h5{background:var(--hit);opacity:.65}
+table{border-collapse:collapse;font:14px var(--mono);font-variant-numeric:tabular-nums;width:100%}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right}
+th{color:var(--muted);font-weight:500}
+tr.hit td{color:var(--hit);font-weight:500}
+details summary{cursor:pointer;color:var(--muted);font-size:.9rem}
+details summary:focus-visible,input:focus-visible{outline:2px solid var(--cool);outline-offset:2px}
+.chain{display:grid;gap:8px}
+.chain .math{white-space:normal}
+.status{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.status div{border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;align-content:start}
+.chip{font:500 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.chip.ok{color:var(--ok)}.chip.warn{color:var(--warn)}.chip.open{color:var(--open)}
+.links{margin:0;padding-left:18px;display:grid;gap:6px}.links a{color:var(--cool)}
+.status ul{margin:0;padding-left:18px;font-size:.92rem}
+label{font-size:.9rem;color:var(--muted)}
+input[type=range]{width:100%;accent-color:var(--hit)}
+.out{font:500 1.1rem var(--mono);font-variant-numeric:tabular-nums}
+footer{font-size:.85rem;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.waffle span{transition:transform .2s}.waffle span:hover{transform:scale(1.3)}}
+</style>
+</head>
+<body>
+
+<main>
+  <header class="hero">
+    <span class="eyebrow">Spin-sector fraction · conditional EM matching</span>
+    <h1>Three spin-2 factors, two special sectors</h1>
+    <div class="big" aria-label="Omega c equals 47 over 125">47<small>/125</small></div>
+    <p>Of the 125 states in three spin-2 factors, 47 sit exactly one standard deviation from the mean of the Casimir <span style="font-family:var(--mono)">j(j+1)</span>. Those 47 states become the charged flavors that drive the coupling's running.</p>
+  </header>
+
+  <section aria-labelledby="s1">
+    <div class="step"><span class="n">STEP 1</span><h2 id="s1">Split into total-spin sectors</h2></div>
+    <div class="math">V₂⊗V₂⊗V₂ = V₀ ⊕ 3V₁ ⊕ 5V₂ ⊕ 4V₃ ⊕ 3V₄ ⊕ 2V₅ ⊕ V₆</div>
+    <p>Each sector V<sub>j</sub> holds 2j+1 states. Multiply by how often it appears to get the state count w<sub>j</sub>.</p>
+    <div class="fig">
+      <svg id="bars" viewBox="0 0 640 250" width="100%" role="img" aria-labelledby="barsT barsD">
+        <title id="barsT">State count per total spin j</title>
+        <desc id="barsD">Bar chart. j=0: 1 state. j=1: 9. j=2: 25, highlighted. j=3: 28. j=4: 27. j=5: 22, highlighted. j=6: 13. Total 125.</desc>
+      </svg>
+    </div>
+    <div class="legend"><span><i class="sw" style="background:var(--hit)"></i>Selected sectors (j = 2, 5)</span><span><i class="sw" style="background:var(--base)"></i>Other sectors</span></div>
+    <details>
+      <summary>Show as a table</summary>
+      <table>
+        <thead><tr><th scope="col">j</th><th scope="col">copies</th><th scope="col">2j+1</th><th scope="col">w<sub>j</sub></th><th scope="col">λ = j(j+1)</th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </details>
+  </section>
+
+  <section aria-labelledby="s2">
+    <div class="step"><span class="n">STEP 2</span><h2 id="s2">Find the one-sigma sectors</h2></div>
+    <div class="math">μ = 2250/125 = <b>18</b> &nbsp;·&nbsp; σ² = 18000/125 = <b>144</b> &nbsp;·&nbsp; σ = <b>12</b></div>
+    <p>On the Casimir line, μ ± σ lands at 6 and 30. Those are exactly λ for j = 2 and j = 5. No other sector hits.</p>
+    <div class="fig">
+      <svg id="line" viewBox="0 0 640 130" width="100%" role="img" aria-labelledby="lineT lineD">
+        <title id="lineT">Casimir values against mean and one standard deviation</title>
+        <desc id="lineD">Number line from 0 to 42. Mean 18. Band from 6 to 30. Sector values 0, 2, 6, 12, 20, 30, 42. Only 6 (j=2) and 30 (j=5) sit on the band edges.</desc>
+      </svg>
+    </div>
+  </section>
+
+  <section aria-labelledby="s3">
+    <div class="step"><span class="n">STEP 3</span><h2 id="s3">Count the states: 25 + 22</h2></div>
+    <div class="waffle" id="waffle" role="img" aria-label="Grid of 125 squares: 25 for j=2 and 22 for j=5 are highlighted, 78 are not."></div>
+    <div class="legend"><span><i class="sw" style="background:var(--hit)"></i>j = 2 · 25</span><span><i class="sw" style="background:var(--hit);opacity:.65"></i>j = 5 · 22</span><span><i class="sw" style="background:var(--base)"></i>rest · 78</span></div>
+    <div class="math">Ω<sub>c</sub> = (25 + 22)/125 = <b>47/125</b> = 0.376</div>
+  </section>
+
+  <section aria-labelledby="s4">
+    <div class="step"><span class="n">STEP 4</span><h2 id="s4">47 flavors set the running</h2></div>
+    <div class="math">Q = P₂ + P₅ &nbsp;·&nbsp; Q² = Q &nbsp;·&nbsp; Tr Q² = <b>47</b></div>
+    <p>Read Q as the electric charge operator: 47 unit-charge Dirac flavors. Above their shared mass threshold, one-loop running is</p>
+    <div class="math">α⁻¹(μ) = α⁻¹(Λ) + (<b>47</b>/3π) · log(Λ²/μ²) &nbsp;&nbsp;[slope ≈ 4.987]</div>
+  </section>
+
+  <section aria-labelledby="s5">
+    <div class="step"><span class="n">STEP 5</span><h2 id="s5">Conditional magnetic matching</h2></div>
+    <div class="chain">
+      <div class="math">B<sub>m</sub> = α<sub>m,UV</sub>⁻¹ + (47/3π)·L + Δ<sub>m</sub>, &nbsp; L = log(Λ²/m²)</div>
+      <div class="math">Assume α<sub>e</sub>α<sub>m</sub> = 1/4 &nbsp;and&nbsp; α<sub>e</sub>⁻¹ = (2036π/47)·χ</div>
+      <div class="math">⇒ &nbsp;L + (3π/47)(α<sub>m,UV</sub>⁻¹ + Δ<sub>m</sub>) = <b>3/(509χ)</b></div>
+      <div class="math">L = 3/509 &nbsp;⇒&nbsp; χ = [1 + (509π/47)(α<sub>m,UV</sub>⁻¹ + Δ<sub>m</sub>)]⁻¹</div>
+    </div>
+    <div style="display:grid;gap:6px">
+      <label for="x">Try a value for α<sub>m,UV</sub>⁻¹ + Δ<sub>m</sub>: <span id="xv" class="out"></span></label>
+      <input id="x" type="range" min="0" max="1" step="0.005" value="0.1" aria-describedby="chiOut">
+      <p id="chiOut" aria-live="polite">χ = <span id="chi" class="out"></span></p>
+    </div>
+    <p style="font-size:.9rem;color:var(--muted)">At L = 3/509 ≈ 0.0059, the cutoff sits just above the mass: Λ/m ≈ 1.003. Almost all of the matching then rests on the UV coupling and Δ<sub>m</sub>.</p>
+<p style="font-size:.9rem;color:var(--muted)">With the measured α<sub>e</sub>⁻¹ = 137.036: 2036π/47 ≈ 136.091, so χ ≈ 1.00694 and α<sub>m,UV</sub>⁻¹ + Δ<sub>m</sub> ≈ −2.0 × 10⁻⁴. Since α<sub>m,UV</sub>⁻¹ &gt; 0, Δ<sub>m</sub> must be negative.</p>
+  </section>
+
+  <section aria-labelledby="s6">
+    <h2 id="s6">Where it stands</h2>
+    <div class="status">
+      <div><span class="chip ok">● Derived</span><ul><li>Sector decomposition and counts</li><li>μ = 18, σ² = 144</li><li>Ω<sub>c</sub> = 47/125</li><li>Tr Q² = 47, running slope 47/3π</li><li>Matching formula for χ</li></ul></div>
+      <div><span class="chip warn">◆ Assumed</span><ul><li>Uniform state weighting</li><li>Sectors read as charged flavors</li><li>α<sub>e</sub>α<sub>m</sub> = 1/4</li><li>α<sub>e</sub>⁻¹ = (2036π/47)χ</li></ul></div>
+      <div><span class="chip open">○ Open</span><ul><li>UV magnetic coupling</li><li>Flavor masses</li><li>Threshold correction Δ<sub>m</sub></li><li>A controlled dual theory</li></ul></div>
+    </div>
+  </section>
+
+
+  <section aria-labelledby="s7">
+    <h2 id="s7">Six claims, as deductions</h2>
+    <p>Each interpretive claim made about the kernel, written as premises and steps. The full proofs and a 22-check validator are on GitHub.</p>
+    <table>
+      <thead><tr><th scope="col" style="text-align:left">Claim</th><th scope="col" style="text-align:left">Verdict</th></tr></thead>
+      <tbody>
+        <tr><td style="text-align:left">Kernel stands alone</td><td style="text-align:left"><span class="chip ok">Holds</span> j = 2 is the first proper Fibonacci–Lucas carrier</td></tr>
+        <tr><td style="text-align:left">Error correction</td><td style="text-align:left"><span class="chip ok">Holds, narrower</span> noiseless subsystem for collective noise</td></tr>
+        <tr><td style="text-align:left">Cryptographic trapdoor</td><td style="text-align:left"><span class="chip open">Does not follow</span> public P means no hardness</td></tr>
+        <tr><td style="text-align:left">A₅ proves SU(2) unique</td><td style="text-align:left"><span class="chip open">Does not follow</span> shows forcing is not generic</td></tr>
+        <tr><td style="text-align:left">Median and entanglement</td><td style="text-align:left"><span class="chip warn">Conditional</span> median = mean under an antisymmetry</td></tr>
+        <tr><td style="text-align:left">Horner decoder</td><td style="text-align:left"><span class="chip ok">Holds, narrower</span> degree 6 is minimal in C</td></tr>
+      </tbody>
+    </table>
+    <ul class="links">
+      <li><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_Six_Claims_Discrete_Deductions.md">Discrete deductions (proofs)</a></li>
+      <li><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/validation/e47_six_claims_deductions.py">Validator script · 22/22 PASS</a></li>
+      <li><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_Moment_Selector_Theorem.md">Moment selector theorem (Fibonacci–Lucas family)</a></li>
+      <li><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/e47/E47_Condition_Lock_Theorem.md">Condition lock (gap 108², rate 15/17)</a></li>
+    </ul>
+  </section>
+
+  <footer>Independently re-checked in Python: multiplicities, state counts, moments, the j ∈ {2, 5} selection, and the χ matching algebra.</footer>
+</main>
+
+<script>
+const J=[0,1,2,3,4,5,6], C=[1,3,5,4,3,2,1], W=J.map((j,i)=>C[i]*(2*j+1)), L=J.map(j=>j*(j+1)), HIT=[2,5];
+const NS="http://www.w3.org/2000/svg";
+const el=(t,a,p,txt)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;p.appendChild(e);return e};
+// bars
+const b=document.getElementById("bars"),x0=40,y0=210,h=170,max=30,bw=60,gap=26;
+[0,10,20,30].forEach(v=>{const y=y0-v/max*h;el("line",{x1:x0,x2:620,y1:y,y2:y,stroke:"var(--line)"},b);el("text",{x:x0-8,y:y+4,"text-anchor":"end","font-size":11,class:"mut"},b,v)});
+J.forEach((j,i)=>{const x=x0+14+i*(bw+gap),hh=W[i]/max*h,hit=HIT.includes(j);
+  el("rect",{x,y:y0-hh,width:bw,height:hh,rx:3,fill:hit?"var(--hit)":"var(--base)"},b);
+  el("text",{x:x+bw/2,y:y0-hh-6,"text-anchor":"middle","font-size":13,"font-weight":hit?600:400},b,W[i]);
+  el("text",{x:x+bw/2,y:y0+18,"text-anchor":"middle","font-size":12,class:"mut"},b,"j="+j);
+  el("text",{x:x+bw/2,y:y0+34,"text-anchor":"middle","font-size":10,class:"mut"},b,C[i]+"×"+(2*j+1));});
+// table
+document.getElementById("tbody").innerHTML=J.map((j,i)=>`<tr class="${HIT.includes(j)?"hit":""}"><td>${j}</td><td>${C[i]}</td><td>${2*j+1}</td><td>${W[i]}</td><td>${L[i]}</td></tr>`).join("")+`<tr><td colspan="3" style="text-align:left">total</td><td>125</td><td></td></tr>`;
+// number line
+const s=document.getElementById("line"),sx=v=>30+v/42*580,ly=70;
+el("rect",{x:sx(6),y:ly-22,width:sx(30)-sx(6),height:44,fill:"var(--hit-soft)",rx:4},s);
+el("line",{x1:sx(0),x2:sx(42),y1:ly,y2:ly,stroke:"var(--muted)"},s);
+el("line",{x1:sx(18),x2:sx(18),y1:ly-30,y2:ly+22,stroke:"var(--cool)","stroke-width":2,"stroke-dasharray":"4 3"},s);
+el("text",{x:sx(18),y:ly-34,"text-anchor":"middle","font-size":12,fill:"var(--cool)",style:"fill:var(--cool)"},s,"μ = 18");
+el("text",{x:sx(6),y:ly-28,"text-anchor":"middle","font-size":11,class:"mut"},s,"μ−σ");
+el("text",{x:sx(30),y:ly-28,"text-anchor":"middle","font-size":11,class:"mut"},s,"μ+σ");
+J.forEach((j,i)=>{const hit=HIT.includes(j);
+  el("circle",{cx:sx(L[i]),cy:ly,r:hit?8:5,fill:hit?"var(--hit)":"var(--base)",stroke:"var(--panel)","stroke-width":2},s);
+  el("text",{x:sx(L[i]),y:ly+28,"text-anchor":"middle","font-size":11,"font-weight":hit?600:400},s,L[i]);
+  el("text",{x:sx(L[i]),y:ly+43,"text-anchor":"middle","font-size":10,class:"mut"},s,"j"+j);});
+// waffle
+const wf=document.getElementById("waffle");let html="";
+for(let k=0;k<125;k++)html+=`<span class="${k<25?"h2":k<47?"h5":""}"></span>`;wf.innerHTML=html;
+// slider
+const xi=document.getElementById("x"),k=509*Math.PI/47;
+const upd=()=>{const X=+xi.value;document.getElementById("xv").textContent=X.toFixed(3);document.getElementById("chi").textContent=(1/(1+k*X)).toFixed(4)};
+xi.addEventListener("input",upd);upd();
+</script>
+
+</body>
+</html>
