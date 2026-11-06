@@ -7,6 +7,16 @@ on:
     branches: ["main"]
 
 jobs:
+  matrix-receipts:
+    name: Matrix receipt round-trip and circuit replay
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - run: node --test matrix-quantum-simulator/receipt.test.cjs
+
   test:
     name: Pytest – E47 canonical invariants
     runs-on: ubuntu-latest
