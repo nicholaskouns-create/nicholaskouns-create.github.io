@@ -6,6 +6,7 @@ on:
     paths:
       - "index.html"
       - "e47-identity/**"
+      - "matrix-quantum-simulator/**"
       - "website/**"
       - "unified/**"
       - "electroweak/**"
@@ -19,6 +20,7 @@ on:
     paths:
       - "index.html"
       - "e47-identity/**"
+      - "matrix-quantum-simulator/**"
       - "website/**"
       - "README.md"
       - "certificates/**"
