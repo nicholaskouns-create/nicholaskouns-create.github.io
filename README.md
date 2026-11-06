@@ -116,3 +116,5 @@ This atlas remains the vestibule; the current executable research source belongs
 ## E47 spectral and noiseless-subsystem certificate (2026-10-24)
 
 [Read the cross-repository evidence note](E47_SPECTRAL_ADVANTAGES_2026-10-24.md). Documents the exact 125→47 Casimir construction, the (15/17)^n spectral convergence certificate, and collective-SU(2) noiseless multiplicity encoding, separately from channel-dependent QEC and unmeasured hardware advantages.
+
+[The E₄₇ spectral kernel · formalism and verification](e47-spectral-kernel/README.md)

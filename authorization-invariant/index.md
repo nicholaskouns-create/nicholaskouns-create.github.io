@@ -49,3 +49,5 @@ The executable is a reference invariant model. Direct upstream regression remain
 - [E47 / Mathematical City security record](https://github.com/nicholaskouns-create/E47-Kartekeya/blob/main/research/security/AUTHORIZATION_INVARIANT_DISCOVERY_20261008.md)
 - [OpenAI Codex issue #52286](https://github.com/openai/codex/issues/52286)
 - [Sovereign Veritas issue #4](https://github.com/holland202/sovereign-veritas/issues/4)
+
+[The E₄₇ spectral kernel · formalism and verification](../e47-spectral-kernel/README.md)
