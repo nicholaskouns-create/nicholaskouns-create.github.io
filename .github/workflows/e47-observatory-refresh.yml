@@ -1,5 +1,9 @@
 name: E47 observatory refresh
 on:
+  push:
+    paths:
+      - 'e47-research-portal/assets/share-cover.svg'
+      - 'e47-research-portal/scripts/refresh_metrics.py'
   workflow_dispatch:
   schedule:
     - cron: '17 */6 * * *'
