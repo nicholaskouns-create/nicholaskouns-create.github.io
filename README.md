@@ -1,5 +1,8 @@
 > **Current licensing:** [All Rights Reserved](LICENSE) for original material owned by Nicholas Shane Kouns. No new reuse permission is granted. Previously granted licenses and third-party/public-domain rights remain unaffected.
 
+> **Current license:** [All Rights Reserved](LICENSE) for owned original material. No new reuse permission. Earlier licenses and third-party/public-domain rights remain unaffected.
+
+
 > **[Open the Observatory — playable experiments and evidence](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/observatory/)**
 
 # Nicholas Kouns · Personal Atlas
