@@ -1,0 +1,31 @@
+name: Melanie Research Worker
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *'
+permissions:
+  contents: read
+concurrency:
+  group: melanie-research-worker
+  cancel-in-progress: false
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Unit tests
+        run: node --test melanie/tools/e47-core.test.mjs melanie/jobs/protocol.test.mjs melanie/jobs/worker.test.mjs
+      - name: Process one job
+        env:
+          SUPABASE_URL: ${{ secrets.MELANIE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.MELANIE_SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_SERVICE_ROLE_KEY" ]; then
+            echo "Melanie worker secrets not configured; skipping production processing."
+            exit 0
+          fi
+          node melanie/jobs/runner.mjs
