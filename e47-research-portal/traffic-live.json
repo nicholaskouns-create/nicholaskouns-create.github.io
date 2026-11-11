@@ -1,0 +1,230 @@
+{
+  "collectedAt": "2026-11-11T06:06:40.938483+00:00",
+  "source": "GitHub REST API via scheduled repository workflow",
+  "repositories": [
+    {
+      "name": "E47-Kartekeya",
+      "stars": 2,
+      "forks": 0,
+      "openIssues": 5,
+      "pushedAt": "2026-11-10T19:25:55Z",
+      "url": "https://github.com/nicholaskouns-create/E47-Kartekeya"
+    },
+    {
+      "name": "nicholaskouns-create.github.io",
+      "stars": 1,
+      "forks": 0,
+      "openIssues": 3,
+      "pushedAt": "2026-11-10T22:24:23Z",
+      "url": "https://github.com/nicholaskouns-create/nicholaskouns-create.github.io"
+    },
+    {
+      "name": "E47-Foundry-Lifetime-Intersection",
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 0,
+      "pushedAt": "2026-11-10T19:26:00Z",
+      "url": "https://github.com/nicholaskouns-create/E47-Foundry-Lifetime-Intersection"
+    },
+    {
+      "name": "E47-Electroweak-Identities",
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 0,
+      "pushedAt": "2026-11-10T19:26:03Z",
+      "url": "https://github.com/nicholaskouns-create/E47-Electroweak-Identities"
+    },
+    {
+      "name": "auth-kernel",
+      "stars": 1,
+      "forks": 0,
+      "openIssues": 1,
+      "pushedAt": "2026-11-10T19:26:09Z",
+      "url": "https://github.com/nicholaskouns-create/auth-kernel"
+    },
+    {
+      "name": "bi-a7-semimetal-proofs",
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 1,
+      "pushedAt": "2026-11-10T19:26:14Z",
+      "url": "https://github.com/nicholaskouns-create/bi-a7-semimetal-proofs"
+    },
+    {
+      "name": "Time",
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 2,
+      "pushedAt": "2026-11-10T19:26:18Z",
+      "url": "https://github.com/nicholaskouns-create/Time"
+    },
+    {
+      "name": "Genesis",
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 0,
+      "pushedAt": "2026-11-10T19:26:20Z",
+      "url": "https://github.com/nicholaskouns-create/Genesis"
+    },
+    {
+      "name": "Radar",
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 0,
+      "pushedAt": "2026-11-10T19:26:24Z",
+      "url": "https://github.com/nicholaskouns-create/Radar"
+    },
+    {
+      "name": "tower",
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 3,
+      "pushedAt": "2026-11-10T19:26:26Z",
+      "url": "https://github.com/nicholaskouns-create/tower"
+    },
+    {
+      "name": "Identity",
+      "stars": 2,
+      "forks": 1,
+      "openIssues": 89,
+      "pushedAt": "2026-11-10T23:18:43Z",
+      "url": "https://github.com/nicholaskouns-create/Identity"
+    },
+    {
+      "name": "Kiliani",
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 0,
+      "pushedAt": "2026-11-10T19:26:31Z",
+      "url": "https://github.com/nicholaskouns-create/Kiliani"
+    }
+  ],
+  "totals": {
+    "stars": 6,
+    "forks": 1,
+    "openIssues": 104
+  },
+  "traffic": {
+    "E47-Kartekeya": {
+      "views": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      },
+      "clones": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      }
+    },
+    "nicholaskouns-create.github.io": {
+      "views": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      },
+      "clones": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      }
+    },
+    "E47-Foundry-Lifetime-Intersection": {
+      "views": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      },
+      "clones": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      }
+    },
+    "E47-Electroweak-Identities": {
+      "views": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      },
+      "clones": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      }
+    },
+    "auth-kernel": {
+      "views": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      },
+      "clones": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      }
+    },
+    "bi-a7-semimetal-proofs": {
+      "views": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      },
+      "clones": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      }
+    },
+    "Time": {
+      "views": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      },
+      "clones": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      }
+    },
+    "Genesis": {
+      "views": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      },
+      "clones": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      }
+    },
+    "Radar": {
+      "views": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      },
+      "clones": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      }
+    },
+    "tower": {
+      "views": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      },
+      "clones": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      }
+    },
+    "Identity": {
+      "views": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      },
+      "clones": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      }
+    },
+    "Kiliani": {
+      "views": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      },
+      "clones": {
+        "status": "unavailable",
+        "reason": "HTTP 403"
+      }
+    }
+  },
+  "limitations": "Views/clones require sufficient permissions; missing values are unavailable, never zero. This is GitHub-only; Supabase snapshot remains historical."
+}
