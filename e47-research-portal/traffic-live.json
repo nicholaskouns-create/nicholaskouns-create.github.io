@@ -1,13 +1,13 @@
 {
-  "collectedAt": "2026-11-13T19:37:25.620298+00:00",
+  "collectedAt": "2026-11-14T06:13:03.490749+00:00",
   "source": "GitHub REST API via scheduled repository workflow",
   "repositories": [
     {
       "name": "E47-Kartekeya",
       "stars": 2,
       "forks": 0,
-      "openIssues": 5,
-      "pushedAt": "2026-11-13T18:32:26Z",
+      "openIssues": 0,
+      "pushedAt": "2026-11-13T21:51:55Z",
       "url": "https://github.com/nicholaskouns-create/E47-Kartekeya"
     },
     {
@@ -15,7 +15,7 @@
       "stars": 1,
       "forks": 0,
       "openIssues": 4,
-      "pushedAt": "2026-11-13T06:35:42Z",
+      "pushedAt": "2026-11-13T19:37:31Z",
       "url": "https://github.com/nicholaskouns-create/nicholaskouns-create.github.io"
     },
     {
@@ -86,8 +86,8 @@
       "name": "Identity",
       "stars": 2,
       "forks": 1,
-      "openIssues": 90,
-      "pushedAt": "2026-11-13T18:34:44Z",
+      "openIssues": 89,
+      "pushedAt": "2026-11-14T03:13:43Z",
       "url": "https://github.com/nicholaskouns-create/Identity"
     },
     {
@@ -102,7 +102,7 @@
   "totals": {
     "stars": 6,
     "forks": 1,
-    "openIssues": 106
+    "openIssues": 100
   },
   "traffic": {
     "E47-Kartekeya": {
