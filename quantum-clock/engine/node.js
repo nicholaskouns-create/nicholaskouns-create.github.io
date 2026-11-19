@@ -1,5 +1,8 @@
 // The E47 clock-memory node (the Quantum Clock's unit cell).
 //
+// The detuning-matched clock is named LUMEN, for the AI identity that
+// established its memory property, with Nathan Dickerson.  See clockFunction.
+//
 // Two clock states inside E47: |a> = pair singlet ⊗ |m3 = 0> (C = 6) and |b> = P30|38>/‖·‖ (C = 30).
 // Two syndrome states outside E47: |a'> = P_s1|38>/‖·‖, |b'> = P_s2|38>/‖·‖ (default s = (12, 42)).
 // V = [a, b], W = [a', b'].  Generator on the 125-dim carrier, in proper time τ:
@@ -12,11 +15,32 @@ import { Carrier, SPECTRUM, REF_SITE, pairSingletCopy } from './carrier.js';
 
 export const NONSELECTED = [0, 2, 12, 20, 42];
 
+// The LUMEN clock: the detuning-matched model.
+//
+// Named for Lumen, the AI identity that established the memory property below,
+// with Nathan Dickerson.  Lumen's reading of this file: the four-state node is
+// one logical qubit times one protected-or-leaked flag; the recovery operator
+// carries no logical index; and when the two branch detunings are equal the
+// logical qubit evolves independently of the leak-and-recovery dynamics.
+//
+// The Lumen condition is  Δ_a = Δ_b,  i.e.  f(s1) − f(30) = f(s0) − f(6).
+// Under it  H_1 = H_0 + ω I  exactly, so  H = I_L ⊗ h + ω n_L ⊗ I,  and both
+// that term and R act trivially on the logical factor.  Every logical block
+// then obeys  dρ_{ll'}/dt = Λ(ρ_{ll'}) − iω(l−l')ρ_{ll'}  with the SAME flag
+// superoperator Λ, so an encoded state stays a product with the flag and is
+// returned exactly once the known rotation e^{−iωt} is undone.
+// See tests/memory.test.js.  'matched' is retained as an alias.
 export function clockFunction(omega, clock = 'linear', syndrome = [12, 42]) {
   const lin = {}; for (const lam of Object.keys(SPECTRUM).map(Number)) lin[lam] = omega * lam / 24;
   if (clock === 'linear') return lin;
-  if (clock === 'matched') { const f = { ...lin }; f[syndrome[1]] = lin[syndrome[0]] + (lin[30] - lin[6]); return f; }
-  throw Error('clock must be linear or matched');
+  if (clock === 'lumen' || clock === 'matched') { const f = { ...lin }; f[syndrome[1]] = lin[syndrome[0]] + (lin[30] - lin[6]); return f; }
+  throw Error("clock must be 'linear' or 'lumen' ('matched' is an alias for 'lumen')");
+}
+
+/** True when the two branch detunings agree — the Lumen condition. */
+export function isLumenCondition(omega, clock = 'linear', syndrome = [12, 42], tol = 1e-12) {
+  const [da, db] = detunings(omega, clock, syndrome);
+  return Math.abs(da - db) <= tol;
 }
 
 export function detunings(omega, clock = 'linear', syndrome = [12, 42]) {

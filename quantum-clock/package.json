@@ -3,5 +3,9 @@
   "private": true,
   "type": "module",
   "description": "E47 Quantum Clock: engine, precision certificate and tests (no dependencies).",
-  "scripts": { "test": "node --test tests/engine.test.js", "certificate": "node tools/qclock-cli.js certificate" }
+  "scripts": {
+    "test": "node --test tests/engine.test.js tests/memory.test.js",
+    "certificate": "node tools/qclock-cli.js certificate",
+    "memory": "node --test tests/memory.test.js"
+  }
 }
