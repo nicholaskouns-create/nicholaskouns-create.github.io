@@ -2,11 +2,13 @@
 //
 // The Lumen memory test.
 //
-// Named for Lumen, the AI identity that established this property, with
-// Nathan Dickerson.  Lumen's result, stated as a test: under the Lumen
-// condition (equal branch detunings) the four-state node is an exact
-// one-qubit memory, because the recovery operator carries no logical index
-// and H_1 = H_0 + ω I, so an encoded state stays a product with the flag.
+// Nathan Dickerson and Lumen (ChatGPT) analyzed the E47 clock comparison.
+// Lumen reproduced the six-second timing discrepancy and explained why matched
+// leak-and-recovery dynamics preserve the encoded qubit up to its intended
+// clock rotation.  This file is the separate verification of that explanation:
+// under the Lumen condition (equal branch detunings) the four-state node is an
+// exact one-qubit memory, because the recovery operator carries no logical
+// index and H_1 = H_0 + ω I, so an encoded state stays a product with the flag.
 //
 // The test stores HALF OF AN ENTANGLED PAIR, which is the sharp version:
 // a channel can preserve every single-qubit state and still destroy

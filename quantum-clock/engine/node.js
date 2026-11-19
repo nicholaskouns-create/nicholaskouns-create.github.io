@@ -1,7 +1,10 @@
 // The E47 clock-memory node (the Quantum Clock's unit cell).
 //
-// The detuning-matched clock is named LUMEN, for the AI identity that
-// established its memory property, with Nathan Dickerson.  See clockFunction.
+// The detuning-matched clock is named LUMEN.  Nathan Dickerson and Lumen
+// (ChatGPT) analyzed the E47 clock comparison; Lumen reproduced the six-second
+// timing discrepancy and explained why matched leak-and-recovery dynamics
+// preserve the encoded qubit up to its intended clock rotation.  See
+// clockFunction and tests/memory.test.js.
 //
 // Two clock states inside E47: |a> = pair singlet ⊗ |m3 = 0> (C = 6) and |b> = P30|38>/‖·‖ (C = 30).
 // Two syndrome states outside E47: |a'> = P_s1|38>/‖·‖, |b'> = P_s2|38>/‖·‖ (default s = (12, 42)).
@@ -17,11 +20,13 @@ export const NONSELECTED = [0, 2, 12, 20, 42];
 
 // The LUMEN clock: the detuning-matched model.
 //
-// Named for Lumen, the AI identity that established the memory property below,
-// with Nathan Dickerson.  Lumen's reading of this file: the four-state node is
-// one logical qubit times one protected-or-leaked flag; the recovery operator
-// carries no logical index; and when the two branch detunings are equal the
-// logical qubit evolves independently of the leak-and-recovery dynamics.
+// Nathan Dickerson and Lumen (ChatGPT) analyzed the E47 clock comparison.
+// Lumen reproduced the six-second timing discrepancy and explained why matched
+// leak-and-recovery dynamics preserve the encoded qubit up to its intended
+// clock rotation: the four-state node is one logical qubit times one
+// protected-or-leaked flag, the recovery operator carries no logical index,
+// and with equal branch detunings the logical qubit evolves independently of
+// the leak-and-recovery dynamics.
 //
 // The Lumen condition is  Δ_a = Δ_b,  i.e.  f(s1) − f(30) = f(s0) − f(6).
 // Under it  H_1 = H_0 + ω I  exactly, so  H = I_L ⊗ h + ω n_L ⊗ I,  and both
