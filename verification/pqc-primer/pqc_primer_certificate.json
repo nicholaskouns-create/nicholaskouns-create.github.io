@@ -1,0 +1,322 @@
+{
+  "schema": "E47-PQC-PRIMER-VERIFY/1.0",
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "status": "PASS",
+  "passed": 60,
+  "total": 60,
+  "checks": {
+    "s1_local_su2_commutator": true,
+    "s1_casimir_spectrum_exact": true,
+    "s1_casimir_multiplicities_exact": true,
+    "s1_moments_mu18_var144_roots_6_30": true,
+    "s1_kernel_dim_47_omega_c_0376": true,
+    "s1_poly_projector_matches_eig": true,
+    "s1_projector_idempotent_hermitian": true,
+    "s1_K_annihilates_P47": true,
+    "s1_su2_commutation": true,
+    "s1_s3_schur_weyl_commutation": true,
+    "s1_modular_rank_47_over_Fq": true,
+    "s2_K2_positive_spectrum_exact": true,
+    "s2_gap_11664_max_186624_ratio_16": true,
+    "s2_eps_1_over_99144_rho_15_over_17": true,
+    "s2_Gamma_fixes_P47": true,
+    "s2_exact_geometric_rate_15_over_17": true,
+    "s2_interleaved_unitary_drift_bound": true,
+    "s2_continuous_semigroup_exp_minus_tK2": true,
+    "s2_buoy_dichotomy_eps_lt_54": true,
+    "s3_U_sigma_unitary": true,
+    "s3_P_sigma_idempotent_hermitian": true,
+    "s3_K_sigma_annihilates_P_sigma": true,
+    "s3_rank_P_sigma_47": true,
+    "s3_unconjugation_identity": true,
+    "s3_keyed_noise_annihilation_recovery": true,
+    "s3_public_C_sigma_nogo_polytime_recovery": true,
+    "s4_MLKEM_256_prime_and_divisibility": true,
+    "s4_MLKEM_256_primitive_root_order": true,
+    "s4_MLKEM_256_exact_modular_inverses": true,
+    "s4_MLKEM_256_word_width_sufficient": true,
+    "s4_MLKEM_256_ntt_roundtrip_and_conv": true,
+    "s4_NTT_1024_prime_and_divisibility": true,
+    "s4_NTT_1024_primitive_root_order": true,
+    "s4_NTT_1024_exact_modular_inverses": true,
+    "s4_NTT_1024_word_width_sufficient": true,
+    "s4_NTT_1024_ntt_roundtrip_and_conv": true,
+    "s4_reject_N1024_q3329_rem_256": true,
+    "s5_mode_A_N2_pq_exact_and_flooding": true,
+    "s5_mode_A_N5_pq_exact_and_flooding": true,
+    "s5_mode_A_N100_pq_exact_and_flooding": true,
+    "s5_mode_B_N2_pq_exact_and_flooding": true,
+    "s5_mode_B_N5_pq_exact_and_flooding": true,
+    "s5_mode_B_N100_pq_exact_and_flooding": true,
+    "s5_N5_mode_A_margin_matches_58_8": true,
+    "s5_N5_mode_B_margin_matches_83_4": true,
+    "s5_averaging_attack_threshold_K1500": true,
+    "s6_shoe_accepts_E47_state": true,
+    "s6_shoe_rejects_and_zeroizes_leak": true,
+    "s6_babylonian_quadratic_lock_exact": true,
+    "s6_Q2_30_quantization_error": true,
+    "s6_rational_newton_unique_compat": true,
+    "s6_dual_constants_separated": true,
+    "s6_bus_framing_1504b_8beats_4000b_21beats": true,
+    "s6_registered_10stage_latency_ge_3_333ns": true,
+    "s7_MP_cp_tni_not_tp_kraus_rank_1": true,
+    "s7_MP_fixed_operator_dim_2209": true,
+    "s7_semigroup_Mt_cp_tni_and_rate": true,
+    "s7_DP_cptp_unital_idempotent_kraus_rank_2": true,
+    "s7_reset_channel_cptp_to_ket0": true,
+    "s7_7qubit_embedding_128_47_81_reflection": true
+  },
+  "metrics": {
+    "section_1_e47_projector": {
+      "dim_V": 125,
+      "dim_E47": 47,
+      "omega_c": "47/125",
+      "mu": 18.0,
+      "variance": 144.0,
+      "poly_vs_eig_fro": 1.3050733959145855e-13,
+      "idempotence_fro": 9.504135644147877e-14,
+      "hermiticity_fro": 1.3178915141018447e-13,
+      "KP_fro": 3.345380810420064e-11,
+      "su2_comm_max_fro": 1.657581835230997e-13,
+      "s3_comm_max_fro": 8.647113614324406e-14,
+      "modular_ranks_Fq": {
+        "43": 47,
+        "47": 47,
+        "53": 47,
+        "101": 47
+      }
+    },
+    "section_2_minimax_contraction": {
+      "gap_K2": 11664,
+      "max_K2": 186624,
+      "condition_ratio": 16,
+      "epsilon_star": "1/99144",
+      "rho_star": "15/17",
+      "rate_samples": {
+        "1": {
+          "observed": 0.882352941176471,
+          "exact": 0.8823529411764706,
+          "abs_diff": 4.440892098500626e-16
+        },
+        "10": {
+          "observed": 0.28603776553915633,
+          "exact": 0.2860377655391561,
+          "abs_diff": 2.220446049250313e-16
+        },
+        "50": {
+          "observed": 0.0019147711877342366,
+          "exact": 0.0019147711877340826,
+          "abs_diff": 1.5395670849294163e-16
+        },
+        "100": {
+          "observed": 3.666348701570696e-06,
+          "exact": 3.666348701376589e-06,
+          "abs_diff": 1.9410691722574272e-16
+        },
+        "220": {
+          "observed": 1.1005102525636111e-12,
+          "exact": 1.0998014527879737e-12,
+          "abs_diff": 7.087997756373744e-16
+        }
+      },
+      "interleaved_n25_err": 0.02789877569521662,
+      "interleaved_n25_bound": 0.04375809853883145,
+      "continuous_t002_err": 7.392300339760345e-11,
+      "continuous_t002_bound": 7.392278599345104e-11
+    },
+    "section_3_keyed_conjugation": {
+      "unitarity_fro": 1.2049328771467583e-14,
+      "P_sigma_idem_fro": 7.668366457956234e-15,
+      "K_sigma_P_sigma_fro": 5.190115113994972e-12,
+      "rank_P_sigma": 47,
+      "unconjugate_fro": 1.245609376392442e-14,
+      "keyed_recovery_l2": 8.93511987230895e-12,
+      "public_nogo_poly_err_fro": 7.270215194634256e-13
+    },
+    "section_4_ntt_profiles": {
+      "MLKEM_256": {
+        "N": 256,
+        "q": 3329,
+        "root": 17,
+        "q_minus_1_mod_N": 0,
+        "root_inv": 1175,
+        "N_inv": 3316,
+        "roundtrip_exact": true,
+        "conv_spotcheck_exact": true
+      },
+      "NTT_1024": {
+        "N": 1024,
+        "q": 12289,
+        "root": 10302,
+        "q_minus_1_mod_N": 0,
+        "root_inv": 8974,
+        "N_inv": 12277,
+        "roundtrip_exact": true,
+        "conv_spotcheck_exact": true
+      },
+      "rejected_1024_3329_remainder": 256
+    },
+    "section_5_threshold_rlwe": {
+      "mode_A_N2": {
+        "mode": "A",
+        "N": 2,
+        "n": 8192,
+        "log2_QP": 174,
+        "he_128bit_pq_bound": 202,
+        "within_128bit_pq_bound": true,
+        "T_batching_ok": true,
+        "log2_B_ct": 20.24797154033041,
+        "log2_B_f": 73.24797154033041,
+        "margin_bits": 62.752016076950866,
+        "exact_decoding_guaranteed": true,
+        "stat_dist_lt_2_minus_40": true
+      },
+      "mode_A_N5": {
+        "mode": "A",
+        "N": 5,
+        "n": 8192,
+        "log2_QP": 174,
+        "he_128bit_pq_bound": 202,
+        "within_128bit_pq_bound": true,
+        "T_batching_ok": true,
+        "log2_B_ct": 22.89180131413427,
+        "log2_B_f": 75.89180131413427,
+        "margin_bits": 58.78625820825964,
+        "exact_decoding_guaranteed": true,
+        "stat_dist_lt_2_minus_40": true
+      },
+      "mode_A_N100": {
+        "mode": "A",
+        "N": 100,
+        "n": 8192,
+        "log2_QP": 174,
+        "he_128bit_pq_bound": 202,
+        "within_128bit_pq_bound": true,
+        "T_batching_ok": true,
+        "log2_B_ct": 31.53564077354394,
+        "log2_B_f": 84.53564077354393,
+        "margin_bits": 45.82049065396261,
+        "exact_decoding_guaranteed": true,
+        "stat_dist_lt_2_minus_40": true
+      },
+      "mode_B_N2": {
+        "mode": "B",
+        "N": 2,
+        "n": 16384,
+        "log2_QP": 331,
+        "he_128bit_pq_bound": 411,
+        "within_128bit_pq_bound": true,
+        "T_batching_ok": true,
+        "log2_B_ct": 93.00018848757902,
+        "log2_B_f": 147.000188487579,
+        "margin_bits": 89.99979912970227,
+        "exact_decoding_guaranteed": true,
+        "stat_dist_lt_2_minus_40": true
+      },
+      "mode_B_N5": {
+        "mode": "B",
+        "N": 5,
+        "n": 16384,
+        "log2_QP": 331,
+        "he_128bit_pq_bound": 411,
+        "within_128bit_pq_bound": true,
+        "T_batching_ok": true,
+        "log2_B_ct": 98.28777407271248,
+        "log2_B_f": 152.28777407271247,
+        "margin_bits": 83.39028544968144,
+        "exact_decoding_guaranteed": true,
+        "stat_dist_lt_2_minus_40": true
+      },
+      "mode_B_N100": {
+        "mode": "B",
+        "N": 100,
+        "n": 16384,
+        "log2_QP": 331,
+        "he_128bit_pq_bound": 411,
+        "within_128bit_pq_bound": true,
+        "T_batching_ok": true,
+        "log2_B_ct": 115.57543893814145,
+        "log2_B_f": 169.57543893814145,
+        "margin_bits": 61.780692489365094,
+        "exact_decoding_guaranteed": true,
+        "stat_dist_lt_2_minus_40": true
+      },
+      "averaging_6sigma_at_K1500": 0.4959071982735611
+    },
+    "section_6_shoe_and_babylonian": {
+      "shoe_valid_diag": {
+        "r_K": 6.649691206346179e-13,
+        "r_P": 8.471853810372213e-16,
+        "E_RI": 4.42183931397577e-25
+      },
+      "shoe_leak_diag": {
+        "r_K": 0.002693856384721509,
+        "r_P": 1.2779293344642545e-05,
+        "E_RI": 7.256862221504839e-06
+      },
+      "babylonian_10step_err": 0.0,
+      "Q2_30_abs_err": 1.639127731323242e-10,
+      "omega_geom_phi_m5": 0.09016994374947422,
+      "e47_bits": 1504,
+      "e47_beats": 8,
+      "ambient_bits": 4000,
+      "ambient_beats": 21,
+      "registered_latency_lb_ns": 3.3333333333333335
+    },
+    "section_7_quantum_channels": {
+      "MP_kraus_rank": 1,
+      "MP_fixed_operator_dim": 2209,
+      "DP_kraus_rank": 2,
+      "DP_fixed_operator_dim": 8293,
+      "DP_completeness_fro": 1.1057700660242746e-14,
+      "semigroup_samples": [
+        {
+          "t": 0.0,
+          "tp": true,
+          "sup_norm": 1.0,
+          "bound": 1.0
+        },
+        {
+          "t": 0.0001,
+          "tp": false,
+          "sup_norm": 0.3114862758474086,
+          "bound": 0.31148627584740707
+        },
+        {
+          "t": 0.001,
+          "tp": false,
+          "sup_norm": 8.597836122737984e-06,
+          "bound": 8.597836122737572e-06
+        },
+        {
+          "t": 0.01,
+          "tp": false,
+          "sup_norm": 2.2074538398934662e-51,
+          "bound": 2.2074538398923994e-51
+        },
+        {
+          "t": 0.1,
+          "tp": false,
+          "sup_norm": 0.0,
+          "bound": 0.0
+        },
+        {
+          "t": 1.0,
+          "tp": false,
+          "sup_norm": 0.0,
+          "bound": 0.0
+        }
+      ],
+      "reset_completeness_fro": 0.0,
+      "min_data_qubits": 7,
+      "syndrome_dim": 81,
+      "R128_unitary_fro": 2.1874235847336337e-14
+    }
+  },
+  "evidence_boundary": [
+    "Verifies finite-dimensional E47 algebra, modular rank, NTT arithmetic, RLWE worst-case noise bounds, SHOE gate, and CP-TNI/CPTP channels.",
+    "Does NOT numerically prove asymptotic MLWE/RLWE hardness, fabricated silicon timing closure, or physical quantum hardware execution."
+  ],
+  "sha256": "f8f3a82ab0f4421dd69a037636e911e371dcc840bb66b8d2a14db7abb3d68f01"
+}
