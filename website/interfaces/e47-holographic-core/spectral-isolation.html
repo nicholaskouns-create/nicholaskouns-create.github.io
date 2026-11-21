@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spectral Isolation of the Rank-47 Kernel — KARTEKEYA / E47</title>
+<meta name="description" content="Exact Casimir spectral census, kernel rank 47 and sharp 15/17 complementary contraction for the E47 carrier.">
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{background:#030807;color:#d8eee7;margin:0;font:15px/1.65 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+main{max-width:1050px;margin:0 auto;padding:24px}h1{font-size:clamp(22px,3.3vw,35px);font-weight:600;letter-spacing:.3px;line-height:1.4}h2{font-size:18px;color:#a9f4d8;margin-top:36px}h3{font-size:15px;color:#a5e2cb}p{margin:12px 0}a{color:#66edb7}nav{display:flex;flex-wrap:wrap;gap:16px;padding:0 0 15px;border-bottom:1px solid #194a3b}.eyebrow{color:#6fcbac;letter-spacing:2px;font-size:12px;margin-top:35px}
+.panel{border:1px solid #1d5644;background:#06110d;padding:20px 22px;margin:20px 0}.formula{color:#baffdc;font-size:clamp(14px,2.2vw,22px);padding:16px 12px;text-align:center;background:#05120e;overflow:auto;white-space:nowrap}.detail{color:#9bbcb0}table{border-collapse:collapse;width:100%;font-size:13px}td,th{border-bottom:1px solid #1a342a;padding:9px;text-align:right}td:first-child,th:first-child{text-align:left}tr.keep{background:#0e2720;color:#7affca}code,pre{color:#bafbd7}pre{overflow:auto;border:1px solid #225a46;padding:15px;background:#040c08}.foot{font-size:12px;color:#829d90;margin:45px 0 20px;border-top:1px solid #183d31;padding-top:18px}button{background:#0c251b;border:1px solid #397b5e;color:#d8ffe7;font:inherit;cursor:pointer;padding:9px 13px;border-radius:4px}.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.metric{border:1px solid #245c48;padding:8px 12px;color:#7beec0}input{font:inherit;color:#d8ffeb;background:#0c1913;border:1px solid #3c7960;width:85px;padding:8px}small{font-size:12px;color:#a5bbae}
+</style></head><body><main>
+<nav><a href="./">← KARTEKEYA simulator</a><a href="./kartekeya_core.py">Python engine</a><a href="./share-card.svg">Share card</a><a href="https://github.com/nicholaskouns-create/nicholaskouns-create.github.io/tree/main/website/interfaces/e47-holographic-core">Source repository</a></nav>
+<div class="eyebrow">E47 · EXACT FINITE-DIMENSIONAL THEOREM · CASIMIR SPECTRAL ISOLATION</div>
+<h1>Spectral Isolation of the Rank-47 Kernel on V₂⊗³</h1>
+<section class="panel"><h2>Statement</h2>
+<p>Let <strong>H = V₂ ⊗ V₂ ⊗ V₂</strong> with <strong>dim H = 125</strong>. Let <strong>C = J<sub>tot</sub>²</strong> be the total Casimir. Define the polynomial selector</p>
+<div class="formula">K = (C − 6I)(C − 30I).</div>
+<p>Then <strong>dim ker K = 47</strong>, and</p>
+<div class="formula">E₄₇ = ker K = E₆ ⊕ E₃₀,　P₄₇ = P₆ + P₃₀.</div>
+<p>For the contraction <strong>Γ = I − εK²</strong> with <strong>ε = 1/99144</strong>,</p>
+<div class="formula">‖(I − P₄₇) Γⁿ‖₂ = (15/17)ⁿ　(n = 0,1,2,…).</div>
+<p class="detail">Norm is the induced operator 2-norm. Equality is exact in the finite-dimensional self-adjoint spectral decomposition.</p>
+</section>
+<section><h2>Proof · Algebraic spectrum</h2>
+<p>The three-spin-2 carrier decomposes into total-spin isotypic sectors. The Casimir eigenvalues, multiplicities and selector spectra are:</p>
+<table><thead><tr><th>C=J(J+1)</th><th>Multiplicity</th><th>K</th><th>K²</th><th>Γ eigenvalue</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>1</td><td>180</td><td>32400</td><td>1 − 32400/99144</td></tr>
+<tr><td>2</td><td>9</td><td>112</td><td>12544</td><td>1 − 12544/99144</td></tr>
+<tr class="keep"><td>6 · J=2</td><td>25</td><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>12</td><td>28</td><td>−108</td><td>11664</td><td>+15/17</td></tr>
+<tr><td>20</td><td>27</td><td>−140</td><td>19600</td><td>1 − 19600/99144</td></tr>
+<tr class="keep"><td>30 · J=5</td><td>22</td><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>42</td><td>13</td><td>432</td><td>186624</td><td>−15/17</td></tr>
+</tbody></table>
+<p>The multiplicities sum to <strong>125</strong>. K vanishes only for C=6 and C=30. The spin-2 sector contains 5 copies of a 5-dimensional irrep, giving <strong>5 × 5 = 25</strong>. The spin-5 sector contains 2 copies of an 11-dimensional irrep, giving <strong>2 × 11 = 22</strong>. Therefore</p>
+<div class="formula">dim ker K = 25 + 22 = 47;　rank K = 125 − 47 = 78.</div>
+<h2>Proof · Sharp complementary contraction</h2>
+<p>On ker K, K²=0, so Γ acts as identity. On E₄₇<sup>⊥</sup>, the strictly positive spectral values of K² are</p>
+<div class="formula">{11664, 12544, 19600, 32400, 186624}.</div>
+<p>The <strong>smallest positive eigenvalue</strong> is 11664 and the <strong>largest</strong> is 186624. For ε=1/99144 the endpoint Γ eigenvalues are exactly</p>
+<div class="formula">1 − 11664/99144 = +15/17</div>
+<div class="formula">1 − 186624/99144 = −15/17.</div>
+<p>All other complementary Γ eigenvalues lie strictly between these endpoints. Because Γ and P₄₇ are diagonal in the same orthogonal spectral decomposition,</p>
+<div class="formula">‖(I − P₄₇) Γⁿ‖₂ = max<sub>λ ∈ spec(K²) ∖ {0}</sub> |1 − ελ|ⁿ = (15/17)ⁿ.</div>
+<p class="detail">This also shows Γⁿ → P₄₇ in operator norm, with ‖Γⁿ − P₄₇‖₂ = (15/17)ⁿ. The rate is attained on the C=12 and C=42 sectors. This corrects the proposed proof's phrase “bounded by 108²”: 108²=11664 is the minimum positive value, not an upper bound.</p>
+</section>
+<section class="panel"><h2>Executable contraction bound</h2><p>Adjust the iteration number to inspect the exact spectral-norm residual (15/17)ⁿ. This is the operator bound, independent of which random state is currently displayed in the simulator.</p>
+<div class="row"><label for="steps">n = </label><input type="number" id="steps" min="0" max="100000" step="1" value="20"/><button id="calc">Compute</button><span class="metric" id="bound">—</span></div>
+<p><small>Γⁿ is a nonunitary contraction. The simulator's “EVOLVE K” button instead computes exp(−iKΔτ), a unitary K-phase evolution. Both share the spectral selector K but are distinct operations.</small></p>
+</section>
+<section><h2>Validation status and executable source</h2>
+<p><strong>Algebra:</strong> evaluated directly from the supplied Casimir eigenvalues and multiplicities. <strong>Python:</strong> <a href="./kartekeya_core.py">provided engine</a> computes the carrier, E47 indices, K eigenvalues, projection, unitary K evolution, and M2/M5 operations; its original <code>validation()</code> does not compute Γ or the n-step operator-norm contraction. The independent exact-arithmetic check is:</p>
+<pre>from fractions import Fraction
+C = [0, 2, 6, 12, 20, 30, 42]
+m = [1, 9, 25, 28, 27, 22, 13]
+K = [(c-6)*(c-30) for c in C]
+assert sum(m) == 125
+assert sum(v for v, k in zip(m, K) if k == 0) == 47
+lam = [k*k for k in K if k]
+epsilon = Fraction(1, 99144)
+rho = max(abs(1 - epsilon*x) for x in lam)
+assert rho == Fraction(15, 17)
+for n in [0, 1, 2, 20, 220]:
+    assert max(abs(1-epsilon*x)**n for x in lam) == Fraction(15,17)**n
+print("PASS: rank 47, complement 78, sharp 15/17 contraction")</pre>
+<p>In the simulator, <strong>INIT RANDOM FULL</strong> introduces population outside E47; <strong>INJECT K ERROR</strong> changes complementary occupation; <strong>APPLY P47</strong> removes it and renormalizes. These are operational demonstrations of the same spectral decomposition, but the projection is not the Γⁿ iteration.</p></section>
+<div class="foot">KARTEKEYA / E47 QUANTUM CORE · Exact finite-dimensional spectral proof · Linked to the live interface without changing its engine.</div>
+</main><script>const input=document.getElementById("steps"),out=document.getElementById("bound");function update(){const n=Math.max(0,Math.floor(Number(input.value)||0));out.textContent="‖Γⁿ − P₄₇‖₂ = "+Math.pow(15/17,n).toExponential(9);}document.getElementById("calc").onclick=update;input.onchange=update;update();</script></body></html>
