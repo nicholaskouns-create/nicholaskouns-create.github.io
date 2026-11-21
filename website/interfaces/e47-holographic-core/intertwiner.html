@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KARTEKEYA — Intertwiner Lab | SU(2) × E47</title>
+<meta name="description" content="Interactive SU(2)-equivariant commutant of the E47 kernel: M5(C) ⊕ M2(C), 29 complex dimensions, with exact tensor-form commutator checks.">
+<meta property="og:title" content="KARTEKEYA / E47 INTERTWINER LAB"><meta property="og:description" content="125 → 47 → (25 ⊕ 22) · 29-dimensional SU(2) commutant">
+<meta property="og:image" content="https://nicholaskouns-create.github.io/website/interfaces/e47-holographic-core/share-card.svg">
+<meta name="twitter:card" content="summary_large_image">
+<style>:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#020807;color:#d5f0e7;font:14px/1.55 ui-monospace,Menlo,Consolas,monospace}a{color:#67edbc}main{max-width:1180px;margin:auto;padding:24px}.top{display:flex;gap:18px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid #214b3b}.eyebrow{font-size:12px;letter-spacing:2px;color:#78cfae;margin:32px 0 8px}h1{font-size:clamp(23px,3.2vw,36px);letter-spacing:1px;margin:0 0 10px;font-weight:550}h2{font-size:18px;font-weight:550;letter-spacing:1px}p{color:#abc4b8}.formula{font-size:clamp(15px,2.2vw,23px);padding:15px 0;color:#86f6c8}.card{border:1px solid #1c5242;background:#07110d;padding:19px;margin:18px 0}.columns{display:grid;grid-template-columns:1fr 1fr;gap:16px}.metricline{display:flex;gap:10px;flex-wrap:wrap}.metric{border:1px solid #2d795d;padding:10px 13px}.metric strong{color:#72f6c1}.switches{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0}button,select{background:#071c13;color:#bfffe2;border:1px solid #3d8665;border-radius:4px;font:inherit;padding:9px 12px;cursor:pointer}button:hover{background:#15422c}button.active{border-color:#9cf9d3;background:#1c4a33}.violet{color:#a990ff}.green{color:#79f5c3}canvas{width:100%;height:235px;background:#020807;border:1px solid #153528;display:block}pre{white-space:pre-wrap;font:12px/1.7 ui-monospace,monospace;color:#9deac8}table{width:100%;border-collapse:collapse;font-size:13px}td,th{text-align:left;border-bottom:1px solid #1b3d2f;padding:9px 5px;vertical-align:top}small,.muted{color:#819e8d;font-size:12px}details{border-top:1px solid #245641;padding:15px 0}summary{cursor:pointer;color:#9af8cc}footer{margin:35px 0 8px;padding-top:14px;border-top:1px solid #214937;color:#8ca699}label{font-size:12px;color:#a6c2b5}@media(max-width:780px){main{padding:12px}.columns{grid-template-columns:1fr}.card{padding:13px}.metric{flex:1}}</style></head>
+<body><main>
+<nav class="top"><a href="./">← HOLOGRAPHIC CORE</a><a href="./spectral-isolation.html">SPECTRAL ISOLATION THEOREM</a><a href="./kartekeya_core.py">NUMPY ENGINE</a><a href="https://github.com/nicholaskouns-create/nicholaskouns-create.github.io/tree/main/website/interfaces/e47-holographic-core">GITHUB SOURCE</a></nav>
+<div class="eyebrow">COLLECTIVE SU(2) · INVARIANT OPERATORS · M₂/M₅</div>
+<h1>THE INTERTWINER LAB</h1><p>The representation, spectral projector, two logical multiplicity factors, and their matrix operations meet in one 47-dimensional carrier.</p>
+<div class="formula">H = V₂⊗³ → E₄₇ = (ℂ⁵ ⊗ V₂) ⊕ (ℂ² ⊗ V₅)</div>
+<div class="formula">End<sub>SU(2)</sub>(E₄₇) ≅ M₅(ℂ) ⊕ M₂(ℂ)　·　dim<sub>ℂ</sub> = 25 + 4 = 29</div>
+<div class="metricline"><div class="metric">CARRIER <strong>125</strong></div><div class="metric">KERNEL <strong>47</strong></div><div class="metric">M2 <strong>25D</strong></div><div class="metric">M5 <strong>22D</strong></div><div class="metric">COMMUTANT <strong>29D</strong></div></div>
+<section class="card"><h2>01 / Manipulate the multiplicity factors</h2>
+<div class="columns"><div><h2 class="green">M2 · ℂ⁵ ⊗ V₂ (5 × 5)</h2><p>Act on the five multiplicity rows; leave each five-coordinate spin-2 factor untouched.</p>
+<div class="switches"><button id="m2id">I₅</button><button id="m2x">X₅ · ROLL</button><button id="m2z">Z₅ · PHASE</button><button id="m2xz" class="active">X₅ Z₅</button></div>
+<canvas id="m2view" aria-label="5 by 5 tensor block illustrating the multiplicity action"></canvas></div><div><h2 class="violet">M5 · ℂ² ⊗ V₅ (2 × 11)</h2><p>Act on the two multiplicity rows; leave all eleven spin-5 coordinates untouched.</p><div class="switches"><button id="m5id">I₂</button><button id="m5x">X₂</button><button id="m5y">Y₂</button><button id="m5z">Z₂</button><button id="m5h" class="active">H₂</button></div>
+<canvas id="m5view" aria-label="2 by 11 tensor block illustrating the multiplicity action"></canvas></div></div>
+<p id="operation">Selected: X₅ Z₅ ⊕ H₂</p></section>
+<section class="card"><h2>02 / The collective-commutation witness</h2>
+<p>Build the full 47×47 coupled-basis matrices and calculate both commutators directly, with the spin ladders acting only on the magnetic coordinates:</p>
+<div class="formula">U = (U₅ ⊗ I₅) ⊕ (U₂ ⊗ I₁₁)　→　[U,Jz] = [U,J₊] = 0</div>
+<div class="metricline"><div class="metric">‖[U,Jz]‖<sub>F</sub> <strong id="jz">—</strong></div><div class="metric">‖[U,J₊]‖<sub>F</sub> <strong id="jp">—</strong></div><div class="metric">‖U†U − I‖<sub>F</sub> <strong id="unitarity">—</strong></div></div>
+<p><small>Machine calculation for the selected 5×5 and 2×2 matrices. Complex arithmetic runs locally in this browser. A zero commutator is the equivariance condition; it is not merely an inference from an image.</small></p>
+<details><summary>Open matrix-level construction</summary><pre id="witness"></pre></details></section>
+<section class="card"><h2>03 / Central spectral filter and the two different evolutions</h2>
+<p>K is a polynomial in the collective Casimir C; therefore P₄₇ and Γ commute with the collective action and, in this construction, with every block-diagonal intertwiner.</p>
+<div class="formula">P₄₇ = P₆ + P₃₀　·　Γ = I − K²/99144</div><div class="formula">‖Γⁿ − P₄₇‖₂ = (15/17)ⁿ</div>
+<label for="n">Contraction layers n</label> <input id="n" type="range" min="0" max="220" step="1" value="40"> <strong id="nvalue">40</strong>
+<div class="metricline"><div class="metric">OPERATOR RESIDUAL <strong id="bound">—</strong></div><div class="metric">E₄₇ FRACTION <strong>47/125</strong></div></div>
+<p class="muted">Γⁿ is a nonunitary spectral contraction. The original simulator's exp(−iKΔτ) is unitary phase evolution. P₄₇ followed by renormalization is a third, distinct state operation.</p></section>
+<section class="card"><h2>04 / Intertwiner algebra: 29 matrix units</h2>
+<table><thead><tr><th>Block</th><th>Units</th><th>Embedding</th><th>Meaning</th></tr></thead><tbody><tr><td class="green">M₅(ℂ)</td><td>5² = 25</td><td>Eᵃᵇ₅ ⊗ I₅</td><td>All complex-linear maps on the spin-2 multiplicity factor</td></tr><tr><td class="violet">M₂(ℂ)</td><td>2² = 4</td><td>Eᵃᵇ₂ ⊗ I₁₁</td><td>All complex-linear maps on the spin-5 multiplicity factor</td></tr></tbody></table>
+<p>The phase and roll generators X₅ and Z₅ generate the first full matrix algebra by linear span of their products X₅ᵃZ₅ᵇ. The Pauli gates generate the second via I₂, X₂, Y₂ and Z₂. These are 29 <em>complex-linear basis elements</em>, not 29 independently adjustable controls on this page. Unitary subsets have group U(5) × U(2), real dimension 29.</p></section>
+<section class="card"><h2>05 / Intertwining the rest of the City</h2>
+<table><tbody><tr><td><strong>SU(2) carrier</strong></td><td>Three spin-2 factors decompose by the total Casimir into j=0,…,6 sectors.</td></tr>
+<tr><td><strong>Spectral isolation</strong></td><td>K selects j=2,5 and Γⁿ contracts the orthogonal complement with sharp operator rate (15/17)ⁿ. <a href="./spectral-isolation.html">Open theorem →</a></td></tr>
+<tr><td><strong>Quantum graph layers</strong></td><td>These 29-dimensional equivariant maps can act as node-wise feature transformations. A network requires separately specified graph, edge interactions, Hamiltonians, and recovery channels.</td></tr>
+<tr><td><strong>Temporal clocks</strong></td><td>Clock phases, lapse Nᵥ and recovery belong to the linked Time/TQGNN architecture; they are not simulated by this intertwiner lab.</td></tr>
+<tr><td><strong>Q5 graph packing</strong></td><td>5×5×5 is a combinatorial indexing geometry; its graph Laplacian is a separate operator from C unless an explicit intertwining map is supplied.</td></tr></tbody></table>
+<p><small>Under the invertible commutant group, states remain in the orbit defined by its action; arbitrary errors, projections and cross-sector Hamiltonians need not preserve that orbit. The source Lean/Coq fragments use <code>sorry</code> and <code>Axiom</code> and are proof sketches, not completed proof checks. The QuTiP fragment defines collective generators without numerically testing their commutators.</small></p></section>
+<footer>KARTEKEYA / E47 · COLLECTIVE SU(2) COMMUTANT · <a href="./">RETURN TO INTERACTIVE CORE</a></footer>
+</main>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);
+const O=(a=0,b=0)=>[a,b], add=(a,b)=>[a[0]+b[0],a[1]+b[1]], mul=(a,b)=>[a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0]], con=a=>[a[0],-a[1]], ab2=a=>a[0]*a[0]+a[1]*a[1];
+const zeros=n=>Array.from({length:n},()=>Array.from({length:n},()=>O()));
+const eye=n=>{let u=zeros(n);for(let i=0;i<n;i++)u[i][i]=O(1);return u;};
+const mm=(a,b)=>{const n=a.length,r=zeros(n);for(let i=0;i<n;i++)for(let k=0;k<n;k++)for(let j=0;j<n;j++)r[i][j]=add(r[i][j],mul(a[i][k],b[k][j]));return r;};
+const ops5={I:eye(5),X:zeros(5),Z:zeros(5)};
+for(let i=0;i<5;i++){ops5.X[(i+1)%5][i]=O(1);let t=2*Math.PI*i/5;ops5.Z[i][i]=O(Math.cos(t),Math.sin(t));}ops5.XZ=mm(ops5.X,ops5.Z);
+const s=1/Math.sqrt(2),ops2={I:eye(2),X:[[O(),O(1)],[O(1),O()]],Y:[[O(),O(0,-1)],[O(0,1),O()]],Z:[[O(1),O()],[O(),O(-1)]],H:[[O(s),O(s)],[O(s),O(-s)]]};
+let mode5="XZ",mode2="H";
+function insertTensor(out,small,spin,offset){for(let a=0;a<small.length;a++)for(let b=0;b<small.length;b++)for(let t=0;t<spin;t++)out[offset+a*spin+t][offset+b*spin+t]=small[a][b];}
+function fullOp(){let u=zeros(47);insertTensor(u,ops5[mode5],5,0);insertTensor(u,ops2[mode2],11,25);return u;}
+function ladder(j){const n=2*j+1,A=zeros(n);for(let col=1;col<n;col++){const m=j-col;A[col-1][col]=O(Math.sqrt(j*(j+1)-m*(m+1)));}return A;}
+function spinGenerator(kind){const J=zeros(47),sectors=[[5,2,0],[2,5,25]];for(const [mult,j,offset] of sectors){const l=2*j+1,b=kind==="plus"?ladder(j):null;for(let a=0;a<mult;a++)for(let x=0;x<l;x++)for(let y=0;y<l;y++){const v=kind==="plus"?b[x][y]:x===y?O(j-x):O();J[offset+a*l+x][offset+a*l+y]=v;}}return J;}
+const Jp=spinGenerator("plus"),Jz=spinGenerator("z");
+function commNorm(A,B){const n=A.length;let q=0;for(let i=0;i<n;i++)for(let j=0;j<n;j++){let x=O();for(let k=0;k<n;k++){x=add(x,mul(A[i][k],B[k][j]));const z=mul(B[i][k],A[k][j]);x=add(x,[-z[0],-z[1]]);}q+=ab2(x);}return Math.sqrt(q);}
+function unitaryNorm(A){const n=A.length;let q=0;for(let i=0;i<n;i++)for(let j=0;j<n;j++){let x=O();for(let k=0;k<n;k++)x=add(x,mul(con(A[k][i]),A[k][j]));x=add(x,O(i===j?-1:0));q+=ab2(x);}return Math.sqrt(q);}
+function displayNumber(x){return x<1e-12?"0":x.toExponential(3);}
+function drawBlock(id,small,spin,accent){const cv=$(id),d=window.devicePixelRatio||1,w=cv.clientWidth||530,h=cv.clientHeight||235;cv.width=Math.floor(d*w);cv.height=Math.floor(d*h);const ctx=cv.getContext("2d");ctx.scale(d,d);ctx.clearRect(0,0,w,h);const N=small.length,margin=21,width=(w-2*margin)/spin,height=(h-2*margin)/N;for(let a=0;a<N;a++)for(let b=0;b<spin;b++){const r=small[a].reduce((x,c)=>x+ab2(c),0),f=Math.sqrt(r);ctx.globalAlpha=.25+.68*Math.min(f,1);ctx.fillStyle=accent;ctx.fillRect(margin+b*width+2,margin+a*height+3,Math.max(width-4,2),Math.max(height-6,2));ctx.globalAlpha=1;}ctx.fillStyle="#c8e8d9";ctx.font="12px monospace";ctx.fillText(N+" × "+spin+"  multiplicity × spin",margin,13);ctx.fillText("identity on spin factor",margin,h-6);}
+function update(){const U=fullOp(),c1=commNorm(U,Jz),c2=commNorm(U,Jp),u=unitaryNorm(U);
+$("jz").textContent=displayNumber(c1);$("jp").textContent=displayNumber(c2);$("unitarity").textContent=displayNumber(u);
+$("operation").textContent="SELECTED: "+mode5+"₅ ⊗ I₅ (spin 2) ⊕ "+mode2+"₂ ⊗ I₁₁ (spin 5)";
+$("witness").textContent="Basis: (ℂ⁵ ⊗ V₂) ⊕ (ℂ² ⊗ V₅)\\nJz = (I₅ ⊗ Jz,2) ⊕ (I₂ ⊗ Jz,5)\\nJ+ = (I₅ ⊗ J+,2) ⊕ (I₂ ⊗ J+,5)\\nU = ("+mode5+"₅ ⊗ I₅) ⊕ ("+mode2+"₂ ⊗ I₁₁)\\n\\nFrobenius residuals:\\n[U,Jz] = "+c1+"\\n[U,J+] = "+c2+"\\nU†U−I = "+u;
+drawBlock("m2view",ops5[mode5],5,"#55f0b7");drawBlock("m5view",ops2[mode2],11,"#9665e9");
+for(const id of ["m2id","m2x","m2z","m2xz","m5id","m5x","m5y","m5z","m5h"])$(id).classList.remove("active");$("m2"+mode5.toLowerCase()).classList.add("active");$("m5"+mode2.toLowerCase()).classList.add("active");}
+for(const key of Object.keys(ops5))$("m2"+key.toLowerCase()).onclick=()=>{mode5=key;update();};
+for(const key of Object.keys(ops2))$("m5"+key.toLowerCase()).onclick=()=>{mode2=key;update();};
+function updateBound(){const n=+$("n").value;$("nvalue").textContent=n;$("bound").textContent=Math.pow(15/17,n).toExponential(8);}
+$("n").oninput=updateBound;window.addEventListener("resize",update);updateBound();update();
+</script></body></html>
