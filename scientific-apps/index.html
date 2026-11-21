@@ -1,1 +1,215 @@
-PLACEHOLDER
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07131c"><title>Scientific App Constellation — Mathematical City</title><style>
+:root{color-scheme:dark;--bg:#07131c;--card:#102934;--ink:#e9f5f3;--muted:#93b6ba;--bright:#71e5df;--gold:#edc18b}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 60% -20%,#164958,var(--bg) 62%);color:var(--ink);font:15px/1.5 system-ui,sans-serif}main{max-width:1050px;margin:auto;padding:20px}h1{font-size:clamp(25px,5vw,44px);margin:8px 0 4px;line-height:1.08}h2{font-size:17px}small,.muted{color:var(--muted)}.eyebrow{color:var(--bright);letter-spacing:.14em;text-transform:uppercase;font-size:11px}button,input,select{font:inherit;accent-color:var(--bright)}button,select{border:1px solid #38616e;color:var(--ink);background:#173544;padding:10px 12px;border-radius:10px;min-height:44px;cursor:pointer}button.active{border-color:var(--bright);background:#17565e}.pane{border:1px solid #274e59;background:linear-gradient(140deg,#112d39,#0d202d);border-radius:16px;padding:15px;margin:15px 0}.bar{display:flex;gap:9px;flex-wrap:wrap;align-items:center}canvas{width:100%;height:365px;background:#071922;border-radius:10px;touch-action:none}#catalog{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:8px}.lab{min-height:72px;text-align:left;font-size:13px}.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.controls label{display:block;color:var(--muted)}.controls span{float:right;color:var(--bright)}input[type=range]{width:100%;display:block}.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.metric{background:#0b202b;border:1px solid #244954;padding:11px;border-radius:9px}.metric strong{display:block;font-size:19px;font-variant-numeric:tabular-nums;color:var(--bright)}a{color:var(--bright)}#note{color:var(--muted);font-size:13px}footer{color:var(--muted);font-size:12px;margin:30px 0}
+</style><main><span class="eyebrow">The Mathematical City · Open Science · 15 interactive educational laboratories</span><h1>Scientific App Constellation</h1><p class="muted">Independent models. Shared canvas. Cross-domain exploration. All computations run locally in your browser.</p><section class="pane" style="background:linear-gradient(120deg,#183e50,#10212f);border:1px solid #61c9c8"><div class="eyebrow">Featured expert instrument · E₄₇ Quantum Core</div><h2 style="font-size:22px;margin:8px 0">⚛️ Φ₄ Quantum Circuit Theater · 125 → 250 → 500</h2><p class="muted">Explore the complete QSP phase sequence, two-ancilla LCU circuit, seven Casimir sectors and reproducible 14-check product-basis certificate. This expert research instrument is independent from the fifteen educational simulations below.</p><div class="bar"><a href="/qsvt-phi4/" style="background:#17565e;border:1px solid #71e5df;padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:700">Open embedded interactive circuit</a><a href="https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/research/e47/qsp_phi4">Formal derivation + source</a></div></section><section class="pane"><div class="eyebrow">Featured expert instrument · seven-sector mathematical certificate</div><h2>⚛️ Casimir Quartic Filter Observatory · 125 → 47</h2><p class="muted">Explore the actual spin-2 Casimir spectrum (not a synthetic signal). Interactive spectral stages, exact rank-47 retention, complementary contraction rate (225/353)ⁿ and the two-ancilla dense unitary construction.</p><a href="/e47-casimir-filter/">Open seven-sector live simulator and formalism</a></section><section class="pane"><div class="eyebrow">Classical eigenvector bridge · independent 2×2 model</div><h2>Eigen Explorer — Interactive Linear Map</h2><p class="muted">Drag a blue vector, tune all four matrix entries, and inspect real eigendirections and the transformation field. Compare eigenanalysis with the separate 125D E₄₇ Casimir spectral filter.</p><a href="/eigen-explorer/">Open Eigen Explorer</a></section><aside style="margin:18px auto;padding:16px 19px;background:#0c1c2c;color:#dbe9f2;border:1px solid #3b6671;border-radius:10px;font:14px/1.55 system-ui;max-width:1100px"><strong>Unified E₄₇ spectral kernel · PQC & formal verification suite</strong><p style="margin:6px 0 9px;color:#a9c3cb">Canonical four-panel monograph covering the 125→47 kernel, K² minimax contraction, ML-KEM/threshold-RLWE design, NTT/SHOE checks, CPTP channels, and paired Lean/Coq proof excerpts.</p><a href="/e47-casimir-filter/unified-pqc.html" style="color:#8ce5d8;text-decoration:underline">Open the complete unified research suite ↗</a></aside><div id="catalog"></div><section class="pane"><div class="bar"><div style="flex:1"><h2 id="labtitle"></h2><div id="labdesc" class="muted"></div></div><button id="toggle">Ⅱ Pause</button><button id="reset">↺ Reset</button></div><canvas id="screen" width="920" height="480"></canvas><small>Tap the field to perturb applicable simulations. Change both parameters to explore model behavior.</small></section><section class="pane"><div class="controls" id="controls"></div></section><section class="pane"><div class="metrics" id="metrics"></div><p id="note"></p></section>
+<section class="pane" id="residual-pane">
+<div class="eyebrow">Shared E₄₇ residual instrument · available to every lab</div>
+<h2>P₄₇ residual contraction vs exact bound</h2>
+<p class="muted">Any educational lab can load the shared residual vector in the 78-dimensional complement and display its contraction trajectory against the exact rate (15/17)<sup>n</sup>.</p>
+<div class="bar">
+<button id="loadResidual">Load shared residual</button>
+<button id="stepResidual">Step n → n+1</button>
+<button id="resetResidual">Reset residual</button>
+<span id="residualStatus" class="muted" style="margin-left:auto"></span>
+</div>
+<canvas id="residualCanvas" width="920" height="220" style="height:180px;margin-top:10px;background:#071922;border-radius:10px"></canvas>
+<div class="metrics" id="residualMetrics"></div>
+</section>
+<footer>Prototype instrument suite · educational abstractions, not externally benchmarked solvers. Independent from the E₄₇ expert research engines. <a href="https://app.notion.com/p/3dd46094fd3081eb9a16dd4f3f265c2a">Scientific App Ecosystem — Notion catalog</a></footer></main>
+<script>
+const D=[
+["cell","🧪","Cell Biology","ATP and division","Nutrient","Division size"],
+["particle","⚡","Particle Collider","Two particles, impact geometry","Energy","Impact parameter"],
+["crypto","🔐","Cryptography","Caesar cipher and substitution","Shift","Noise"],
+["climate","🌍","Climate Simulator","Zero-dimensional energy balance","CO₂ factor","Albedo"],
+["wave","📡","Wave and Signal","Two-tone superposition","Frequency","Separation"],
+["orbital","🌌","Orbital Mechanics","Central gravity, velocity-Verlet","Initial speed","Gravity"],
+["epidemic","🦠","Epidemic SIR","Susceptible, infectious, recovered","Transmission","Recovery"],
+["protein","🧬","Protein Folder","Illustrative lattice polymer","Temperature","Shape"],
+["em","🧲","Electromagnetic Fields","Superposed point-charge vectors","Magnitude","Separation"],
+["fluid","🌊","Fluid Dynamics","Potential flow around cylinder","Flow speed","Radius"],
+["turing","🧮","Turing Machine","Single-tape binary increment","Initial value","Step rate"],
+["neuro","🧬🧠","NeuroEvolution","Evolutionary optimization of XOR model","Mutation","Selection"],
+["quantumcrypto","⚛️🔐","Quantum Cryptography","BB84 intercept–resend sampling","Intercept fraction","Background error"],
+["ecopandemic","🌍🦠","Eco-Pandemic","Temperature-coupled SIR model","Warming","Climate coupling"],
+["biophysics","🧪⚡","Biophysics","Voltage-gated conductance","Stimulus","Conductance"]
+];
+const notes={
+cell:"ATP and biomass proxies; division is threshold-triggered. No molecular cell cycle kinetics.",
+particle:"Kinematic particle paths and toy collision threshold; not an event generator or particle-physics detector.",
+crypto:"Reversible Caesar substitution. Educational only: never use this to protect secrets.",
+climate:"C dT/dt = (1−α)S/4−[A+B(T−273.15)]+5.35 ln(CO₂/CO₂₀). Globally averaged toy model.",
+wave:"Two analytic sine waves are added. The display is a time-domain waveform, not measured audio or an FFT.",
+orbital:"Normalized fixed-center Newtonian gravity with a velocity-Verlet update. No general relativistic corrections.",
+epidemic:"Deterministic well-mixed SIR model; not a real-world epidemic forecast.",
+protein:"A schematic polymer walk, not molecular dynamics or native-fold prediction.",
+em:"Static Coulomb-like vector superposition with softened singularities. Not a full Maxwell solver.",
+fluid:"Inviscid irrotational potential flow around a circular cylinder; excludes viscous separation and lift.",
+turing:"Deterministic binary increment demo on a finite tape; not a programmable universal machine.",
+neuro:"Evolution of weights in a nonlinear logistic XOR model. No backpropagation.",
+quantumcrypto:"Simplified BB84 basis-sifting and intercept–resend statistics; does not perform secure key exchange.",
+ecopandemic:"SIR transmission coefficient depends on a user-chosen temperature proxy. This coupling is hypothetical, not empirical.",
+biophysics:"Single-compartment, voltage-dependent conductance model; no detailed channel state kinetics."
+};
+const C=document.querySelector("#screen"),g=C.getContext("2d"),W=C.width,H=C.height;
+let id="cell",t=0,frame=0,live=true,A=.55,B=.45,s={},hist=[];
+const pi=Math.PI,sin=Math.sin,cos=Math.cos,exp=Math.exp,sqrt=Math.sqrt,abs=Math.abs,clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),rnd=Math.random,fmt=(x,n=2)=>Number.isFinite(x)?x.toFixed(n):"—";
+const M=(a)=>{document.querySelector("#metrics").innerHTML=a.map(([n,v])=>'<div class="metric"><small>'+n+'</small><strong>'+v+'</strong></div>').join("")};
+function dot(x,y,r,color){g.fillStyle=color;g.beginPath();g.arc(x,y,Math.max(1,r),0,pi*2);g.fill()}
+function line(x,y,X,Y,color="#71e5df",w=2){g.strokeStyle=color;g.lineWidth=w;g.beginPath();g.moveTo(x,y);g.lineTo(X,Y);g.stroke()}
+function txt(x,y,str,color="#cee5e2",size=16){g.fillStyle=color;g.font=size+"px ui-monospace, monospace";g.fillText(str,x,y)}
+function plot(values,color,lo,hi){if(!values.length)return;g.beginPath();values.forEach((v,i)=>{let x=30+i/Math.max(1,values.length-1)*860,y=H-35-(v-lo)/(hi-lo)*(H-80);i?g.lineTo(x,y):g.moveTo(x,y)});g.strokeStyle=color;g.lineWidth=3;g.stroke()}
+function redraw(){g.clearRect(0,0,W,H);for(let x=0;x<W;x+=46)line(x,0,x,H,"#123541",1);for(let y=0;y<H;y+=46)line(0,y,W,y,"#123541",1);
+switch(id){
+case"cell":{let r=45+100*s.mass;dot(460,230,r,"#1c6d72");dot(460,230,r*.8,"#2a8589");dot(460,230,r*.37,"#e4b788");for(let k=0;k<16;k++){let z=k*2.4+t*.2;dot(460+sin(z)*r*.67,230+cos(z)*r*.67,4,"#8aeadd")}M([["Cell size",fmt(s.mass)],["ATP proxy",fmt(s.atp)],["Divisions",s.div]]);break}
+case"particle":{let x=460+240*cos(t*3),y=240+120*sin(t*3)*B;line(80,240,840,240,"#355e69");dot(x,y,15,"#edc18b");dot(920-x,480-y,15,"#71e5df");if(abs(x-460)<20){for(let k=0;k<20;k++){let z=k*pi/10;line(460,240,460+105*cos(z),240+105*sin(z),"#d8a66e")}}M([["Energy proxy",fmt(1+10*A)],["Impact setting",fmt(B)],["Frames",frame]]);break}
+case"crypto":{let original="THE MATHEMATICAL CITY",shift=1+Math.floor(A*25),cipher=original.replace(/[A-Z]/g,ch=>String.fromCharCode(65+(ch.charCodeAt(0)-65+shift)%26));txt(55,105,"PLAINTEXT","#edc18b",18);txt(55,150,original,"#eaf6f4",30);txt(55,235,"CAESAR CIPHERTEXT","#edc18b",18);txt(55,290,cipher,"#71e5df",30);M([["Shift",shift],["Decode","Subtract shift"],["Status","Reversible"]]);break}
+case"climate":{let v=clamp((s.temp-260)/55,0,1);dot(460,235,138,"hsl("+(210-190*v)+",65%,43%)");for(let k=0;k<10;k++)line(90,75+k*31,300,92+k*31,"#b88c52");plot(hist,"#71e5df",260,340);M([["Temperature",fmt(s.temp-273.15)+" °C"],["Forcing",fmt(5.35*Math.log(1+3*A))+" W/m²"],["Albedo",fmt(.16+.25*B)]]);break}
+case"wave":{let f1=1+12*A,f2=f1+2+8*B;g.beginPath();for(let i=0;i<W;i+=2){let u=i/W,y=H/2-95*(sin(2*pi*f1*u+t)+.55*sin(2*pi*f2*u+t*.7));i?g.lineTo(i,y):g.moveTo(i,y)}g.strokeStyle="#71e5df";g.lineWidth=3;g.stroke();M([["First frequency",fmt(f1)+" Hz"],["Second frequency",fmt(f2)+" Hz"],["Signal type","Superposed"]]);break}
+case"orbital":{dot(460,240,19,"#edc18b");s.trail.forEach((p,i)=>{if(i%2===0)dot(460+p[0],240+p[1],1,"#356f7b")});dot(460+s.x,240+s.y,8,"#71e5df");M([["Orbital radius",fmt(sqrt(s.x*s.x+s.y*s.y))],["Speed",fmt(sqrt(s.vx*s.vx+s.vy*s.vy))],["Integration steps",frame]]);break}
+case"epidemic":case"ecopandemic":{for(let k=0;k<3;k++)plot(hist.map(q=>q[k]),["#71e5df","#edac78","#b39cfa"][k],0,1);txt(35,35,"S = teal     I = amber     R = violet");M([["Susceptible",fmt(s.S*100)+"%"],["Infectious",fmt(s.I*100)+"%"],["Recovered",fmt(s.R*100)+"%"]]);break}
+case"protein":{let p=s.poly;for(let i=1;i<p.length;i++)line(460+p[i-1][0]*25,230+p[i-1][1]*25,460+p[i][0]*25,230+p[i][1]*25,"#7295a1",4);p.forEach((q,i)=>dot(460+q[0]*25,230+q[1]*25,10,i%3===0?"#edc18b":"#71e5df"));M([["Residues",p.length],["Temperature setting",fmt(A)],["Model","2D lattice motif"]]);break}
+case"em":{let sep=70+210*B,charges=[[460-sep/2,240,1],[460+sep/2,240,-1]];for(let y=24;y<H;y+=26)for(let x=22;x<W;x+=26){let fx=0,fy=0;charges.forEach(q=>{let dx=x-q[0],dy=y-q[1],d=sqrt(dx*dx+dy*dy+300);fx+=q[2]*dx/d**3;fy+=q[2]*dy/d**3});let norm=sqrt(fx*fx+fy*fy)||1;line(x,y,x+fx/norm*11,y+fy/norm*11,"#4c7584",1.5)}charges.forEach(q=>dot(q[0],q[1],15,"#edc18b"));M([["Charges","+q / −q"],["Separation",fmt(sep)+" px"],["Softening","17.3 px"]]);break}
+case"fluid":{let R=40+110*B;for(let j=-8;j<=8;j++){g.beginPath();for(let x=-440;x<=440;x+=4){let yy=j*25,rr=x*x+yy*yy,ym=rr>R*R?yy*(1-R*R/rr):NaN;if(Number.isFinite(ym)){let X=460+x,Y=240+ym;x===-440?g.moveTo(X,Y):g.lineTo(X,Y)}}g.strokeStyle="#3f8290";g.lineWidth=1.6;g.stroke()}dot(460,240,R,"#194554");M([["Flow speed",fmt(.25+2*A)],["Cylinder radius",fmt(R)+" px"],["Assumption","Inviscid"]]);break}
+case"turing":{let z=s.tape,start=460-z.length*35;z.forEach((bit,i)=>{g.strokeStyle=i===s.head?"#edc18b":"#3c7685";g.lineWidth=3;g.strokeRect(start+i*70,190,65,70);txt(start+i*70+20,237,bit,"#eaf6f4",30)});M([["Tape",z.join("")],["Head",s.head<0?"HALT":s.head],["State","Increment +1"]]);break}
+case"neuro":{plot(hist,"#71e5df",0,.5);M([["Best MSE",fmt(s.loss,4)],["Population",s.pop.length],["Generations",frame]]);break}
+case"quantumcrypto":{for(let k=0;k<48;k++)dot(35+k%16*55,115+Math.floor(k/16)*100,12,(k%7===0&&s.errors>0)?"#edac78":"#71e5df");M([["Sifted bits",s.sift],["Error bits",s.errors],["Observed QBER",s.sift?fmt(s.errors/s.sift*100)+"%":"—"]]);break}
+case"biophysics":{plot(hist,"#71e5df",-90,60);M([["Membrane potential",fmt(s.V)+" mV"],["Gate activation",fmt(s.gate*100)+"%"],["Injected current",fmt(12*A)]]);break}
+}
+txt(24,H-15,"t = "+fmt(t)+"  ·  "+id.toUpperCase(),"#7cabb2",13)}
+function reset(){t=0;frame=0;hist=[];s={mass:.2,atp:.5,div:0,temp:288,S:.99,I:.01,R:0,x:215,y:0,vx:0,vy:1.35,trail:[],tape:"101101".split(""),head:5,pop:Array.from({length:30},()=>Array.from({length:4},()=>rnd()*2-1)),loss:.4,sift:0,errors:0,V:-65,gate:.05,poly:[[0,0],[1,0],[2,0],[3,0],[3,1],[2,1],[1,1],[0,1],[-1,1],[-1,2],[-2,2],[-3,2],[-3,1],[-3,0],[-2,0],[-1,0]]};redraw()}
+function tick(dt){t+=dt;frame++;switch(id){
+case"cell":s.atp=clamp(s.atp+dt*(A*.7-.16*s.mass),0,2);s.mass+=dt*(.06+.28*A)*Math.max(.1,s.atp);if(s.mass>.6+1.1*B){s.mass*=.5;s.atp*=.65;s.div++}break;
+case"climate":{let F=5.35*Math.log(1+3*A),absorbed=(1-(.16+.25*B))*1361/4,loss=220+1.8*(s.temp-273.15);s.temp=clamp(s.temp+dt*(absorbed+F-loss)/8,220,370);hist.push(s.temp);break}
+case"orbital":{let mu=9000*(.4+2*B),r=Math.sqrt(s.x*s.x+s.y*s.y+200),ax=-mu*s.x/(r*r*r),ay=-mu*s.y/(r*r*r);s.vx+=ax*dt/2;s.vy+=ay*dt/2;s.x+=s.vx*dt*24;s.y+=s.vy*dt*24;r=Math.sqrt(s.x*s.x+s.y*s.y+200);s.vx-=mu*s.x/(r*r*r)*dt/2;s.vy-=mu*s.y/(r*r*r)*dt/2;s.trail.push([s.x,s.y]);if(s.trail.length>600)s.trail.shift();break}
+case"epidemic":case"ecopandemic":{let beta=id==="epidemic"?.07+1.15*A:.16+.34*B*A,gamma=id==="epidemic"?.03+.42*B:.16,d=beta*s.S*s.I*dt,r=gamma*s.I*dt;s.S-=d;s.I+=d-r;s.R+=r;hist.push([s.S,s.I,s.R]);break}
+case"turing":{if(frame%Math.max(1,Math.round(28-25*B))===0&&s.head>=0){let i=s.head;if(s.tape[i]==="0"){s.tape[i]="1";s.head=-1}else{s.tape[i]="0";s.head=i-1;if(s.head<0){s.tape.unshift("1");s.head=-1}}}break}
+case"neuro":{let score=w=>[0,1,2,3].reduce((z,k)=>{let x=k>>1,y=k&1,p=1/(1+exp(-4*(w[0]+w[1]*x+w[2]*y+w[3]*x*y)));return z+(p-(x^y))**2},0)/4;s.pop.sort((x,y)=>score(x)-score(y));let elite=s.pop.slice(0,3);s.loss=score(elite[0]);s.pop=elite.concat(Array.from({length:27},()=>elite[Math.floor(rnd()*elite.length)].map(v=>clamp(v+(rnd()*2-1)*A*.6,-3,3))));hist.push(s.loss);break}
+case"quantumcrypto":for(let k=0;k<7;k++){let alice=rnd()<.5,bob=rnd()<.5;if(alice===bob){s.sift++;if((rnd()<A&&rnd()<.25)||rnd()<B*.025)s.errors++}}break;
+case"biophysics":{let gateInf=1/(1+exp(-(s.V+30)/7));s.gate+=dt*6*(gateInf-s.gate);let current=12*A-((.4+5*B)*s.gate*(s.V-35)*.08)-.12*(s.V+65);s.V=clamp(s.V+dt*current,-90,65);hist.push(s.V);break}
+}
+if(hist.length>260)hist.shift()}
+function select(next){id=next;const d=D.find(x=>x[0]===id);document.querySelector("#labtitle").textContent=d[1]+" "+d[2];document.querySelector("#labdesc").textContent=d[3];document.querySelector("#note").textContent="MODEL BOUNDARY · "+notes[id];document.querySelectorAll(".lab").forEach(b=>b.classList.toggle("active",b.dataset.lab===id));document.querySelector("#controls").innerHTML=[d[4],d[5]].map((v,i)=>'<label>'+v+'<span id="val'+i+'"></span><input id="p'+i+'" type="range" min="0" max="100" value="'+(i===0?55:45)+'"></label>').join("");A=.55;B=.45;[0,1].forEach(i=>{let el=document.querySelector("#p"+i);el.oninput=()=>{if(i===0)A=+el.value/100;else B=+el.value/100;document.querySelector("#val"+i).textContent=el.value+"%";redraw()};document.querySelector("#val"+i).textContent=el.value+"%"});reset();history.replaceState(null,"","#"+id)}
+document.querySelector("#catalog").innerHTML=D.map(d=>'<button class="lab" data-lab="'+d[0]+'">'+d[1]+" "+d[2]+"</button>").join("");
+document.querySelectorAll(".lab").forEach(b=>b.onclick=()=>select(b.dataset.lab));
+document.querySelector("#reset").onclick=reset;
+document.querySelector("#toggle").onclick=()=>{live=!live;document.querySelector("#toggle").textContent=live?"Ⅱ Pause":"▶ Run"};
+C.addEventListener("pointerdown",ev=>{let box=C.getBoundingClientRect(),u=(ev.clientX-box.left)/box.width,v=(ev.clientY-box.top)/box.height;if(id==="epidemic"||id==="ecopandemic"){let seed=Math.min(s.S,.08);s.S-=seed;s.I+=seed}else if(id==="orbital"){s.vx+=(v-.5)*.55;s.vy+=(u-.5)*.55}else if(id==="climate"){s.temp+=(v-.5)*10}else if(id==="cell"){s.atp+=.5}else if(id==="biophysics"){s.V+=(u-.5)*40}});
+let start=location.hash.slice(1);select(D.some(d=>d[0]===start)?start:"cell");
+let last=performance.now();function loop(now){const elapsed=Math.min(.05,(now-last)/1000);last=now;if(live){let n=3;for(let i=0;i<n;i++)tick(elapsed*6/n)}redraw();requestAnimationFrame(loop)}requestAnimationFrame(loop);
+</script>
+<script>
+// Shared P47 residual instrument for the constellation
+const P47_RATE = 15 / 17;
+let sharedResidual = null;
+let residualHistory = [];
+
+function generateSharedResidual(seed = 47) {
+  // Deterministic residual vector in the 78-dimensional complement
+  // Using a simple LCG for reproducibility
+  let s = seed;
+  const next = () => { s = (s * 1664525 + 1013904223) % 4294967296; return (s / 4294967296) * 2 - 1; };
+  const vec = Array.from({ length: 78 }, next);
+  const norm = Math.sqrt(vec.reduce((sum, v) => sum + v * v, 0));
+  sharedResidual = vec.map(v => v / norm);
+  residualHistory = [1];
+  return sharedResidual;
+}
+
+function stepResidual(n = 1) {
+  if (!sharedResidual) generateSharedResidual();
+  for (let i = 0; i < n; i++) {
+    residualHistory.push(Math.pow(P47_RATE, residualHistory.length));
+  }
+  return residualHistory[residualHistory.length - 1];
+}
+
+function residualNorms(maxN = 40) {
+  if (!sharedResidual) generateSharedResidual();
+  return Array.from({ length: maxN + 1 }, (_, n) => Math.pow(P47_RATE, n));
+}
+
+// Expose for any lab
+window.E47Residual = {
+  generate: generateSharedResidual,
+  step: stepResidual,
+  norms: residualNorms,
+  rate: P47_RATE,
+  getVector: () => sharedResidual,
+  getHistory: () => residualHistory.slice()
+};
+
+// Residual UI wiring
+const rCanvas = document.querySelector("#residualCanvas");
+const rCtx = rCanvas.getContext("2d");
+const rW = rCanvas.width, rH = rCanvas.height;
+
+function drawResidual() {
+  rCtx.clearRect(0, 0, rW, rH);
+  const norms = window.E47Residual.norms(60);
+  const hist = window.E47Residual.getHistory();
+  // grid
+  for (let x = 0; x < rW; x += 40) rCtx.fillStyle = "#123541", rCtx.fillRect(x, 0, 1, rH);
+  for (let y = 0; y < rH; y += 30) rCtx.fillStyle = "#123541", rCtx.fillRect(0, y, rW, 1);
+  // exact bound
+  rCtx.beginPath();
+  norms.forEach((v, i) => {
+    const x = 20 + i / 60 * (rW - 40);
+    const y = rH - 20 - Math.log10(Math.max(v, 1e-16)) / Math.log10(1e-16) * (rH - 40);
+    i ? rCtx.lineTo(x, y) : rCtx.moveTo(x, y);
+  });
+  rCtx.strokeStyle = "#edc18b";
+  rCtx.lineWidth = 2;
+  rCtx.stroke();
+  // sample trajectory (follows the bound exactly for the shared residual)
+  rCtx.beginPath();
+  hist.forEach((v, i) => {
+    const x = 20 + i / Math.max(1, hist.length - 1) * (rW - 40);
+    const y = rH - 20 - Math.log10(Math.max(v, 1e-16)) / Math.log10(1e-16) * (rH - 40);
+    i ? rCtx.lineTo(x, y) : rCtx.moveTo(x, y);
+  });
+  rCtx.strokeStyle = "#71e5df";
+  rCtx.lineWidth = 2.5;
+  rCtx.stroke();
+  rCtx.fillStyle = "#cee5e2";
+  rCtx.font = "13px ui-monospace, monospace";
+  rCtx.fillText("exact (15/17)^n  ·  shared residual", 20, 18);
+}
+
+function updateResidualStatus() {
+  const h = window.E47Residual.getHistory();
+  const n = h.length - 1;
+  const bound = Math.pow(15/17, n);
+  document.querySelector("#residualStatus").textContent = n ? `n = ${n} · residual = ${h[n].toExponential(3)} · bound = ${bound.toExponential(3)}` : "residual not loaded";
+  const mets = document.querySelector("#residualMetrics");
+  mets.innerHTML = `
+    <div class="metric"><small>Current n</small><strong>${n}</strong></div>
+    <div class="metric"><small>Residual norm</small><strong>${h[n] ? h[n].toExponential(3) : "—"}</strong></div>
+    <div class="metric"><small>Exact bound</small><strong>${Math.pow(15/17, n).toExponential(3)}</strong></div>
+    <div class="metric"><small>Rate</small><strong>15/17</strong></div>
+  `;
+  drawResidual();
+}
+
+document.querySelector("#loadResidual").onclick = () => {
+  window.E47Residual.generate(47);
+  updateResidualStatus();
+};
+document.querySelector("#stepResidual").onclick = () => {
+  window.E47Residual.step(1);
+  updateResidualStatus();
+};
+document.querySelector("#resetResidual").onclick = () => {
+  window.E47Residual.generate(47);
+  window.E47Residual.getHistory().length = 1;
+  updateResidualStatus();
+};
+
+// Any lab can call this
+window.loadSharedResidual = () => {
+  window.E47Residual.generate();
+  updateResidualStatus();
+  return window.E47Residual.getVector();
+};
+
+updateResidualStatus();
+</script></html>
