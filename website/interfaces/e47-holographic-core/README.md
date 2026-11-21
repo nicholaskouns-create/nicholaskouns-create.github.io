@@ -18,3 +18,8 @@ Open http://localhost:8000/ in a browser. The browser interface is an independen
 - `expectation_k` may be negative because K is signed. It is not a nonnegative error measure.
 - `M2` applies the per-row phase before cyclic shifting the row index; `M5` applies the selected 2×2 unitary across 11 spectator coordinates.
 - The live browser controls generate unseeded random values. Python supports deterministic runs by passing a seeded NumPy Generator.
+
+## Intertwiner laboratory
+Open `intertwiner.html` for the 29-complex-dimensional collective SU(2) commutant `M5(C) ⊕ M2(C)`. The laboratory constructs the 47×47 coupled-basis matrices, explicitly computes `[U,Jz]`, `[U,J+]`, and `U†U-I`, and provides an adjustable exact spectral contraction bound. Links connect this result to the spectral theorem and the QGNN/clock interpretation; no quantum hardware or Time-repository experiment is executed by this page.
+
+The supplied Lean/Coq fragments contain unfilled proofs/axioms, so they are structural sketches, not machine-checked certificates. The supplied QuTiP fragment constructs collective generators but does not compute the commutant residual. The 29 dimension is the complex vector-space dimension of the associative commutant, also the real dimension of its unitary group U(5)×U(2).
