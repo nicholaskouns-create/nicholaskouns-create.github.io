@@ -1,0 +1,207 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="FlowShield research primer: E47 spectral kernel, hybrid PQC, NTT, threshold Ring-LWE and quantum channels"><title>Post-Quantum Cryptography Primer | FlowShield</title><style>
+:root{color-scheme:dark;--bg:#060c16;--p:#0d1a2a;--l:#2a4158;--ink:#e3effa;--muted:#9db5ca;--accent:#77e9d2}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 90% 0%,#183651,#060c16 55%);color:var(--ink);font:15px/1.6 Inter,system-ui,sans-serif}body:before{content:"";position:fixed;inset:0;background-image:linear-gradient(#97bff40a 1px,transparent 1px),linear-gradient(90deg,#97bff40a 1px,transparent 1px);background-size:44px 44px;pointer-events:none}main{position:relative;max-width:1380px;margin:auto;padding:30px clamp(15px,4vw,65px) 85px}a{color:var(--accent)}.back{display:inline-block;padding:9px 13px;border:1px solid var(--l);border-radius:7px;text-decoration:none;font-size:12px;color:#c9e5ef;background:#122335}.eyebrow,.section-marker{font:700 10px/1.6 ui-monospace,monospace;letter-spacing:.17em;color:var(--accent);text-transform:uppercase}.eyebrow{margin-top:30px}h1{font-size:clamp(40px,7vw,88px);line-height:1.04;letter-spacing:-.07em;margin:12px 0 20px;font-weight:700}h1 em{font-style:normal;color:var(--accent)}.lead{max-width:800px;color:#b9ccdc;font-size:18px}nav{display:flex;flex-wrap:wrap;gap:9px;margin:30px 0}nav a{border:1px solid #304e65;background:#0f2535;border-radius:6px;padding:8px 11px;text-decoration:none;font:11px ui-monospace,monospace}.paper-section,.intro{border:1px solid var(--l);background:linear-gradient(150deg,#102034ed,#081523f7);padding:clamp(15px,2.6vw,34px);border-radius:15px;margin:20px 0;box-shadow:0 14px 32px #0002}.paper-section{scroll-margin-top:20px}.section-marker{border-bottom:1px solid var(--l);padding-bottom:15px}pre{font:12.5px/1.9 "SFMono-Regular",Consolas,ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;tab-size:2;color:#d6e6f5;margin:16px 0 0}.intro pre{color:#9fc3d8}.note{font-size:12px;color:#adc2d2;border-left:2px solid var(--accent);padding:10px 15px;background:#112735;margin:20px 0}.foot{border-top:1px solid var(--l);color:var(--muted);font:11px/1.6 ui-monospace,monospace;padding-top:24px;margin-top:40px}@media(max-width:650px){main{padding:18px 13px 60px}pre{font-size:11px;line-height:1.72}.paper-section,.intro{border-radius:10px}nav a{font-size:10px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body><main><a class="back" href="./flowshield.html">← FlowShield laboratory</a><div class="eyebrow">The Mathematical City / White Hats / Research Library</div><h1>Post-Quantum<br><em>Cryptography Primer.</em></h1><p class="lead">E₄₇ spectral kernel · ML-KEM / AEAD · NTT arithmetic · threshold Ring-LWE · quantum channels. A seven-part mathematical research document.</p><div class="note">Research-source edition. Evidence-tier labels and verification claims reproduce the supplied manuscript; this page does not independently certify each cited formal or numerical result.</div><nav aria-label="Research sections"><a href="#s1">01 / Spectral carrier</a><a href="#s2">02 / Minimax contraction</a><a href="#s3">03 / Hybrid PQC</a><a href="#s4">04 / NTT &amp; SHOE</a><a href="#s5">05 / Threshold Ring-LWE</a><a href="#s6">06 / Quantum channels</a><a href="#s7">07 / Evidence boundaries</a></nav><section class="intro"><pre>ERROR-CORRECTED POST-QUANTUM CRYPTOGRAPHY PRIMER (UNICODE CANONICAL EDITION)
+E₄₇ Spectral Kernel · Conditional ML-KEM/AEAD Hybrid · Validated NTT ·
+Receipted Threshold Ring-LWE (BFV/BGV) · Corrected Quantum Channels
+
+VERIFICATION TIERS
+[E0] Exact finite-dimensional algebra / machine-checked Lean 4 &amp; Coq 8.18
+[E1] Deterministic Python (NumPy/SymPy) &amp; Lattigo v6.2.0 numerical receipts
+[E2] Classical quantum-state / Kraus-channel / GKSL trajectory simulation
+[COND] Security theorem conditional on parameterized MLWE / RLWE / AEAD / PRF
+</pre></section>
+<section id="s1" class="paper-section"><div class="section-marker">RESEARCH SECTION / 01</div><pre>§1. E₄₇ SPECTRAL CARRIER, EXACT PROJECTOR &amp; COMMUTANT  [E0 · Lean 4 · Coq · Py]
+
+1.1 Tripartite Spin-2 Carrier Space &amp; Casimir Operator
+V ≔ V₂ ⊗ V₂ ⊗ V₂ ≅ ℂ¹²⁵,          dim(V) = 5³ = 125
+Jₐᵗᵒᵗ ≔ Jₐ ⊗ I₅ ⊗ I₅ + I₅ ⊗ Jₐ ⊗ I₅ + I₅ ⊗ I₅ ⊗ Jₐ,     a ∈ {x, y, z}
+C ≔ (Jₓᵗᵒᵗ)² + (Jᵧᵗᵒᵗ)² + (J_zᵗᵒᵗ)²
+
+1.2 Clebsch–Gordan Decomposition &amp; Moment-Derived Roots
+V₂⊗³ ≅ 1·V₀ ⊕ 3·V₁ ⊕ 5·V₂ ⊕ 4·V₃ ⊕ 3·V₄ ⊕ 2·V₅ ⊕ 1·V₆
+spec(C) = {0, 2, 6, 12, 20, 30, 42}
+mult(C) = (1, 9, 25, 28, 27, 22, 13),          ∑ dim(E_λ) = 125
+μ = Tr(C)/125 = 2250/125 = 18
+σ² = Tr((C − 18I)²)/125 = 18000/125 = 144      ⟹      σ = 12
+μ ± σ = {6, 30}                                (zero-parameter selector roots)
+
+1.3 Quadratic Annihilator, Invariant Kernel &amp; Coherence Fraction
+K ≔ (C − 6I)(C − 30I) = C² − 36C + 180I
+spec(K) = {+180, +112, 0, −108, −140, 0, +432}
+E₄₇ ≔ ker(K) = E₆ ⊕ E₃₀ ≅ 5V₂ ⊕ 2V₅
+dim(E₄₇) = 5·5 + 2·11 = 25 + 22 = 47,          dim(Q₇₈) = 125 − 47 = 78
+V = E₄₇ ⊕ Q₇₈                                  (orthogonal split: 47 + 78 = 125)
+Ω_c ≔ dim(E₄₇) / dim(V) = 47/125 = 0.376 = 0.142₅
+(Kept strictly distinct from geometric constant Ω_geom ≔ φ⁻⁵ = (5√5 − 11)/2 ≈ 0.09017)
+
+1.4 Exact Degree-Six Rational Polynomial Projector
+p_r(x) ≔ x(x − 2)(x − 12)(x − 20)(x − 31)(x − 42)
+       = x⁶ − 107x⁵ + 4088x⁴ − 66940x³ + 430848x² − 624960x
+p_r(6) = p_r(30) = 1,814,400 = 10!/2
+P₄₇ ≔ p_r(C) / 1,814,400,                      Q₇₈ ≔ I₁₂₅ − P₄₇
+P₄₇² = P₄₇ = P₄₇†,      K·P₄₇ = P₄₇·K = 0,     Tr(P₄₇) = 47
+K·x = 0    ⟺    P₄₇·x = x
+
+1.5 Commutant Algebra, Modular Lattice Stability &amp; AQSFT Lift
+End_su(2)(E₄₇) ≅ M₅(ℂ) ⊕ M₂(ℂ),               dim = 5² + 2² = 29  (carrier dim = 65)
+[P₄₇, Jₐᵗᵒᵗ] = 0,      [P₄₇, π] = 0  ∀ π ∈ S₃  (Schur–Weyl S₃ split: 5 + 42 + 0 = 47)
+rank_𝔽q(P₄₇) = 47      ∀ q ∈ {43, 47, 53, 101} (exact modular arithmetic preservation)
+𝒟 ≔ L_g ⊗ I₁₂₅ + I ⊗ K² ⪰ 0       ⟹           ker(𝒟) = ker(L_g) ⊗ E₄₇
+</pre></section>
+<section id="s2" class="paper-section"><div class="section-marker">RESEARCH SECTION / 02</div><pre>§2. ERROR-CORRECTED MINIMAX CONTRACTION &amp; BUOY DICHOTOMY  [E0 · Coq · Lean · Py]
+
+2.1 Positive-Semidefinite Penalty Spectrum (Replaces Sign-Indefinite I − εK)
+H_K ≔ K² = (C − 6I)²(C − 30I)² ⪰ 0
+spec(K²|_{Q₇₈}) = {11664, 12544, 19600, 32400, 186624}
+Δ_{K²} ≔ λ_min(K²|_{Q₇₈}) = 108² = 11,664
+λ_max(K²) = 432² = 186,624
+κ(K²|_{Q₇₈}) = 186,624 / 11,664 = 16           (exact integer square 4²)
+
+2.2 Sharp Minimax Richardson Filter &amp; Semigroup Bounds
+Euler stability interval:      0 &lt; ε &lt; 2 / 186,624 = 1 / 93,312
+Minimax optimal step:          ε∗ ≔ 2 / (11,664 + 186,624) = 1 / 99,144
+Contraction operator:          Γ∗ ≔ I₁₂₅ − (1 / 99,144)·K²
+Sharp spectral radius:         ρ∗ ≔ (κ − 1)/(κ + 1) = 15/17 ≈ 0.88235294
+Γ∗·P₄₇ = P₄₇,                  ‖(Γ∗)ⁿ − P₄₇‖₂ = (15/17)ⁿ   ∀ n ∈ ℕ
+Continuous limit:              lim_{t→∞} exp(−t·K²) = P₄₇  (rate ≤ exp(−11664·t))
+Interleaved unitary drift:     ‖((Γ∗·U)ⁿ − P₄₇)·Q₇₈‖₂ ≤ (15/17)ⁿ
+
+2.3 Perturbation Buoy Readout Dichotomy (Closed in Lean 4 &amp; Coq)
+Selector gap: δ = 108,         half-gap: δ/2 = 54
+∀ λ ∈ spec(K), ∀ λ̂ ∈ ℤ, ∀ ε ∈ [0, 54):
+  |λ̂ − λ| ≤ ε     ⟹     (|λ̂| &lt; 54   ⟺   λ = 0)
+Timescale separation:          0 ≤ ε &lt; 54   ⟹   ε² &lt; (108 − ε)²
+Consequence: rank(E₄₇) = 47 is strictly invariant under all perturbations ε &lt; 54.
+</pre></section>
+<section id="s3" class="paper-section"><div class="section-marker">RESEARCH SECTION / 03</div><pre>§3. PUBLIC-PROJECTOR NO-GO &amp; CONDITIONAL HYBRID PQC REDUCTION  [E0 · COND]
+
+3.1 Unconditional Public-Instance No-Go Theorem
+If C_σ = U_σ C U_σ† and S = {6, 30} are public:
+  P_σ = ℓ₆(C_σ) + ℓ₃₀(C_σ) = χ_{6,30}(C_σ) ∈ P ⊆ BQP
+  ker(K_σ) = range(P_σ) is recovered in deterministic polynomial time.
+Consequences:
+  • Public ISSR is NOT a cryptographic trapdoor or PQ hardness assumption.
+  • P(m + K·c) = P·m proves noise-annihilation CORRECTNESS, not IND-CPA secrecy.
+  • Because rank(P₄₇) = 47 &lt; 125, P₄₇ is non-invertible on V without secret data.
+
+3.2 Keyed Conjugate Spectral Layer (Secret Seed σ)
+U_σ ≔ Orth(Expand(σ)),         U_σ†·U_σ = I₁₂₅
+P_σ ≔ U_σ·P₄₇·U_σ†,            K_σ ≔ U_σ·K·U_σ†
+P_σ² = P_σ = P_σ†,             K_σ·P_σ = 0,         rank(P_σ) = 47
+Exact keyed noise-annihilation recovery:
+  x = U_σ(P₄₇·z + K·r)     ⟹     P₄₇·U_σ†·x = P₄₇·z
+
+3.3 LWE / ML-KEM Foundation &amp; Fujisaki–Okamoto (FO) IND-CCA2 KEM
+Decision/Search LWE over ℤ_q:
+  A ←$ ℤ_q^{m×n},  s ← χⁿ,  e ← χᵐ,  b = A·s + e (mod q)
+IND-CPA PKE:
+  u = Aᵀ·r + e₁ (mod q),       v = bᵀ·r + e₂ + ⌊q/2⌋·m (mod q)
+  v − uᵀ·s ≡ (eᵀ·r + e₂ − e₁ᵀ·s) + ⌊q/2⌋·m (mod q)
+  decode m = 0 iff |v − uᵀ·s|_q &lt; q/4
+FO Transform (ROM / QROM):
+  Encaps(pk):   σ ←$ {0,1}ᵏ, m = H(pk ‖ σ), c = Enc(pk, m), K_sym = KDF(G(σ ‖ c))
+  Decaps(sk,c): m′ = Dec(sk,c), σ′ = H(pk ‖ m′), c′ = Enc(pk, m′);
+                return KDF(G(σ′ ‖ c)) if c′ = c, else implicit-reject fallback.
+
+3.4 Conditional Hybrid Post-Quantum Security Bound
+Establish σ via IND-CCA2 ML-KEM (FIPS 203, Module-LWE); derive U_σ = Orth(Expand(σ))
+and k_aead = H(σ); protect the E₄₇-transformed payload under AEAD.
+For every QPT adversary 𝒜, ∃ QPT reductions ℬ₁, ℬ₂, ℬ₃ such that:
+  Adv_IND-CCA^{Hybrid}(𝒜) ≤ Adv_IND-CCA^{ML-KEM}(ℬ₁) + Adv_IND-CCA^{AEAD}(ℬ₂) + Adv_PRF^{H}(ℬ₃)
+  Adv_IND-CCA^{ML-KEM}(ℬ₁) ≤ Adv_MLWE(ℬ₁) + ε_reduction
+</pre></section>
+<section id="s4" class="paper-section"><div class="section-marker">RESEARCH SECTION / 04</div><pre>§4. VALIDATED NTT PROFILES, SHOE RELEASE GATE &amp; BUS TYPING  [E0 · E1]
+
+4.1 Exact Number Theoretic Transform (NTT) Arithmetic
+Primitive root criterion:      N | (q − 1)   ∧   ord_q(ζ) = N
+• Profile MLKEM_256 [PASS]:
+    N = 256,   q = 3329 (prime),   ζ = 17,     256 | 3328
+    17⁻¹ ≡ 1175 (mod 3329),        256⁻¹ ≡ 3316 (mod 3329),     word ≥ 12 bits
+• Profile NTT_1024 [PASS]:
+    N = 1024,  q = 12289 (prime),  ζ = 10302,  1024 | 12288
+    10302⁻¹ ≡ 8974 (mod 12289),    1024⁻¹ ≡ 12277 (mod 12289),  word ≥ 14 bits
+• Rejected Pair (N = 1024, q = 3329) [FAIL]:
+    (3329 − 1) mod 1024 = 256 ≠ 0  ⟹  no primitive 1024-th root exists mod 3329.
+
+4.2 Babylonian Scalar Lock &amp; Compatibility Point
+B_Ω(x) ≔ ½·(x + Ω_c² / x),  x &gt; 0   ⟹   x∗ = Ω_c,   B_Ω′(Ω_c) = 0
+Quadratic error identity:      e_{n+1} = e_n² / (2·x_n),   e_n = x_n − √a
+Q2.30 fixed-point constant:    Ω_Q = 403,726,926 / 2³⁰   (|Ω_Q − Ω_c| = 1.639×10⁻¹⁰)
+Rational-Newton coincidence:   (47/125)·a = √a   ⟺   a = (125/47)²  (unique)
+
+4.3 SHOE Dual-Residual Fail-Closed Release Law &amp; Coordinate Typing
+r_K(x) ≔ ‖K·x‖₂,      r_P(x) ≔ ‖(I − P₄₇)·x‖₂,      E_RI(x) ≔ ‖K·x‖₂²
+Release(x) = x   iff   (r_K(x) ≤ τ_K  ∧  r_P(x) ≤ τ_P)
+           = 0   otherwise   (zeroize buffers, raise fault, freeze, reset)
+Coordinate-accurate bus framing (W = 32 bits/coord, B = 192 bits/beat):
+  E₄₇ payload     = 47·W = 1,504 bits  →  ⌈1504/192⌉ = 8 beats   (NOT 47 bits)
+  Ambient payload = 125·W = 4,000 bits → ⌈4000/192⌉ = 21 beats
+  Registered 10-stage latency lower bound at 3 GHz:  T_lat ≥ 10 / 3 GHz = 3.333 ns
+</pre></section>
+<section id="s5" class="paper-section"><div class="section-marker">RESEARCH SECTION / 05</div><pre>§5. RECEIPTED THRESHOLD RING-LWE (N-OUT-OF-N EXACT BFV/BGV)  [E0 · E1 · Lattigo]
+
+5.1 Cyclotomic Ring, 128-Bit PQ Bounds &amp; Additive Threshold Key
+R ≔ ℤ[X]/(Xⁿ + 1),     R_Q ≔ R/QR,     R_T ≔ R/TR,     T = 68,720,066,561 ≡ 1 (mod 2¹⁶)
+128-bit quantum HE Standard bounds (ternary secrets, σ = 3.2, |e| ≤ B_e = 19):
+  • Mode A (depth 0):  n = 8,192,   log₂ Q = 174 ≤ 202
+  • Mode B (depth 1):  n = 16,384,  log₂ Q = 275,  log₂ P = 56,  log₂(QP) = 331 ≤ 411
+Additive N-of-N secret key:    s = ∑_{i=1}^{N} s_i  (never assembled)
+Collective public key:         p_{0,i} = −a·s_i + e_i,   p₀ = −a·s + e_pk,   pk = (p₀, a)
+Ciphertext invariant:          c₀ + c₁·s ≡ T⁻¹·m + e (mod Q)
+
+5.2 Exact Worst-Case Noise Certificate &amp; Correctness Theorem (d = 5 digits)
+B_fresh(A) = B_e·(2nN + 1)
+B_fresh(B) = B_e·(2nN + 1)/P + (1 + nN)/2
+B_agg      = N·B_fresh
+B_⊗        = (nT + 1) + nT·(B₁ + B₂) + nT·B₁·B₂
+B_ks(B_evk)= (d·n·q_max·B_evk)/(2P) + (1 + nN)/2
+B_relin    = B_⊗ + B_ks(N·B_e·(2nN + 1))
+B_U        = 2¹³·B_relin + (2¹³ − 1)·B_ks(N·B_e)
+Depth-1 AUC circuit:
+  x₀ = Relin(ct_POS ⊗ ct_W),   x_{k+1} = x_k + ρ_{2^k}(x_k) (k = 0..12),   ct_U = x₁₃
+  AUC = U₂ / (2·n₁·n₀),        U₂ = ∑_b POS[b]·(2·C[b] − NEG[b])
+Threshold decryption with mandatory flooding (λ_s = 40):
+  d_i = c₁·s_i + e_i^{sm} + f_i,     f_i ← 𝒰([−B_f, B_f]ⁿ),     B_f = ⌈2^{λ_s}·n·B_ct⌉
+Exactness condition:           T·(B_ct + N·(B_f + 28)) + T &lt; Q/2
+Simulation statistical bound:  Δ(f_h + e_ct, f_h) ≤ (n·B_ct)/(2B_f + 1) &lt; 2^{−λ_s}
+
+5.3 Anti-Averaging Single-Issuance Rule &amp; ML-DSA-65 Receipts
+Averaging attack on K repeated shares p⁽ʲ⁾ = −a·s_i + e⁽ʲ⁾:
+  (1/(K−1))·∑_{j=2}^{K}(p⁽ʲ⁾ − p⁽¹⁾) → −e⁽¹⁾   ⟹   s_i = a⁻¹·(e⁽¹⁾ − p⁽¹⁾)
+  (Exact recovery at 6σ/√(K−1) &lt; ½, i.e., K ≈ 1,500 for σ = 3.2.)
+Defense:
+  • Transport:  X25519 + ML-KEM-768 → HKDF-SHA-256 → AES-256-GCM
+  • Receipts:   ML-DSA-65 (FIPS 204, ctx = receipted-mhe/v1) over SHA3-256 hash chain
+                (session, party, seq, prev, phase, bind_sha3, payload_sha3, params_sha3)
+  • Rule:       second_request(phase, bind_sha3) ⟹ REFUSE before computing (7/7 tamper pass)
+</pre></section>
+<section id="s6" class="paper-section"><div class="section-marker">RESEARCH SECTION / 06</div><pre>§6. ERROR-CORRECTED QUANTUM OPERATIONS &amp; 7-QUBIT EMBEDDING  [E0 · E1 · E2]
+
+6.1 Corrected Quantum Operations (Supersedes Invalid CPTP Projector Claims)
+• Selective projector filter (CP-TNI, Kraus/Choi rank = 1, NOT TP on ℂ¹²⁵):
+    ℳ_P(ρ) ≔ P₄₇·ρ·P₄₇,        Tr[ℳ_P(ρ)] = Tr(P₄₇·ρ) ≤ Tr(ρ)
+    Fix(ℳ_P) = {X : P₄₇·X·P₄₇ = X},            dim_ℂ Fix(ℳ_P) = 47² = 2,209
+• K² filtering semigroup (CP-TNI, full-space TP iff t = 0):
+    S_t ≔ exp(−t·K²),          ℳ_t(ρ) ≔ S_t·ρ·S_t,    ‖ℳ_t − ℳ_P‖_{2→2} ≤ exp(−11664·t)
+• Two-outcome CPTP block-dephasing completion (Kraus rank = 2, unital, idempotent):
+    𝒟_P(ρ) ≔ P₄₇·ρ·P₄₇ + Q₇₈·ρ·Q₇₈,            P₄₇†P₄₇ + Q₇₈†Q₇₈ = I₁₂₅
+    dim_ℂ Fix(𝒟_P) = 47² + 78² = 8,293
+• CPTP fail-closed reset-to-null channel (8/8 quantum channel pass):
+    ℛ(ρ) ≔ K₀·ρ·K₀† + K₁·ρ·K₁† = |0⟩⟨0|,       K₀†K₀ + K₁†K₁ = I,     Tr ℛ(ρ) = 1
+
+6.2 Minimal 7-Qubit Isometric Embedding, Noiseless Subsystems &amp; GKSL Recovery
+2⁶ = 64 &lt; 125 ≤ 128 = 2⁷       ⟹   7 data qubits (3 reserved invalid states: |125⟩..|127⟩)
+Syndrome complement dim:       128 − 47 = 81
+Product basis map:             idx(m₁,m₂,m₃) = 25(2−m₁) + 5(2−m₂) + (2−m₃) ∈ {0,…,124}
+Contiguous E₄₇ coupled range:  E₆ (J=2) → [10..34],      E₃₀ (J=5) → [90..111]
+Unitary pillar sandwich:       U_pillar = U₁₂₈ · D₄₇ · U₁₂₈†,      R₄₇ = 2P₄₇ − I
+Collective-SU(2) noiseless multiplicity subsystems:
+  E₄₇ ≅ (ℂ⁵ ⊗ V₂) ⊕ (ℂ² ⊗ V₅)  ⟹  M₂ ≅ ℂ⁵ (ququint),   M₅ ≅ ℂ² (logical qubit)
+Matched-spectrum GKSL autonomous recovery (eliminates gap-24 dephasing):
+  f(42) = f(12) + ω            ⟹  stationary Fano factor F = 1 − 24c²γ²/(γ²+8c²)² &lt; 1
+</pre></section>
+<section id="s7" class="paper-section"><div class="section-marker">RESEARCH SECTION / 07</div><pre>§7. EXPLICIT EPISTEMIC BOUNDARY (NON-IMPLICATION LEDGER)
+⊬ Public E₄₇ / ISSR alone implies post-quantum confidentiality or MLWE hardness.
+⊬ Finite numerical residuals imply fabricated 7 nm silicon timing/PPA closure.
+⊬ Classical complex-matrix / QuTiP simulation implies physical quantum hardware.
+⊬ Semi-honest threshold RLWE proofs cover malicious prover deviation without ZKPs.</pre></section><footer class="foot">FlowShield · White Hats · Mathematical City · Independent research instrument<br>Source text supplied November 20, 2026. No credentials or backend required to read this document.</footer></main></body></html>
