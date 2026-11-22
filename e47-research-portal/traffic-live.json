@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-11-21T19:09:49.901259+00:00",
+  "collectedAt": "2026-11-22T06:39:56.179857+00:00",
   "source": "GitHub REST API via scheduled repository workflow",
   "repositories": [
     {
@@ -7,7 +7,7 @@
       "stars": 2,
       "forks": 0,
       "openIssues": 0,
-      "pushedAt": "2026-11-21T05:06:41Z",
+      "pushedAt": "2026-11-22T03:50:25Z",
       "url": "https://github.com/nicholaskouns-create/E47-Kartekeya"
     },
     {
@@ -15,7 +15,7 @@
       "stars": 1,
       "forks": 0,
       "openIssues": 0,
-      "pushedAt": "2026-11-21T07:26:47Z",
+      "pushedAt": "2026-11-22T03:47:54Z",
       "url": "https://github.com/nicholaskouns-create/nicholaskouns-create.github.io"
     },
     {
@@ -23,7 +23,7 @@
       "stars": 0,
       "forks": 0,
       "openIssues": 0,
-      "pushedAt": "2026-11-21T02:13:47Z",
+      "pushedAt": "2026-11-21T20:52:14Z",
       "url": "https://github.com/nicholaskouns-create/E47-Foundry-Lifetime-Intersection"
     },
     {
@@ -31,7 +31,7 @@
       "stars": 0,
       "forks": 0,
       "openIssues": 0,
-      "pushedAt": "2026-11-21T02:13:52Z",
+      "pushedAt": "2026-11-22T03:53:41Z",
       "url": "https://github.com/nicholaskouns-create/E47-Electroweak-Identities"
     },
     {
@@ -39,7 +39,7 @@
       "stars": 1,
       "forks": 0,
       "openIssues": 1,
-      "pushedAt": "2026-11-21T02:13:50Z",
+      "pushedAt": "2026-11-22T03:52:26Z",
       "url": "https://github.com/nicholaskouns-create/auth-kernel"
     },
     {
@@ -47,7 +47,7 @@
       "stars": 0,
       "forks": 0,
       "openIssues": 1,
-      "pushedAt": "2026-11-21T02:13:53Z",
+      "pushedAt": "2026-11-22T03:52:58Z",
       "url": "https://github.com/nicholaskouns-create/bi-a7-semimetal-proofs"
     },
     {
@@ -55,7 +55,7 @@
       "stars": 0,
       "forks": 0,
       "openIssues": 2,
-      "pushedAt": "2026-11-21T05:11:36Z",
+      "pushedAt": "2026-11-22T03:51:02Z",
       "url": "https://github.com/nicholaskouns-create/Time"
     },
     {
@@ -63,7 +63,7 @@
       "stars": 0,
       "forks": 0,
       "openIssues": 0,
-      "pushedAt": "2026-11-21T02:13:54Z",
+      "pushedAt": "2026-11-21T20:52:27Z",
       "url": "https://github.com/nicholaskouns-create/Genesis"
     },
     {
@@ -71,7 +71,7 @@
       "stars": 0,
       "forks": 0,
       "openIssues": 0,
-      "pushedAt": "2026-11-21T02:13:55Z",
+      "pushedAt": "2026-11-21T20:52:31Z",
       "url": "https://github.com/nicholaskouns-create/Radar"
     },
     {
@@ -79,15 +79,15 @@
       "stars": 0,
       "forks": 0,
       "openIssues": 2,
-      "pushedAt": "2026-11-21T05:13:17Z",
+      "pushedAt": "2026-11-22T03:50:32Z",
       "url": "https://github.com/nicholaskouns-create/tower"
     },
     {
       "name": "Identity",
       "stars": 2,
       "forks": 1,
-      "openIssues": 88,
-      "pushedAt": "2026-11-21T17:47:36Z",
+      "openIssues": 87,
+      "pushedAt": "2026-11-22T03:50:52Z",
       "url": "https://github.com/nicholaskouns-create/Identity"
     },
     {
@@ -95,14 +95,14 @@
       "stars": 0,
       "forks": 0,
       "openIssues": 0,
-      "pushedAt": "2026-11-21T05:11:55Z",
+      "pushedAt": "2026-11-22T03:51:36Z",
       "url": "https://github.com/nicholaskouns-create/Kiliani"
     }
   ],
   "totals": {
     "stars": 6,
     "forks": 1,
-    "openIssues": 94
+    "openIssues": 93
   },
   "traffic": {
     "E47-Kartekeya": {
