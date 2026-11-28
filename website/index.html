@@ -28,6 +28,14 @@
 <meta name="twitter:image" content="https://nicholaskouns-create.github.io/assets/og/website.jpg">
 <meta name="twitter:image:alt" content="Share card for The Mathematical City, showing its cover art">
 <!-- city-share:end -->
+<style>
+  .city-language { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; margin: 1rem 0; }
+  .city-language label { color: var(--fg); font-weight: 500; }
+  #city-translator { max-width: 100%; }
+  #city-translator:empty { display: none; }
+  #city-translator select { max-width: 100%; min-height: 44px; font: inherit; }
+  .city-language a { display: inline-flex; align-items: center; min-height: 44px; }
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -44,6 +52,28 @@
     <p class="kicker">Atlas clone · Ωc = 47/125 · GitHub-hosted</p>
     <h1>The Mathematical City</h1>
     <p class="lede">An executable research architecture for invariant computation. Structure is discovered. Invariance is selected. Everything else is tested.</p>
+    <div class="city-language">
+      <label for="city-language-picker"><span aria-hidden="true">🌐</span> Translate this site</label>
+      <div id="city-translator"></div>
+      <a class="text-link" href="https://translate.google.com/translate?sl=en&amp;tl=es&amp;u=https%3A%2F%2Fnicholaskouns-create.github.io%2Fwebsite%2F">Open in Google Translate ↗</a>
+    </div>
+    <script>
+      function initCityTranslator() {
+        const container = document.getElementById('city-translator');
+        function labelPicker() {
+          const picker = container.querySelector('select');
+          if (picker) {
+            picker.id = 'city-language-picker';
+            observer.disconnect();
+          }
+        }
+        const observer = new MutationObserver(labelPicker);
+        observer.observe(container, { childList: true, subtree: true });
+        new google.translate.TranslateElement({ pageLanguage: 'en', autoDisplay: false }, container.id);
+        labelPicker();
+      }
+    </script>
+    <script async src="https://translate.google.com/translate_a/element.js?cb=initCityTranslator"></script>
     <!-- KKP-GRID-LEAD-1 · Grid leads this hub (Identity/tools/grid/install_door.py) -->
 <style>.kkp-grid-lead{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:26px;align-items:center;margin:28px 0;padding:18px;border:1px solid rgba(110,223,212,.32);border-radius:10px;background:linear-gradient(180deg,rgba(17,24,28,.94),rgba(9,11,13,.94));color:#edf2ef;text-decoration:none;box-shadow:0 18px 50px rgba(0,0,0,.35);transition:border-color .2s,transform .2s;text-align:left}.kkp-grid-lead:hover,.kkp-grid-lead:focus-visible{border-color:rgba(110,223,212,.85);transform:translateY(-2px)}.kkp-grid-lead img{width:100%;height:auto;display:block;border-radius:6px;border:1px solid rgba(110,223,212,.2)}.kkp-grid-lead-k{display:block;font:500 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;color:#6edfd4;margin-bottom:10px}.kkp-grid-lead-t{display:block;font:400 clamp(34px,5vw,52px)/1 Newsreader,"Iowan Old Style",Georgia,serif;letter-spacing:-.02em;color:#efeae0;margin-bottom:10px}.kkp-grid-lead-d{display:block;color:#a7b1b4;font:400 15.5px/1.5 "IBM Plex Sans",system-ui,-apple-system,sans-serif;max-width:52ch}.kkp-grid-lead-go{display:inline-block;margin-top:14px;font:500 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;color:#c1e8ce}@media(max-width:760px){.kkp-grid-lead{grid-template-columns:1fr}}@media(prefers-reduced-motion:reduce){.kkp-grid-lead{transition:none}}</style>
 <a class="kkp-grid-lead" href="https://nicholaskouns-create.github.io/Identity/grid/">
