@@ -1,3 +1,6 @@
+
+> **[Universal Recursive Identity Theorem](https://nicholaskouns-create.github.io/Identity/leri/universal-invariant/)** — Complete continuous invariant factorization, quotient identity and 125→47→5 spectral descent. Analytic proof and computational exhibit; new formal compiler status separate.
+
 > ⚛️ **[NEW · Φ₄ QUANTUM CIRCUIT THEATER](https://nicholaskouns-create.github.io/qsvt-phi4/)** — Full 125D Clebsch–Gordan → 250D QSP → 500D two-ancilla LCU circuit · [Interactive instrument](https://nicholaskouns-create.github.io/E47-Kartekeya/interfaces/qsvt-phi4-circuit/) · [Exact derivation + executable 14-check certificate](https://github.com/nicholaskouns-create/E47-Kartekeya/tree/main/research/e47/qsp_phi4). E0 algebra / E1 NumPy; hardware not asserted.
 
 > **Current licensing:** [All Rights Reserved](LICENSE) for original material owned by Nicholas Shane Kouns. No new reuse permission is granted. Previously granted licenses and third-party/public-domain rights remain unaffected.
